@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>1. 프로젝트 생성 | goodSaem</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="alternate" type="application/rss+xml" href="https://goodsaem.github.io/rss.xml" title="goodSaem RSS Feed">
+    <link rel="alternate" type="application/atom+xml" href="https://goodsaem.github.io/feed.atom" title="goodSaem Atom Feed">
+    <link rel="alternate" type="application/json" href="https://goodsaem.github.io/feed.json" title="goodSaem JSON Feed">
+    <meta name="description" content="spring boot 로 backend  서비스를 만들어 보겠습니다.">
+    <meta name="google-site-verification" content="dsfsd">
+    
+    <link rel="preload" href="/assets/css/0.styles.01f4ec8e.css" as="style"><link rel="preload" href="/assets/js/app.8ed71931.js" as="script"><link rel="preload" href="/assets/js/2.b61bc857.js" as="script"><link rel="preload" href="/assets/js/4.68d9fa5f.js" as="script"><link rel="prefetch" href="/assets/js/10.3580b2d9.js"><link rel="prefetch" href="/assets/js/11.a08e0ee9.js"><link rel="prefetch" href="/assets/js/12.61d5d101.js"><link rel="prefetch" href="/assets/js/13.edd07713.js"><link rel="prefetch" href="/assets/js/14.36ba30b5.js"><link rel="prefetch" href="/assets/js/15.691f870f.js"><link rel="prefetch" href="/assets/js/16.74ec5482.js"><link rel="prefetch" href="/assets/js/17.06c1390d.js"><link rel="prefetch" href="/assets/js/18.3e6c1072.js"><link rel="prefetch" href="/assets/js/19.9ee3e303.js"><link rel="prefetch" href="/assets/js/20.6b22ed4a.js"><link rel="prefetch" href="/assets/js/21.b31d1a64.js"><link rel="prefetch" href="/assets/js/22.0094d990.js"><link rel="prefetch" href="/assets/js/23.c1574737.js"><link rel="prefetch" href="/assets/js/24.44ec8781.js"><link rel="prefetch" href="/assets/js/25.06979db2.js"><link rel="prefetch" href="/assets/js/3.5ed5fd40.js"><link rel="prefetch" href="/assets/js/5.52667532.js"><link rel="prefetch" href="/assets/js/6.b3955b9e.js"><link rel="prefetch" href="/assets/js/7.c9e2d1bb.js"><link rel="prefetch" href="/assets/js/8.6393d9bd.js"><link rel="prefetch" href="/assets/js/9.6017e403.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.01f4ec8e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><main class="page"> <div class="theme-default-content content__default"><h1 id="_01-프로젝트-생성"><a href="#_01-프로젝트-생성" class="header-anchor">#</a> <i class="fa fa-running"></i> 01. 프로젝트 생성</h1> <p>vue.js 로 부동산 정보를 제공해주는 사이트를 만드는게 올해 목표 입니다. 이목표를 달성하기 위해서 vue.js를 공부했고 이제 어느정도 익숙해져 하나씩
+만들어 볼려고 하는데 backend 에서 막히네요. 욕심이 많아서 인지 머리속에 이것저것 생각만 떠 오르고 잘 진행이 되지 않아 시간이 많이 걸리지만 하나씩
+정리하면서 만드는게 좋다고 생각해서 실무에서 검증받고 가장 사랑받고 있는 <strong>spring boot 를 이용하여 서버를 구축</strong> 하고자 합니다. 백엔드는 json 으로
+데이터만 잘 리턴해주면 된다고 생각하여 node.js로 서버를 만들었다가 알수 없는 오류들 mybatis 와 궁합도 맞지 않아 spring boot 로 우회 해서
+backend 서버를 구축하고자 합니다. 시리즈로 작성되게 될 이 글이 완성될때 쯤 제가 원하는 rest api 서버가 만들어 지겠네요.. 기대 됩니다. ^^</p> <h2 id="_1-개발툴-다운로드-및-설치"><a href="#_1-개발툴-다운로드-및-설치" class="header-anchor">#</a> 1. 개발툴 다운로드 및 설치</h2> <p><a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener noreferrer">Intellij IDEA<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 역시 java 개발 툴 끝판왕을 다운로드 받으시고 pc에 설치를 진행해 주세요.</p> <p><img src="/assets/img/intellij.63b15fcb.jpg" alt="Intelij IDEA"></p> <h2 id="_2-spring-project-생성하기"><a href="#_2-spring-project-생성하기" class="header-anchor">#</a> 2. spring project 생성하기</h2> <p><a href="https://start.spring.io/" target="_blank" rel="noopener noreferrer">spring starter<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 사이트에서 spring 프로젝트를 생성합니다. 아래와 같이 설정을하고 GENERATE 버튼을
+클릭하면 해당 설정되로 압축 파일을 생성해서 다운로드가 진행됩니다. 다운로드후 압축 파일 풀어서 적당한 위치에 옮겨 주세요 해당 디렉토리가
+프로젝트 폴더가 됩니다.</p> <table><thead><tr><th style="text-align:center;">구분</th> <th style="text-align:center;">설정</th> <th style="text-align:center;">비고</th></tr></thead> <tbody><tr><td style="text-align:center;">Project</td> <td style="text-align:center;">Gradle Project 를 선택합니다.</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">Language</td> <td style="text-align:center;">Java 를 선택합니다.</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">Spring Boot</td> <td style="text-align:center;">2.4.2 를 선택합니다.</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">Group</td> <td style="text-align:center;">io.github.goodsaem</td> <td style="text-align:center;">GroupId는 프로젝트를 식별해 주는 고유값입니다. <br> 각자의 도메인으로 설정해 주세요</td></tr> <tr><td style="text-align:center;">Artifact</td> <td style="text-align:center;">api</td> <td style="text-align:center;">war 나 jar 파일을 만들때 사용되면 버전정보를 제외한 파일이름을 뜻합니다.</td></tr> <tr><td style="text-align:center;">Name</td> <td style="text-align:center;">api</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">Description</td> <td style="text-align:center;">rest api</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">Package name</td> <td style="text-align:center;">io.github.goodsaem.api</td> <td style="text-align:center;">각자 맞개 설정해 주세요</td></tr> <tr><td style="text-align:center;">Packaging</td> <td style="text-align:center;">jar</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">Java</td> <td style="text-align:center;">11</td> <td style="text-align:center;">너무 높은 버전은 문제가 될수 있습니다. 안정버전을 선택해 주세요</td></tr> <tr><td style="text-align:center;">Dependencies</td> <td style="text-align:center;">Lombok</td> <td style="text-align:center;">getter 나 setter 등을 자동완성할때 사용합니다.</td></tr> <tr><td style="text-align:center;"></td> <td style="text-align:center;">H2 Database</td> <td style="text-align:center;">H2 db 사용을 위함 입니다.</td></tr> <tr><td style="text-align:center;"></td> <td style="text-align:center;">MySQL Driver</td> <td style="text-align:center;">mysql db 연결을 위한 드라이버를 추가합니다.</td></tr> <tr><td style="text-align:center;"></td> <td style="text-align:center;">Spring JPA</td> <td style="text-align:center;">Java Persistence API 로 객체 지향적으로 데이터를 관리 할수 있습니다.</td></tr></tbody></table> <p><img src="/assets/img/springstarter.c5505eae.jpg" alt="spring starter"></p> <p>Intellij 를 실행하고 open 버튼을 클릭합니다.
+<img src="/assets/img/openproject.5d7e096c.jpg" alt="Open Porject"></p> <div class="custom-block warning"><p class="custom-block-title">WARNING</p> <p>jdk 가 설치되어 있지 않다면 다음 단계 진행이 되지 않습니다. oracle jdk 1.8.20x 버전부터 유료화 되었으므로 openjdk 를
+설치하여 사용하시기 바랍니다.
+<a href="https://adoptopenjdk.net/" target="_blank" rel="noopener noreferrer">openjdk download<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <p>압축푼 api 폴더를 아래와 같이 선택한후 open 버튼을 클릭해 주세요.
+<img src="/assets/img/open.93ede0c7.jpg" alt="Open"></p> <p>install 이 자동으로 진행됩니다.
+<img src="/assets/img/loading.6395a2c6.jpg" alt="loading"></p> <p>프로젝트 생성이 끝나고 나면 좌측에 build.gradle 파일을 열어서 아래 강조한 부분을 추가해 주세요
+freemarker 는 java template 문법을 사용하기 위해서 사용되고 spring starter web 은 내장된 was (web application server) 를
+사용하기 위해 추가 합니다. Gradle Tab 의 sync 아이콘을 클릭하면 추가한 패키지를 다운로드 받아서 프로젝트 자동으로 추가 됩니다. 참 편하죠?</p> <p><img src="/assets/img/sync.22eb1787.jpg" alt="sync"></p> <div class="language-.gradle line-numbers-mode"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br></div><pre class="language-text"><code>plugins {
+	id 'org.springframework.boot' version '2.4.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'io.github.goodsaem'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><p>intellij 에서 Lombok 플러그인을 사용하기 위해 Preference &gt; Plugins - Lombok 을 검색하여 install 한후 Intellij 를 재시작 합니다.
+<img src="/assets/img/lombok.27a67797.jpg" alt="lombok"></p> <p>Preference &gt; Build, Execution,Deployment &gt; Compiler &gt; Annotation Processors 선택 하고 오른쪽 화면의 Enable annotation
+processing 을 체크한후 OK 버튼을 클릭합니다. <strong>체크해야만</strong> Lombok 플러그인을 사용할수 있습니다.</p> <p><img src="/assets/img/aa.2f747f70.jpg" alt="lombok"></p> <h2 id="글을-마치며"><a href="#글을-마치며" class="header-anchor">#</a> 글을 마치며</h2> <p>글쓰는게 쉽지가 않네요 알고 있던 내용인데도 글로 적으니까 조금더 이해가 되고 대충 알고 있던 내용들도 구글링 해서 찾아보게 되고 여러모로 글을 쓰는
+저에게 도움이 많이 되네요 다음 시간에는 본격적으로 spring boot 로 rest api 서버를 완성해 가겠습니다.
+글 읽어 주셔서 감사합니다.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/" class="prev router-link-active">Home</a></span> <span class="next"><a href="/spring/restapi/hello.html">2. Hello</a>
+      →
+    </span></p></div>  <div><div id="comment" class="comment"></div></div></main> <header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><figure><img src="https://avatars.githubusercontent.com/u/72680592?s=400&amp;u=745704d80b906fded3d9399a38120d35e6944318&amp;v=4" alt="goodSaem"></figure> <div><strong>goodsaem</strong> <em>좋은선생님</em></div></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="https://github.com/goodsaem/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Repository
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="https://github.com/goodsaem/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Repository
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">Home</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>spring</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>rest api 서버</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/spring/restapi/" aria-current="page" class="active sidebar-link">1. 프로젝트 생성</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/spring/restapi/#_1-개발툴-다운로드-및-설치" class="sidebar-link">1. 개발툴 다운로드 및 설치</a></li><li class="sidebar-sub-header"><a href="/spring/restapi/#_2-spring-project-생성하기" class="sidebar-link">2. spring project 생성하기</a></li><li class="sidebar-sub-header"><a href="/spring/restapi/#글을-마치며" class="sidebar-link">글을 마치며</a></li></ul></li><li><a href="/spring/restapi/hello.html" class="sidebar-link">2. Hello</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>spring boot</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>javascript</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <footer class="siteFooter"><div class="container"><p class="siteFooterCopyright">
+      Copyright © 2021 All Right <em>goodsaem</em></p> <p class="siteFooterContact">
+      goodsaem@protonmail.com
+      <a href="https://github.com/goodsaem" target="_blank">GitHub</a> .
+    </p></div></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.8ed71931.js" defer></script><script src="/assets/js/2.b61bc857.js" defer></script><script src="/assets/js/4.68d9fa5f.js" defer></script>
+  </body>
+</html>
