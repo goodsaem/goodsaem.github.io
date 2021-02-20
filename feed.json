@@ -20,9 +20,9 @@
             "date_modified": "2021-02-09T00:00:00.000Z"
         },
         {
-            "id": "https://goodsaem.github.io/javascript/basic/z104-function.html",
-            "url": "https://goodsaem.github.io/javascript/basic/z104-function.html",
-            "title": "04. 함수",
+            "id": "https://goodsaem.github.io/javascript/basic/z106-arrary.html",
+            "url": "https://goodsaem.github.io/javascript/basic/z106-arrary.html",
+            "title": "06. 배열",
             "summary": "반복되는 코드는 함수로 만들어 반복을 제거해 주세요",
             "date_modified": "2021-02-09T00:00:00.000Z"
         },
@@ -34,13 +34,6 @@
             "date_modified": "2021-02-09T00:00:00.000Z"
         },
         {
-            "id": "https://goodsaem.github.io/javascript/basic/z106-arrary.html",
-            "url": "https://goodsaem.github.io/javascript/basic/z106-arrary.html",
-            "title": "06. 배열",
-            "summary": "반복되는 코드는 함수로 만들어 반복을 제거해 주세요",
-            "date_modified": "2021-02-09T00:00:00.000Z"
-        },
-        {
             "id": "https://goodsaem.github.io/javascript/basic/z107-iteration.html",
             "url": "https://goodsaem.github.io/javascript/basic/z107-iteration.html",
             "title": "07. 반복문",
@@ -48,10 +41,17 @@
             "date_modified": "2021-02-09T00:00:00.000Z"
         },
         {
-            "id": "https://goodsaem.github.io/javascript/intermediate/",
-            "url": "https://goodsaem.github.io/javascript/intermediate/",
-            "title": "01 삼항연산자",
-            "summary": "변수와 상수에 대해서 알아 보겠습니다.",
+            "id": "https://goodsaem.github.io/javascript/basic/z104-function.html",
+            "url": "https://goodsaem.github.io/javascript/basic/z104-function.html",
+            "title": "04. 함수",
+            "summary": "반복되는 코드는 함수로 만들어 반복을 제거해 주세요",
+            "date_modified": "2021-02-09T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/javascript/basic/z108-prototype.html",
+            "url": "https://goodsaem.github.io/javascript/basic/z108-prototype.html",
+            "title": "08. 프로토타입,클래스",
+            "summary": "반복되는 코드는 함수로 만들어 반복을 제거해 주세요",
             "date_modified": "2021-02-09T00:00:00.000Z"
         },
         {
@@ -62,10 +62,10 @@
             "date_modified": "2021-02-09T00:00:00.000Z"
         },
         {
-            "id": "https://goodsaem.github.io/javascript/basic/z108-prototype.html",
-            "url": "https://goodsaem.github.io/javascript/basic/z108-prototype.html",
-            "title": "08. 프로토타입,클래스",
-            "summary": "반복되는 코드는 함수로 만들어 반복을 제거해 주세요",
+            "id": "https://goodsaem.github.io/javascript/intermediate/",
+            "url": "https://goodsaem.github.io/javascript/intermediate/",
+            "title": "01 삼항연산자",
+            "summary": "변수와 상수에 대해서 알아 보겠습니다.",
             "date_modified": "2021-02-09T00:00:00.000Z"
         },
         {

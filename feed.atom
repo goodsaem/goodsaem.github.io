@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://goodsaem.github.io/</id>
     <title>goodSaem</title>
-    <updated>2021-02-18T16:51:16.742Z</updated>
+    <updated>2021-02-20T05:41:58.398Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://goodsaem.github.io/"/>
     <link rel="self" href="https://goodsaem.github.io/feed.atom"/>
@@ -24,9 +24,9 @@
         <summary type="html"><![CDATA[조건문 사용법]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[04. 함수]]></title>
-        <id>https://goodsaem.github.io/javascript/basic/z104-function.html</id>
-        <link href="https://goodsaem.github.io/javascript/basic/z104-function.html">
+        <title type="html"><![CDATA[06. 배열]]></title>
+        <id>https://goodsaem.github.io/javascript/basic/z106-arrary.html</id>
+        <link href="https://goodsaem.github.io/javascript/basic/z106-arrary.html">
         </link>
         <updated>2021-02-09T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[반복되는 코드는 함수로 만들어 반복을 제거해 주세요]]></summary>
@@ -40,14 +40,6 @@
         <summary type="html"><![CDATA[반복되는 코드는 함수로 만들어 반복을 제거해 주세요]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[06. 배열]]></title>
-        <id>https://goodsaem.github.io/javascript/basic/z106-arrary.html</id>
-        <link href="https://goodsaem.github.io/javascript/basic/z106-arrary.html">
-        </link>
-        <updated>2021-02-09T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[반복되는 코드는 함수로 만들어 반복을 제거해 주세요]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[07. 반복문]]></title>
         <id>https://goodsaem.github.io/javascript/basic/z107-iteration.html</id>
         <link href="https://goodsaem.github.io/javascript/basic/z107-iteration.html">
@@ -56,12 +48,20 @@
         <summary type="html"><![CDATA[반복되는 코드는 함수로 만들어 반복을 제거해 주세요]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[01 삼항연산자]]></title>
-        <id>https://goodsaem.github.io/javascript/intermediate/</id>
-        <link href="https://goodsaem.github.io/javascript/intermediate/">
+        <title type="html"><![CDATA[04. 함수]]></title>
+        <id>https://goodsaem.github.io/javascript/basic/z104-function.html</id>
+        <link href="https://goodsaem.github.io/javascript/basic/z104-function.html">
         </link>
         <updated>2021-02-09T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[변수와 상수에 대해서 알아 보겠습니다.]]></summary>
+        <summary type="html"><![CDATA[반복되는 코드는 함수로 만들어 반복을 제거해 주세요]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[08. 프로토타입,클래스]]></title>
+        <id>https://goodsaem.github.io/javascript/basic/z108-prototype.html</id>
+        <link href="https://goodsaem.github.io/javascript/basic/z108-prototype.html">
+        </link>
+        <updated>2021-02-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[반복되는 코드는 함수로 만들어 반복을 제거해 주세요]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[02. 연산자]]></title>
@@ -72,12 +72,12 @@
         <summary type="html"><![CDATA[특정연산을 수행하는 연산자에 대해서 알아 보겠습니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[08. 프로토타입,클래스]]></title>
-        <id>https://goodsaem.github.io/javascript/basic/z108-prototype.html</id>
-        <link href="https://goodsaem.github.io/javascript/basic/z108-prototype.html">
+        <title type="html"><![CDATA[01 삼항연산자]]></title>
+        <id>https://goodsaem.github.io/javascript/intermediate/</id>
+        <link href="https://goodsaem.github.io/javascript/intermediate/">
         </link>
         <updated>2021-02-09T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[반복되는 코드는 함수로 만들어 반복을 제거해 주세요]]></summary>
+        <summary type="html"><![CDATA[변수와 상수에 대해서 알아 보겠습니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[01 변수]]></title>
