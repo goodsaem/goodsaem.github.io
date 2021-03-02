@@ -4,7 +4,7 @@
         <title>goodSaem</title>
         <link>https://goodsaem.github.io/</link>
         <description>좋은선생님</description>
-        <lastBuildDate>Sat, 27 Feb 2021 18:02:15 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 02 Mar 2021 15:22:48 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://goodsaem.github.io/feed.atom" rel="self" type="application/rss+xml"/>
@@ -23,16 +23,16 @@
             <description><![CDATA[조건문 사용법]]></description>
         </item>
         <item>
-            <title><![CDATA[04. 함수]]></title>
-            <link>https://goodsaem.github.io/javascript/basic/z104-function.html</link>
-            <guid>https://goodsaem.github.io/javascript/basic/z104-function.html</guid>
+            <title><![CDATA[05. 객체]]></title>
+            <link>https://goodsaem.github.io/javascript/basic/z105-object.html</link>
+            <guid>https://goodsaem.github.io/javascript/basic/z105-object.html</guid>
             <pubDate>Tue, 09 Feb 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[반복되는 코드는 함수로 만들어 반복을 제거해 주세요]]></description>
         </item>
         <item>
-            <title><![CDATA[05. 객체]]></title>
-            <link>https://goodsaem.github.io/javascript/basic/z105-object.html</link>
-            <guid>https://goodsaem.github.io/javascript/basic/z105-object.html</guid>
+            <title><![CDATA[04. 함수]]></title>
+            <link>https://goodsaem.github.io/javascript/basic/z104-function.html</link>
+            <guid>https://goodsaem.github.io/javascript/basic/z104-function.html</guid>
             <pubDate>Tue, 09 Feb 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[반복되는 코드는 함수로 만들어 반복을 제거해 주세요]]></description>
         </item>
