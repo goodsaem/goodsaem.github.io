@@ -6,17 +6,17 @@
     "description": "좋은선생님",
     "items": [
         {
-            "id": "https://goodsaem.github.io/javascript/basic/z102-operator.html",
-            "url": "https://goodsaem.github.io/javascript/basic/z102-operator.html",
-            "title": "02. 연산자",
-            "summary": "특정연산을 수행하는 연산자에 대해서 알아 보겠습니다.",
-            "date_modified": "2021-02-09T00:00:00.000Z"
-        },
-        {
             "id": "https://goodsaem.github.io/javascript/basic/z103-condition.html",
             "url": "https://goodsaem.github.io/javascript/basic/z103-condition.html",
             "title": "03. 조건문",
             "summary": "조건문 사용법",
+            "date_modified": "2021-03-08T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/javascript/basic/z102-operator.html",
+            "url": "https://goodsaem.github.io/javascript/basic/z102-operator.html",
+            "title": "02. 연산자",
+            "summary": "특정연산을 수행하는 연산자에 대해서 알아 보겠습니다.",
             "date_modified": "2021-02-09T00:00:00.000Z"
         },
         {
