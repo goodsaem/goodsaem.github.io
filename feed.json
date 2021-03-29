@@ -13,10 +13,10 @@
             "date_modified": "2021-03-08T00:00:00.000Z"
         },
         {
-            "id": "https://goodsaem.github.io/javascript/basic/z106-arrary.html",
-            "url": "https://goodsaem.github.io/javascript/basic/z106-arrary.html",
-            "title": "06. 배열",
-            "summary": "반복되는 코드는 함수로 만들어 반복을 제거해 주세요",
+            "id": "https://goodsaem.github.io/javascript/basic/z102-operator.html",
+            "url": "https://goodsaem.github.io/javascript/basic/z102-operator.html",
+            "title": "02. 연산자",
+            "summary": "특정연산을 수행하는 연산자에 대해서 알아 보겠습니다.",
             "date_modified": "2021-02-09T00:00:00.000Z"
         },
         {
@@ -27,16 +27,16 @@
             "date_modified": "2021-02-09T00:00:00.000Z"
         },
         {
-            "id": "https://goodsaem.github.io/javascript/basic/z102-operator.html",
-            "url": "https://goodsaem.github.io/javascript/basic/z102-operator.html",
-            "title": "02. 연산자",
-            "summary": "특정연산을 수행하는 연산자에 대해서 알아 보겠습니다.",
-            "date_modified": "2021-02-09T00:00:00.000Z"
-        },
-        {
             "id": "https://goodsaem.github.io/javascript/basic/z105-object.html",
             "url": "https://goodsaem.github.io/javascript/basic/z105-object.html",
             "title": "05. 객체",
+            "summary": "반복되는 코드는 함수로 만들어 반복을 제거해 주세요",
+            "date_modified": "2021-02-09T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/javascript/basic/z106-arrary.html",
+            "url": "https://goodsaem.github.io/javascript/basic/z106-arrary.html",
+            "title": "06. 배열",
             "summary": "반복되는 코드는 함수로 만들어 반복을 제거해 주세요",
             "date_modified": "2021-02-09T00:00:00.000Z"
         },
@@ -45,13 +45,6 @@
             "url": "https://goodsaem.github.io/javascript/basic/z107-iteration.html",
             "title": "07. 반복문",
             "summary": "반복되는 코드는 함수로 만들어 반복을 제거해 주세요",
-            "date_modified": "2021-02-09T00:00:00.000Z"
-        },
-        {
-            "id": "https://goodsaem.github.io/javascript/intermediate/z102-truthy-falsy.html",
-            "url": "https://goodsaem.github.io/javascript/intermediate/z102-truthy-falsy.html",
-            "title": "02. 연산자",
-            "summary": "특정연산을 수행하는 연산자에 대해서 알아 보겠습니다.",
             "date_modified": "2021-02-09T00:00:00.000Z"
         },
         {
@@ -66,6 +59,13 @@
             "url": "https://goodsaem.github.io/javascript/intermediate/z101-three-operator.html",
             "title": "01 삼항연산자",
             "summary": "변수와 상수에 대해서 알아 보겠습니다.",
+            "date_modified": "2021-02-09T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/javascript/intermediate/z102-truthy-falsy.html",
+            "url": "https://goodsaem.github.io/javascript/intermediate/z102-truthy-falsy.html",
+            "title": "02. 연산자",
+            "summary": "특정연산을 수행하는 연산자에 대해서 알아 보겠습니다.",
             "date_modified": "2021-02-09T00:00:00.000Z"
         },
         {
