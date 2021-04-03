@@ -2,11 +2,139 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://goodsaem.github.io/</id>
     <title>goodSaem</title>
-    <updated>2021-04-03T02:06:28.340Z</updated>
+    <updated>2021-04-03T02:16:15.661Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://goodsaem.github.io/"/>
     <link rel="self" href="https://goodsaem.github.io/feed.atom"/>
     <subtitle>좋은선생님</subtitle>
+    <entry>
+        <title type="html"><![CDATA[바코드 생성기]]></title>
+        <id>https://goodsaem.github.io/apps/100-%EB%B0%94%EC%BD%94%EB%93%9C-%EC%83%9D%EC%84%B1%EA%B8%B0.html</id>
+        <link href="https://goodsaem.github.io/apps/100-%EB%B0%94%EC%BD%94%EB%93%9C-%EC%83%9D%EC%84%B1%EA%B8%B0.html">
+        </link>
+        <updated>2021-03-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[바코드 생성기]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[폰트어썸 아이콘 검색]]></title>
+        <id>https://goodsaem.github.io/apps/101-%ED%8F%B0%ED%8A%B8%EC%96%B4%EC%8D%B8-%EC%95%84%EC%9D%B4%EC%BD%98%EA%B2%80%EC%83%89.html</id>
+        <link href="https://goodsaem.github.io/apps/101-%ED%8F%B0%ED%8A%B8%EC%96%B4%EC%8D%B8-%EC%95%84%EC%9D%B4%EC%BD%98%EA%B2%80%EC%83%89.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[폰트어썸 아이콘 검색]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[메모 관리]]></title>
+        <id>https://goodsaem.github.io/apps/102-%EB%A9%94%EB%AA%A8%EA%B4%80%EB%A6%AC.html</id>
+        <link href="https://goodsaem.github.io/apps/102-%EB%A9%94%EB%AA%A8%EA%B4%80%EB%A6%AC.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[메모 관리]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[1. 구축준비]]></title>
+        <id>https://goodsaem.github.io/freetier2/101-%EA%B5%AC%EC%B6%95%EC%A4%80%EB%B9%84.html</id>
+        <link href="https://goodsaem.github.io/freetier2/101-%EA%B5%AC%EC%B6%95%EC%A4%80%EB%B9%84.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[구축준비]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2. AWS 계정 생성]]></title>
+        <id>https://goodsaem.github.io/freetier2/102-AWS%EA%B3%84%EC%A0%95%EC%83%9D%EC%84%B1.html</id>
+        <link href="https://goodsaem.github.io/freetier2/102-AWS%EA%B3%84%EC%A0%95%EC%83%9D%EC%84%B1.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[AWS 계정 생성]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[4. 서버접속]]></title>
+        <id>https://goodsaem.github.io/freetier2/104-%EC%84%9C%EB%B2%84%EC%A0%91%EC%86%8D.html</id>
+        <link href="https://goodsaem.github.io/freetier2/104-%EC%84%9C%EB%B2%84%EC%A0%91%EC%86%8D.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[서버접속]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[3. EC2 인스턴스 추가]]></title>
+        <id>https://goodsaem.github.io/freetier2/103-EC2-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%B6%94%EA%B0%80.html</id>
+        <link href="https://goodsaem.github.io/freetier2/103-EC2-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%B6%94%EA%B0%80.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[EC2 인스턴스 추가]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[5. 초기 설정]]></title>
+        <id>https://goodsaem.github.io/freetier2/105-%EC%B4%88%EA%B8%B0%EC%84%A4%EC%A0%95.html</id>
+        <link href="https://goodsaem.github.io/freetier2/105-%EC%B4%88%EA%B8%B0%EC%84%A4%EC%A0%95.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[초기 설정]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[6. Nginx 설치]]></title>
+        <id>https://goodsaem.github.io/freetier2/106-Nginx-%EC%84%A4%EC%B9%98.html</id>
+        <link href="https://goodsaem.github.io/freetier2/106-Nginx-%EC%84%A4%EC%B9%98.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Nginx 설치]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[7. MariaDB 설치]]></title>
+        <id>https://goodsaem.github.io/freetier2/107-MariaDB-%EC%84%A4%EC%B9%98.html</id>
+        <link href="https://goodsaem.github.io/freetier2/107-MariaDB-%EC%84%A4%EC%B9%98.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[MariaDB 설치]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[8. PHP 설치]]></title>
+        <id>https://goodsaem.github.io/freetier2/108-PHP%EC%84%A4%EC%B9%98.html</id>
+        <link href="https://goodsaem.github.io/freetier2/108-PHP%EC%84%A4%EC%B9%98.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[PHP 설치]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[9. Nginx 설정]]></title>
+        <id>https://goodsaem.github.io/freetier2/109-Nginx%EC%84%A4%EC%A0%95.html</id>
+        <link href="https://goodsaem.github.io/freetier2/109-Nginx%EC%84%A4%EC%A0%95.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Nginx 설정]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[10. AWS 보안설정]]></title>
+        <id>https://goodsaem.github.io/freetier2/110-AWS-%EB%B3%B4%EC%95%88%EC%84%A4%EC%A0%95.html</id>
+        <link href="https://goodsaem.github.io/freetier2/110-AWS-%EB%B3%B4%EC%95%88%EC%84%A4%EC%A0%95.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[AWS 보안설정]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[12. SSL 점검]]></title>
+        <id>https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html</id>
+        <link href="https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[SSL 점검]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[11. 무료 인증서 발급]]></title>
+        <id>https://goodsaem.github.io/freetier2/111-%EB%AC%B4%EB%A3%8C%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%EA%B8%89.html</id>
+        <link href="https://goodsaem.github.io/freetier2/111-%EB%AC%B4%EB%A3%8C%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%EA%B8%89.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[무료 인증서 발급]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[13. 테스트]]></title>
+        <id>https://goodsaem.github.io/freetier2/113-%ED%85%8C%EC%8A%A4%ED%8A%B8.html</id>
+        <link href="https://goodsaem.github.io/freetier2/113-%ED%85%8C%EC%8A%A4%ED%8A%B8.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[테스트]]></summary>
+    </entry>
     <entry>
         <title type="html"><![CDATA[01 변수]]></title>
         <id>https://goodsaem.github.io/javascript/101-%EB%B3%80%EC%88%98-%EC%83%81%EC%88%98.html</id>
@@ -30,5 +158,13 @@
         </link>
         <updated>2021-03-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[조건문]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[1. 로컬 서버 구축]]></title>
+        <id>https://goodsaem.github.io/local/101-%EB%A1%9C%EC%BB%AC%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%B6%95.html</id>
+        <link href="https://goodsaem.github.io/local/101-%EB%A1%9C%EC%BB%AC%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%B6%95.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[로컬 서버 구축]]></summary>
     </entry>
 </feed>

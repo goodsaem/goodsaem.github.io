@@ -6,6 +6,128 @@
     "description": "좋은선생님",
     "items": [
         {
+            "id": "https://goodsaem.github.io/apps/100-%EB%B0%94%EC%BD%94%EB%93%9C-%EC%83%9D%EC%84%B1%EA%B8%B0.html",
+            "url": "https://goodsaem.github.io/apps/100-%EB%B0%94%EC%BD%94%EB%93%9C-%EC%83%9D%EC%84%B1%EA%B8%B0.html",
+            "title": "바코드 생성기",
+            "summary": "바코드 생성기",
+            "date_modified": "2021-03-30T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/apps/101-%ED%8F%B0%ED%8A%B8%EC%96%B4%EC%8D%B8-%EC%95%84%EC%9D%B4%EC%BD%98%EA%B2%80%EC%83%89.html",
+            "url": "https://goodsaem.github.io/apps/101-%ED%8F%B0%ED%8A%B8%EC%96%B4%EC%8D%B8-%EC%95%84%EC%9D%B4%EC%BD%98%EA%B2%80%EC%83%89.html",
+            "title": "폰트어썸 아이콘 검색",
+            "summary": "폰트어썸 아이콘 검색",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/apps/102-%EB%A9%94%EB%AA%A8%EA%B4%80%EB%A6%AC.html",
+            "url": "https://goodsaem.github.io/apps/102-%EB%A9%94%EB%AA%A8%EA%B4%80%EB%A6%AC.html",
+            "title": "메모 관리",
+            "summary": "메모 관리",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/101-%EA%B5%AC%EC%B6%95%EC%A4%80%EB%B9%84.html",
+            "url": "https://goodsaem.github.io/freetier2/101-%EA%B5%AC%EC%B6%95%EC%A4%80%EB%B9%84.html",
+            "title": "1. 구축준비",
+            "summary": "구축준비",
+            "image": "https://goodsaem.github.io/./z101/architecture.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/102-AWS%EA%B3%84%EC%A0%95%EC%83%9D%EC%84%B1.html",
+            "url": "https://goodsaem.github.io/freetier2/102-AWS%EA%B3%84%EC%A0%95%EC%83%9D%EC%84%B1.html",
+            "title": "2. AWS 계정 생성",
+            "summary": "AWS 계정 생성",
+            "image": "https://goodsaem.github.io/./z101/z101-3.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/104-%EC%84%9C%EB%B2%84%EC%A0%91%EC%86%8D.html",
+            "url": "https://goodsaem.github.io/freetier2/104-%EC%84%9C%EB%B2%84%EC%A0%91%EC%86%8D.html",
+            "title": "4. 서버접속",
+            "summary": "서버접속",
+            "image": "https://goodsaem.github.io/./z101/20.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/103-EC2-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%B6%94%EA%B0%80.html",
+            "url": "https://goodsaem.github.io/freetier2/103-EC2-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%B6%94%EA%B0%80.html",
+            "title": "3. EC2 인스턴스 추가",
+            "summary": "EC2 인스턴스 추가",
+            "image": "https://goodsaem.github.io/./z101/z101-10.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/105-%EC%B4%88%EA%B8%B0%EC%84%A4%EC%A0%95.html",
+            "url": "https://goodsaem.github.io/freetier2/105-%EC%B4%88%EA%B8%B0%EC%84%A4%EC%A0%95.html",
+            "title": "5. 초기 설정",
+            "summary": "초기 설정",
+            "image": "https://goodsaem.github.io/./z105/4.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/106-Nginx-%EC%84%A4%EC%B9%98.html",
+            "url": "https://goodsaem.github.io/freetier2/106-Nginx-%EC%84%A4%EC%B9%98.html",
+            "title": "6. Nginx 설치",
+            "summary": "Nginx 설치",
+            "image": "https://goodsaem.github.io/./z101/30.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/107-MariaDB-%EC%84%A4%EC%B9%98.html",
+            "url": "https://goodsaem.github.io/freetier2/107-MariaDB-%EC%84%A4%EC%B9%98.html",
+            "title": "7. MariaDB 설치",
+            "summary": "MariaDB 설치",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/108-PHP%EC%84%A4%EC%B9%98.html",
+            "url": "https://goodsaem.github.io/freetier2/108-PHP%EC%84%A4%EC%B9%98.html",
+            "title": "8. PHP 설치",
+            "summary": "PHP 설치",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/109-Nginx%EC%84%A4%EC%A0%95.html",
+            "url": "https://goodsaem.github.io/freetier2/109-Nginx%EC%84%A4%EC%A0%95.html",
+            "title": "9. Nginx 설정",
+            "summary": "Nginx 설정",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/110-AWS-%EB%B3%B4%EC%95%88%EC%84%A4%EC%A0%95.html",
+            "url": "https://goodsaem.github.io/freetier2/110-AWS-%EB%B3%B4%EC%95%88%EC%84%A4%EC%A0%95.html",
+            "title": "10. AWS 보안설정",
+            "summary": "AWS 보안설정",
+            "image": "https://goodsaem.github.io/./z101/31.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html",
+            "url": "https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html",
+            "title": "12. SSL 점검",
+            "summary": "SSL 점검",
+            "image": "https://goodsaem.github.io/./z101/40.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/111-%EB%AC%B4%EB%A3%8C%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%EA%B8%89.html",
+            "url": "https://goodsaem.github.io/freetier2/111-%EB%AC%B4%EB%A3%8C%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%EA%B8%89.html",
+            "title": "11. 무료 인증서 발급",
+            "summary": "무료 인증서 발급",
+            "image": "https://goodsaem.github.io/./z101/35.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/113-%ED%85%8C%EC%8A%A4%ED%8A%B8.html",
+            "url": "https://goodsaem.github.io/freetier2/113-%ED%85%8C%EC%8A%A4%ED%8A%B8.html",
+            "title": "13. 테스트",
+            "summary": "테스트",
+            "image": "https://goodsaem.github.io/./z101/44.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
             "id": "https://goodsaem.github.io/javascript/101-%EB%B3%80%EC%88%98-%EC%83%81%EC%88%98.html",
             "url": "https://goodsaem.github.io/javascript/101-%EB%B3%80%EC%88%98-%EC%83%81%EC%88%98.html",
             "title": "01 변수",
@@ -25,6 +147,14 @@
             "url": "https://goodsaem.github.io/javascript/103-%EC%A1%B0%EA%B1%B4%EB%AC%B8.html",
             "title": "3. 조건문",
             "summary": "조건문",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/local/101-%EB%A1%9C%EC%BB%AC%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%B6%95.html",
+            "url": "https://goodsaem.github.io/local/101-%EB%A1%9C%EC%BB%AC%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%B6%95.html",
+            "title": "1. 로컬 서버 구축",
+            "summary": "로컬 서버 구축",
+            "image": "https://goodsaem.github.io/./z101/1.jpg",
             "date_modified": "2021-03-29T00:00:00.000Z"
         }
     ]
