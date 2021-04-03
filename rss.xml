@@ -4,171 +4,171 @@
         <title>goodSaem</title>
         <link>https://goodsaem.github.io/</link>
         <description>좋은선생님</description>
-        <lastBuildDate>Sat, 03 Apr 2021 07:58:25 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 03 Apr 2021 14:46:27 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://goodsaem.github.io/feed.atom" rel="self" type="application/rss+xml"/>
         <item>
-            <title><![CDATA[QR코드 생성기]]></title>
-            <link>https://goodsaem.github.io/apps/101-QR%EC%BD%94%EB%93%9C-%EC%83%9D%EC%84%B1%EA%B8%B0.html</link>
-            <guid>https://goodsaem.github.io/apps/101-QR%EC%BD%94%EB%93%9C-%EC%83%9D%EC%84%B1%EA%B8%B0.html</guid>
+            <title><![CDATA[QR code generator]]></title>
+            <link>https://goodsaem.github.io/apps/101-qrcode-generator.html</link>
+            <guid>https://goodsaem.github.io/apps/101-qrcode-generator.html</guid>
             <pubDate>Sat, 03 Apr 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[QR코드 생성기]]></description>
+            <description><![CDATA[QR code generator]]></description>
         </item>
         <item>
-            <title><![CDATA[바코드 생성기]]></title>
-            <link>https://goodsaem.github.io/apps/100-%EB%B0%94%EC%BD%94%EB%93%9C-%EC%83%9D%EC%84%B1%EA%B8%B0.html</link>
-            <guid>https://goodsaem.github.io/apps/100-%EB%B0%94%EC%BD%94%EB%93%9C-%EC%83%9D%EC%84%B1%EA%B8%B0.html</guid>
+            <title><![CDATA[Barcode generator]]></title>
+            <link>https://goodsaem.github.io/apps/100-barcode-generator.html</link>
+            <guid>https://goodsaem.github.io/apps/100-barcode-generator.html</guid>
             <pubDate>Tue, 30 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[바코드 생성기]]></description>
+            <description><![CDATA[Barcode generator]]></description>
         </item>
         <item>
-            <title><![CDATA[폰트어썸 아이콘 검색]]></title>
-            <link>https://goodsaem.github.io/apps/111-%ED%8F%B0%ED%8A%B8%EC%96%B4%EC%8D%B8-%EC%95%84%EC%9D%B4%EC%BD%98%EA%B2%80%EC%83%89.html</link>
-            <guid>https://goodsaem.github.io/apps/111-%ED%8F%B0%ED%8A%B8%EC%96%B4%EC%8D%B8-%EC%95%84%EC%9D%B4%EC%BD%98%EA%B2%80%EC%83%89.html</guid>
+            <title><![CDATA[Search for Font Awesome icons]]></title>
+            <link>https://goodsaem.github.io/apps/111-fontawesome-icon-search.html</link>
+            <guid>https://goodsaem.github.io/apps/111-fontawesome-icon-search.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[폰트어썸 아이콘 검색]]></description>
+            <description><![CDATA[Search for Font Awesome icons]]></description>
         </item>
         <item>
-            <title><![CDATA[메모 관리]]></title>
-            <link>https://goodsaem.github.io/apps/122-%EB%A9%94%EB%AA%A8%EA%B4%80%EB%A6%AC.html</link>
-            <guid>https://goodsaem.github.io/apps/122-%EB%A9%94%EB%AA%A8%EA%B4%80%EB%A6%AC.html</guid>
+            <title><![CDATA[Memo management]]></title>
+            <link>https://goodsaem.github.io/apps/201-memo-management.html</link>
+            <guid>https://goodsaem.github.io/apps/201-memo-management.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[메모 관리]]></description>
+            <description><![CDATA[Memo management]]></description>
         </item>
         <item>
-            <title><![CDATA[1. 구축준비]]></title>
-            <link>https://goodsaem.github.io/freetier2/101-%EA%B5%AC%EC%B6%95%EC%A4%80%EB%B9%84.html</link>
-            <guid>https://goodsaem.github.io/freetier2/101-%EA%B5%AC%EC%B6%95%EC%A4%80%EB%B9%84.html</guid>
+            <title><![CDATA[1. Preparation for deployment]]></title>
+            <link>https://goodsaem.github.io/freetier2/101-aws-php-prepare.html</link>
+            <guid>https://goodsaem.github.io/freetier2/101-aws-php-prepare.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[구축준비]]></description>
+            <description><![CDATA[Preparation for deployment]]></description>
             <enclosure url="https://goodsaem.github.io/./z101/architecture.jpg">
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[2. AWS 계정 생성]]></title>
-            <link>https://goodsaem.github.io/freetier2/102-AWS%EA%B3%84%EC%A0%95%EC%83%9D%EC%84%B1.html</link>
-            <guid>https://goodsaem.github.io/freetier2/102-AWS%EA%B3%84%EC%A0%95%EC%83%9D%EC%84%B1.html</guid>
+            <title><![CDATA[2. Creating an AWS Account]]></title>
+            <link>https://goodsaem.github.io/freetier2/102-aws-php-new-account.html</link>
+            <guid>https://goodsaem.github.io/freetier2/102-aws-php-new-account.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[AWS 계정 생성]]></description>
+            <description><![CDATA[Creating an AWS Account]]></description>
             <enclosure url="https://goodsaem.github.io/./z101/z101-3.jpg">
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[3. EC2 인스턴스 추가]]></title>
-            <link>https://goodsaem.github.io/freetier2/103-EC2-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%B6%94%EA%B0%80.html</link>
-            <guid>https://goodsaem.github.io/freetier2/103-EC2-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%B6%94%EA%B0%80.html</guid>
+            <title><![CDATA[3. Add EC2 Instance]]></title>
+            <link>https://goodsaem.github.io/freetier2/103-aws-php-ec2-instance-add.html</link>
+            <guid>https://goodsaem.github.io/freetier2/103-aws-php-ec2-instance-add.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[EC2 인스턴스 추가]]></description>
+            <description><![CDATA[Add EC2 Instance]]></description>
             <enclosure url="https://goodsaem.github.io/./z101/z101-10.jpg">
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[4. 서버접속]]></title>
-            <link>https://goodsaem.github.io/freetier2/104-%EC%84%9C%EB%B2%84%EC%A0%91%EC%86%8D.html</link>
-            <guid>https://goodsaem.github.io/freetier2/104-%EC%84%9C%EB%B2%84%EC%A0%91%EC%86%8D.html</guid>
+            <title><![CDATA[4. Server connection]]></title>
+            <link>https://goodsaem.github.io/freetier2/104-aws-php-server-connect.html</link>
+            <guid>https://goodsaem.github.io/freetier2/104-aws-php-server-connect.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[서버접속]]></description>
+            <description><![CDATA[Server connection]]></description>
             <enclosure url="https://goodsaem.github.io/./z101/20.jpg">
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[5. 초기 설정]]></title>
-            <link>https://goodsaem.github.io/freetier2/105-%EC%B4%88%EA%B8%B0%EC%84%A4%EC%A0%95.html</link>
-            <guid>https://goodsaem.github.io/freetier2/105-%EC%B4%88%EA%B8%B0%EC%84%A4%EC%A0%95.html</guid>
+            <title><![CDATA[5. Initial Settings]]></title>
+            <link>https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html</link>
+            <guid>https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[초기 설정]]></description>
+            <description><![CDATA[Initial Settings]]></description>
             <enclosure url="https://goodsaem.github.io/./z105/4.jpg">
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[6. Nginx 설치]]></title>
-            <link>https://goodsaem.github.io/freetier2/106-Nginx-%EC%84%A4%EC%B9%98.html</link>
-            <guid>https://goodsaem.github.io/freetier2/106-Nginx-%EC%84%A4%EC%B9%98.html</guid>
+            <title><![CDATA[6. Nginx install]]></title>
+            <link>https://goodsaem.github.io/freetier2/106-aws-php-nginx-install.html</link>
+            <guid>https://goodsaem.github.io/freetier2/106-aws-php-nginx-install.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Nginx 설치]]></description>
+            <description><![CDATA[Nginx install]]></description>
             <enclosure url="https://goodsaem.github.io/./z101/30.jpg">
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[7. MariaDB 설치]]></title>
-            <link>https://goodsaem.github.io/freetier2/107-MariaDB-%EC%84%A4%EC%B9%98.html</link>
-            <guid>https://goodsaem.github.io/freetier2/107-MariaDB-%EC%84%A4%EC%B9%98.html</guid>
+            <title><![CDATA[7. MariaDB install]]></title>
+            <link>https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html</link>
+            <guid>https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[MariaDB 설치]]></description>
+            <description><![CDATA[MariaDB install]]></description>
         </item>
         <item>
-            <title><![CDATA[8. PHP 설치]]></title>
-            <link>https://goodsaem.github.io/freetier2/108-PHP%EC%84%A4%EC%B9%98.html</link>
-            <guid>https://goodsaem.github.io/freetier2/108-PHP%EC%84%A4%EC%B9%98.html</guid>
+            <title><![CDATA[8. PHP install]]></title>
+            <link>https://goodsaem.github.io/freetier2/108-aws-php-php-install.html</link>
+            <guid>https://goodsaem.github.io/freetier2/108-aws-php-php-install.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[PHP 설치]]></description>
+            <description><![CDATA[PHP install]]></description>
         </item>
         <item>
-            <title><![CDATA[9. Nginx 설정]]></title>
-            <link>https://goodsaem.github.io/freetier2/109-Nginx%EC%84%A4%EC%A0%95.html</link>
-            <guid>https://goodsaem.github.io/freetier2/109-Nginx%EC%84%A4%EC%A0%95.html</guid>
+            <title><![CDATA[9. Nginx config]]></title>
+            <link>https://goodsaem.github.io/freetier2/109-aws-php-nginx-link.html</link>
+            <guid>https://goodsaem.github.io/freetier2/109-aws-php-nginx-link.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Nginx 설정]]></description>
+            <description><![CDATA[Nginx config]]></description>
         </item>
         <item>
-            <title><![CDATA[10. AWS 보안설정]]></title>
-            <link>https://goodsaem.github.io/freetier2/110-AWS-%EB%B3%B4%EC%95%88%EC%84%A4%EC%A0%95.html</link>
-            <guid>https://goodsaem.github.io/freetier2/110-AWS-%EB%B3%B4%EC%95%88%EC%84%A4%EC%A0%95.html</guid>
+            <title><![CDATA[10. AWS security setting]]></title>
+            <link>https://goodsaem.github.io/freetier2/110-aws-php-security-setting.html</link>
+            <guid>https://goodsaem.github.io/freetier2/110-aws-php-security-setting.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[AWS 보안설정]]></description>
+            <description><![CDATA[AWS security setting]]></description>
             <enclosure url="https://goodsaem.github.io/./z101/31.jpg">
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[11. 무료 인증서 발급]]></title>
-            <link>https://goodsaem.github.io/freetier2/111-%EB%AC%B4%EB%A3%8C%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%EA%B8%89.html</link>
-            <guid>https://goodsaem.github.io/freetier2/111-%EB%AC%B4%EB%A3%8C%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%EA%B8%89.html</guid>
+            <title><![CDATA[11. Free Certificate Issuance]]></title>
+            <link>https://goodsaem.github.io/freetier2/111-aws-php-ssl-free-certificate.html</link>
+            <guid>https://goodsaem.github.io/freetier2/111-aws-php-ssl-free-certificate.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[무료 인증서 발급]]></description>
+            <description><![CDATA[Free Certificate Issuance]]></description>
             <enclosure url="https://goodsaem.github.io/./z101/35.jpg">
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[12. SSL 점검]]></title>
-            <link>https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html</link>
-            <guid>https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html</guid>
+            <title><![CDATA[12. SSL check]]></title>
+            <link>https://goodsaem.github.io/freetier2/112-aws-php-ssl-check.html</link>
+            <guid>https://goodsaem.github.io/freetier2/112-aws-php-ssl-check.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[SSL 점검]]></description>
+            <description><![CDATA[SSL check]]></description>
             <enclosure url="https://goodsaem.github.io/./z101/40.jpg">
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[13. 테스트]]></title>
-            <link>https://goodsaem.github.io/freetier2/113-%ED%85%8C%EC%8A%A4%ED%8A%B8.html</link>
-            <guid>https://goodsaem.github.io/freetier2/113-%ED%85%8C%EC%8A%A4%ED%8A%B8.html</guid>
+            <title><![CDATA[13. test]]></title>
+            <link>https://goodsaem.github.io/freetier2/113-aws-php-test.html</link>
+            <guid>https://goodsaem.github.io/freetier2/113-aws-php-test.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[테스트]]></description>
+            <description><![CDATA[test]]></description>
             <enclosure url="https://goodsaem.github.io/./z101/44.jpg">
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[01 변수]]></title>
-            <link>https://goodsaem.github.io/javascript/101-%EB%B3%80%EC%88%98-%EC%83%81%EC%88%98.html</link>
-            <guid>https://goodsaem.github.io/javascript/101-%EB%B3%80%EC%88%98-%EC%83%81%EC%88%98.html</guid>
+            <title><![CDATA[1. Variables and constants]]></title>
+            <link>https://goodsaem.github.io/javascript/101-variable-constant.html</link>
+            <guid>https://goodsaem.github.io/javascript/101-variable-constant.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[변수와 상수에 대해서 알아 보겠습니다.]]></description>
+            <description><![CDATA[Variables and constants]]></description>
             <enclosure url="https://goodsaem.github.io/./z101/const.png">
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[2. 연산자]]></title>
-            <link>https://goodsaem.github.io/javascript/102-%EC%97%B0%EC%82%B0%EC%9E%90.html</link>
-            <guid>https://goodsaem.github.io/javascript/102-%EC%97%B0%EC%82%B0%EC%9E%90.html</guid>
+            <title><![CDATA[2. Operators]]></title>
+            <link>https://goodsaem.github.io/javascript/102-operators.html</link>
+            <guid>https://goodsaem.github.io/javascript/102-operators.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[연산자]]></description>
+            <description><![CDATA[Operators]]></description>
         </item>
         <item>
-            <title><![CDATA[3. 조건문]]></title>
-            <link>https://goodsaem.github.io/javascript/103-%EC%A1%B0%EA%B1%B4%EB%AC%B8.html</link>
-            <guid>https://goodsaem.github.io/javascript/103-%EC%A1%B0%EA%B1%B4%EB%AC%B8.html</guid>
+            <title><![CDATA[3. a conditional sentence]]></title>
+            <link>https://goodsaem.github.io/javascript/103-condition.html</link>
+            <guid>https://goodsaem.github.io/javascript/103-condition.html</guid>
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[조건문]]></description>
+            <description><![CDATA[a conditional sentence]]></description>
         </item>
     </channel>
 </rss>
