@@ -43,19 +43,19 @@
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
-            "id": "https://goodsaem.github.io/freetier2/104-%EC%84%9C%EB%B2%84%EC%A0%91%EC%86%8D.html",
-            "url": "https://goodsaem.github.io/freetier2/104-%EC%84%9C%EB%B2%84%EC%A0%91%EC%86%8D.html",
-            "title": "4. 서버접속",
-            "summary": "서버접속",
-            "image": "https://goodsaem.github.io/./z101/20.jpg",
-            "date_modified": "2021-03-29T00:00:00.000Z"
-        },
-        {
             "id": "https://goodsaem.github.io/freetier2/103-EC2-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%B6%94%EA%B0%80.html",
             "url": "https://goodsaem.github.io/freetier2/103-EC2-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%B6%94%EA%B0%80.html",
             "title": "3. EC2 인스턴스 추가",
             "summary": "EC2 인스턴스 추가",
             "image": "https://goodsaem.github.io/./z101/z101-10.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/104-%EC%84%9C%EB%B2%84%EC%A0%91%EC%86%8D.html",
+            "url": "https://goodsaem.github.io/freetier2/104-%EC%84%9C%EB%B2%84%EC%A0%91%EC%86%8D.html",
+            "title": "4. 서버접속",
+            "summary": "서버접속",
+            "image": "https://goodsaem.github.io/./z101/20.jpg",
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
@@ -104,19 +104,19 @@
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
-            "id": "https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html",
-            "url": "https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html",
-            "title": "12. SSL 점검",
-            "summary": "SSL 점검",
-            "image": "https://goodsaem.github.io/./z101/40.jpg",
-            "date_modified": "2021-03-29T00:00:00.000Z"
-        },
-        {
             "id": "https://goodsaem.github.io/freetier2/111-%EB%AC%B4%EB%A3%8C%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%EA%B8%89.html",
             "url": "https://goodsaem.github.io/freetier2/111-%EB%AC%B4%EB%A3%8C%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%EA%B8%89.html",
             "title": "11. 무료 인증서 발급",
             "summary": "무료 인증서 발급",
             "image": "https://goodsaem.github.io/./z101/35.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html",
+            "url": "https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html",
+            "title": "12. SSL 점검",
+            "summary": "SSL 점검",
+            "image": "https://goodsaem.github.io/./z101/40.jpg",
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
