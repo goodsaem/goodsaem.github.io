@@ -112,6 +112,14 @@
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
+            "id": "https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html",
+            "url": "https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html",
+            "title": "12. SSL 점검",
+            "summary": "SSL 점검",
+            "image": "https://goodsaem.github.io/./z101/40.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
             "id": "https://goodsaem.github.io/freetier2/113-%ED%85%8C%EC%8A%A4%ED%8A%B8.html",
             "url": "https://goodsaem.github.io/freetier2/113-%ED%85%8C%EC%8A%A4%ED%8A%B8.html",
             "title": "13. 테스트",
@@ -125,14 +133,6 @@
             "title": "01 변수",
             "summary": "변수와 상수에 대해서 알아 보겠습니다.",
             "image": "https://goodsaem.github.io/./z101/const.png",
-            "date_modified": "2021-03-29T00:00:00.000Z"
-        },
-        {
-            "id": "https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html",
-            "url": "https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html",
-            "title": "12. SSL 점검",
-            "summary": "SSL 점검",
-            "image": "https://goodsaem.github.io/./z101/40.jpg",
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
