@@ -4,7 +4,7 @@
         <title>goodSaem</title>
         <link>https://goodsaem.github.io/</link>
         <description>좋은선생님</description>
-        <lastBuildDate>Sat, 03 Apr 2021 03:39:22 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 03 Apr 2021 04:18:28 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://goodsaem.github.io/feed.atom" rel="self" type="application/rss+xml"/>
@@ -123,15 +123,6 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[12. SSL 점검]]></title>
-            <link>https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html</link>
-            <guid>https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html</guid>
-            <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[SSL 점검]]></description>
-            <enclosure url="https://goodsaem.github.io/./z101/40.jpg">
-            </enclosure>
-        </item>
-        <item>
             <title><![CDATA[13. 테스트]]></title>
             <link>https://goodsaem.github.io/freetier2/113-%ED%85%8C%EC%8A%A4%ED%8A%B8.html</link>
             <guid>https://goodsaem.github.io/freetier2/113-%ED%85%8C%EC%8A%A4%ED%8A%B8.html</guid>
@@ -147,6 +138,15 @@
             <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[변수와 상수에 대해서 알아 보겠습니다.]]></description>
             <enclosure url="https://goodsaem.github.io/./z101/const.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[12. SSL 점검]]></title>
+            <link>https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html</link>
+            <guid>https://goodsaem.github.io/freetier2/112-SSL-%EC%A0%90%EA%B2%80.html</guid>
+            <pubDate>Mon, 29 Mar 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[SSL 점검]]></description>
+            <enclosure url="https://goodsaem.github.io/./z101/40.jpg">
             </enclosure>
         </item>
         <item>
