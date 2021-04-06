@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://goodsaem.github.io/</id>
     <title>goodSaem</title>
-    <updated>2021-04-06T14:13:18.731Z</updated>
+    <updated>2021-04-06T14:21:14.073Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://goodsaem.github.io/"/>
     <link rel="self" href="https://goodsaem.github.io/feed.atom"/>
@@ -166,5 +166,333 @@
         </link>
         <updated>2021-03-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[a conditional sentence]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[1. mac + virtualbox + ubuntu 18.04.5]]></title>
+        <id>https://goodsaem.github.io/local/101-mac-ubuntu-php.html</id>
+        <link href="https://goodsaem.github.io/local/101-mac-ubuntu-php.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[mac + virtualbox + ubuntu 18.04.5]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2. sever setting]]></title>
+        <id>https://goodsaem.github.io/local/102-mac-ubuntu-server-setup.html</id>
+        <link href="https://goodsaem.github.io/local/102-mac-ubuntu-server-setup.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[sever setting]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[3. Nginx install]]></title>
+        <id>https://goodsaem.github.io/local/103-mac-ubuntu-nginx-install.html</id>
+        <link href="https://goodsaem.github.io/local/103-mac-ubuntu-nginx-install.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Nginx install]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[4. MariaDB install]]></title>
+        <id>https://goodsaem.github.io/local/104-mac-ubuntu-mariadb-install.html</id>
+        <link href="https://goodsaem.github.io/local/104-mac-ubuntu-mariadb-install.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[MariaDB install]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[5. PHP 7.4 install & setting]]></title>
+        <id>https://goodsaem.github.io/local/105-mac-ubuntu-setup.html</id>
+        <link href="https://goodsaem.github.io/local/105-mac-ubuntu-setup.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[PHP 7.4 install & setting]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[6. Nginx setting]]></title>
+        <id>https://goodsaem.github.io/local/106-mac-ubuntu-nginx-setup.html</id>
+        <link href="https://goodsaem.github.io/local/106-mac-ubuntu-nginx-setup.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Nginx setting]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[7. Free Domain Issuance and SSL Certificate Issuance]]></title>
+        <id>https://goodsaem.github.io/local/107-mac-ubuntu-ssl-free-certificate.html</id>
+        <link href="https://goodsaem.github.io/local/107-mac-ubuntu-ssl-free-certificate.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Free Domain Issuance and SSL Certificate Issuance]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[8. ssl test]]></title>
+        <id>https://goodsaem.github.io/local/108-mac-ubuntu-ssl-test.html</id>
+        <link href="https://goodsaem.github.io/local/108-mac-ubuntu-ssl-test.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[ssl test]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[GitLab directions for use]]></title>
+        <id>https://goodsaem.github.io/setup/101-gitlab.html</id>
+        <link href="https://goodsaem.github.io/setup/101-gitlab.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[GitLab directions for use]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[H2 DB install]]></title>
+        <id>https://goodsaem.github.io/setup/102-h2db-install.html</id>
+        <link href="https://goodsaem.github.io/setup/102-h2db-install.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[H2 DB install]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mac MariaDB install]]></title>
+        <id>https://goodsaem.github.io/setup/103-mac-mariadb-install.html</id>
+        <link href="https://goodsaem.github.io/setup/103-mac-mariadb-install.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Mac MariaDB install]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Build a development environment for vue.js]]></title>
+        <id>https://goodsaem.github.io/setup/104-mac-vuejs-development-environment.html</id>
+        <link href="https://goodsaem.github.io/setup/104-mac-vuejs-development-environment.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Build a development environment for vue.js]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PHP RestApi environment]]></title>
+        <id>https://goodsaem.github.io/setup/105-php-restapi.html</id>
+        <link href="https://goodsaem.github.io/setup/105-php-restapi.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[PHP RestApi environment]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[1. SpringBoot project create]]></title>
+        <id>https://goodsaem.github.io/spring/101-springboot-create-project.html</id>
+        <link href="https://goodsaem.github.io/spring/101-springboot-create-project.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[SpringBoot project create]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2. SpringBoot first example]]></title>
+        <id>https://goodsaem.github.io/spring/102-springboot-first.html</id>
+        <link href="https://goodsaem.github.io/spring/102-springboot-first.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[SpringBoot first example]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[3. SpringBoot H2DB link]]></title>
+        <id>https://goodsaem.github.io/spring/103-springboot-h2db-link.html</id>
+        <link href="https://goodsaem.github.io/spring/103-springboot-h2db-link.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[SpringBoot H2DB link]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[4. Aws Springboot deploy]]></title>
+        <id>https://goodsaem.github.io/spring/104-springboot-aws-deploy.html</id>
+        <link href="https://goodsaem.github.io/spring/104-springboot-aws-deploy.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Aws Springboot deploy]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[5. Springboot Mariadb setting]]></title>
+        <id>https://goodsaem.github.io/spring/105-springboot-mariadb-link.html</id>
+        <link href="https://goodsaem.github.io/spring/105-springboot-mariadb-link.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Springboot Mariadb setting]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[6. SpringBoot Ignite setting]]></title>
+        <id>https://goodsaem.github.io/spring/106-springboot-ignite-cache.html</id>
+        <link href="https://goodsaem.github.io/spring/106-springboot-ignite-cache.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[SpringBoot Ignite setting]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[7. Swagger 3.x with springboot]]></title>
+        <id>https://goodsaem.github.io/spring/107-springboot-swagger.html</id>
+        <link href="https://goodsaem.github.io/spring/107-springboot-swagger.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Swagger 3.x with springboot]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[8. RESTful API design]]></title>
+        <id>https://goodsaem.github.io/spring/108-springboot-restapi-design.html</id>
+        <link href="https://goodsaem.github.io/spring/108-springboot-restapi-design.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[RESTful API design]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SpringBoot Freemarket link]]></title>
+        <id>https://goodsaem.github.io/spring/201-springboot-freemarker.html</id>
+        <link href="https://goodsaem.github.io/spring/201-springboot-freemarker.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[SpringBoot Freemarket link]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SpringBoot Mariadb link]]></title>
+        <id>https://goodsaem.github.io/spring/202-springboot-mariadb-install.html</id>
+        <link href="https://goodsaem.github.io/spring/202-springboot-mariadb-install.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[SpringBoot Mariadb link]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Vue.js Course Introduction]]></title>
+        <id>https://goodsaem.github.io/vuejs/101-vuejs-course-introduction.html</id>
+        <link href="https://goodsaem.github.io/vuejs/101-vuejs-course-introduction.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Vue.js Course Introduction]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[vue component]]></title>
+        <id>https://goodsaem.github.io/vuejs/102-vuejs-component.html</id>
+        <link href="https://goodsaem.github.io/vuejs/102-vuejs-component.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[vue component]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[vuejs service port change]]></title>
+        <id>https://goodsaem.github.io/vuejs/301-vuejs-port-change.html</id>
+        <link href="https://goodsaem.github.io/vuejs/301-vuejs-port-change.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[vuejs service port change]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[vuejs with toastgrid]]></title>
+        <id>https://goodsaem.github.io/vuejs/302-vuejs-toastgrid.html</id>
+        <link href="https://goodsaem.github.io/vuejs/302-vuejs-toastgrid.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[vuejs with toastgrid]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[vuejs with fontawesome]]></title>
+        <id>https://goodsaem.github.io/vuejs/303-vuejs-fontawesome.html</id>
+        <link href="https://goodsaem.github.io/vuejs/303-vuejs-fontawesome.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[vuejs with fontawesome]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[11. Get a SSL free certificate]]></title>
+        <id>https://goodsaem.github.io/freetier/111-aws-springboot-ssl-free-certificate.html</id>
+        <link href="https://goodsaem.github.io/freetier/111-aws-springboot-ssl-free-certificate.html">
+        </link>
+        <updated>2021-03-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Get a SSL free certificate]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[12. Create a Memo App]]></title>
+        <id>https://goodsaem.github.io/freetier/112-aws-springboot-memo-app.html</id>
+        <link href="https://goodsaem.github.io/freetier/112-aws-springboot-memo-app.html">
+        </link>
+        <updated>2021-03-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Create a Memo App]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[13. Vue.js Memo App]]></title>
+        <id>https://goodsaem.github.io/freetier/113-aws-springboot-memo-app-vuejs.html</id>
+        <link href="https://goodsaem.github.io/freetier/113-aws-springboot-memo-app-vuejs.html">
+        </link>
+        <updated>2021-03-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Vue.js Memo App]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[1. Prepare for deployment]]></title>
+        <id>https://goodsaem.github.io/freetier/101-aws-springboot-prepare.html</id>
+        <link href="https://goodsaem.github.io/freetier/101-aws-springboot-prepare.html">
+        </link>
+        <updated>2021-03-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Prepare for deployment]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2. Creating aws account]]></title>
+        <id>https://goodsaem.github.io/freetier/102-aws-springboot-new-account.html</id>
+        <link href="https://goodsaem.github.io/freetier/102-aws-springboot-new-account.html">
+        </link>
+        <updated>2021-03-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Creating aws account]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[3. Add aws EC2 instance]]></title>
+        <id>https://goodsaem.github.io/freetier/103-aws-springboot-ec2-instance-add.html</id>
+        <link href="https://goodsaem.github.io/freetier/103-aws-springboot-ec2-instance-add.html">
+        </link>
+        <updated>2021-03-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Add aws EC2 instance]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[4. AWS Server Connection]]></title>
+        <id>https://goodsaem.github.io/freetier/104-aws-springboot-server-connect.html</id>
+        <link href="https://goodsaem.github.io/freetier/104-aws-springboot-server-connect.html">
+        </link>
+        <updated>2021-03-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[AWS Server Connection]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[5. Initial setup]]></title>
+        <id>https://goodsaem.github.io/freetier/105-aws-springboot-ec2-init-config.html</id>
+        <link href="https://goodsaem.github.io/freetier/105-aws-springboot-ec2-init-config.html">
+        </link>
+        <updated>2021-03-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Initial setup]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[7. MariaDB install]]></title>
+        <id>https://goodsaem.github.io/freetier/107-aws-springboot-mariadb-install.html</id>
+        <link href="https://goodsaem.github.io/freetier/107-aws-springboot-mariadb-install.html">
+        </link>
+        <updated>2021-03-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[MariaDB install]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[6. aws ubuntu18 nginx install]]></title>
+        <id>https://goodsaem.github.io/freetier/106-aws-springboot-nginx-install.html</id>
+        <link href="https://goodsaem.github.io/freetier/106-aws-springboot-nginx-install.html">
+        </link>
+        <updated>2021-03-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[aws ubuntu18 nginx install]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[8. Openjdk 1.8 install]]></title>
+        <id>https://goodsaem.github.io/freetier/108-aws-springboot-openjdk1.8-install.html</id>
+        <link href="https://goodsaem.github.io/freetier/108-aws-springboot-openjdk1.8-install.html">
+        </link>
+        <updated>2021-03-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Openjdk 1.8 install]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[9. Springboot Project]]></title>
+        <id>https://goodsaem.github.io/freetier/109-aws-springboot-project.html</id>
+        <link href="https://goodsaem.github.io/freetier/109-aws-springboot-project.html">
+        </link>
+        <updated>2021-03-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Springboot Project]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[10. Nginx Springboot link]]></title>
+        <id>https://goodsaem.github.io/freetier/110-aws-springboot-nginx-link.html</id>
+        <link href="https://goodsaem.github.io/freetier/110-aws-springboot-nginx-link.html">
+        </link>
+        <updated>2021-03-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Nginx Springboot link]]></summary>
     </entry>
 </feed>
