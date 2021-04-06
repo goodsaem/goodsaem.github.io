@@ -20,13 +20,6 @@
             "date_modified": "2021-03-30T00:00:00.000Z"
         },
         {
-            "id": "https://goodsaem.github.io/apps/201-memo-management.html",
-            "url": "https://goodsaem.github.io/apps/201-memo-management.html",
-            "title": "Memo management",
-            "summary": "Memo management",
-            "date_modified": "2021-03-29T00:00:00.000Z"
-        },
-        {
             "id": "https://goodsaem.github.io/apps/111-fontawesome-icon-search.html",
             "url": "https://goodsaem.github.io/apps/111-fontawesome-icon-search.html",
             "title": "Search for Font Awesome icons",
@@ -34,11 +27,10 @@
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
-            "id": "https://goodsaem.github.io/freetier2/102-aws-php-new-account.html",
-            "url": "https://goodsaem.github.io/freetier2/102-aws-php-new-account.html",
-            "title": "2. Creating an AWS Account",
-            "summary": "Creating an AWS Account",
-            "image": "https://goodsaem.github.io/./z101/z101-3.jpg",
+            "id": "https://goodsaem.github.io/apps/201-memo-management.html",
+            "url": "https://goodsaem.github.io/apps/201-memo-management.html",
+            "title": "Memo management",
+            "summary": "Memo management",
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
@@ -47,6 +39,14 @@
             "title": "1. Preparation for deployment",
             "summary": "Preparation for deployment",
             "image": "https://goodsaem.github.io/./z101/architecture.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/102-aws-php-new-account.html",
+            "url": "https://goodsaem.github.io/freetier2/102-aws-php-new-account.html",
+            "title": "2. Creating an AWS Account",
+            "summary": "Creating an AWS Account",
+            "image": "https://goodsaem.github.io/./z101/z101-3.jpg",
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
@@ -66,6 +66,14 @@
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
+            "id": "https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html",
+            "url": "https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html",
+            "title": "5. Initial Settings",
+            "summary": "Initial Settings",
+            "image": "https://goodsaem.github.io/./z105/4.jpg",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
             "id": "https://goodsaem.github.io/freetier2/106-aws-php-nginx-install.html",
             "url": "https://goodsaem.github.io/freetier2/106-aws-php-nginx-install.html",
             "title": "6. Nginx install",
@@ -74,11 +82,10 @@
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
-            "id": "https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html",
-            "url": "https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html",
-            "title": "5. Initial Settings",
-            "summary": "Initial Settings",
-            "image": "https://goodsaem.github.io/./z105/4.jpg",
+            "id": "https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html",
+            "url": "https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html",
+            "title": "7. MariaDB install",
+            "summary": "MariaDB install",
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
@@ -101,13 +108,6 @@
             "title": "10. AWS security setting",
             "summary": "AWS security setting",
             "image": "https://goodsaem.github.io/./z101/31.jpg",
-            "date_modified": "2021-03-29T00:00:00.000Z"
-        },
-        {
-            "id": "https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html",
-            "url": "https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html",
-            "title": "7. MariaDB install",
-            "summary": "MariaDB install",
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
@@ -135,14 +135,6 @@
             "date_modified": "2021-03-29T00:00:00.000Z"
         },
         {
-            "id": "https://goodsaem.github.io/local/101-mac-ubuntu-php.html",
-            "url": "https://goodsaem.github.io/local/101-mac-ubuntu-php.html",
-            "title": "1. mac + virtualbox + ubuntu 18.04.5",
-            "summary": "mac + virtualbox + ubuntu 18.04.5",
-            "image": "https://goodsaem.github.io/./z101/1.jpg",
-            "date_modified": "2021-03-29T00:00:00.000Z"
-        },
-        {
             "id": "https://goodsaem.github.io/javascript/101-variable-constant.html",
             "url": "https://goodsaem.github.io/javascript/101-variable-constant.html",
             "title": "1. Variables and constants",
@@ -155,6 +147,13 @@
             "url": "https://goodsaem.github.io/javascript/102-operators.html",
             "title": "2. Operators",
             "summary": "Operators",
+            "date_modified": "2021-03-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/javascript/103-condition.html",
+            "url": "https://goodsaem.github.io/javascript/103-condition.html",
+            "title": "3. a conditional sentence",
+            "summary": "a conditional sentence",
             "date_modified": "2021-03-29T00:00:00.000Z"
         }
     ]

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://goodsaem.github.io/</id>
     <title>goodSaem</title>
-    <updated>2021-04-06T14:02:58.374Z</updated>
+    <updated>2021-04-06T14:13:18.731Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://goodsaem.github.io/"/>
     <link rel="self" href="https://goodsaem.github.io/feed.atom"/>
@@ -24,14 +24,6 @@
         <summary type="html"><![CDATA[Barcode generator]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Memo management]]></title>
-        <id>https://goodsaem.github.io/apps/201-memo-management.html</id>
-        <link href="https://goodsaem.github.io/apps/201-memo-management.html">
-        </link>
-        <updated>2021-03-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Memo management]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Search for Font Awesome icons]]></title>
         <id>https://goodsaem.github.io/apps/111-fontawesome-icon-search.html</id>
         <link href="https://goodsaem.github.io/apps/111-fontawesome-icon-search.html">
@@ -40,12 +32,12 @@
         <summary type="html"><![CDATA[Search for Font Awesome icons]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2. Creating an AWS Account]]></title>
-        <id>https://goodsaem.github.io/freetier2/102-aws-php-new-account.html</id>
-        <link href="https://goodsaem.github.io/freetier2/102-aws-php-new-account.html">
+        <title type="html"><![CDATA[Memo management]]></title>
+        <id>https://goodsaem.github.io/apps/201-memo-management.html</id>
+        <link href="https://goodsaem.github.io/apps/201-memo-management.html">
         </link>
         <updated>2021-03-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Creating an AWS Account]]></summary>
+        <summary type="html"><![CDATA[Memo management]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[1. Preparation for deployment]]></title>
@@ -54,6 +46,14 @@
         </link>
         <updated>2021-03-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Preparation for deployment]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2. Creating an AWS Account]]></title>
+        <id>https://goodsaem.github.io/freetier2/102-aws-php-new-account.html</id>
+        <link href="https://goodsaem.github.io/freetier2/102-aws-php-new-account.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Creating an AWS Account]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[3. Add EC2 Instance]]></title>
@@ -72,6 +72,14 @@
         <summary type="html"><![CDATA[Server connection]]></summary>
     </entry>
     <entry>
+        <title type="html"><![CDATA[5. Initial Settings]]></title>
+        <id>https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html</id>
+        <link href="https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Initial Settings]]></summary>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[6. Nginx install]]></title>
         <id>https://goodsaem.github.io/freetier2/106-aws-php-nginx-install.html</id>
         <link href="https://goodsaem.github.io/freetier2/106-aws-php-nginx-install.html">
@@ -80,12 +88,12 @@
         <summary type="html"><![CDATA[Nginx install]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[5. Initial Settings]]></title>
-        <id>https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html</id>
-        <link href="https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html">
+        <title type="html"><![CDATA[7. MariaDB install]]></title>
+        <id>https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html</id>
+        <link href="https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html">
         </link>
         <updated>2021-03-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Initial Settings]]></summary>
+        <summary type="html"><![CDATA[MariaDB install]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[8. PHP install]]></title>
@@ -112,14 +120,6 @@
         <summary type="html"><![CDATA[AWS security setting]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[7. MariaDB install]]></title>
-        <id>https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html</id>
-        <link href="https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html">
-        </link>
-        <updated>2021-03-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[MariaDB install]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[11. Free Certificate Issuance]]></title>
         <id>https://goodsaem.github.io/freetier2/111-aws-php-ssl-free-certificate.html</id>
         <link href="https://goodsaem.github.io/freetier2/111-aws-php-ssl-free-certificate.html">
@@ -144,14 +144,6 @@
         <summary type="html"><![CDATA[test]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[1. mac + virtualbox + ubuntu 18.04.5]]></title>
-        <id>https://goodsaem.github.io/local/101-mac-ubuntu-php.html</id>
-        <link href="https://goodsaem.github.io/local/101-mac-ubuntu-php.html">
-        </link>
-        <updated>2021-03-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[mac + virtualbox + ubuntu 18.04.5]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[1. Variables and constants]]></title>
         <id>https://goodsaem.github.io/javascript/101-variable-constant.html</id>
         <link href="https://goodsaem.github.io/javascript/101-variable-constant.html">
@@ -166,5 +158,13 @@
         </link>
         <updated>2021-03-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Operators]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[3. a conditional sentence]]></title>
+        <id>https://goodsaem.github.io/javascript/103-condition.html</id>
+        <link href="https://goodsaem.github.io/javascript/103-condition.html">
+        </link>
+        <updated>2021-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[a conditional sentence]]></summary>
     </entry>
 </feed>
