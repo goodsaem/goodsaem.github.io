@@ -122,19 +122,19 @@
             "date_modified": "2021-04-15T23:51:00.000Z"
         },
         {
-            "id": "https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html",
-            "url": "https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html",
-            "title": "5. 초기설정",
-            "summary": "초기설정",
-            "image": "https://goodsaem.github.io/./z105/4.jpg",
-            "date_modified": "2021-04-15T23:51:00.000Z"
-        },
-        {
             "id": "https://goodsaem.github.io/freetier2/104-aws-php-server-connect.html",
             "url": "https://goodsaem.github.io/freetier2/104-aws-php-server-connect.html",
             "title": "4. 서버연결",
             "summary": "서버연결",
             "image": "https://goodsaem.github.io/./z101/20.jpg",
+            "date_modified": "2021-04-15T23:51:00.000Z"
+        },
+        {
+            "id": "https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html",
+            "url": "https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html",
+            "title": "5. 초기설정",
+            "summary": "초기설정",
+            "image": "https://goodsaem.github.io/./z105/4.jpg",
             "date_modified": "2021-04-15T23:51:00.000Z"
         },
         {
