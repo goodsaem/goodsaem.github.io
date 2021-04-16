@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://goodsaem.github.io/</id>
     <title>goodSaem</title>
-    <updated>2021-04-15T15:51:19.062Z</updated>
+    <updated>2021-04-16T23:16:07.537Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://goodsaem.github.io/"/>
     <link rel="self" href="https://goodsaem.github.io/feed.atom"/>
@@ -128,20 +128,20 @@
         <summary type="html"><![CDATA[EC2 인스턴스 추가]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[4. 서버연결]]></title>
-        <id>https://goodsaem.github.io/freetier2/104-aws-php-server-connect.html</id>
-        <link href="https://goodsaem.github.io/freetier2/104-aws-php-server-connect.html">
-        </link>
-        <updated>2021-04-15T23:51:00.000Z</updated>
-        <summary type="html"><![CDATA[서버연결]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[5. 초기설정]]></title>
         <id>https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html</id>
         <link href="https://goodsaem.github.io/freetier2/105-aws-php-ec2-init-config.html">
         </link>
         <updated>2021-04-15T23:51:00.000Z</updated>
         <summary type="html"><![CDATA[초기설정]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[4. 서버연결]]></title>
+        <id>https://goodsaem.github.io/freetier2/104-aws-php-server-connect.html</id>
+        <link href="https://goodsaem.github.io/freetier2/104-aws-php-server-connect.html">
+        </link>
+        <updated>2021-04-15T23:51:00.000Z</updated>
+        <summary type="html"><![CDATA[서버연결]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[6. Nginx 설치]]></title>
@@ -160,20 +160,20 @@
         <summary type="html"><![CDATA[MariaDB 설치]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[9. Nginx 설정]]></title>
-        <id>https://goodsaem.github.io/freetier2/109-aws-php-nginx-link.html</id>
-        <link href="https://goodsaem.github.io/freetier2/109-aws-php-nginx-link.html">
-        </link>
-        <updated>2021-04-15T23:51:00.000Z</updated>
-        <summary type="html"><![CDATA[Nginx 설정]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[8. PHP 설치]]></title>
         <id>https://goodsaem.github.io/freetier2/108-aws-php-php-install.html</id>
         <link href="https://goodsaem.github.io/freetier2/108-aws-php-php-install.html">
         </link>
         <updated>2021-04-15T23:51:00.000Z</updated>
         <summary type="html"><![CDATA[PHP 설치]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[9. Nginx 설정]]></title>
+        <id>https://goodsaem.github.io/freetier2/109-aws-php-nginx-link.html</id>
+        <link href="https://goodsaem.github.io/freetier2/109-aws-php-nginx-link.html">
+        </link>
+        <updated>2021-04-15T23:51:00.000Z</updated>
+        <summary type="html"><![CDATA[Nginx 설정]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[10. AWS 보안설정]]></title>
