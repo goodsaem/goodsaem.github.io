@@ -2,11 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://goodsaem.github.io/</id>
     <title>goodSaem</title>
-    <updated>2021-04-16T23:18:06.874Z</updated>
+    <updated>2021-04-16T23:44:18.383Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://goodsaem.github.io/"/>
     <link rel="self" href="https://goodsaem.github.io/feed.atom"/>
     <subtitle>좋은선생님</subtitle>
+    <entry>
+        <title type="html"><![CDATA[접속한 client ip 가져오기]]></title>
+        <id>https://goodsaem.github.io/apps/112-get-my-ip.html</id>
+        <link href="https://goodsaem.github.io/apps/112-get-my-ip.html">
+        </link>
+        <updated>2021-04-16T23:27:00.000Z</updated>
+        <summary type="html"><![CDATA[접속한 client ip 가져오기]]></summary>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2. 계정생성]]></title>
         <id>https://goodsaem.github.io/freetier/102-aws-springboot-new-account.html</id>
@@ -56,14 +64,6 @@
         <summary type="html"><![CDATA[MariaDB 설치]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[8. Openjdk 1.8 설치]]></title>
-        <id>https://goodsaem.github.io/freetier/108-aws-springboot-openjdk1.8-install.html</id>
-        <link href="https://goodsaem.github.io/freetier/108-aws-springboot-openjdk1.8-install.html">
-        </link>
-        <updated>2021-04-15T23:51:00.000Z</updated>
-        <summary type="html"><![CDATA[Openjdk 1.8 설치]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[9. Springboot 프로젝트]]></title>
         <id>https://goodsaem.github.io/freetier/109-aws-springboot-project.html</id>
         <link href="https://goodsaem.github.io/freetier/109-aws-springboot-project.html">
@@ -72,12 +72,12 @@
         <summary type="html"><![CDATA[Springboot 프로젝트]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[10. Nginx Springboot 설정]]></title>
-        <id>https://goodsaem.github.io/freetier/110-aws-springboot-nginx-link.html</id>
-        <link href="https://goodsaem.github.io/freetier/110-aws-springboot-nginx-link.html">
+        <title type="html"><![CDATA[8. Openjdk 1.8 설치]]></title>
+        <id>https://goodsaem.github.io/freetier/108-aws-springboot-openjdk1.8-install.html</id>
+        <link href="https://goodsaem.github.io/freetier/108-aws-springboot-openjdk1.8-install.html">
         </link>
         <updated>2021-04-15T23:51:00.000Z</updated>
-        <summary type="html"><![CDATA[Nginx Springboot 설정]]></summary>
+        <summary type="html"><![CDATA[Openjdk 1.8 설치]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[11. SSL 인증]]></title>
@@ -94,6 +94,14 @@
         </link>
         <updated>2021-04-15T23:51:00.000Z</updated>
         <summary type="html"><![CDATA[메모앱 만들기]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[10. Nginx Springboot 설정]]></title>
+        <id>https://goodsaem.github.io/freetier/110-aws-springboot-nginx-link.html</id>
+        <link href="https://goodsaem.github.io/freetier/110-aws-springboot-nginx-link.html">
+        </link>
+        <updated>2021-04-15T23:51:00.000Z</updated>
+        <summary type="html"><![CDATA[Nginx Springboot 설정]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[13. vue용 메모앱]]></title>
@@ -376,20 +384,20 @@
         <summary type="html"><![CDATA[Springboot Mariadb 설정]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[6. SpringBoot Ignite 캐쉬설정]]></title>
-        <id>https://goodsaem.github.io/spring/106-springboot-ignite-cache.html</id>
-        <link href="https://goodsaem.github.io/spring/106-springboot-ignite-cache.html">
-        </link>
-        <updated>2021-04-15T23:51:00.000Z</updated>
-        <summary type="html"><![CDATA[SpringBoot Ignite 캐쉬설정]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[7. Swagger 3.x 설치]]></title>
         <id>https://goodsaem.github.io/spring/107-springboot-swagger.html</id>
         <link href="https://goodsaem.github.io/spring/107-springboot-swagger.html">
         </link>
         <updated>2021-04-15T23:51:00.000Z</updated>
         <summary type="html"><![CDATA[Swagger 3.x 설치]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[6. SpringBoot Ignite 캐쉬설정]]></title>
+        <id>https://goodsaem.github.io/spring/106-springboot-ignite-cache.html</id>
+        <link href="https://goodsaem.github.io/spring/106-springboot-ignite-cache.html">
+        </link>
+        <updated>2021-04-15T23:51:00.000Z</updated>
+        <summary type="html"><![CDATA[SpringBoot Ignite 캐쉬설정]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[8. RESTful API 디자인 원칙]]></title>
@@ -440,20 +448,20 @@
         <summary type="html"><![CDATA[vuejs 서비스 포트변경]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[vuejs 에 toastgrid 사용]]></title>
-        <id>https://goodsaem.github.io/vuejs/302-vuejs-toastgrid.html</id>
-        <link href="https://goodsaem.github.io/vuejs/302-vuejs-toastgrid.html">
-        </link>
-        <updated>2021-04-15T23:51:00.000Z</updated>
-        <summary type="html"><![CDATA[vuejs 에 toastgrid 사용]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[vuejs에 폰트어썸 사용]]></title>
         <id>https://goodsaem.github.io/vuejs/303-vuejs-fontawesome.html</id>
         <link href="https://goodsaem.github.io/vuejs/303-vuejs-fontawesome.html">
         </link>
         <updated>2021-04-15T23:51:00.000Z</updated>
         <summary type="html"><![CDATA[vuejs에 폰트어썸 사용]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[vuejs 에 toastgrid 사용]]></title>
+        <id>https://goodsaem.github.io/vuejs/302-vuejs-toastgrid.html</id>
+        <link href="https://goodsaem.github.io/vuejs/302-vuejs-toastgrid.html">
+        </link>
+        <updated>2021-04-15T23:51:00.000Z</updated>
+        <summary type="html"><![CDATA[vuejs 에 toastgrid 사용]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[QR 코드 생성기]]></title>
