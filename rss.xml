@@ -4,7 +4,7 @@
         <title>goodSaem</title>
         <link>https://goodsaem.github.io/</link>
         <description>좋은선생님</description>
-        <lastBuildDate>Tue, 10 Aug 2021 16:13:44 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 25 Feb 2023 15:30:13 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://goodsaem.github.io/feed.atom" rel="self" type="application/rss+xml"/>
@@ -55,21 +55,21 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[5. 리눅스 초기설정]]></title>
-            <link>https://goodsaem.github.io/freetier/105-aws-springboot-ec2-init-config.html</link>
-            <guid>https://goodsaem.github.io/freetier/105-aws-springboot-ec2-init-config.html</guid>
-            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
-            <description><![CDATA[리눅스 초기설정]]></description>
-            <enclosure url="https://goodsaem.github.io/./z105/1.jpg">
-            </enclosure>
-        </item>
-        <item>
             <title><![CDATA[4. AWS 서버접속]]></title>
             <link>https://goodsaem.github.io/freetier/104-aws-springboot-server-connect.html</link>
             <guid>https://goodsaem.github.io/freetier/104-aws-springboot-server-connect.html</guid>
             <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
             <description><![CDATA[AWS 서버접속]]></description>
             <enclosure url="https://goodsaem.github.io/./z104/20.jpg">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[5. 리눅스 초기설정]]></title>
+            <link>https://goodsaem.github.io/freetier/105-aws-springboot-ec2-init-config.html</link>
+            <guid>https://goodsaem.github.io/freetier/105-aws-springboot-ec2-init-config.html</guid>
+            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
+            <description><![CDATA[리눅스 초기설정]]></description>
+            <enclosure url="https://goodsaem.github.io/./z105/1.jpg">
             </enclosure>
         </item>
         <item>
@@ -87,6 +87,13 @@
             <guid>https://goodsaem.github.io/freetier/107-aws-springboot-mariadb-install.html</guid>
             <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
             <description><![CDATA[MariaDB 설치]]></description>
+        </item>
+        <item>
+            <title><![CDATA[8. Openjdk 1.8 설치]]></title>
+            <link>https://goodsaem.github.io/freetier/108-aws-springboot-openjdk1.8-install.html</link>
+            <guid>https://goodsaem.github.io/freetier/108-aws-springboot-openjdk1.8-install.html</guid>
+            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
+            <description><![CDATA[Openjdk 1.8 설치]]></description>
         </item>
         <item>
             <title><![CDATA[9. Springboot 프로젝트]]></title>
@@ -114,27 +121,11 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[8. Openjdk 1.8 설치]]></title>
-            <link>https://goodsaem.github.io/freetier/108-aws-springboot-openjdk1.8-install.html</link>
-            <guid>https://goodsaem.github.io/freetier/108-aws-springboot-openjdk1.8-install.html</guid>
-            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
-            <description><![CDATA[Openjdk 1.8 설치]]></description>
-        </item>
-        <item>
             <title><![CDATA[12. 메모앱 만들기]]></title>
             <link>https://goodsaem.github.io/freetier/112-aws-springboot-memo-app.html</link>
             <guid>https://goodsaem.github.io/freetier/112-aws-springboot-memo-app.html</guid>
             <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
             <description><![CDATA[메모앱 만들기]]></description>
-        </item>
-        <item>
-            <title><![CDATA[1. 사전준비]]></title>
-            <link>https://goodsaem.github.io/freetier2/101-aws-php-prepare.html</link>
-            <guid>https://goodsaem.github.io/freetier2/101-aws-php-prepare.html</guid>
-            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
-            <description><![CDATA[사전준비]]></description>
-            <enclosure url="https://goodsaem.github.io/./z101/architecture.jpg">
-            </enclosure>
         </item>
         <item>
             <title><![CDATA[13. vue용 메모앱]]></title>
@@ -143,6 +134,15 @@
             <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
             <description><![CDATA[vue용 메모앱]]></description>
             <enclosure url="https://goodsaem.github.io/./z113/1.jpg">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[1. 사전준비]]></title>
+            <link>https://goodsaem.github.io/freetier2/101-aws-php-prepare.html</link>
+            <guid>https://goodsaem.github.io/freetier2/101-aws-php-prepare.html</guid>
+            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
+            <description><![CDATA[사전준비]]></description>
+            <enclosure url="https://goodsaem.github.io/./z101/architecture.jpg">
             </enclosure>
         </item>
         <item>
@@ -182,13 +182,6 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[7. MariaDB 설치]]></title>
-            <link>https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html</link>
-            <guid>https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html</guid>
-            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
-            <description><![CDATA[MariaDB 설치]]></description>
-        </item>
-        <item>
             <title><![CDATA[6. Nginx 설치]]></title>
             <link>https://goodsaem.github.io/freetier2/106-aws-php-nginx-install.html</link>
             <guid>https://goodsaem.github.io/freetier2/106-aws-php-nginx-install.html</guid>
@@ -196,6 +189,13 @@
             <description><![CDATA[Nginx 설치]]></description>
             <enclosure url="https://goodsaem.github.io/./z101/30.jpg">
             </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[7. MariaDB 설치]]></title>
+            <link>https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html</link>
+            <guid>https://goodsaem.github.io/freetier2/107-aws-php-mariadb-install.html</guid>
+            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
+            <description><![CDATA[MariaDB 설치]]></description>
         </item>
         <item>
             <title><![CDATA[8. PHP 설치]]></title>
@@ -303,6 +303,13 @@
             <description><![CDATA[MariaDB 설치]]></description>
         </item>
         <item>
+            <title><![CDATA[5. PHP 7.4 설치 및 설정]]></title>
+            <link>https://goodsaem.github.io/local/105-mac-ubuntu-setup.html</link>
+            <guid>https://goodsaem.github.io/local/105-mac-ubuntu-setup.html</guid>
+            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
+            <description><![CDATA[PHP 7.4 설치 및 설정]]></description>
+        </item>
+        <item>
             <title><![CDATA[6. Nginx 설정]]></title>
             <link>https://goodsaem.github.io/local/106-mac-ubuntu-nginx-setup.html</link>
             <guid>https://goodsaem.github.io/local/106-mac-ubuntu-nginx-setup.html</guid>
@@ -310,13 +317,6 @@
             <description><![CDATA[Nginx 설정]]></description>
             <enclosure url="https://goodsaem.github.io/./z106/1.jpg">
             </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[5. PHP 7.4 설치 및 설정]]></title>
-            <link>https://goodsaem.github.io/local/105-mac-ubuntu-setup.html</link>
-            <guid>https://goodsaem.github.io/local/105-mac-ubuntu-setup.html</guid>
-            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
-            <description><![CDATA[PHP 7.4 설치 및 설정]]></description>
         </item>
         <item>
             <title><![CDATA[7. 무료 도메인 발급]]></title>
@@ -389,6 +389,15 @@
             </enclosure>
         </item>
         <item>
+            <title><![CDATA[2. SpringBoot 첫 예제]]></title>
+            <link>https://goodsaem.github.io/spring/102-springboot-first.html</link>
+            <guid>https://goodsaem.github.io/spring/102-springboot-first.html</guid>
+            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
+            <description><![CDATA[SpringBoot 첫 예제]]></description>
+            <enclosure url="https://goodsaem.github.io/./102/directory.jpg">
+            </enclosure>
+        </item>
+        <item>
             <title><![CDATA[3. SpringBoot H2DB 연동]]></title>
             <link>https://goodsaem.github.io/spring/103-springboot-h2db-link.html</link>
             <guid>https://goodsaem.github.io/spring/103-springboot-h2db-link.html</guid>
@@ -407,12 +416,12 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[2. SpringBoot 첫 예제]]></title>
-            <link>https://goodsaem.github.io/spring/102-springboot-first.html</link>
-            <guid>https://goodsaem.github.io/spring/102-springboot-first.html</guid>
+            <title><![CDATA[5. Springboot Mariadb 설정]]></title>
+            <link>https://goodsaem.github.io/spring/105-springboot-mariadb-link.html</link>
+            <guid>https://goodsaem.github.io/spring/105-springboot-mariadb-link.html</guid>
             <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
-            <description><![CDATA[SpringBoot 첫 예제]]></description>
-            <enclosure url="https://goodsaem.github.io/./102/directory.jpg">
+            <description><![CDATA[Springboot Mariadb 설정]]></description>
+            <enclosure url="https://goodsaem.github.io/./105/1.jpg">
             </enclosure>
         </item>
         <item>
@@ -452,21 +461,12 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[5. Springboot Mariadb 설정]]></title>
-            <link>https://goodsaem.github.io/spring/105-springboot-mariadb-link.html</link>
-            <guid>https://goodsaem.github.io/spring/105-springboot-mariadb-link.html</guid>
+            <title><![CDATA[SpringBoot Mariadb 설정]]></title>
+            <link>https://goodsaem.github.io/spring/202-springboot-mariadb-install.html</link>
+            <guid>https://goodsaem.github.io/spring/202-springboot-mariadb-install.html</guid>
             <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
-            <description><![CDATA[Springboot Mariadb 설정]]></description>
-            <enclosure url="https://goodsaem.github.io/./105/1.jpg">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[vue 컴포넌트]]></title>
-            <link>https://goodsaem.github.io/vuejs/102-vuejs-component.html</link>
-            <guid>https://goodsaem.github.io/vuejs/102-vuejs-component.html</guid>
-            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
-            <description><![CDATA[vue 컴포넌트]]></description>
-            <enclosure url="https://goodsaem.github.io/./z102/z1.jpg">
+            <description><![CDATA[SpringBoot Mariadb 설정]]></description>
+            <enclosure url="https://goodsaem.github.io/./202/1.jpg">
             </enclosure>
         </item>
         <item>
@@ -479,6 +479,15 @@
             </enclosure>
         </item>
         <item>
+            <title><![CDATA[vue 컴포넌트]]></title>
+            <link>https://goodsaem.github.io/vuejs/102-vuejs-component.html</link>
+            <guid>https://goodsaem.github.io/vuejs/102-vuejs-component.html</guid>
+            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
+            <description><![CDATA[vue 컴포넌트]]></description>
+            <enclosure url="https://goodsaem.github.io/./z102/z1.jpg">
+            </enclosure>
+        </item>
+        <item>
             <title><![CDATA[vuejs 서비스 포트변경]]></title>
             <link>https://goodsaem.github.io/vuejs/301-vuejs-port-change.html</link>
             <guid>https://goodsaem.github.io/vuejs/301-vuejs-port-change.html</guid>
@@ -486,13 +495,11 @@
             <description><![CDATA[vuejs 서비스 포트변경]]></description>
         </item>
         <item>
-            <title><![CDATA[SpringBoot Mariadb 설정]]></title>
-            <link>https://goodsaem.github.io/spring/202-springboot-mariadb-install.html</link>
-            <guid>https://goodsaem.github.io/spring/202-springboot-mariadb-install.html</guid>
+            <title><![CDATA[vuejs 에 toastgrid 사용]]></title>
+            <link>https://goodsaem.github.io/vuejs/302-vuejs-toastgrid.html</link>
+            <guid>https://goodsaem.github.io/vuejs/302-vuejs-toastgrid.html</guid>
             <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
-            <description><![CDATA[SpringBoot Mariadb 설정]]></description>
-            <enclosure url="https://goodsaem.github.io/./202/1.jpg">
-            </enclosure>
+            <description><![CDATA[vuejs 에 toastgrid 사용]]></description>
         </item>
         <item>
             <title><![CDATA[vuejs에 폰트어썸 사용]]></title>
@@ -500,13 +507,6 @@
             <guid>https://goodsaem.github.io/vuejs/303-vuejs-fontawesome.html</guid>
             <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
             <description><![CDATA[vuejs에 폰트어썸 사용]]></description>
-        </item>
-        <item>
-            <title><![CDATA[vuejs 에 toastgrid 사용]]></title>
-            <link>https://goodsaem.github.io/vuejs/302-vuejs-toastgrid.html</link>
-            <guid>https://goodsaem.github.io/vuejs/302-vuejs-toastgrid.html</guid>
-            <pubDate>Thu, 15 Apr 2021 23:51:00 GMT</pubDate>
-            <description><![CDATA[vuejs 에 toastgrid 사용]]></description>
         </item>
         <item>
             <title><![CDATA[QR 코드 생성기]]></title>
