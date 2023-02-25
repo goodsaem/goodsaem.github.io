@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="goodsaem.github.io">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/api-master.zip!/" />
+      <root url="jar://$PROJECT_DIR$/api2.zip!/" />
+      <root url="jar://$PROJECT_DIR$/freemarker.zip!/" />
+      <root url="jar://$PROJECT_DIR$/HCODE_202103142256.sql.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
