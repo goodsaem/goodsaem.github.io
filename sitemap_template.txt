@@ -1,5 +1,5 @@
-http://goodsaem.github.io/2023/03/27/coding/jhipster/jhipster2/
 http://goodsaem.github.io/2023/03/27/coding/jhipster/jhipster1/
+http://goodsaem.github.io/2023/03/27/coding/jhipster/jhipster2/
 http://goodsaem.github.io/2023/03/27/setup/nodejs/
 http://goodsaem.github.io/2023/03/27/coding/mariadb/mariadb-create-user/
 http://goodsaem.github.io/2023/03/26/coding/springboot/springboot110/
