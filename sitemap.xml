@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://goodsaem.github.io/2023/03/27/coding/jhipster/jhipster2/</loc>
+        
+        <lastmod>2023-03-27</lastmod>
+        
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
         <loc>http://goodsaem.github.io/2023/03/27/coding/jhipster/jhipster1/</loc>
         
         <lastmod>2023-03-27</lastmod>
@@ -578,6 +587,13 @@
 
     
     <url>
+        <loc>http://goodsaem.github.io/tags/app/</loc>
+        <lastmod>2023-03-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
         <loc>http://goodsaem.github.io/tags/fontawesome/</loc>
         <lastmod>2023-03-27</lastmod>
         <changefreq>weekly</changefreq>
@@ -662,7 +678,7 @@
     </url>
     
     <url>
-        <loc>http://goodsaem.github.io/tags/app/</loc>
+        <loc>http://goodsaem.github.io/tags/openjdk/</loc>
         <lastmod>2023-03-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -670,13 +686,6 @@
     
     <url>
         <loc>http://goodsaem.github.io/tags/JHipster/</loc>
-        <lastmod>2023-03-27</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-    
-    <url>
-        <loc>http://goodsaem.github.io/tags/openjdk/</loc>
         <lastmod>2023-03-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -704,6 +713,13 @@
     </url>
     
 
+    
+    <url>
+        <loc>http://goodsaem.github.io/categories/%EC%95%B1/</loc>
+        <lastmod>2023-03-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
     
     <url>
         <loc>http://goodsaem.github.io/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/</loc>
@@ -776,13 +792,6 @@
     </url>
     
     <url>
-        <loc>http://goodsaem.github.io/categories/%EC%95%B1/</loc>
-        <lastmod>2023-03-27</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-    
-    <url>
         <loc>http://goodsaem.github.io/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/%EC%9D%BC%EC%83%81/</loc>
         <lastmod>2023-03-27</lastmod>
         <changefreq>weekly</changefreq>
@@ -797,14 +806,14 @@
     </url>
     
     <url>
-        <loc>http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/JHipster/</loc>
+        <loc>http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/java/</loc>
         <lastmod>2023-03-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
     
     <url>
-        <loc>http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/java/</loc>
+        <loc>http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/JHipster/</loc>
         <lastmod>2023-03-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
