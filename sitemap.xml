@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://goodsaem.github.io/2023/03/28/setup/windows/2/</loc>
+        
+        <lastmod>2023-03-28</lastmod>
+        
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
         <loc>http://goodsaem.github.io/404.html</loc>
         
         <lastmod>2023-03-28</lastmod>
@@ -756,6 +765,13 @@
     </url>
     
     <url>
+        <loc>http://goodsaem.github.io/tags/window2022/</loc>
+        <lastmod>2023-03-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
         <loc>http://goodsaem.github.io/tags/windows2022/</loc>
         <lastmod>2023-03-28</lastmod>
         <changefreq>weekly</changefreq>
@@ -863,6 +879,13 @@
     </url>
     
     <url>
+        <loc>http://goodsaem.github.io/categories/%EC%84%A4%EC%B9%98/window2022/</loc>
+        <lastmod>2023-03-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
         <loc>http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/java/</loc>
         <lastmod>2023-03-28</lastmod>
         <changefreq>weekly</changefreq>
@@ -899,13 +922,6 @@
     
     <url>
         <loc>http://goodsaem.github.io/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/</loc>
-        <lastmod>2023-03-28</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-    
-    <url>
-        <loc>http://goodsaem.github.io/categories/%EC%84%A4%EC%B9%98/window2022/</loc>
         <lastmod>2023-03-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
