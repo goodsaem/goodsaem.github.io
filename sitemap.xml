@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://goodsaem.github.io/2023/03/29/setup/windows/3/</loc>
+        
+        <lastmod>2023-03-28</lastmod>
+        
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
         <loc>http://goodsaem.github.io/2023/03/28/setup/windows/2/</loc>
         
         <lastmod>2023-03-28</lastmod>
@@ -730,13 +739,6 @@
     </url>
     
     <url>
-        <loc>http://goodsaem.github.io/tags/JHipster/</loc>
-        <lastmod>2023-03-28</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-    
-    <url>
         <loc>http://goodsaem.github.io/tags/mariadb/</loc>
         <lastmod>2023-03-28</lastmod>
         <changefreq>weekly</changefreq>
@@ -744,7 +746,7 @@
     </url>
     
     <url>
-        <loc>http://goodsaem.github.io/tags/springboot/</loc>
+        <loc>http://goodsaem.github.io/tags/JHipster/</loc>
         <lastmod>2023-03-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -752,6 +754,13 @@
     
     <url>
         <loc>http://goodsaem.github.io/tags/vue/</loc>
+        <lastmod>2023-03-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://goodsaem.github.io/tags/springboot/</loc>
         <lastmod>2023-03-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -893,13 +902,6 @@
     </url>
     
     <url>
-        <loc>http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/JHipster/</loc>
-        <lastmod>2023-03-28</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-    
-    <url>
         <loc>http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/mariadb/</loc>
         <lastmod>2023-03-28</lastmod>
         <changefreq>weekly</changefreq>
@@ -907,7 +909,7 @@
     </url>
     
     <url>
-        <loc>http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/springboot/</loc>
+        <loc>http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/JHipster/</loc>
         <lastmod>2023-03-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -915,6 +917,13 @@
     
     <url>
         <loc>http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/vue/</loc>
+        <lastmod>2023-03-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/springboot/</loc>
         <lastmod>2023-03-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
