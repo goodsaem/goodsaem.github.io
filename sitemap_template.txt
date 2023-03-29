@@ -1,3 +1,5 @@
+http://goodsaem.github.io/2023/03/29/setup/windows/4/
+http://goodsaem.github.io/2023/03/29/coding/jhipster/jhipster3/
 http://goodsaem.github.io/2023/03/29/setup/windows/3/
 http://goodsaem.github.io/2023/03/28/setup/windows/2/
 http://goodsaem.github.io/404.html
@@ -72,9 +74,9 @@ http://goodsaem.github.io/
 http://goodsaem.github.io/tags/app/
 http://goodsaem.github.io/tags/fontawesome/
 http://goodsaem.github.io/tags/github/
-http://goodsaem.github.io/tags/blog/
 http://goodsaem.github.io/tags/PHP/
 http://goodsaem.github.io/tags/AWS/
+http://goodsaem.github.io/tags/blog/
 http://goodsaem.github.io/tags/SPRINGBOOT/
 http://goodsaem.github.io/tags/gitlab/
 http://goodsaem.github.io/tags/h2db/
@@ -83,17 +85,17 @@ http://goodsaem.github.io/tags/MAC/
 http://goodsaem.github.io/tags/node-js/
 http://goodsaem.github.io/tags/VUE/
 http://goodsaem.github.io/tags/openjdk/
-http://goodsaem.github.io/tags/mariadb/
 http://goodsaem.github.io/tags/JHipster/
-http://goodsaem.github.io/tags/vue/
 http://goodsaem.github.io/tags/springboot/
+http://goodsaem.github.io/tags/vue/
 http://goodsaem.github.io/tags/IntelliJ/
 http://goodsaem.github.io/tags/window2022/
 http://goodsaem.github.io/tags/windows2022/
+http://goodsaem.github.io/tags/mariadb/
 http://goodsaem.github.io/categories/%EC%95%B1/
 http://goodsaem.github.io/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/
-http://goodsaem.github.io/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/
 http://goodsaem.github.io/categories/%EC%84%A4%EC%B9%98/
+http://goodsaem.github.io/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/
 http://goodsaem.github.io/categories/%EC%84%A4%EC%B9%98/PHP/
 http://goodsaem.github.io/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/
 http://goodsaem.github.io/categories/%EC%84%A4%EC%B9%98/GitLab/
@@ -106,9 +108,9 @@ http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/
 http://goodsaem.github.io/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/
 http://goodsaem.github.io/categories/%EC%84%A4%EC%B9%98/window2022/
 http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/java/
-http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/mariadb/
 http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/JHipster/
-http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/vue/
 http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/springboot/
+http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/vue/
 http://goodsaem.github.io/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/
+http://goodsaem.github.io/categories/%EC%BD%94%EB%94%A9/mariadb/
 
