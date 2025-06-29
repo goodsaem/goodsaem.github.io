@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/callout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/earlyaccess/iropkebatang.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'IropkeBatang', serif;
+        }
+    </style>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5VG62JT9');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+    
+
+    
+    <title>13/13 무료 aws + springboot 서버 구축 | good</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="AWS,SPRINGBOOT" />
+    
+    <meta name="description" content="13. vue용 메모앱aws 에 프리티어 서버를 만들고 도메인을 발급받고 jdk 를 설치하고 springboot app 까지 만든이유는 결국 vue.js로화면을 만들기 위함 입니다. 초간단 메모 app을 만들어 보겠습니다. 1. 화면디자인만들화면에 대해서 대략적인 화면설계를 해보았습니다.   제목 내용에 해당하는 메모를 검색합니다. 체크박스 체크된 메모">
+<meta property="og:type" content="article">
+<meta property="og:title" content="13&#x2F;13 무료 aws + springboot 서버 구축">
+<meta property="og:url" content="http://goodsaem.github.io/setup/aws-springboot-13/index.html">
+<meta property="og:site_name" content="good">
+<meta property="og:description" content="13. vue용 메모앱aws 에 프리티어 서버를 만들고 도메인을 발급받고 jdk 를 설치하고 springboot app 까지 만든이유는 결국 vue.js로화면을 만들기 위함 입니다. 초간단 메모 app을 만들어 보겠습니다. 1. 화면디자인만들화면에 대해서 대략적인 화면설계를 해보았습니다.   제목 내용에 해당하는 메모를 검색합니다. 체크박스 체크된 메모">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="http://goodsaem.github.io/setup/aws-springboot-13/aws_springboot-013.png">
+<meta property="article:published_time" content="2023-03-25T11:13:00.000Z">
+<meta property="article:modified_time" content="2025-06-29T07:42:01.071Z">
+<meta property="article:author" content="good">
+<meta property="article:tag" content="AWS">
+<meta property="article:tag" content="SPRINGBOOT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://goodsaem.github.io/setup/aws-springboot-13/aws_springboot-013.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/">Coding</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/JHipster/">JHipster</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/mariadb/">mariadb</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/springboot/">springboot</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/vue/">vue</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setup/">Setup</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%B1/">앱</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="찾고자 하는 포스트를 검색하세요." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: '페이지',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-setup/aws-springboot-13" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        13/13 무료 aws + springboot 서버 구축
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/setup/aws-springboot-13/" class="article-date">
+       <time datetime="2023-03-25T11:13:00.000Z" itemprop="datePublished">2023-03-25</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/setup/aws-springboot-13/" class="article-date">
+     <time datetime="2025-06-29T07:42:01.071Z" itemprop="dateModified">2025-06-29</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/AWS/" rel="tag">AWS</a>, <a class="tag-link-link" href="/tags/SPRINGBOOT/" rel="tag">SPRINGBOOT</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/setup/aws-springboot-13/aws_springboot-013.png" class="">
+<h1 id="13-vue용-메모앱"><a href="#13-vue용-메모앱" class="headerlink" title=" 13. vue용 메모앱"></a><i class="fas fa-server"></i> 13. vue용 메모앱</h1><p>aws 에 프리티어 서버를 만들고 도메인을 발급받고 jdk 를 설치하고 springboot app 까지 만든이유는 결국 vue.js로<br>화면을 만들기 위함 입니다. 초간단 메모 app을 만들어 보겠습니다.</p>
+<h2 id="1-화면디자인"><a href="#1-화면디자인" class="headerlink" title="1. 화면디자인"></a>1. 화면디자인</h2><p>만들화면에 대해서 대략적인 화면설계를 해보았습니다. </p>
+<ul>
+<li>제목 내용에 해당하는 메모를 검색합니다.</li>
+<li>체크박스 체크된 메모를 선택하고 삭제버튼을 클릭하면 체크된 메모를 삭제합니다.</li>
+<li>등록 버튼을 클릭하면 우측의 등록 화면의 제목쪽으로 포커스를 이동합니다.</li>
+<li>등록 버튼을 클릭하면 메모가 등록되고 좌측에 메모가 하나 추가 됩니다.</li>
+<li>페이지 번호를 클릭하면 해당 페이지에 속하는 메모가 리스트업 됩니다.</li>
+<li>좌측 메모리스트에서 row를 클릭하면 우측에 제목과 내용이 보이고 수정모드로 변합니다.</li>
+<li>수정모드에서 수정 버튼을 클릭하면 메모가 수정되고 수정된 내용이 좌측 리스트에 반영됩니다.</li>
+</ul>
+<img src="/setup/aws-springboot-13/1.jpg" class="">
+
+<h2 id="2-화면개발"><a href="#2-화면개발" class="headerlink" title="2. 화면개발"></a>2. 화면개발</h2><p>위 화면 설계서 되로 아래와 같이 화면을 개발해 보았습니다.<br>개발하다가 조금더 욕심이 생겨 전체 갯수도 표시하고 한페이지당 보여줄 갯수도 변경했습니다.<br>등록&#x2F;검색 버튼을 클릭하여 app 이 제되로 동작하는 확인해 보세요. 참고로 아래 ui 컴포넌트는 element ui를<br>이용하여 개발 했습니다.</p>
+<hr>
+<vue-Exam5 />
+
+<h2 id="3-backend-서비스-수정"><a href="#3-backend-서비스-수정" class="headerlink" title="3. backend 서비스 수정"></a>3. backend 서비스 수정</h2><p>위 화면에서 사용하는 backend 관련 수정파일은 아래와 같습니다.  <a href="/setup/freetier/z112.md">12. springboot application 만들기</a><br>해당 강좌에서 아래 4개 파일만 수정하시고 수정되면 동일한 요령으로 build 해서 서버에 배포 하고 서비스를 재시작 합니다.</p>
+<p>15,19,21,22 라인</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── build.gradle</span><br><span class="line">└── src</span><br><span class="line">    └── main</span><br><span class="line">        ├── java</span><br><span class="line">        │ └── io</span><br><span class="line">        │     └── github</span><br><span class="line">        │         └── goodsaem</span><br><span class="line">        │             └── api</span><br><span class="line">        │                 ├── ApiApplication.java</span><br><span class="line">        │                 ├── config</span><br><span class="line">        │                 │ └── WebConfig.java</span><br><span class="line">        │                 ├── controller</span><br><span class="line">        │                 │ └── v1</span><br><span class="line">        │                 │     └── MemoController.java</span><br><span class="line">        │                 ├── entity</span><br><span class="line">        │                 │ └── Memo.java</span><br><span class="line">        │                 ├── repo</span><br><span class="line">        │                 │ └── MemoJpaRepo.java</span><br><span class="line">        │                 └── service</span><br><span class="line">        │                     ├── IMemoService.java</span><br><span class="line">        │                     └── MemoService.java</span><br><span class="line">        └── resources</span><br><span class="line">            ├── application.yml</span><br><span class="line">            ├── banner.txt</span><br><span class="line">            └── templates</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-MemoController-java"><a href="#4-MemoController-java" class="headerlink" title="4. MemoController.java"></a>4. MemoController.java</h2><p>메모 검색 및 페이징 처리를 위해서 아래와 같이 &#x2F;memo&#x2F;search 컨트롤러를 추가했습니다. pageable jpa에서 지원해주는 객체로 페이징 처리를 위해<br>필요한 값 페이지당 보여줄 row 수와 현재페이지 정보를 넘겨주면 알아서 가져올 데이터량을 줄여 줍니다. 즉 query에 offset 과 limit 문장이<br>추가됩니다.</p>
+<p>눈여겨 보아야 되는 부분은 <strong>다건 삭제</strong> 부분입니다. 삭제 기능은 여러건을 넘겨서 일괄 삭제하는데 pathVariable 로 &#x2F;spring&#x2F;v1&#x2F;memo&#x2F;1,2,3<br>이런씩으로 넘기면 이를 List로 받아서 for문을 돌리면서 하나씩 삭제 하는 부분입니다.</p>
+<p>51-56 라인</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.controller.v1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.entity.Memo;</span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.service.IMemoService;</span><br><span class="line"><span class="keyword">import</span> lombok.RequiredArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Page;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Pageable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.web.PageableDefault;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/v1&quot;)</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MemoController</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> IMemoService iMemoService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(value = &quot;/memo/search&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Page&lt;Memo&gt; <span class="title function_">searchMemo</span><span class="params">(<span class="meta">@RequestParam</span> String keyword, <span class="meta">@PageableDefault(size=3,sort=&quot;id&quot;)</span> Pageable pageable)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> iMemoService.searchMemo(keyword,pageable);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(value = &quot;/memos&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Memo&gt; <span class="title function_">readMemos</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> iMemoService.readMemos();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(value = &quot;/memo/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Memo <span class="title function_">readMemo</span><span class="params">(<span class="meta">@PathVariable</span> <span class="type">long</span> id)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> iMemoService.readMemo(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(value = &quot;/memo&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Memo <span class="title function_">createMemo</span><span class="params">(<span class="meta">@RequestBody</span> Memo memo)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> iMemoService.createMemo(memo.getTitle(), memo.getContents());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PutMapping(value = &quot;/memo&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Memo <span class="title function_">updateMemo</span><span class="params">(<span class="meta">@RequestBody</span> Memo memo)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> iMemoService.updateMemo(memo.getId(), memo.getTitle(), memo.getContents());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DeleteMapping(value = &quot;/memo/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteMemo</span><span class="params">(<span class="meta">@PathVariable</span> <span class="type">long</span> id)</span> &#123;</span><br><span class="line">        iMemoService.deleteMemo(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DeleteMapping(value = &quot;/memos/&#123;ids&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteMemos</span><span class="params">(<span class="meta">@PathVariable(&quot;ids&quot;)</span> List&lt;Long&gt; ids)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(Long id:ids) &#123;</span><br><span class="line">            iMemoService.deleteMemo(id);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-MemoJpaRepo-java"><a href="#5-MemoJpaRepo-java" class="headerlink" title="5. MemoJpaRepo.java"></a>5. MemoJpaRepo.java</h2><p>검색조건을 가져오는 부분을 아래와 같이 @Query를 통해서 작성해 보았습니다. 이렇게 진행하지 않고 세련되게 작성하는 방법도 있을것 같은데 아직<br>jpa에 익숙하지 않아 내공이 쌓이면 따로 정리하겠습니다. 화면에서 검색어 keyword가 전달되면 제목 및 내용에서 찾는 간단한 sql 입니다.<br>정렬은 가장 마지막에 등록한 메모가 보이게 했구요 countQuery도 같이 작성하여 페이징 처리시 참고 합니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.repo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.entity.Memo;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Page;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Pageable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.jpa.repository.JpaRepository;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.jpa.repository.Query;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">MemoJpaRepo</span> <span class="keyword">extends</span> <span class="title class_">JpaRepository</span>&lt;Memo, Long&gt; &#123;</span><br><span class="line">    Page&lt;Memo&gt; <span class="title function_">findAll</span><span class="params">(Pageable pageable)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Query(</span></span><br><span class="line"><span class="meta">        value = &quot;SELECT m FROM Memo m WHERE m.title LIKE %:keyword% OR m.contents LIKE %:keyword% ORDER BY m.id DESC&quot;,</span></span><br><span class="line"><span class="meta">        countQuery = &quot;SELECT COUNT(m.id) FROM Memo m WHERE m.title LIKE %:keyword% OR m.contents LIKE %:keyword%&quot;</span></span><br><span class="line"><span class="meta">    )</span></span><br><span class="line">    Page&lt;Memo&gt; <span class="title function_">findAllSearch</span><span class="params">(String keyword,Pageable pageable)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-IMemoService-java"><a href="#6-IMemoService-java" class="headerlink" title="6. IMemoService.java"></a>6. IMemoService.java</h2><p>메모 검색을 사용하기 위한 searchMemo 메소드를 추가했습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.service;</span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.entity.Memo;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Page;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Pageable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">IMemoService</span> &#123;</span><br><span class="line">    List&lt;Memo&gt; <span class="title function_">readMemos</span><span class="params">()</span>;</span><br><span class="line">    Page&lt;Memo&gt; <span class="title function_">searchMemo</span><span class="params">(String keyword, Pageable pageable)</span>;</span><br><span class="line">    Memo <span class="title function_">readMemo</span><span class="params">(<span class="type">long</span> id)</span>;</span><br><span class="line">    Memo <span class="title function_">createMemo</span><span class="params">(String title,String contents)</span>;</span><br><span class="line">    Memo <span class="title function_">updateMemo</span><span class="params">(<span class="type">long</span> id,String title,String contents)</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">deleteMemo</span><span class="params">(<span class="type">long</span> id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-MemoService-java"><a href="#7-MemoService-java" class="headerlink" title="7. MemoService.java"></a>7. MemoService.java</h2><p>메모 서비스에서 메모를 검색하는 부분을 구현했습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.entity.Memo;</span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.repo.MemoJpaRepo;</span><br><span class="line"><span class="keyword">import</span> lombok.RequiredArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Page;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Pageable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MemoService</span> <span class="keyword">implements</span> <span class="title class_">IMemoService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> MemoJpaRepo memoJpaRepo;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Memo&gt; <span class="title function_">readMemos</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> memoJpaRepo.findAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Page&lt;Memo&gt; <span class="title function_">searchMemo</span><span class="params">(String keyword, Pageable pageable)</span> &#123;</span><br><span class="line">        Page&lt;Memo&gt; memo = memoJpaRepo.findAllSearch(keyword,pageable);</span><br><span class="line">        <span class="keyword">return</span> memo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Memo <span class="title function_">readMemo</span><span class="params">(<span class="type">long</span> id)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> memoJpaRepo.findById(id).orElse(<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Memo <span class="title function_">createMemo</span><span class="params">(String title, String contents)</span> &#123;</span><br><span class="line">        <span class="type">Memo</span> <span class="variable">memo</span> <span class="operator">=</span> Memo.builder()</span><br><span class="line">                .title(title)</span><br><span class="line">                .contents(contents)</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> memoJpaRepo.save(memo);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Memo <span class="title function_">updateMemo</span><span class="params">(<span class="type">long</span> id, String title, String contents)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">Memo</span> <span class="variable">memo</span> <span class="operator">=</span> Memo.builder()</span><br><span class="line">                .id(id)</span><br><span class="line">                .title(title)</span><br><span class="line">                .contents(contents)</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> memoJpaRepo.save(memo);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteMemo</span><span class="params">(<span class="type">long</span> id)</span> &#123;</span><br><span class="line">        memoJpaRepo.deleteById(id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-FrontEnd-Source-Description"><a href="#8-FrontEnd-Source-Description" class="headerlink" title="8. FrontEnd Source Description"></a>8. FrontEnd Source Description</h2><vue-Exam5 />
+
+<h3 id="MemoCreate-vue"><a href="#MemoCreate-vue" class="headerlink" title="MemoCreate.vue"></a>MemoCreate.vue</h3><p>위 화면중 우측 부분 내용으로 메모를 등록하는 폼은 다른 화면에서 사용할수 있을것 같아 별도의 컴포넌트로 분리했습니다. MemoCreate를 호출하는<br>부모 컨포넌트는 memo 모델을 넘겨줍니다. 그럼 memo 모델의 값을 복제해서 화면에서 활용하고 데이터 수정이 끝나고 저장 버튼을 누르면<br>상위 컴포넌트에게 <strong>save</strong> 되었다고 알려(emit) 줍니다. 자세한 내용은 vue 강좌 때 다시 설명하겠습니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;margin-top: 10px&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;4&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">        제목</span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;20&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">ref</span>=<span class="string">&quot;title&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;메모 제목을 입력하세요&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;memo.title&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-row</span> <span class="attr">style</span>=<span class="string">&quot;margin-top: 10px&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;4&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">        내용</span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;20&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-input</span></span></span><br><span class="line"><span class="tag">            <span class="attr">type</span>=<span class="string">&quot;textarea&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">:rows</span>=<span class="string">&quot;7&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">placeholder</span>=<span class="string">&quot;Please input&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">v-model</span>=<span class="string">&quot;memo.contents&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-row</span> <span class="attr">style</span>=<span class="string">&quot;margin-top: 10px&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;24&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;saveMemo&quot;</span>&gt;</span>저장<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">name</span>: <span class="string">&quot;MemoCreate&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">  props : &#123;</span></span><br><span class="line"><span class="language-javascript">    model : &#123;</span></span><br><span class="line"><span class="language-javascript">      type : <span class="title class_">Object</span>,</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">created</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      memo : &#123;</span></span><br><span class="line"><span class="language-javascript">        id : -<span class="number">1</span>,</span></span><br><span class="line"><span class="language-javascript">        title : <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        contents : <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">      &#125;,</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">create</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">saveMemo</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.$emit(<span class="string">&quot;save&quot;</span>,<span class="variable language_">this</span>.<span class="property">memo</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">watch</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">model</span>(<span class="params">model</span>)  &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">memo</span> = <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;,model);</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">title</span>.<span class="title function_">focus</span>();</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<vue-Exam5 />
+
+<h3 id="Exam5-vue"><a href="#Exam5-vue" class="headerlink" title="Exam5.vue"></a>Exam5.vue</h3><p>검색 및 결과를 출력하는 컴포넌트 입니다. 화면을 그리는 부분 빼고 실제 코딩은 많지 않습니다. data 값만 잘 주고 받ㅇ면 화면은<br>잘 표현되니까 자세한 내용은 역시 다음 시간으로 돌리겠습니다. </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;margin-top: 10px&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;12&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;4&quot;</span> <span class="attr">style</span>=<span class="string">&quot;padding-right: 10px;&quot;</span>&gt;</span></span><br><span class="line">            검색어 :</span><br><span class="line">          <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;12&quot;</span> <span class="attr">style</span>=<span class="string">&quot;padding-right: 10px;&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-input</span> @<span class="attr">change</span>=<span class="string">&quot;searchMemo&quot;</span>  <span class="attr">v-model</span>=<span class="string">&quot;keyword&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;8&quot;</span> <span class="attr">style</span>=<span class="string">&quot;padding-left: 10px;&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;searchMemo&quot;</span>&gt;</span>메모검색<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-row</span> <span class="attr">style</span>=<span class="string">&quot;margin-top: 10px&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-col</span>&gt;</span></span><br><span class="line">            전체 : &#123;&#123; total &#125;&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;deleteMemo&quot;</span>&gt;</span>삭제<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;createMemo&quot;</span>&gt;</span>등록<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-select</span> <span class="attr">v-model</span>=<span class="string">&quot;size&quot;</span></span></span><br><span class="line"><span class="tag">                       <span class="attr">placeholder</span>=<span class="string">&quot;한페이지당 row수&quot;</span></span></span><br><span class="line"><span class="tag">                       @<span class="attr">change</span>=<span class="string">&quot;searchMemo&quot;</span></span></span><br><span class="line"><span class="tag">            &gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">el-option</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">v-for</span>=<span class="string">&quot;(row,index) in 100&quot;</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">:key</span>=<span class="string">&quot;index&quot;</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">:label</span>=<span class="string">&quot;row&quot;</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">:value</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">el-option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">el-select</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-row</span> <span class="attr">style</span>=<span class="string">&quot;margin-top: 10px&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-col</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">el-table</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">ref</span>=<span class="string">&quot;table&quot;</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">v-if</span>=<span class="string">&quot;gridData.length &gt;= 0&quot;</span></span></span><br><span class="line"><span class="tag">                  @<span class="attr">row-click</span>=<span class="string">&quot;rowClick&quot;</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">:data</span>=<span class="string">&quot;gridData&quot;</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">style</span>=<span class="string">&quot;width: 100%&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-table-column</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">type</span>=<span class="string">&quot;selection&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">align</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">width</span>=<span class="string">&quot;55&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-table-column</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">prop</span>=<span class="string">&quot;id&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">align</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">label</span>=<span class="string">&quot;번호&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">width</span>=<span class="string">&quot;50&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-table-column</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">prop</span>=<span class="string">&quot;title&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">label</span>=<span class="string">&quot;제목&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">header-align</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">style</span>=<span class="string">&quot;width: 95%&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-row</span> <span class="attr">style</span>=<span class="string">&quot;margin-top: 10px&quot;</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">el-col</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-pagination</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">background</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">layout</span>=<span class="string">&quot;prev, pager, next&quot;</span></span></span><br><span class="line"><span class="tag">                    @<span class="attr">current-change</span>=<span class="string">&quot;chgPage&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">:current-page</span>=<span class="string">&quot;page+1&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">:page-size</span>=<span class="string">&quot;size&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">:total</span>=<span class="string">&quot;total&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">el-pagination</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;12&quot;</span> <span class="attr">style</span>=<span class="string">&quot;border-left: 1px solid #efefef;&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">memo-create</span> <span class="attr">:model</span>=<span class="string">&quot;memo&quot;</span> @<span class="attr">save</span>=<span class="string">&quot;saveMemo&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> <span class="variable constant_">URL</span> = <span class="string">&quot;https://goodsaem.ml/spring&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"><span class="comment">//const URL = &quot;http://localhost:9090/spring&quot;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> <span class="title class_">MemoCreate</span> <span class="keyword">from</span> <span class="string">&quot;./MemoCreate&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">name</span>: <span class="string">&quot;Exam5&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">created</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title class_">MemoCreate</span></span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">page</span>: <span class="number">0</span>,</span></span><br><span class="line"><span class="language-javascript">      size : <span class="number">3</span>,</span></span><br><span class="line"><span class="language-javascript">      total : <span class="number">0</span>,</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">keyword</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">memo</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">title</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">contents</span>: <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">      &#125;,</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">gridData</span>: [],</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">create</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">rowClick</span>(<span class="params">v</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">memo</span> = v;</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">chgPage</span>(<span class="params">page</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">page</span>=page-<span class="number">1</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="title function_">searchMemo</span>();</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">saveMemo</span>(<span class="params">memo</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span> (memo.<span class="property">id</span> === -<span class="number">1</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">post</span>(<span class="variable constant_">URL</span> + <span class="string">&#x27;/v1/memo&#x27;</span>, memo).<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="variable language_">this</span>.<span class="title function_">searchMemo</span>();</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript">      &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">put</span>(<span class="variable constant_">URL</span> + <span class="string">&#x27;/v1/memo&#x27;</span>, memo).<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="variable language_">this</span>.<span class="title function_">searchMemo</span>();</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">createMemo</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">memo</span> = <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        id : -<span class="number">1</span>,</span></span><br><span class="line"><span class="language-javascript">        title : <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        contents : <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">deleteMemo</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">let</span> ids = <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">table</span>.<span class="property">selection</span>.<span class="title function_">map</span>(<span class="function"><span class="params">r</span> =&gt;</span> ids += r.<span class="property">id</span> + <span class="string">&quot;,&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">      ids = ids.<span class="title function_">substring</span>(<span class="number">0</span>,ids.<span class="property">length</span>-<span class="number">1</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">table</span>.<span class="property">selection</span>.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">delete</span>(<span class="variable constant_">URL</span> + <span class="string">&#x27;/v1/memos/&#x27;</span> + ids)</span></span><br><span class="line"><span class="language-javascript">            .<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">              <span class="variable language_">this</span>.$message(<span class="string">&quot;정상적으로 삭제되었습니다.&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">              <span class="variable language_">this</span>.<span class="title function_">searchMemo</span>();</span></span><br><span class="line"><span class="language-javascript">            &#125;)</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">searchMemo</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">get</span>(<span class="variable constant_">URL</span> + <span class="string">&#x27;/v1/memo/search&#x27;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">params</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">          keyword : <span class="variable language_">this</span>.<span class="property">keyword</span>,</span></span><br><span class="line"><span class="language-javascript">          <span class="attr">page</span>: <span class="variable language_">this</span>.<span class="property">page</span>,</span></span><br><span class="line"><span class="language-javascript">          <span class="attr">size</span>: <span class="variable language_">this</span>.<span class="property">size</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript">      .<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(response)</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">gridData</span> = response.<span class="property">data</span>.<span class="property">data</span>.<span class="property">content</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">total</span> = response.<span class="property">data</span>.<span class="property">totalElements</span>;</span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="마치며"><a href="#마치며" class="headerlink" title="마치며"></a>마치며</h2><p>처음 vue 공부를 할때는 정말 어려웠는데 이제 정말 편할수가 없네요 아직 복잡한 화면을 안만들어봐서 그런지 springboot가 더 어렵다는 생각이 듭니다.<br>계속 하다보면 늘겠죠. 한걸음 한걸음씩 꾸준히 진행하겠습니다. 긴글 읽어주셔서 감사합니다.</p>
+<p>::: tip 전체 소스<br><a href="/setup/freetier/z112.md">12. springboot application 만들기</a> 의 <a href="/down/api2.zip">소스다운 로드</a> 하신후 위의 4개 파일만<br>변경하시고 build 하면 정상동작합니다.(backend)</p>
+<p>frontend 는 시간될때 독립적으로 움직일수 있도록 vue project를 따로 만들어 배포하겠습니다.<br>:::</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://goodsaem.github.io/setup/aws-springboot-13/" data-id="cmchdg1ys004ff0vqbbtp1uvp" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "good"
+        },
+        "headline": "13/13 무료 aws + springboot 서버 구축",
+        "image": "http://goodsaem.github.io/setup/aws-springboot-13/aws_springboot-013.png",
+        "keywords": "AWS SPRINGBOOT",
+        "genre": "설치 SPRINGBOOT",
+        "datePublished": "2023-03-25",
+        "dateCreated": "2023-03-25",
+        "dateModified": "2025-06-29",
+        "url": "http://goodsaem.github.io/setup/aws-springboot-13/",
+        "description": "
+ 13. vue용 메모앱aws 에 프리티어 서버를 만들고 도메인을 발급받고 jdk 를 설치하고 springboot app 까지 만든이유는 결국 vue.js로화면을 만들기 위함 입니다. 초간단 메모 app을 만들어 보겠습니다.
+1. 화면디자인만들화면에 대해서 대략적인 화면설계를 해보았습니다. 
+
+제목 내용에 해당하는 메모를 검색합니다.
+체크박스 체크된 메모",
+        "wordCount": 5478
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+     
+    
+        
+<nav id="article-nav">
+    
+        <a href="/coding/springboot/springboot101/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">신규</strong>
+        <p class="article-nav-title">
+        
+            1. SpringBoot Backend 서버 구축
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/setup/aws-springboot-12/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">이전</strong>
+        <p class="article-nav-title">12/13 무료 aws + springboot 서버 구축</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#13-vue%EC%9A%A9-%EB%A9%94%EB%AA%A8%EC%95%B1"><span class="toc-number">1.</span> <span class="toc-text"> 13. vue용 메모앱</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%ED%99%94%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8"><span class="toc-number">1.1.</span> <span class="toc-text">1. 화면디자인</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%ED%99%94%EB%A9%B4%EA%B0%9C%EB%B0%9C"><span class="toc-number">1.2.</span> <span class="toc-text">2. 화면개발</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-backend-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%88%98%EC%A0%95"><span class="toc-number">1.3.</span> <span class="toc-text">3. backend 서비스 수정</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-MemoController-java"><span class="toc-number">1.4.</span> <span class="toc-text">4. MemoController.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-MemoJpaRepo-java"><span class="toc-number">1.5.</span> <span class="toc-text">5. MemoJpaRepo.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-IMemoService-java"><span class="toc-number">1.6.</span> <span class="toc-text">6. IMemoService.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-MemoService-java"><span class="toc-number">1.7.</span> <span class="toc-text">7. MemoService.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-FrontEnd-Source-Description"><span class="toc-number">1.8.</span> <span class="toc-text">8. FrontEnd Source Description</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MemoCreate-vue"><span class="toc-number">1.8.1.</span> <span class="toc-text">MemoCreate.vue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exam5-vue"><span class="toc-number">1.8.2.</span> <span class="toc-text">Exam5.vue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EB%A7%88%EC%B9%98%EB%A9%B0"><span class="toc-number">1.9.</span> <span class="toc-text">마치며</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-fontawesome/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/vygt2h.jpg)" alt="hexo 에서 fontawesome 사용하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-fontawesome/" class="title">hexo 에서 fontawesome 사용하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T06:17:16.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/rklrz3.jpg)" alt="정적 웹사이트 생성기 hexo 로 블로그 만들기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo/" class="title">정적 웹사이트 생성기 hexo 로 블로그 만들기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:25:04.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo-include/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/y01pdv.jpg)" alt="Hexo 에 글 포함하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo-include/" class="title">Hexo 에 글 포함하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:24:56.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-intro/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/a339t1.jpg)" alt="소개" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-intro/" class="title">소개</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:23:23.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/setup/setup_github_ssh/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/pb9w1z.jpg)" alt="Github ssh 연결" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Setup/">Setup</a></p>
+                            <p class="item-title"><a href="/setup/setup_github_ssh/" class="title">Github ssh 연결</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T03:57:45.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/">Coding</a><span class="category-list-count">17</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/JHipster/">JHipster</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/mariadb/">mariadb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/springboot/">springboot</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/vue/">vue</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setup/">Setup</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><span class="category-list-count">44</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%B1/">앱</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">6월 2025</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">3월 2023</a><span class="archive-list-count">67</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JHipster/" rel="tag">JHipster</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MAC/" rel="tag">MAC</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MARIADB/" rel="tag">MARIADB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/" rel="tag">SPRINGBOOT</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/" rel="tag">VUE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/" rel="tag">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fontawesome/" rel="tag">fontawesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2db/" rel="tag">h2db</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openjdk/" rel="tag">openjdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window2022/" rel="tag">window2022</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows2022/" rel="tag">windows2022</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%BC%EC%83%81/" rel="tag">일상</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JHipster/" style="font-size: 12.5px;">JHipster</a> <a href="/tags/MAC/" style="font-size: 15px;">MAC</a> <a href="/tags/MARIADB/" style="font-size: 10px;">MARIADB</a> <a href="/tags/PHP/" style="font-size: 18.75px;">PHP</a> <a href="/tags/SPRINGBOOT/" style="font-size: 17.5px;">SPRINGBOOT</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/fontawesome/" style="font-size: 10px;">fontawesome</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 13.75px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/h2db/" style="font-size: 10px;">h2db</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/openjdk/" style="font-size: 10px;">openjdk</a> <a href="/tags/springboot/" style="font-size: 16.25px;">springboot</a> <a href="/tags/vue/" style="font-size: 11.25px;">vue</a> <a href="/tags/window2022/" style="font-size: 12.5px;">window2022</a> <a href="/tags/windows2022/" style="font-size: 10px;">windows2022</a> <a href="/tags/%EC%9D%BC%EC%83%81/" style="font-size: 11.25px;">일상</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+                <div class="widget-wrap widget-float">
+
+    <h3 class="widget-title">후원자</h3>
+    <div class="widget">
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+    </div>
+
+</div>
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                
+                <p>&copy; 2025 good</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1863930318161504"
+     crossorigin="anonymous"></script>
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/javascript" src="/drawio/viewer-static.min.js"></script>
+<style>
+.mxgraph-container { width: 100%; }
+.mxgraph {
+  width: 100% !important;
+  border:1px solid transparent;
+}
+.geDiagramContainer { width: 100% !important; }
+</style>
+</body>
+
+</html>

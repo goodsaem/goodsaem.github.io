@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/callout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/earlyaccess/iropkebatang.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'IropkeBatang', serif;
+        }
+    </style>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5VG62JT9');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+    
+
+    
+    <title>4. SpringBoot Backend 서버 구축 | good</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="springboot" />
+    
+    <meta name="description" content="4. Aws 배포지금까지 만든 springboot 프로그램을 war 파일로 만든다음 aws에 배포하여 특정디렉토리로 요청이왔을때는 springboot가 응답하도록 설정해보겠습니다.aws에 서버 구축과 php + mariadb 연동 + ssl 설정하는방법은 아래 url 참고하세요  &#x2F;setup&#x2F;aws&#x2F;z101-freetier.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4. SpringBoot Backend 서버 구축">
+<meta property="og:url" content="http://goodsaem.github.io/coding/springboot/springboot104/index.html">
+<meta property="og:site_name" content="good">
+<meta property="og:description" content="4. Aws 배포지금까지 만든 springboot 프로그램을 war 파일로 만든다음 aws에 배포하여 특정디렉토리로 요청이왔을때는 springboot가 응답하도록 설정해보겠습니다.aws에 서버 구축과 php + mariadb 연동 + ssl 설정하는방법은 아래 url 참고하세요  &#x2F;setup&#x2F;aws&#x2F;z101-freetier.">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="http://goodsaem.github.io/coding/springboot/springboot104/springboot-004.png">
+<meta property="article:published_time" content="2023-03-25T16:14:03.000Z">
+<meta property="article:modified_time" content="2025-06-29T07:42:00.899Z">
+<meta property="article:author" content="good">
+<meta property="article:tag" content="springboot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://goodsaem.github.io/coding/springboot/springboot104/springboot-004.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/">Coding</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/JHipster/">JHipster</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/mariadb/">mariadb</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/springboot/">springboot</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/vue/">vue</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setup/">Setup</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%B1/">앱</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="찾고자 하는 포스트를 검색하세요." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: '페이지',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Coding/springboot/">springboot</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-coding/springboot/springboot104" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        4. SpringBoot Backend 서버 구축
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/coding/springboot/springboot104/" class="article-date">
+       <time datetime="2023-03-25T16:14:03.000Z" itemprop="datePublished">2023-03-26</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/coding/springboot/springboot104/" class="article-date">
+     <time datetime="2025-06-29T07:42:00.899Z" itemprop="dateModified">2025-06-29</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/springboot/" rel="tag">springboot</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/coding/springboot/springboot104/springboot-004.png" class="">
+
+<h1 id="4-Aws-배포"><a href="#4-Aws-배포" class="headerlink" title=" 4. Aws 배포"></a><i class="fas fa-server"></i> 4. Aws 배포</h1><p>지금까지 만든 springboot 프로그램을 war 파일로 만든다음 aws에 배포하여 특정디렉토리로 요청이왔을때는 springboot가 응답하도록 설정해보겠습니다.<br>aws에 서버 구축과 php + mariadb 연동 + ssl 설정하는방법은 아래 url 참고하세요</p>
+<ul>
+<li><a href="/setup/local/z101-freetier.html">&#x2F;setup&#x2F;aws&#x2F;z101-freetier.html</a></li>
+</ul>
+<h2 id="1-build-gradle"><a href="#1-build-gradle" class="headerlink" title="1. build.gradle"></a>1. build.gradle</h2><p>war 파일로 build하기 위해 build.gradle 파일을 아래와 같이 수정했습니다. 아래 강조된 색상 부분만 참고하시면 되구요 간단히 설명드리면<br>spring boot 버전을 2.4.2 로 명시했구요 spring-boot-gradle-plugin 의존성을 추가한후 apply plugin war 등의 정보를<br>추가했습니다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">	ext &#123;</span><br><span class="line">		springBootVersion = &#x27;2.4.2&#x27;</span><br><span class="line">	&#125;</span><br><span class="line">	repositories &#123;</span><br><span class="line">		mavenCentral()</span><br><span class="line">	&#125;</span><br><span class="line">	dependencies &#123;</span><br><span class="line">		classpath(</span><br><span class="line">				&quot;org.springframework.boot:spring-boot-gradle-plugin:$&#123;springBootVersion&#125;&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">apply plugin: &#x27;org.springframework.boot&#x27;</span><br><span class="line">apply plugin: &#x27;war&#x27;</span><br><span class="line">apply plugin: &#x27;io.spring.dependency-management&#x27;</span><br><span class="line">sourceCompatibility = &#x27;1.8&#x27;</span><br><span class="line">targetCompatibility = &#x27;1.8&#x27;</span><br><span class="line"></span><br><span class="line">group = &#x27;io.github.goodsaem&#x27;</span><br><span class="line">version = &#x27;0.0.1-SNAPSHOT&#x27;</span><br><span class="line"></span><br><span class="line">configurations &#123;</span><br><span class="line">	compileOnly &#123;</span><br><span class="line">		extendsFrom annotationProcessor</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">	mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">	implementation &#x27;org.springframework.boot:spring-boot-starter-data-jpa&#x27;</span><br><span class="line">	implementation &#x27;org.springframework.boot:spring-boot-starter-freemarker&#x27;</span><br><span class="line">	implementation &#x27;org.springframework.boot:spring-boot-starter-web&#x27;</span><br><span class="line">	compileOnly &#x27;org.projectlombok:lombok&#x27;</span><br><span class="line">	runtimeOnly &#x27;com.h2database:h2&#x27;</span><br><span class="line">	runtimeOnly &#x27;mysql:mysql-connector-java&#x27;</span><br><span class="line">	annotationProcessor &#x27;org.projectlombok:lombok&#x27;</span><br><span class="line">	testImplementation &#x27;org.springframework.boot:spring-boot-starter-test&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test &#123;</span><br><span class="line">	useJUnitPlatform()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="2-시작디렉토리-변경-및-cors설정"><a href="#2-시작디렉토리-변경-및-cors설정" class="headerlink" title="2. 시작디렉토리 변경 및 cors설정"></a>2. 시작디렉토리 변경 및 cors설정</h2><p>nginx 가 설치되어 있는 https를 지원해주는 서버에 ( 설정은 위에 url 참고하세요) &#x2F;spring 이라는 요청이 오면 springboot 쪽으로 전달하여<br>springboot가 처리하도록 하기 위해 context-path 에 spring 이라고 추가를 해줍니다. 세션타임아웃 시간등을 정해주시구요<br>h2 db 파일을 springboot가 실행되는 디렉토리에서 찾기위해 .&#x2F;goodsaem이라고 설정을 변경했습니다.</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9090</span></span><br><span class="line">  <span class="attr">servlet:</span></span><br><span class="line">    <span class="attr">context-path:</span> <span class="string">/spring</span></span><br><span class="line">    <span class="attr">session:</span></span><br><span class="line">      <span class="attr">timeout:</span> <span class="number">60</span></span><br><span class="line">      <span class="attr">tomcat:</span></span><br><span class="line">        <span class="attr">uri-encoding:</span> <span class="string">UTF-8</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url :</span> <span class="string">jdbc:h2:./goodsaem</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">org.h2.Driver</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">goodsaem</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">xxxxxxxx</span></span><br><span class="line">  <span class="attr">jpa:</span></span><br><span class="line">    <span class="attr">database-platform:</span> <span class="string">org.hibernate.dialect.H2Dialect</span></span><br><span class="line">    <span class="attr">properties.hibernate.hbm2ddl.auto:</span> <span class="string">update</span></span><br><span class="line">    <span class="attr">showSql:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>Cors 설정을 위해 프로젝트 &#x2F; 아래에 config 디렉토리를 만들고 아래와 같이 WebConfig를 생성합니다.<br>아래 설정이 누락되면 동일출처오류 cors 오류가 발생합니다. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.CorsRegistry;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addCorsMappings</span><span class="params">(CorsRegistry registry)</span> &#123;</span><br><span class="line">        registry.addMapping(<span class="string">&quot;/**&quot;</span>)</span><br><span class="line">                .allowedOrigins(<span class="string">&quot;https://goodsaem.github.io&quot;</span>)</span><br><span class="line">                .allowedMethods(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span>, <span class="string">&quot;PUT&quot;</span>, <span class="string">&quot;PATCH&quot;</span>, <span class="string">&quot;DELETE&quot;</span>,<span class="string">&quot;OPTIONS&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="3-intellij-build"><a href="#3-intellij-build" class="headerlink" title="3. intellij build"></a>3. intellij build</h2><p>intellij 에서 Gradle 을 클릭하고 Taks를 펼쳐 build 아래의 build를 더블 클릭합니다. 이렇게 진행하면 war파일이 생성됩니다. </p>
+<img src="/coding/springboot/springboot104/1.jpg" class="">
+
+<p>좌측의 프로젝트 디렉토리에서 build &gt; libs &gt; api-0.0.1-SNAPSHOT.war 파일 확인이 가능합니다.</p>
+<img src="/coding/springboot/springboot104/2.jpg" class="">
+
+<h2 id="4-war-파일-업로드"><a href="#4-war-파일-업로드" class="headerlink" title="4. war 파일 업로드"></a>4. war 파일 업로드</h2><p>db파일과 war파일을 서버에 업로드 합니다.</p>
+<p>파일질라를 통해 프로젝트 홈 디렉토리에 있는 goodsaem.mv.db 파일과 war파일을 업로드 합니다.</p>
+<img src="/coding/springboot/springboot104/3.jpg" class="">
+
+<h2 id="5-nginx-설정"><a href="#5-nginx-설정" class="headerlink" title="5. nginx 설정"></a>5. nginx 설정</h2><p>nginx 설정을 변경합니다.</p>
+<p>aws ssh shell에서 아래와 같이 입력합니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~$ sudo vi /etc/nginx/conf.d/default.conf</span><br></pre></td></tr></table></figure>
+<p>아래와 같이 context path 의 spring 디렉토리의 요청이 오면 12~15 라인 설정에 따라 springboot로 보내는 설정입니다.<br>그외 전체 nginx 설정이 있으니 참고 하시기 바랍니다.<br><a target="_blank" rel="noopener" href="https://goodsaem.ml/spring/v1/memo">https://goodsaem.ml/spring/v1/memo</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    server_name  goodsaem.ml;</span><br><span class="line">    charset utf-8;</span><br><span class="line">    access_log  /var/log/nginx/localhost.access.log  main;</span><br><span class="line">    error_log /var/log/nginx/localhost.error.log;</span><br><span class="line">    root /home/ubuntu/phprest/public;</span><br><span class="line">    </span><br><span class="line">    location /spring &#123;</span><br><span class="line">        proxy_pass http://localhost:9090/spring;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">    &#125;</span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.php?$args;</span><br><span class="line">    &#125;</span><br><span class="line">    error_page 405 =200 $uri;</span><br><span class="line">    error_page 500 502 503 504 /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        proxy_pass   http://127.0.0.1;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line"></span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">        fastcgi_intercept_errors on;</span><br><span class="line">        fastcgi_read_timeout 300;</span><br><span class="line">        fastcgi_send_timeout 300;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ /\.ht &#123;</span><br><span class="line">        deny  all;</span><br><span class="line">    &#125;</span><br><span class="line">    location = /xmlrpc.php &#123;</span><br><span class="line">        deny all;</span><br><span class="line">        error_page 403 = /403.html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    listen 443 ssl; # managed by Certbot</span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/goodsaem.ml/fullchain.pem; # managed by Certbot</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/goodsaem.ml/privkey.pem; # managed by Certbot</span><br><span class="line">    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot</span><br><span class="line">    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    if ($host = goodsaem.ml) &#123;</span><br><span class="line">        return 301 https://$host$request_uri;</span><br><span class="line">    &#125; # managed by Certbot</span><br><span class="line">    server_name  goodsaem.ml;</span><br><span class="line">    return 404; # managed by Certbot</span><br><span class="line"></span><br><span class="line">    listen 443 ssl; # managed by Certbot</span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/goodsaem.ml/fullchain.pem; # managed by Certbot</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/goodsaem.ml/privkey.pem; # managed by Certbot</span><br><span class="line">    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot</span><br><span class="line">    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    if ($host = goodsaem.ml) &#123;</span><br><span class="line">        return 301 https://$host$request_uri;</span><br><span class="line">    &#125; # managed by Certbot</span><br><span class="line">    </span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  goodsaem.ml;</span><br><span class="line">    return 404; # managed by Certbot</span><br><span class="line">&#125;        </span><br></pre></td></tr></table></figure>
+
+<h2 id="6-nginx-springboot-시작"><a href="#6-nginx-springboot-시작" class="headerlink" title="6. nginx springboot 시작"></a>6. nginx springboot 시작</h2><p>아래 명령어로 nginx 를 재시작합니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~$ sudo service nginx restart</span><br></pre></td></tr></table></figure>
+
+<p>업로드한 jar 파일을 아래 명령어로 실행합니다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~/api$ java -jar api*.war</span><br><span class="line"> ██████╗  ██████╗  ██████╗ ██████╗ ███████╗ █████╗ ███████╗███╗   ███╗</span><br><span class="line">██╔════╝ ██╔═══██╗██╔═══██╗██╔══██╗██╔════╝██╔══██╗██╔════╝████╗ ████║</span><br><span class="line">██║  ███╗██║   ██║██║   ██║██║  ██║███████╗███████║█████╗  ██╔████╔██║</span><br><span class="line">██║   ██║██║   ██║██║   ██║██║  ██║╚════██║██╔══██║██╔══╝  ██║╚██╔╝██║</span><br><span class="line">╚██████╔╝╚██████╔╝╚██████╔╝██████╔╝███████║██║  ██║███████╗██║ ╚═╝ ██║</span><br><span class="line"> ╚═════╝  ╚═════╝  ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝</span><br><span class="line">:: Spring Boot ::                             (v2.4.2)</span><br><span class="line">2021-03-10 00:36:10.524  INFO 17286 --- [           main] io.github.goodsaem.api.ApiApplication    : Starting ApiApplication using Java 1.8.0_282 on goodsaem with PID 17286 (/home/ubuntu/api/api-0.0.1-SNAPSHOT.war started by ubuntu in /home/ubuntu/api)</span><br><span class="line">2021-03-10 00:36:10.535  INFO 17286 --- [           main] io.github.goodsaem.api.ApiApplication    : No active profile set, falling back to default profiles: default</span><br><span class="line">2021-03-10 00:36:12.405  INFO 17286 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.</span><br><span class="line">2021-03-10 00:36:12.545  INFO 17286 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114 ms. Found 1 JPA repository interfaces.</span><br><span class="line">2021-03-10 00:36:14.131  INFO 17286 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)</span><br><span class="line">2021-03-10 00:36:14.167  INFO 17286 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]</span><br><span class="line">2021-03-10 00:36:14.167  INFO 17286 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]</span><br><span class="line">2021-03-10 00:36:15.970  INFO 17286 --- [           main] o.a.c.c.C.[.[localhost].[/spring]        : Initializing Spring embedded WebApplicationContext</span><br><span class="line">2021-03-10 00:36:15.970  INFO 17286 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5303 ms</span><br><span class="line">2021-03-10 00:36:16.857  INFO 17286 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]</span><br><span class="line">2021-03-10 00:36:16.990  INFO 17286 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.27.Final</span><br><span class="line">2021-03-10 00:36:17.253  INFO 17286 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations &#123;5.1.2.Final&#125;</span><br><span class="line">2021-03-10 00:36:17.487  INFO 17286 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...</span><br><span class="line">2021-03-10 00:36:17.958  INFO 17286 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.</span><br><span class="line">2021-03-10 00:36:17.979  INFO 17286 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect</span><br><span class="line">2021-03-10 00:36:19.285  INFO 17286 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]</span><br><span class="line">2021-03-10 00:36:19.303  INFO 17286 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#x27;default&#x27;</span><br><span class="line">2021-03-10 00:36:20.086  WARN 17286 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning</span><br><span class="line">2021-03-10 00:36:20.370  INFO 17286 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService &#x27;applicationTaskExecutor&#x27;</span><br><span class="line">2021-03-10 00:36:21.187  INFO 17286 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path &#x27;/spring&#x27;</span><br><span class="line">2021-03-10 00:36:21.210  INFO 17286 --- [           main] io.github.goodsaem.api.ApiApplication    : Started ApiApplication in 11.982 seconds (JVM running for 13.126)</span><br><span class="line">2021-03-10 00:36:37.301  INFO 17286 --- [nio-9090-exec-1] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header</span><br></pre></td></tr></table></figure>
+
+<p>:::tip open jdk 1.8 설치<br>만약 openjdk 1.8이 설치되어 있지 않다면 아래 명령어로 설치해 주시기 바랍니다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~/api$ sudo apt install openjdk-8-jdk</span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree       </span><br><span class="line">Reading state information... Done</span><br><span class="line">The following additional packages will be installed:</span><br><span class="line">  adwaita-icon-theme at-spi2-core ca-certificates-java fontconfig fonts-dejavu-extra gtk-update-icon-cache hicolor-icon-theme humanity-icon-theme java-common libasound2 libasound2-data libasyncns0 libatk-bridge2.0-0 libatk-wrapper-java libatk-wrapper-java-jni libatk1.0-0 libatk1.0-data libatspi2.0-0 libcairo2 libdatrie1 libdrm-amdgpu1 libdrm-intel1</span><br><span class="line">  libdrm-nouveau2 libdrm-radeon1 libflac8 libfontenc1 libgail-common libgail18 libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-bin libgdk-pixbuf2.0-common libgif7 libgl1 libgl1-mesa-dri libgl1-mesa-glx libglapi-mesa libglvnd0 libglx-mesa0 libglx0 libgraphite2-3 libgtk2.0-0 libgtk2.0-bin libgtk2.0-common libharfbuzz0b libice-dev libice6 libllvm10 libnspr4 libnss3 libogg0</span><br><span class="line">  libpango-1.0-0 libpangocairo-1.0-0 libpangoft2-1.0-0 libpciaccess0 libpcsclite1 libpixman-1-0 libpthread-stubs0-dev libpulse0 librsvg2-2 librsvg2-common libsensors4 libsm-dev libsm6 libsndfile1 libthai-data libthai0 libvorbis0a libvorbisenc2 libx11-dev libx11-doc libx11-xcb1 libxau-dev libxaw7 libxcb-dri2-0 libxcb-dri3-0 libxcb-glx0 libxcb-present0</span><br><span class="line">  libxcb-render0 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb1-dev libxcomposite1 libxcursor1 libxdamage1 libxdmcp-dev libxfixes3 libxft2 libxi6 libxinerama1 libxmu6 libxrandr2 libxrender1 libxshmfence1 libxt-dev libxt6 libxtst6 libxv1 libxxf86dga1 libxxf86vm1 openjdk-8-jdk-headless openjdk-8-jre openjdk-8-jre-headless ubuntu-mono x11-common x11-utils</span><br><span class="line">  x11proto-core-dev x11proto-dev xorg-sgml-doctools xtrans-dev</span><br><span class="line">Suggested packages:</span><br><span class="line">  default-jre libasound2-plugins alsa-utils gvfs libice-doc pcscd pulseaudio librsvg2-bin lm-sensors libsm-doc libxcb-doc libxt-doc openjdk-8-demo openjdk-8-source visualvm icedtea-8-plugin libnss-mdns fonts-ipafont-gothic fonts-ipafont-mincho fonts-wqy-microhei fonts-wqy-zenhei fonts-indic mesa-utils</span><br><span class="line">The following NEW packages will be installed:</span><br><span class="line">  adwaita-icon-theme at-spi2-core ca-certificates-java fontconfig fonts-dejavu-extra gtk-update-icon-cache hicolor-icon-theme humanity-icon-theme java-common libasound2 libasound2-data libasyncns0 libatk-bridge2.0-0 libatk-wrapper-java libatk-wrapper-java-jni libatk1.0-0 libatk1.0-data libatspi2.0-0 libcairo2 libdatrie1 libdrm-amdgpu1 libdrm-intel1</span><br><span class="line">  libdrm-nouveau2 libdrm-radeon1 libflac8 libfontenc1 libgail-common libgail18 libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-bin libgdk-pixbuf2.0-common libgif7 libgl1 libgl1-mesa-dri libgl1-mesa-glx libglapi-mesa libglvnd0 libglx-mesa0 libglx0 libgraphite2-3 libgtk2.0-0 libgtk2.0-bin libgtk2.0-common libharfbuzz0b libice-dev libice6 libllvm10 libnspr4 libnss3 libogg0</span><br><span class="line">  libpango-1.0-0 libpangocairo-1.0-0 libpangoft2-1.0-0 libpciaccess0 libpcsclite1 libpixman-1-0 libpthread-stubs0-dev libpulse0 librsvg2-2 librsvg2-common libsensors4 libsm-dev libsm6 libsndfile1 libthai-data libthai0 libvorbis0a libvorbisenc2 libx11-dev libx11-doc libx11-xcb1 libxau-dev libxaw7 libxcb-dri2-0 libxcb-dri3-0 libxcb-glx0 libxcb-present0</span><br><span class="line">  libxcb-render0 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb1-dev libxcomposite1 libxcursor1 libxdamage1 libxdmcp-dev libxfixes3 libxft2 libxi6 libxinerama1 libxmu6 libxrandr2 libxrender1 libxshmfence1 libxt-dev libxt6 libxtst6 libxv1 libxxf86dga1 libxxf86vm1 openjdk-8-jdk openjdk-8-jdk-headless openjdk-8-jre openjdk-8-jre-headless ubuntu-mono x11-common</span><br><span class="line">  x11-utils x11proto-core-dev x11proto-dev xorg-sgml-doctools xtrans-dev</span><br><span class="line">0 upgraded, 111 newly installed, 0 to remove and 42 not upgraded.</span><br><span class="line">Need to get 81.6 MB of archives.</span><br><span class="line">After this operation, 556 MB of additional disk space will be used.</span><br><span class="line">Do you want to continue? [Y/n] y</span><br></pre></td></tr></table></figure>
+
+<p>정상적으로 설치되었는지 확인합니다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~/api$ java -version</span><br><span class="line">openjdk version &quot;1.8.0_282&quot;</span><br><span class="line">OpenJDK Runtime Environment (build 1.8.0_282-8u282-b08-0ubuntu1~18.04-b08)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 25.282-b08, mixed mode)</span><br></pre></td></tr></table></figure>
+<p>:::</p>
+<h2 id="7-테스트"><a href="#7-테스트" class="headerlink" title="7. 테스트"></a>7. 테스트</h2><p>아래 url 에 접속합니다.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://goodsaem.ml/spring/v1/memo">https://goodsaem.ml/spring/v1/memo</a></li>
+</ul>
+<p>아래와 같이 json 문자열이 브라우저에 출력 된다면 ok 입니다.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">[</span> <span class="punctuation">&#123;</span><span class="attr">&quot;idx&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">,</span><span class="attr">&quot;title&quot;</span><span class="punctuation">:</span><span class="string">&quot;memo title1&quot;</span><span class="punctuation">,</span><span class="attr">&quot;contents&quot;</span><span class="punctuation">:</span><span class="string">&quot;memo content1&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#123;</span><span class="attr">&quot;idx&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">,</span><span class="attr">&quot;title&quot;</span><span class="punctuation">:</span><span class="string">&quot;memo title2&quot;</span><span class="punctuation">,</span><span class="attr">&quot;contents&quot;</span><span class="punctuation">:</span><span class="string">&quot;memo content2&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#123;</span><span class="attr">&quot;idx&quot;</span><span class="punctuation">:</span><span class="number">3</span><span class="punctuation">,</span><span class="attr">&quot;title&quot;</span><span class="punctuation">:</span><span class="string">&quot;memo title3&quot;</span><span class="punctuation">,</span><span class="attr">&quot;contents&quot;</span><span class="punctuation">:</span><span class="string">&quot;memo content3&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#123;</span><span class="attr">&quot;idx&quot;</span><span class="punctuation">:</span><span class="number">4</span><span class="punctuation">,</span><span class="attr">&quot;title&quot;</span><span class="punctuation">:</span><span class="string">&quot;memo title4&quot;</span><span class="punctuation">,</span><span class="attr">&quot;contents&quot;</span><span class="punctuation">:</span><span class="string">&quot;memo content4&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#123;</span><span class="attr">&quot;idx&quot;</span><span class="punctuation">:</span><span class="number">6</span><span class="punctuation">,</span><span class="attr">&quot;title&quot;</span><span class="punctuation">:</span><span class="string">&quot;memo title5&quot;</span><span class="punctuation">,</span><span class="attr">&quot;contents&quot;</span><span class="punctuation">:</span><span class="string">&quot;memo content5&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#123;</span><span class="attr">&quot;idx&quot;</span><span class="punctuation">:</span><span class="number">7</span><span class="punctuation">,</span><span class="attr">&quot;title&quot;</span><span class="punctuation">:</span><span class="string">&quot;memo title7&quot;</span><span class="punctuation">,</span><span class="attr">&quot;contents&quot;</span><span class="punctuation">:</span><span class="string">&quot;memo content7&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<vue-Exam4 />
+
+<p>메모를 등록하면 post로 등록 api를 호출하여 db에 내용을 저장하고 조회 api 를 호출하여 데이터를 받아서 grid에 표현합니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;8&quot;</span> <span class="attr">style</span>=<span class="string">&quot;padding-right: 10px;&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">placeholder</span>=<span class="string">&quot;메모 제목을 입력하세요&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;memo.title&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">placeholder</span>=<span class="string">&quot;메모 내용을 입력하세요&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;memo.contents&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;8&quot;</span> <span class="attr">style</span>=<span class="string">&quot;padding-left: 10px;&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;saveMemo&quot;</span>&gt;</span>메모등록<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;searchMemo&quot;</span>&gt;</span>메모검색<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-col</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-smile&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> Element Ui로 데이터 표현하기</span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-table</span> <span class="attr">v-if</span>=<span class="string">&quot;gridData.length &gt;= 0&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">:data</span>=<span class="string">&quot;gridData&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">style</span>=<span class="string">&quot;width: 100%&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-table-column</span></span></span><br><span class="line"><span class="tag">            <span class="attr">prop</span>=<span class="string">&quot;idx&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">label</span>=<span class="string">&quot;번호&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">width</span>=<span class="string">&quot;180&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-table-column</span></span></span><br><span class="line"><span class="tag">            <span class="attr">prop</span>=<span class="string">&quot;title&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">label</span>=<span class="string">&quot;제목&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">width</span>=<span class="string">&quot;180&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-table-column</span></span></span><br><span class="line"><span class="tag">            <span class="attr">prop</span>=<span class="string">&quot;contents&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">label</span>=<span class="string">&quot;내용&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-col</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-angry&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> Tui Grid 로 데이터 표현하기</span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-col</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">grid</span> <span class="attr">v-if</span>=<span class="string">&quot;loadData === true&quot;</span></span></span><br><span class="line"><span class="tag">              <span class="attr">ref</span>=<span class="string">&quot;tuiGrid&quot;</span></span></span><br><span class="line"><span class="tag">              <span class="attr">:data</span>=<span class="string">&quot;gridData&quot;</span></span></span><br><span class="line"><span class="tag">              <span class="attr">:columns</span>=<span class="string">&quot;columns&quot;</span></span></span><br><span class="line"><span class="tag">              <span class="attr">:scrollX</span>=<span class="string">&quot;scrollX&quot;</span></span></span><br><span class="line"><span class="tag">              <span class="attr">:scrollY</span>=<span class="string">&quot;scrollY&quot;</span></span></span><br><span class="line"><span class="tag">        &gt;</span><span class="tag">&lt;/<span class="name">grid</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> <span class="variable constant_">URL</span> = <span class="string">&quot;https://goodsaem.ml&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"><span class="comment">//const URL = &quot;http://localhost:9090&quot;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">name</span>: <span class="string">&quot;Exam4&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">created</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      memo : &#123;</span></span><br><span class="line"><span class="language-javascript">        title : <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        contents : <span class="string">&#x27;&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">      &#125;,</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">loadData</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">gridData</span>: [],</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">columns</span>: [</span></span><br><span class="line"><span class="language-javascript">        &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="attr">header</span>: <span class="string">&#x27;번호&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">          <span class="attr">name</span>: <span class="string">&#x27;idx&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="attr">header</span>: <span class="string">&#x27;메모&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">          <span class="attr">name</span>: <span class="string">&#x27;title&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="attr">header</span>: <span class="string">&#x27;메모내용&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">          <span class="attr">name</span>: <span class="string">&#x27;contents&#x27;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">      ],</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">scrollX</span>: <span class="literal">false</span>,</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">scrollY</span>: <span class="literal">false</span>,</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">create</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">saveMemo</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">post</span>(<span class="variable constant_">URL</span> + <span class="string">&#x27;/spring/v1/memo&#x27;</span>,<span class="variable language_">this</span>.<span class="property">memo</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="title function_">searchMemo</span>();</span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">searchMemo</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">loadData</span> = <span class="literal">false</span>;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">get</span>(<span class="variable constant_">URL</span> + <span class="string">&#x27;/spring/v1/memo&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">          .<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">this</span>.<span class="property">gridData</span> = response.<span class="property">data</span></span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">this</span>.<span class="property">loadData</span> = <span class="literal">true</span>;</span></span><br><span class="line"><span class="language-javascript">          &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="8-참고"><a href="#8-참고" class="headerlink" title="8. 참고"></a>8. 참고</h2><p>위에 spring boot는 ctrl+c 를 누르거나 ssh 를 종료하면 서비스가 종료 됩니다. 서비스가 백그라운드에서 실행되도록하고<br>프로세스를 죽이지 않도록 설정하겠습니다.</p>
+<p>start.sh 파일을 만듭니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~/api$ vi start.sh</span><br></pre></td></tr></table></figure>
+
+<p>nohup 은 프로세스를 죽이지 않겠다는 의미이고 &amp; 은 백그라운드에서 실행하겠다는 의미 입니다.<br>이렇게 실행하면 로그가 보이지 않습니다. </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar api*.war &gt; api.log &amp;</span><br></pre></td></tr></table></figure>
+
+<p>아래 명령어를 입력하여 로그를 확인합니다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~/api$ tail -f api.log</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line">Hibernate: select memo0_.idx as idx1_0_, memo0_.contents as contents2_0_, memo0_.title as title3_0_ from memo memo0_</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>프로세스 종료는 아래와 같이 java 프로세스가 올라가 있는걸 확인하고 kill 명령어로 종료합니다.<br>kill 되고 나서 프로세스가 살아있는지 한번더 프로세를 확인 합니다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~/api$ ps -ef | grep java</span><br><span class="line">ubuntu   17700     1  4 01:40 ?        00:00:15 java -jar api-0.0.1-SNAPSHOT.war</span><br><span class="line">ubuntu   17870 17842  0 01:46 pts/0    00:00:00 grep --color=auto java</span><br><span class="line">ubuntu@goodsaem:~/api$ kill -9 17700</span><br><span class="line">ubuntu@goodsaem:~/api$ ps -ef | grep java</span><br><span class="line">ubuntu   17872 17842  0 01:46 pts/0    00:00:00 grep --color=auto java</span><br></pre></td></tr></table></figure>
+
+
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://goodsaem.github.io/coding/springboot/springboot104/" data-id="cmchdg1z1006mf0vqbbtp97rw" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "good"
+        },
+        "headline": "4. SpringBoot Backend 서버 구축",
+        "image": "http://goodsaem.github.io/coding/springboot/springboot104/springboot-004.png",
+        "keywords": "springboot",
+        "genre": "Coding springboot",
+        "datePublished": "2023-03-26",
+        "dateCreated": "2023-03-26",
+        "dateModified": "2025-06-29",
+        "url": "http://goodsaem.github.io/coding/springboot/springboot104/",
+        "description": "
+
+ 4. Aws 배포지금까지 만든 springboot 프로그램을 war 파일로 만든다음 aws에 배포하여 특정디렉토리로 요청이왔을때는 springboot가 응답하도록 설정해보겠습니다.aws에 서버 구축과 php + mariadb 연동 + ssl 설정하는방법은 아래 url 참고하세요
+
+&#x2F;setup&#x2F;aws&#x2F;z101-freetier.",
+        "wordCount": 4447
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+     
+    
+        
+<nav id="article-nav">
+    
+        <a href="/coding/springboot/springboot105/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">신규</strong>
+        <p class="article-nav-title">
+        
+            5. SpringBoot Backend 서버 구축
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/coding/springboot/springboot103/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">이전</strong>
+        <p class="article-nav-title">3. SpringBoot Backend 서버 구축</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Aws-%EB%B0%B0%ED%8F%AC"><span class="toc-number">1.</span> <span class="toc-text"> 4. Aws 배포</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-build-gradle"><span class="toc-number">1.1.</span> <span class="toc-text">1. build.gradle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%EC%8B%9C%EC%9E%91%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD-%EB%B0%8F-cors%EC%84%A4%EC%A0%95"><span class="toc-number">1.2.</span> <span class="toc-text">2. 시작디렉토리 변경 및 cors설정</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-intellij-build"><span class="toc-number">1.3.</span> <span class="toc-text">3. intellij build</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-war-%ED%8C%8C%EC%9D%BC-%EC%97%85%EB%A1%9C%EB%93%9C"><span class="toc-number">1.4.</span> <span class="toc-text">4. war 파일 업로드</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-nginx-%EC%84%A4%EC%A0%95"><span class="toc-number">1.5.</span> <span class="toc-text">5. nginx 설정</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-nginx-springboot-%EC%8B%9C%EC%9E%91"><span class="toc-number">1.6.</span> <span class="toc-text">6. nginx springboot 시작</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%ED%85%8C%EC%8A%A4%ED%8A%B8"><span class="toc-number">1.7.</span> <span class="toc-text">7. 테스트</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%EC%B0%B8%EA%B3%A0"><span class="toc-number">1.8.</span> <span class="toc-text">8. 참고</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-fontawesome/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/vygt2h.jpg)" alt="hexo 에서 fontawesome 사용하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-fontawesome/" class="title">hexo 에서 fontawesome 사용하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T06:17:16.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/rklrz3.jpg)" alt="정적 웹사이트 생성기 hexo 로 블로그 만들기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo/" class="title">정적 웹사이트 생성기 hexo 로 블로그 만들기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:25:04.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo-include/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/y01pdv.jpg)" alt="Hexo 에 글 포함하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo-include/" class="title">Hexo 에 글 포함하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:24:56.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-intro/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/a339t1.jpg)" alt="소개" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-intro/" class="title">소개</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:23:23.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/setup/setup_github_ssh/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/pb9w1z.jpg)" alt="Github ssh 연결" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Setup/">Setup</a></p>
+                            <p class="item-title"><a href="/setup/setup_github_ssh/" class="title">Github ssh 연결</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T03:57:45.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/">Coding</a><span class="category-list-count">17</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/JHipster/">JHipster</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/mariadb/">mariadb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/springboot/">springboot</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/vue/">vue</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setup/">Setup</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><span class="category-list-count">44</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%B1/">앱</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">6월 2025</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">3월 2023</a><span class="archive-list-count">67</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JHipster/" rel="tag">JHipster</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MAC/" rel="tag">MAC</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MARIADB/" rel="tag">MARIADB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/" rel="tag">SPRINGBOOT</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/" rel="tag">VUE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/" rel="tag">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fontawesome/" rel="tag">fontawesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2db/" rel="tag">h2db</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openjdk/" rel="tag">openjdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window2022/" rel="tag">window2022</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows2022/" rel="tag">windows2022</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%BC%EC%83%81/" rel="tag">일상</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JHipster/" style="font-size: 12.5px;">JHipster</a> <a href="/tags/MAC/" style="font-size: 15px;">MAC</a> <a href="/tags/MARIADB/" style="font-size: 10px;">MARIADB</a> <a href="/tags/PHP/" style="font-size: 18.75px;">PHP</a> <a href="/tags/SPRINGBOOT/" style="font-size: 17.5px;">SPRINGBOOT</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/fontawesome/" style="font-size: 10px;">fontawesome</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 13.75px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/h2db/" style="font-size: 10px;">h2db</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/openjdk/" style="font-size: 10px;">openjdk</a> <a href="/tags/springboot/" style="font-size: 16.25px;">springboot</a> <a href="/tags/vue/" style="font-size: 11.25px;">vue</a> <a href="/tags/window2022/" style="font-size: 12.5px;">window2022</a> <a href="/tags/windows2022/" style="font-size: 10px;">windows2022</a> <a href="/tags/%EC%9D%BC%EC%83%81/" style="font-size: 11.25px;">일상</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+                <div class="widget-wrap widget-float">
+
+    <h3 class="widget-title">후원자</h3>
+    <div class="widget">
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+    </div>
+
+</div>
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                
+                <p>&copy; 2025 good</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1863930318161504"
+     crossorigin="anonymous"></script>
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/javascript" src="/drawio/viewer-static.min.js"></script>
+<style>
+.mxgraph-container { width: 100%; }
+.mxgraph {
+  width: 100% !important;
+  border:1px solid transparent;
+}
+.geDiagramContainer { width: 100% !important; }
+</style>
+</body>
+
+</html>

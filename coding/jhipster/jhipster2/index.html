@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/callout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/earlyaccess/iropkebatang.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'IropkeBatang', serif;
+        }
+    </style>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5VG62JT9');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+    
+
+    
+    <title>2. JHipster 실행 | good</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="JHipster" />
+    
+    <meta name="description" content="개요1번 설치가 성공적으로 끝났다면 JHipster 를 실행해보고 어떻게 동작하는지 확인 하면서 힙한 자바 개발자로 변신하자 mariadb 데이터베이스 생성 및 계정생성아래 링크를 클릭하여 디비 생성 및 사용자 생성을 먼저 진행한다.jhipster db 생성 및 사용자 생성  db 연결정보 변경jhipster 프로젝트를 인텔리제이에서 오픈한후 아래 d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2. JHipster 실행">
+<meta property="og:url" content="http://goodsaem.github.io/coding/jhipster/jhipster2/index.html">
+<meta property="og:site_name" content="good">
+<meta property="og:description" content="개요1번 설치가 성공적으로 끝났다면 JHipster 를 실행해보고 어떻게 동작하는지 확인 하면서 힙한 자바 개발자로 변신하자 mariadb 데이터베이스 생성 및 계정생성아래 링크를 클릭하여 디비 생성 및 사용자 생성을 먼저 진행한다.jhipster db 생성 및 사용자 생성  db 연결정보 변경jhipster 프로젝트를 인텔리제이에서 오픈한후 아래 d">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="http://goodsaem.github.io/coding/jhipster/jhipster2/jhipster-002.png">
+<meta property="article:published_time" content="2023-03-27T13:30:00.000Z">
+<meta property="article:modified_time" content="2025-06-29T07:42:00.820Z">
+<meta property="article:author" content="good">
+<meta property="article:tag" content="JHipster">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://goodsaem.github.io/coding/jhipster/jhipster2/jhipster-002.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/">Coding</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/JHipster/">JHipster</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/mariadb/">mariadb</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/springboot/">springboot</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/vue/">vue</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setup/">Setup</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%B1/">앱</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="찾고자 하는 포스트를 검색하세요." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: '페이지',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Coding/JHipster/">JHipster</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-coding/jhipster/jhipster2" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        2. JHipster 실행
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/coding/jhipster/jhipster2/" class="article-date">
+       <time datetime="2023-03-27T13:30:00.000Z" itemprop="datePublished">2023-03-27</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/coding/jhipster/jhipster2/" class="article-date">
+     <time datetime="2025-06-29T07:42:00.820Z" itemprop="dateModified">2025-06-29</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/JHipster/" rel="tag">JHipster</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/coding/jhipster/jhipster2/jhipster-002.png" class="">
+
+<h3 id="개요"><a href="#개요" class="headerlink" title=" 개요"></a><i class="fa-solid fa-cloud"></i> 개요</h3><p>1번 설치가 성공적으로 끝났다면 JHipster 를 실행해보고 어떻게 동작하는지 확인 하면서 힙한 자바 개발자로 변신하자</p>
+<h3 id="mariadb-데이터베이스-생성-및-계정생성"><a href="#mariadb-데이터베이스-생성-및-계정생성" class="headerlink" title="mariadb 데이터베이스 생성 및 계정생성"></a>mariadb 데이터베이스 생성 및 계정생성</h3><p>아래 링크를 클릭하여 디비 생성 및 사용자 생성을 먼저 진행한다.<br><a href="/2023/03/27/coding/mariadb/mariadb-create-user/">jhipster db 생성 및 사용자 생성 </a></p>
+<h3 id="db-연결정보-변경"><a href="#db-연결정보-변경" class="headerlink" title="db 연결정보 변경"></a>db 연결정보 변경</h3><p>jhipster 프로젝트를 인텔리제이에서 오픈한후 아래 dev 설정파일의 db username 과 비밀번호를 변경한다.</p>
+<p>수정파일 : <strong>jhipster&#x2F;src&#x2F;main&#x2F;resources&#x2F;config&#x2F;application_dev.yml</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">datasource:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">com.zaxxer.hikari.HikariDataSource</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">jdbc:mariadb://localhost:3306/jhipster?useLegacyDatetimeCode=false&amp;serverTimezone=UTC</span></span><br><span class="line">  <span class="attr">username:</span> <span class="string">jhipster</span></span><br><span class="line">  <span class="attr">password:</span> <span class="string">jhipseter</span></span><br></pre></td></tr></table></figure>
+
+<img src="/coding/jhipster/jhipster2/j2-1.png" class="">
+
+<h3 id="백엔드-서버-실행"><a href="#백엔드-서버-실행" class="headerlink" title="백엔드 서버 실행"></a>백엔드 서버 실행</h3><p>아래 명령어 입력을 통해 백엔드 서버를 실행한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./mvnw</span><br></pre></td></tr></table></figure>
+<p>실행중 별다른 오류가 없다면 아래와 같은 화면을 확인할수 있다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br></pre></td><td class="code"><pre><span class="line">[INFO] Scanning for projects...</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] ------------------&lt; io.github.goodsaem.api:jhipster &gt;-------------------</span><br><span class="line">[INFO] Building JHipster 0.0.1-SNAPSHOT</span><br><span class="line">[INFO] --------------------------------[ jar ]---------------------------------</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] &gt;&gt;&gt; spring-boot-maven-plugin:2.7.3:run (default-cli) &gt; test-compile @ jhipster &gt;&gt;&gt;</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-resources-plugin:3.3.0:copy-resources (default-resources) @ jhipster ---</span><br><span class="line">[INFO] Copying 6 resources</span><br><span class="line">[INFO] Copying 15 resources</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-resources-plugin:3.3.0:resources (default-resources) @ jhipster ---</span><br><span class="line">[INFO] Copying 6 resources</span><br><span class="line">[INFO] Copying 15 resources</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-enforcer-plugin:3.1.0:enforce (enforce-versions) @ jhipster ---</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-enforcer-plugin:3.1.0:enforce (enforce-dependencyConvergence) @ jhipster ---</span><br><span class="line">[WARNING] </span><br><span class="line">Dependency convergence error for org.apiguardian:apiguardian-api:jar:1.1.2:compile paths to dependency are:</span><br><span class="line">+-io.github.goodsaem.api:jhipster:jar:0.0.1-SNAPSHOT</span><br><span class="line">  +-org.zalando:problem-spring-web:jar:0.27.0:compile</span><br><span class="line">    +-org.zalando:problem-violations:jar:0.27.0:compile</span><br><span class="line">      +-org.apiguardian:apiguardian-api:jar:1.1.2:compile</span><br><span class="line">and</span><br><span class="line">+-io.github.goodsaem.api:jhipster:jar:0.0.1-SNAPSHOT</span><br><span class="line">  +-org.zalando:problem-spring-web:jar:0.27.0:compile</span><br><span class="line">    +-org.zalando:problem-spring-common:jar:0.27.0:compile</span><br><span class="line">      +-org.apiguardian:apiguardian-api:jar:1.1.2:compile</span><br><span class="line">and</span><br><span class="line">+-io.github.goodsaem.api:jhipster:jar:0.0.1-SNAPSHOT</span><br><span class="line">  +-org.zalando:problem-spring-web:jar:0.27.0:compile</span><br><span class="line">    +-org.apiguardian:apiguardian-api:jar:1.1.2:compile</span><br><span class="line">and</span><br><span class="line">+-io.github.goodsaem.api:jhipster:jar:0.0.1-SNAPSHOT</span><br><span class="line">  +-org.zalando:problem-spring-web:jar:0.27.0:compile</span><br><span class="line">    +-org.zalando:faux-pas:jar:0.9.0:compile</span><br><span class="line">      +-org.apiguardian:apiguardian-api:jar:1.1.1:compile</span><br><span class="line"></span><br><span class="line">[WARNING] Rule 0: org.apache.maven.plugins.enforcer.DependencyConvergence failed with message:</span><br><span class="line">Failed while enforcing releasability. See above detailed error message.</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- jacoco-maven-plugin:0.8.8:prepare-agent (pre-unit-tests) @ jhipster ---</span><br><span class="line">[INFO] argLine set to -javaagent:/Users/gosu/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar=destfile=/Users/gosu/jhipster/target/jacoco.exec -Djava.security.egd=file:/dev/./urandom -Xmx1G</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- properties-maven-plugin:1.1.0:read-project-properties (default) @ jhipster ---</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- checksum-maven-plugin:1.11:files (create-pre-compiled-webapp-checksum) @ jhipster ---</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-antrun-plugin:3.1.0:run (eval-frontend-checksum) @ jhipster ---</span><br><span class="line">[INFO] Executing tasks</span><br><span class="line">[INFO] Executed tasks</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- frontend-maven-plugin:1.12.1:install-node-and-npm (install-node-and-npm) @ jhipster ---</span><br><span class="line">[INFO] Node v16.17.0 is already installed.</span><br><span class="line">[INFO] NPM 8.19.1 is already installed.</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- frontend-maven-plugin:1.12.1:npm (npm install) @ jhipster ---</span><br><span class="line">[INFO] Skipping execution.</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- frontend-maven-plugin:1.12.1:npm (webapp build dev) @ jhipster ---</span><br><span class="line">[INFO] Skipping execution.</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ jhipster ---</span><br><span class="line">[INFO] Nothing to compile - all classes are up to date</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- checksum-maven-plugin:1.11:files (create-compiled-webapp-checksum) @ jhipster ---</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-resources-plugin:3.3.0:testResources (default-testResources) @ jhipster ---</span><br><span class="line">[INFO] Copying 15 resources</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- maven-compiler-plugin:3.10.1:testCompile (default-testCompile) @ jhipster ---</span><br><span class="line">[INFO] Nothing to compile - all classes are up to date</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] &lt;&lt;&lt; spring-boot-maven-plugin:2.7.3:run (default-cli) &lt; test-compile @ jhipster &lt;&lt;&lt;</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- spring-boot-maven-plugin:2.7.3:run (default-cli) @ jhipster ---</span><br><span class="line">[INFO] Attaching agents: []</span><br><span class="line">22:53:58.895 [Thread-0] DEBUG org.springframework.boot.devtools.restart.classloader.RestartClassLoader - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@2158b81d</span><br><span class="line"></span><br><span class="line">       ██╗ ██╗   ██╗ ████████╗ ███████╗   ██████╗ ████████╗ ████████╗ ███████╗</span><br><span class="line">       ██║ ██║   ██║ ╚══██╔══╝ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═════╝ ██╔═══██╗</span><br><span class="line">       ██║ ████████║    ██║    ███████╔╝ ╚█████╗     ██║    ██████╗   ███████╔╝</span><br><span class="line"> ██╗   ██║ ██╔═══██║    ██║    ██╔════╝   ╚═══██╗    ██║    ██╔═══╝   ██╔══██║</span><br><span class="line"> ╚██████╔╝ ██║   ██║ ████████╗ ██║       ██████╔╝    ██║    ████████╗ ██║  ╚██╗</span><br><span class="line">  ╚═════╝  ╚═╝   ╚═╝ ╚═══════╝ ╚═╝       ╚═════╝     ╚═╝    ╚═══════╝ ╚═╝   ╚═╝</span><br><span class="line"></span><br><span class="line">:: JHipster 🤓  :: Running Spring Boot 2.7.3 ::</span><br><span class="line">:: https://www.jhipster.tech ::</span><br><span class="line"></span><br><span class="line">2023-03-27T22:53:59.219+09:00 DEBUG 16737 --- [kground-preinit] org.jboss.logging                        : Logging Provider: org.jboss.logging.Log4j2LoggerProvider </span><br><span class="line">2023-03-27T22:53:59.235+09:00  INFO 16737 --- [  restartedMain] io.github.goodsaem.api.JhipsterApp       : Starting JhipsterApp using Java 18.0.2 on gosuui-iMac.local with PID 16737 (/Users/gosu/jhipster/target/classes started by gosu in /Users/gosu/jhipster) </span><br><span class="line">2023-03-27T22:53:59.236+09:00 DEBUG 16737 --- [  restartedMain] io.github.goodsaem.api.JhipsterApp       : Running with Spring Boot v2.7.3, Spring v5.3.22 </span><br><span class="line">2023-03-27T22:53:59.236+09:00  INFO 16737 --- [  restartedMain] io.github.goodsaem.api.JhipsterApp       : The following 2 profiles are active: &quot;dev&quot;, &quot;api-docs&quot; </span><br><span class="line">2023-03-27T22:54:00.441+09:00 DEBUG 16737 --- [  restartedMain] i.m.c.u.i.logging.InternalLoggerFactory  : Using SLF4J as the default logging framework </span><br><span class="line">2023-03-27T22:54:00.542+09:00 DEBUG 16737 --- [  restartedMain] i.g.goodsaem.api.config.WebConfigurer    : Registering CORS filter </span><br><span class="line">2023-03-27T22:54:00.561+09:00  INFO 16737 --- [  restartedMain] i.g.goodsaem.api.config.WebConfigurer    : Web application configuration, using profiles: dev </span><br><span class="line">2023-03-27T22:54:00.562+09:00  INFO 16737 --- [  restartedMain] i.g.goodsaem.api.config.WebConfigurer    : Web application fully configured </span><br><span class="line">2023-03-27T22:54:00.699+09:00 DEBUG 16737 --- [  restartedMain] c.ehcache.core.Ehcache-usersByLogin      : Initialize successful. </span><br><span class="line">2023-03-27T22:54:00.710+09:00 DEBUG 16737 --- [  restartedMain] c.ehcache.core.Ehcache-usersByEmail      : Initialize successful. </span><br><span class="line">2023-03-27T22:54:00.712+09:00 DEBUG 16737 --- [  restartedMain] c.e.c.E.github.goodsaem.api.domain.User  : Initialize successful. </span><br><span class="line">2023-03-27T22:54:00.714+09:00 DEBUG 16737 --- [  restartedMain] c.e.c.E.g.goodsaem.api.domain.Authority  : Initialize successful. </span><br><span class="line">2023-03-27T22:54:00.716+09:00 DEBUG 16737 --- [  restartedMain] c.e.c.E.g.g.api.domain.User.authorities  : Initialize successful. </span><br><span class="line">2023-03-27T22:54:00.728+09:00 DEBUG 16737 --- [  restartedMain] i.g.g.api.config.AsyncConfiguration      : Creating Async Task Executor </span><br><span class="line">2023-03-27T22:54:00.753+09:00 DEBUG 16737 --- [  restartedMain] i.g.g.api.config.LiquibaseConfiguration  : Configuring Liquibase </span><br><span class="line">2023-03-27T22:54:00.798+09:00 DEBUG 16737 --- [  restartedMain] o.m.jdbc.client.impl.StandardClient      : execute query: set autocommit=0 </span><br><span class="line">2023-03-27T22:54:00.799+09:00 DEBUG 16737 --- [  restartedMain] o.mariadb.jdbc.message.server.OkPacket   : System variable change:  autocommit = OFF </span><br><span class="line">2023-03-27T22:54:00.801+09:00 DEBUG 16737 --- [  restartedMain] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT @@tx_isolation </span><br><span class="line">2023-03-27T22:54:00.809+09:00  WARN 16737 --- [jhipster-task-1] t.j.c.liquibase.AsyncSpringLiquibase     : Starting Liquibase asynchronously, your database might not be ready at startup! </span><br><span class="line">2023-03-27T22:54:00.814+09:00 DEBUG 16737 --- [onnection adder] o.m.jdbc.client.impl.StandardClient      : execute query: set autocommit=0 </span><br><span class="line">2023-03-27T22:54:00.814+09:00 DEBUG 16737 --- [onnection adder] o.mariadb.jdbc.message.server.OkPacket   : System variable change:  autocommit = OFF </span><br><span class="line">2023-03-27T22:54:00.895+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.896+09:00  WARN 16737 --- [jhipster-task-1] o.m.jdbc.message.server.ErrorPacket      : Error: 1146-42S02: Table &#x27;jhipster.databasechangeloglock&#x27; doesn&#x27;t exist </span><br><span class="line">2023-03-27T22:54:00.907+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: CREATE TABLE jhipster.DATABASECHANGELOGLOCK (ID INT NOT NULL, `LOCKED` BIT(1) NOT NULL, LOCKGRANTED datetime NULL, LOCKEDBY VARCHAR(255) NULL, CONSTRAINT PK_DATABASECHANGELOGLOCK PRIMARY KEY (ID)) </span><br><span class="line">2023-03-27T22:54:00.909+09:00 DEBUG 16737 --- [onnection adder] o.m.jdbc.client.impl.StandardClient      : execute query: set autocommit=0 </span><br><span class="line">2023-03-27T22:54:00.909+09:00 DEBUG 16737 --- [onnection adder] o.mariadb.jdbc.message.server.OkPacket   : System variable change:  autocommit = OFF </span><br><span class="line">2023-03-27T22:54:00.912+09:00 DEBUG 16737 --- [onnection adder] o.m.jdbc.client.impl.StandardClient      : execute query: set autocommit=0 </span><br><span class="line">2023-03-27T22:54:00.912+09:00 DEBUG 16737 --- [onnection adder] o.mariadb.jdbc.message.server.OkPacket   : System variable change:  autocommit = OFF </span><br><span class="line">2023-03-27T22:54:00.914+09:00 DEBUG 16737 --- [onnection adder] o.m.jdbc.client.impl.StandardClient      : execute query: set autocommit=0 </span><br><span class="line">2023-03-27T22:54:00.914+09:00 DEBUG 16737 --- [onnection adder] o.mariadb.jdbc.message.server.OkPacket   : System variable change:  autocommit = OFF </span><br><span class="line">2023-03-27T22:54:00.915+09:00 DEBUG 16737 --- [onnection adder] o.m.jdbc.client.impl.StandardClient      : execute query: set autocommit=0 </span><br><span class="line">2023-03-27T22:54:00.917+09:00 DEBUG 16737 --- [onnection adder] o.mariadb.jdbc.message.server.OkPacket   : System variable change:  autocommit = OFF </span><br><span class="line">2023-03-27T22:54:00.918+09:00 DEBUG 16737 --- [onnection adder] o.m.jdbc.client.impl.StandardClient      : execute query: set autocommit=0 </span><br><span class="line">2023-03-27T22:54:00.919+09:00 DEBUG 16737 --- [onnection adder] o.mariadb.jdbc.message.server.OkPacket   : System variable change:  autocommit = OFF </span><br><span class="line">2023-03-27T22:54:00.921+09:00 DEBUG 16737 --- [onnection adder] o.m.jdbc.client.impl.StandardClient      : execute query: set autocommit=0 </span><br><span class="line">2023-03-27T22:54:00.921+09:00 DEBUG 16737 --- [onnection adder] o.mariadb.jdbc.message.server.OkPacket   : System variable change:  autocommit = OFF </span><br><span class="line">2023-03-27T22:54:00.922+09:00 DEBUG 16737 --- [onnection adder] o.m.jdbc.client.impl.StandardClient      : execute query: set autocommit=0 </span><br><span class="line">2023-03-27T22:54:00.922+09:00 DEBUG 16737 --- [onnection adder] o.mariadb.jdbc.message.server.OkPacket   : System variable change:  autocommit = OFF </span><br><span class="line">2023-03-27T22:54:00.923+09:00 DEBUG 16737 --- [onnection adder] o.m.jdbc.client.impl.StandardClient      : execute query: set autocommit=0 </span><br><span class="line">2023-03-27T22:54:00.925+09:00 DEBUG 16737 --- [onnection adder] o.mariadb.jdbc.message.server.OkPacket   : System variable change:  autocommit = OFF </span><br><span class="line">2023-03-27T22:54:00.944+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.948+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: DELETE FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.949+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: INSERT INTO jhipster.DATABASECHANGELOGLOCK (ID, `LOCKED`) VALUES (1, 0) </span><br><span class="line">2023-03-27T22:54:00.949+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: COMMIT </span><br><span class="line">2023-03-27T22:54:00.950+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.950+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.951+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.951+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.952+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.952+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.953+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.953+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.954+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.954+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.955+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.955+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.955+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.956+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.956+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.956+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.957+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.957+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:00.958+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT `LOCKED` FROM jhipster.DATABASECHANGELOGLOCK WHERE ID=1 </span><br><span class="line">2023-03-27T22:54:00.961+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: UPDATE jhipster.DATABASECHANGELOGLOCK SET `LOCKED` = 1, LOCKEDBY = &#x27;192.168.0.15 (192.168.0.15)&#x27;, LOCKGRANTED = NOW() WHERE ID = 1 AND `LOCKED` = 0 </span><br><span class="line">2023-03-27T22:54:00.961+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: COMMIT </span><br><span class="line">2023-03-27T22:54:01.064+09:00 DEBUG 16737 --- [  restartedMain] o.m.jdbc.client.impl.StandardClient      : execute query: select @@lower_case_table_names </span><br><span class="line">2023-03-27T22:54:01.108+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: select @@lower_case_table_names </span><br><span class="line">2023-03-27T22:54:01.109+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT TABLE_SCHEMA TABLE_CAT, NULL  TABLE_SCHEM,  TABLE_NAME, IF(TABLE_TYPE=&#x27;BASE TABLE&#x27; or TABLE_TYPE=&#x27;SYSTEM VERSIONED&#x27;, &#x27;TABLE&#x27;, TABLE_TYPE) as TABLE_TYPE, TABLE_COMMENT REMARKS, NULL TYPE_CAT, NULL TYPE_SCHEM, NULL TYPE_NAME, NULL SELF_REFERENCING_COL_NAME,  NULL REF_GENERATION FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=&#x27;jhipster&#x27; AND TABLE_NAME=&#x27;DATABASECHANGELOG&#x27; AND  TABLE_TYPE IN (&#x27;BASE TABLE&#x27;,&#x27;SYSTEM VERSIONED&#x27;) ORDER BY TABLE_TYPE, TABLE_SCHEMA, TABLE_NAME </span><br><span class="line">2023-03-27T22:54:01.111+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: CREATE TABLE jhipster.DATABASECHANGELOG (ID VARCHAR(255) NOT NULL, AUTHOR VARCHAR(255) NOT NULL, FILENAME VARCHAR(255) NOT NULL, DATEEXECUTED datetime NOT NULL, ORDEREXECUTED INT NOT NULL, EXECTYPE VARCHAR(10) NOT NULL, MD5SUM VARCHAR(35) NULL, `DESCRIPTION` VARCHAR(255) NULL, COMMENTS VARCHAR(255) NULL, TAG VARCHAR(255) NULL, LIQUIBASE VARCHAR(20) NULL, CONTEXTS VARCHAR(255) NULL, LABELS VARCHAR(255) NULL, DEPLOYMENT_ID VARCHAR(10) NULL) </span><br><span class="line">2023-03-27T22:54:01.151+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOG </span><br><span class="line">2023-03-27T22:54:01.152+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT * FROM jhipster.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC </span><br><span class="line">2023-03-27T22:54:01.153+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: COMMIT </span><br><span class="line">2023-03-27T22:54:01.153+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.153+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.154+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.154+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.155+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.155+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.155+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.155+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.156+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.156+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.156+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.157+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.157+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.157+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.158+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.158+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.158+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.159+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.159+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.159+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT COUNT(*) FROM jhipster.DATABASECHANGELOGLOCK </span><br><span class="line">2023-03-27T22:54:01.161+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: ROLLBACK </span><br><span class="line">2023-03-27T22:54:01.163+09:00 DEBUG 16737 --- [  restartedMain] o.m.jdbc.client.impl.StandardClient      : execute query: PREPARE select table_name from information_schema.tables where table_schema = database() and table_type = &#x27;SEQUENCE&#x27; </span><br><span class="line">2023-03-27T22:54:01.164+09:00 DEBUG 16737 --- [  restartedMain] o.m.jdbc.client.impl.StandardClient      : execute query: EXECUTE select table_name from information_schema.tables where table_schema = database() and table_type = &#x27;SEQUENCE&#x27; </span><br><span class="line">2023-03-27T22:54:01.236+09:00  WARN 16737 --- [jhipster-task-1] liquibase.changelog                      : Due to mariadb SQL limitations, setNullable will lose primary key/autoincrement/not null/comment settings explicitly redefined in the change. Use &lt;sql&gt; or &lt;modifySql&gt; to re-specify all configuration if this is the case </span><br><span class="line">Running Changeset: config/liquibase/changelog/00000000000000_initial_schema.xml::00000000000000::jhipster</span><br><span class="line">2023-03-27T22:54:01.246+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: CREATE SEQUENCE jhipster.sequence_generator INCREMENT BY 50 START WITH 1050 </span><br><span class="line">2023-03-27T22:54:01.277+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT MAX(ORDEREXECUTED) FROM jhipster.DATABASECHANGELOG </span><br><span class="line">2023-03-27T22:54:01.278+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: INSERT INTO jhipster.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, `DESCRIPTION`, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES (&#x27;00000000000000&#x27;, &#x27;jhipster&#x27;, &#x27;config/liquibase/changelog/00000000000000_initial_schema.xml&#x27;, NOW(), 1, &#x27;8:b8c27d9dc8db18b5de87cdb8c38a416b&#x27;, &#x27;createSequence sequenceName=sequence_generator&#x27;, &#x27;&#x27;, &#x27;EXECUTED&#x27;, NULL, NULL, &#x27;4.15.0&#x27;, &#x27;9925241159&#x27;) </span><br><span class="line">2023-03-27T22:54:01.279+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: COMMIT </span><br><span class="line">Running Changeset: config/liquibase/changelog/00000000000000_initial_schema.xml::00000000000001::jhipster</span><br><span class="line">2023-03-27T22:54:01.282+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: CREATE TABLE jhipster.jhi_user (id BIGINT NOT NULL, login VARCHAR(50) NOT NULL, password_hash VARCHAR(60) NULL, first_name VARCHAR(50) NULL, last_name VARCHAR(50) NULL, email VARCHAR(191) NULL, image_url VARCHAR(256) NULL, activated BIT(1) NOT NULL, lang_key VARCHAR(10) NULL, activation_key VARCHAR(20) NULL, reset_key VARCHAR(20) NULL, created_by VARCHAR(50) NOT NULL, created_date timestamp NULL, reset_date timestamp NULL, last_modified_by VARCHAR(50) NULL, last_modified_date timestamp NULL, CONSTRAINT PK_JHI_USER PRIMARY KEY (id), CONSTRAINT ux_user_login UNIQUE (login), CONSTRAINT ux_user_email UNIQUE (email)) </span><br><span class="line">2023-03-27T22:54:01.308+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: CREATE TABLE jhipster.jhi_authority (name VARCHAR(50) NOT NULL, CONSTRAINT PK_JHI_AUTHORITY PRIMARY KEY (name)) </span><br><span class="line">2023-03-27T22:54:01.335+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: CREATE TABLE jhipster.jhi_user_authority (user_id BIGINT NOT NULL, authority_name VARCHAR(50) NOT NULL) </span><br><span class="line">2023-03-27T22:54:01.362+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: ALTER TABLE jhipster.jhi_user_authority ADD PRIMARY KEY (user_id, authority_name) </span><br><span class="line">2023-03-27T22:54:01.429+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: ALTER TABLE jhipster.jhi_user_authority ADD CONSTRAINT fk_authority_name FOREIGN KEY (authority_name) REFERENCES jhipster.jhi_authority (name) </span><br><span class="line">2023-03-27T22:54:01.491+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: ALTER TABLE jhipster.jhi_user_authority ADD CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES jhipster.jhi_user (id) </span><br><span class="line">2023-03-27T22:54:01.545+09:00 DEBUG 16737 --- [  restartedMain] i.g.g.api.security.jwt.TokenProvider     : Using a Base64-encoded JWT secret key </span><br><span class="line">2023-03-27T22:54:01.546+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: ALTER TABLE jhipster.jhi_user MODIFY password_hash VARCHAR(60) NOT NULL </span><br><span class="line">2023-03-27T22:54:01.614+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT TABLE_SCHEMA TABLE_CAT, NULL  TABLE_SCHEM,  TABLE_NAME, IF(TABLE_TYPE=&#x27;BASE TABLE&#x27; or TABLE_TYPE=&#x27;SYSTEM VERSIONED&#x27;, &#x27;TABLE&#x27;, TABLE_TYPE) as TABLE_TYPE, TABLE_COMMENT REMARKS, NULL TYPE_CAT, NULL TYPE_SCHEM, NULL TYPE_NAME, NULL SELF_REFERENCING_COL_NAME,  NULL REF_GENERATION FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=&#x27;jhipster&#x27; AND TABLE_NAME LIKE &#x27;jhi\\_user&#x27; AND  TABLE_TYPE IN (&#x27;BASE TABLE&#x27;,&#x27;SYSTEM VERSIONED&#x27;) ORDER BY TABLE_TYPE, TABLE_SCHEMA, TABLE_NAME </span><br><span class="line">2023-03-27T22:54:01.616+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT TABLE_SCHEMA TABLE_CAT, NULL TABLE_SCHEM, TABLE_NAME, COLUMN_NAME, CASE data_type WHEN &#x27;bit&#x27; THEN -7 WHEN &#x27;tinyblob&#x27; THEN -3 WHEN &#x27;mediumblob&#x27; THEN -4 WHEN &#x27;longblob&#x27; THEN -4 WHEN &#x27;blob&#x27; THEN -4 WHEN &#x27;tinytext&#x27; THEN 12 WHEN &#x27;mediumtext&#x27; THEN -1 WHEN &#x27;longtext&#x27; THEN -1 WHEN &#x27;text&#x27; THEN -1 WHEN &#x27;date&#x27; THEN 91 WHEN &#x27;datetime&#x27; THEN 93 WHEN &#x27;decimal&#x27; THEN 3 WHEN &#x27;double&#x27; THEN 8 WHEN &#x27;enum&#x27; THEN 12 WHEN &#x27;float&#x27; THEN 7 WHEN &#x27;int&#x27; THEN IF( COLUMN_TYPE like &#x27;%unsigned%&#x27;, 4,4) WHEN &#x27;bigint&#x27; THEN -5 WHEN &#x27;mediumint&#x27; THEN 4 WHEN &#x27;null&#x27; THEN 0 WHEN &#x27;set&#x27; THEN 12 WHEN &#x27;smallint&#x27; THEN IF( COLUMN_TYPE like &#x27;%unsigned%&#x27;, 5,5) WHEN &#x27;varchar&#x27; THEN 12 WHEN &#x27;varbinary&#x27; THEN -3 WHEN &#x27;char&#x27; THEN 1 WHEN &#x27;binary&#x27; THEN -2 WHEN &#x27;time&#x27; THEN 92 WHEN &#x27;timestamp&#x27; THEN 93 WHEN &#x27;tinyint&#x27; THEN IF(COLUMN_TYPE like &#x27;tinyint(1)%&#x27;,-7,-6)  WHEN &#x27;year&#x27; THEN 91 ELSE 1111 END  DATA_TYPE, IF(COLUMN_TYPE like &#x27;tinyint(1)%&#x27;, &#x27;BIT&#x27;,  UCASE(IF( COLUMN_TYPE LIKE &#x27;%(%)%&#x27;, CONCAT(SUBSTRING( COLUMN_TYPE,1, LOCATE(&#x27;(&#x27;,COLUMN_TYPE) - 1 ), SUBSTRING(COLUMN_TYPE ,1+locate(&#x27;)&#x27;, COLUMN_TYPE))), COLUMN_TYPE))) TYPE_NAME,  CASE DATA_TYPE  WHEN &#x27;time&#x27; THEN IF(DATETIME_PRECISION = 0, 10, CAST(11 + DATETIME_PRECISION as signed integer))  WHEN &#x27;date&#x27; THEN 10  WHEN &#x27;datetime&#x27; THEN IF(DATETIME_PRECISION = 0, 19, CAST(20 + DATETIME_PRECISION as signed integer))  WHEN &#x27;timestamp&#x27; THEN IF(DATETIME_PRECISION = 0, 19, CAST(20 + DATETIME_PRECISION as signed integer))  ELSE   IF(NUMERIC_PRECISION IS NULL, LEAST(CHARACTER_MAXIMUM_LENGTH,2147483647), NUMERIC_PRECISION)  END COLUMN_SIZE, 65535 BUFFER_LENGTH,  CONVERT (CASE DATA_TYPE WHEN &#x27;year&#x27; THEN NUMERIC_SCALE WHEN &#x27;tinyint&#x27; THEN 0 ELSE NUMERIC_SCALE END, UNSIGNED INTEGER) DECIMAL_DIGITS, 10 NUM_PREC_RADIX, IF(IS_NULLABLE = &#x27;yes&#x27;,1,0) NULLABLE,COLUMN_COMMENT REMARKS, COLUMN_DEFAULT COLUMN_DEF, 0 SQL_DATA_TYPE, 0 SQL_DATETIME_SUB,   LEAST(CHARACTER_OCTET_LENGTH,2147483647) CHAR_OCTET_LENGTH, ORDINAL_POSITION, IS_NULLABLE, NULL SCOPE_CATALOG, NULL SCOPE_SCHEMA, NULL SCOPE_TABLE, NULL SOURCE_DATA_TYPE, IF(EXTRA = &#x27;auto_increment&#x27;,&#x27;YES&#x27;,&#x27;NO&#x27;) IS_AUTOINCREMENT,  IF(EXTRA in (&#x27;VIRTUAL&#x27;, &#x27;PERSISTENT&#x27;, &#x27;VIRTUAL GENERATED&#x27;, &#x27;STORED GENERATED&#x27;) ,&#x27;YES&#x27;,&#x27;NO&#x27;) IS_GENERATEDCOLUMN  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=&#x27;jhipster&#x27; ORDER BY TABLE_CAT, TABLE_SCHEM, TABLE_NAME, ORDINAL_POSITION </span><br><span class="line">2023-03-27T22:54:01.620+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = &#x27;jhipster&#x27; </span><br><span class="line">2023-03-27T22:54:01.636+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: PREPARE INSERT INTO jhipster.jhi_user(id, login, password_hash, first_name, last_name, email, image_url, activated, lang_key, created_by, last_modified_by) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) </span><br><span class="line">2023-03-27T22:54:01.636+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: EXECUTE INSERT INTO jhipster.jhi_user(id, login, password_hash, first_name, last_name, email, image_url, activated, lang_key, created_by, last_modified_by) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) </span><br><span class="line">2023-03-27T22:54:01.637+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: EXECUTE INSERT INTO jhipster.jhi_user(id, login, password_hash, first_name, last_name, email, image_url, activated, lang_key, created_by, last_modified_by) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) </span><br><span class="line">2023-03-27T22:54:01.637+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: ALTER TABLE jhipster.jhi_user ALTER created_date DROP DEFAULT </span><br><span class="line">2023-03-27T22:54:01.694+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: PREPARE INSERT INTO jhipster.jhi_authority(name) VALUES(?) </span><br><span class="line">2023-03-27T22:54:01.694+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: EXECUTE INSERT INTO jhipster.jhi_authority(name) VALUES(?) </span><br><span class="line">2023-03-27T22:54:01.695+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: EXECUTE INSERT INTO jhipster.jhi_authority(name) VALUES(?) </span><br><span class="line">2023-03-27T22:54:01.695+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT TABLE_SCHEMA TABLE_CAT, NULL  TABLE_SCHEM,  TABLE_NAME, IF(TABLE_TYPE=&#x27;BASE TABLE&#x27; or TABLE_TYPE=&#x27;SYSTEM VERSIONED&#x27;, &#x27;TABLE&#x27;, TABLE_TYPE) as TABLE_TYPE, TABLE_COMMENT REMARKS, NULL TYPE_CAT, NULL TYPE_SCHEM, NULL TYPE_NAME, NULL SELF_REFERENCING_COL_NAME,  NULL REF_GENERATION FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA=&#x27;jhipster&#x27; AND TABLE_NAME LIKE &#x27;jhi\\_user\\_authority&#x27; AND  TABLE_TYPE IN (&#x27;BASE TABLE&#x27;,&#x27;SYSTEM VERSIONED&#x27;) ORDER BY TABLE_TYPE, TABLE_SCHEMA, TABLE_NAME </span><br><span class="line">2023-03-27T22:54:01.696+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT TABLE_SCHEMA TABLE_CAT, NULL TABLE_SCHEM, TABLE_NAME, COLUMN_NAME, CASE data_type WHEN &#x27;bit&#x27; THEN -7 WHEN &#x27;tinyblob&#x27; THEN -3 WHEN &#x27;mediumblob&#x27; THEN -4 WHEN &#x27;longblob&#x27; THEN -4 WHEN &#x27;blob&#x27; THEN -4 WHEN &#x27;tinytext&#x27; THEN 12 WHEN &#x27;mediumtext&#x27; THEN -1 WHEN &#x27;longtext&#x27; THEN -1 WHEN &#x27;text&#x27; THEN -1 WHEN &#x27;date&#x27; THEN 91 WHEN &#x27;datetime&#x27; THEN 93 WHEN &#x27;decimal&#x27; THEN 3 WHEN &#x27;double&#x27; THEN 8 WHEN &#x27;enum&#x27; THEN 12 WHEN &#x27;float&#x27; THEN 7 WHEN &#x27;int&#x27; THEN IF( COLUMN_TYPE like &#x27;%unsigned%&#x27;, 4,4) WHEN &#x27;bigint&#x27; THEN -5 WHEN &#x27;mediumint&#x27; THEN 4 WHEN &#x27;null&#x27; THEN 0 WHEN &#x27;set&#x27; THEN 12 WHEN &#x27;smallint&#x27; THEN IF( COLUMN_TYPE like &#x27;%unsigned%&#x27;, 5,5) WHEN &#x27;varchar&#x27; THEN 12 WHEN &#x27;varbinary&#x27; THEN -3 WHEN &#x27;char&#x27; THEN 1 WHEN &#x27;binary&#x27; THEN -2 WHEN &#x27;time&#x27; THEN 92 WHEN &#x27;timestamp&#x27; THEN 93 WHEN &#x27;tinyint&#x27; THEN IF(COLUMN_TYPE like &#x27;tinyint(1)%&#x27;,-7,-6)  WHEN &#x27;year&#x27; THEN 91 ELSE 1111 END  DATA_TYPE, IF(COLUMN_TYPE like &#x27;tinyint(1)%&#x27;, &#x27;BIT&#x27;,  UCASE(IF( COLUMN_TYPE LIKE &#x27;%(%)%&#x27;, CONCAT(SUBSTRING( COLUMN_TYPE,1, LOCATE(&#x27;(&#x27;,COLUMN_TYPE) - 1 ), SUBSTRING(COLUMN_TYPE ,1+locate(&#x27;)&#x27;, COLUMN_TYPE))), COLUMN_TYPE))) TYPE_NAME,  CASE DATA_TYPE  WHEN &#x27;time&#x27; THEN IF(DATETIME_PRECISION = 0, 10, CAST(11 + DATETIME_PRECISION as signed integer))  WHEN &#x27;date&#x27; THEN 10  WHEN &#x27;datetime&#x27; THEN IF(DATETIME_PRECISION = 0, 19, CAST(20 + DATETIME_PRECISION as signed integer))  WHEN &#x27;timestamp&#x27; THEN IF(DATETIME_PRECISION = 0, 19, CAST(20 + DATETIME_PRECISION as signed integer))  ELSE   IF(NUMERIC_PRECISION IS NULL, LEAST(CHARACTER_MAXIMUM_LENGTH,2147483647), NUMERIC_PRECISION)  END COLUMN_SIZE, 65535 BUFFER_LENGTH,  CONVERT (CASE DATA_TYPE WHEN &#x27;year&#x27; THEN NUMERIC_SCALE WHEN &#x27;tinyint&#x27; THEN 0 ELSE NUMERIC_SCALE END, UNSIGNED INTEGER) DECIMAL_DIGITS, 10 NUM_PREC_RADIX, IF(IS_NULLABLE = &#x27;yes&#x27;,1,0) NULLABLE,COLUMN_COMMENT REMARKS, COLUMN_DEFAULT COLUMN_DEF, 0 SQL_DATA_TYPE, 0 SQL_DATETIME_SUB,   LEAST(CHARACTER_OCTET_LENGTH,2147483647) CHAR_OCTET_LENGTH, ORDINAL_POSITION, IS_NULLABLE, NULL SCOPE_CATALOG, NULL SCOPE_SCHEMA, NULL SCOPE_TABLE, NULL SOURCE_DATA_TYPE, IF(EXTRA = &#x27;auto_increment&#x27;,&#x27;YES&#x27;,&#x27;NO&#x27;) IS_AUTOINCREMENT,  IF(EXTRA in (&#x27;VIRTUAL&#x27;, &#x27;PERSISTENT&#x27;, &#x27;VIRTUAL GENERATED&#x27;, &#x27;STORED GENERATED&#x27;) ,&#x27;YES&#x27;,&#x27;NO&#x27;) IS_GENERATEDCOLUMN  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=&#x27;jhipster&#x27; ORDER BY TABLE_CAT, TABLE_SCHEM, TABLE_NAME, ORDINAL_POSITION </span><br><span class="line">2023-03-27T22:54:01.698+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: SELECT TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = &#x27;jhipster&#x27; </span><br><span class="line">2023-03-27T22:54:01.701+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: PREPARE INSERT INTO jhipster.jhi_user_authority(user_id, authority_name) VALUES(?, ?) </span><br><span class="line">2023-03-27T22:54:01.701+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: EXECUTE INSERT INTO jhipster.jhi_user_authority(user_id, authority_name) VALUES(?, ?) </span><br><span class="line">2023-03-27T22:54:01.702+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: EXECUTE INSERT INTO jhipster.jhi_user_authority(user_id, authority_name) VALUES(?, ?) </span><br><span class="line">2023-03-27T22:54:01.702+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: EXECUTE INSERT INTO jhipster.jhi_user_authority(user_id, authority_name) VALUES(?, ?) </span><br><span class="line">2023-03-27T22:54:01.702+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: COMMIT </span><br><span class="line">2023-03-27T22:54:01.703+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: INSERT INTO jhipster.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, `DESCRIPTION`, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES (&#x27;00000000000001&#x27;, &#x27;jhipster&#x27;, &#x27;config/liquibase/changelog/00000000000000_initial_schema.xml&#x27;, NOW(), 2, &#x27;8:bfcfe797a737c34ed3179d416d50be6f&#x27;, &#x27;createTable tableName=jhi_user; createTable tableName=jhi_authority; createTable tableName=jhi_user_authority; addPrimaryKey tableName=jhi_user_authority; addForeignKeyConstraint baseTableName=jhi_user_authority, constraintName=fk_authority_name, ...&#x27;, &#x27;&#x27;, &#x27;EXECUTED&#x27;, NULL, NULL, &#x27;4.15.0&#x27;, &#x27;9925241159&#x27;) </span><br><span class="line">2023-03-27T22:54:01.704+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: COMMIT </span><br><span class="line">2023-03-27T22:54:01.705+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: UPDATE jhipster.DATABASECHANGELOGLOCK SET `LOCKED` = 0, LOCKEDBY = NULL, LOCKGRANTED = NULL WHERE ID = 1 </span><br><span class="line">2023-03-27T22:54:01.705+09:00 DEBUG 16737 --- [jhipster-task-1] o.m.jdbc.client.impl.StandardClient      : execute query: COMMIT </span><br><span class="line">2023-03-27T22:54:01.706+09:00 DEBUG 16737 --- [jhipster-task-1] t.j.c.liquibase.AsyncSpringLiquibase     : Liquibase has updated your database in 896 ms </span><br><span class="line">2023-03-27T22:54:02.438+09:00 DEBUG 16737 --- [  restartedMain] c.a.JHipsterSpringDocGroupsConfiguration : Initializing JHipster OpenApi customizer </span><br><span class="line">2023-03-27T22:54:02.442+09:00 DEBUG 16737 --- [  restartedMain] c.a.JHipsterSpringDocGroupsConfiguration : Initializing JHipster OpenApi default group </span><br><span class="line">2023-03-27T22:54:02.445+09:00 DEBUG 16737 --- [  restartedMain] c.a.JHipsterSpringDocGroupsConfiguration : Initializing JHipster OpenApi management group </span><br><span class="line">2023-03-27T22:54:02.768+09:00  INFO 16737 --- [  restartedMain] org.jboss.threads                        : JBoss Threads version 3.1.0.Final </span><br><span class="line">2023-03-27T22:54:02.802+09:00  INFO 16737 --- [  restartedMain] io.github.goodsaem.api.JhipsterApp       : Started JhipsterApp in 3.901 seconds (JVM running for 4.157) </span><br><span class="line">2023-03-27T22:54:02.806+09:00  INFO 16737 --- [  restartedMain] io.github.goodsaem.api.JhipsterApp       : </span><br><span class="line">----------------------------------------------------------</span><br><span class="line">	Application &#x27;jhipster&#x27; is running! Access URLs:</span><br><span class="line">	Local: 		http://localhost:8080/</span><br><span class="line">	External: 	http://218.38.137.27:8080/</span><br><span class="line">	Profile(s): 	[dev, api-docs]</span><br><span class="line">---------------------------------------------------------- </span><br></pre></td></tr></table></figure>
+<h3 id="프론트-서버-실행"><a href="#프론트-서버-실행" class="headerlink" title="프론트 서버 실행"></a>프론트 서버 실행</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+<p>실행로그</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">jhipster@0.0.0 start</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">npm run webapp:dev --</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">jhipster@0.0.0 webapp:dev</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">npm run webpack-dev-server -- --mode development --<span class="built_in">env</span> stats=normal</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">jhipster@0.0.0 webpack-dev-server</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">webpack serve --config webpack/webpack.common.js <span class="string">&quot;--mode&quot;</span> <span class="string">&quot;development&quot;</span> <span class="string">&quot;--env&quot;</span> <span class="string">&quot;stats=normal&quot;</span></span></span><br><span class="line"></span><br><span class="line">&lt;i&gt; [webpack-dev-server] [HPM] Proxy created: /api,/services,/management,/v3/api-docs,/h2-console,/auth  -&gt; http://localhost:8080</span><br><span class="line">&lt;i&gt; [webpack-dev-server] Project is running at:</span><br><span class="line">&lt;i&gt; [webpack-dev-server] Loopback: http://localhost:9060/</span><br><span class="line">&lt;i&gt; [webpack-dev-server] On Your Network (IPv4): http://192.168.0.15:9060/</span><br><span class="line">&lt;i&gt; [webpack-dev-server] On Your Network (IPv6): http://[fe80::1]:9060/</span><br><span class="line">&lt;i&gt; [webpack-dev-server] Content not from webpack is served from &#x27;./target/classes/static/&#x27; directory</span><br><span class="line">&lt;i&gt; [webpack-dev-server] 404s will fallback to &#x27;/index.html&#x27;</span><br><span class="line">assets by path content/ 444 KiB 25 assets</span><br><span class="line">assets by info 4.48 MiB [immutable]</span><br><span class="line">  assets by path app/*.js 4.46 MiB 20 assets</span><br><span class="line">  assets by chunk 19.2 KiB (auxiliary name: app)</span><br><span class="line">    asset dd126cd23626f52c9123.svg 18.7 KiB [emitted] [immutable] [from: src/main/webapp/content/images/jhipster_family_member_3.svg] (auxiliary name: app)</span><br><span class="line">    asset cfd81fbabebba3d187b7.png 605 bytes [emitted] [immutable] [from: src/main/webapp/content/images/logo-jhipster.png] (auxiliary name: app)</span><br><span class="line">assets by path swagger-ui/ 3.08 MiB 16 assets</span><br><span class="line">assets by path ./i18n/*.json 23.2 KiB</span><br><span class="line">  asset ./i18n/ko.json 11.9 KiB [emitted]</span><br><span class="line">  asset ./i18n/en.json 11.4 KiB [emitted]</span><br><span class="line">asset index.html 5.78 KiB [emitted]</span><br><span class="line">asset favicon.ico 1.54 KiB [emitted] [from: src/main/webapp/favicon.ico] [copied]</span><br><span class="line">asset manifest.webapp 751 bytes [emitted] [from: src/main/webapp/manifest.webapp] [copied]</span><br><span class="line">asset robots.txt 216 bytes [emitted] [from: src/main/webapp/robots.txt] [copied]</span><br><span class="line">cached modules 4.23 MiB (javascript) 19.2 KiB (asset) [cached] 629 modules</span><br><span class="line">runtime modules 32.1 KiB 14 modules</span><br><span class="line">cacheable modules 166 KiB</span><br><span class="line">  modules by path ./node_modules/webpack-dev-server/client/ 55.8 KiB 12 modules</span><br><span class="line">  modules by path ./node_modules/webpack/ 18.8 KiB</span><br><span class="line">    ./node_modules/webpack/hot/dev-server.js 1.59 KiB [built] [code generated]</span><br><span class="line">    ./node_modules/webpack/hot/log.js 1.34 KiB [built] [code generated]</span><br><span class="line">    + 3 modules</span><br><span class="line">  modules by path ./node_modules/html-entities/lib/*.js 81.3 KiB</span><br><span class="line">    ./node_modules/html-entities/lib/index.js 7.74 KiB [built] [code generated]</span><br><span class="line">    ./node_modules/html-entities/lib/named-references.js 72.7 KiB [built] [code generated]</span><br><span class="line">    + 2 modules</span><br><span class="line">  ./node_modules/ansi-html-community/index.js 4.16 KiB [built] [code generated]</span><br><span class="line">  ./node_modules/ts-loader/index.js??clonedRuleSet-1.use[0]!./src/main/webapp/app/core/jhi-navbar/jhi-navbar.component.ts?vue&amp;type=script&amp;lang=ts&amp; 5.6 KiB [built] [code generated]</span><br><span class="line">webpack 5.74.0 compiled successfully in 1343 ms</span><br><span class="line">[Browsersync] Proxying: http://localhost:9060</span><br><span class="line">[Browsersync] Access URLs:</span><br><span class="line"> -------------------------------------</span><br><span class="line">       Local: http://localhost:9000</span><br><span class="line">    External: http://192.168.0.15:9000</span><br><span class="line"> -------------------------------------</span><br><span class="line">          UI: http://localhost:3001</span><br><span class="line"> UI External: http://localhost:3001</span><br><span class="line"> -------------------------------------</span><br></pre></td></tr></table></figure>
+<p>정상적으로 실행되면 웹브라우저가 열리면서 아래와 같은 화면을 볼수 있다.</p>
+<img src="/coding/jhipster/jhipster2/j2-2.png" class="">
+
+<h3 id="관리자페이지-확인하기"><a href="#관리자페이지-확인하기" class="headerlink" title="관리자페이지 확인하기"></a>관리자페이지 확인하기</h3><p>가장 우측의 계정의 인증 메뉴를 클릭해서 admin&#x2F;admin으로 로그인한다.</p>
+<p>메뉴좌측 부터 오른쪽으로 메뉴 하나씩 하나씩 캡처한 내용이다. </p>
+<h3 id="홈"><a href="#홈" class="headerlink" title="홈"></a>홈</h3><img src="/coding/jhipster/jhipster2/jhipster9.png" class="">
+<h3 id="Entities"><a href="#Entities" class="headerlink" title="Entities"></a>Entities</h3><p>아직은 비워있는데 모델을 추가하면 이곳에 엔티티가 추가된다.</p>
+<img src="/coding/jhipster/jhipster2/jhipster10.png" class="">
+<h3 id="관리자-사용자관리"><a href="#관리자-사용자관리" class="headerlink" title="관리자 &gt; 사용자관리"></a>관리자 &gt; 사용자관리</h3><img src="/coding/jhipster/jhipster2/jhipster11.png" class="">
+<h3 id="관리자-메트릭스"><a href="#관리자-메트릭스" class="headerlink" title="관리자 &gt; 메트릭스"></a>관리자 &gt; 메트릭스</h3><img src="/coding/jhipster/jhipster2/jhipster12.png" class="">
+<h3 id="관리자-상태확인"><a href="#관리자-상태확인" class="headerlink" title="관리자 &gt; 상태확인"></a>관리자 &gt; 상태확인</h3><img src="/coding/jhipster/jhipster2/jhipster13.png" class="">
+<h3 id="관리자-설정"><a href="#관리자-설정" class="headerlink" title="관리자 &gt; 설정"></a>관리자 &gt; 설정</h3><img src="/coding/jhipster/jhipster2/jhipster14.png" class="">
+<h3 id="관리자-로그"><a href="#관리자-로그" class="headerlink" title="관리자 &gt; 로그"></a>관리자 &gt; 로그</h3><img src="/coding/jhipster/jhipster2/jhipster15.png" class="">
+<h3 id="관리자-API"><a href="#관리자-API" class="headerlink" title="관리자 &gt; API"></a>관리자 &gt; API</h3><img src="/coding/jhipster/jhipster2/jhipster16.png" class="">
+<h3 id="언어-언어변경"><a href="#언어-언어변경" class="headerlink" title="언어 &gt; 언어변경"></a>언어 &gt; 언어변경</h3><img src="/coding/jhipster/jhipster2/jhipster17.png" class="">
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://goodsaem.github.io/coding/jhipster/jhipster2/" data-id="cmchdg1z80089f0vqgp0r9drm" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "good"
+        },
+        "headline": "2. JHipster 실행",
+        "image": "http://goodsaem.github.io/coding/jhipster/jhipster2/jhipster-002.png",
+        "keywords": "JHipster",
+        "genre": "Coding JHipster",
+        "datePublished": "2023-03-27",
+        "dateCreated": "2023-03-27",
+        "dateModified": "2025-06-29",
+        "url": "http://goodsaem.github.io/coding/jhipster/jhipster2/",
+        "description": "
+
+ 개요1번 설치가 성공적으로 끝났다면 JHipster 를 실행해보고 어떻게 동작하는지 확인 하면서 힙한 자바 개발자로 변신하자
+mariadb 데이터베이스 생성 및 계정생성아래 링크를 클릭하여 디비 생성 및 사용자 생성을 먼저 진행한다.jhipster db 생성 및 사용자 생성 
+db 연결정보 변경jhipster 프로젝트를 인텔리제이에서 오픈한후 아래 d",
+        "wordCount": 5274
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+     
+    
+        
+<nav id="article-nav">
+    
+        <a href="/coding/vuejs/vue501/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">신규</strong>
+        <p class="article-nav-title">
+        
+            vuejs 서비스 포트 변경
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/coding/jhipster/jhipster1/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">이전</strong>
+        <p class="article-nav-title">1. JHipster 설치</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B0%9C%EC%9A%94"><span class="toc-number">1.</span> <span class="toc-text"> 개요</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mariadb-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%83%9D%EC%84%B1-%EB%B0%8F-%EA%B3%84%EC%A0%95%EC%83%9D%EC%84%B1"><span class="toc-number">2.</span> <span class="toc-text">mariadb 데이터베이스 생성 및 계정생성</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#db-%EC%97%B0%EA%B2%B0%EC%A0%95%EB%B3%B4-%EB%B3%80%EA%B2%BD"><span class="toc-number">3.</span> <span class="toc-text">db 연결정보 변경</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EB%B0%B1%EC%97%94%EB%93%9C-%EC%84%9C%EB%B2%84-%EC%8B%A4%ED%96%89"><span class="toc-number">4.</span> <span class="toc-text">백엔드 서버 실행</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%94%84%EB%A1%A0%ED%8A%B8-%EC%84%9C%EB%B2%84-%EC%8B%A4%ED%96%89"><span class="toc-number">5.</span> <span class="toc-text">프론트 서버 실행</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B4%80%EB%A6%AC%EC%9E%90%ED%8E%98%EC%9D%B4%EC%A7%80-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0"><span class="toc-number">6.</span> <span class="toc-text">관리자페이지 확인하기</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%99%88"><span class="toc-number">7.</span> <span class="toc-text">홈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Entities"><span class="toc-number">8.</span> <span class="toc-text">Entities</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B4%80%EB%A6%AC%EC%9E%90-%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B4%80%EB%A6%AC"><span class="toc-number">9.</span> <span class="toc-text">관리자 &gt; 사용자관리</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B4%80%EB%A6%AC%EC%9E%90-%EB%A9%94%ED%8A%B8%EB%A6%AD%EC%8A%A4"><span class="toc-number">10.</span> <span class="toc-text">관리자 &gt; 메트릭스</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B4%80%EB%A6%AC%EC%9E%90-%EC%83%81%ED%83%9C%ED%99%95%EC%9D%B8"><span class="toc-number">11.</span> <span class="toc-text">관리자 &gt; 상태확인</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B4%80%EB%A6%AC%EC%9E%90-%EC%84%A4%EC%A0%95"><span class="toc-number">12.</span> <span class="toc-text">관리자 &gt; 설정</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B4%80%EB%A6%AC%EC%9E%90-%EB%A1%9C%EA%B7%B8"><span class="toc-number">13.</span> <span class="toc-text">관리자 &gt; 로그</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B4%80%EB%A6%AC%EC%9E%90-API"><span class="toc-number">14.</span> <span class="toc-text">관리자 &gt; API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EC%96%B8%EC%96%B4-%EC%96%B8%EC%96%B4%EB%B3%80%EA%B2%BD"><span class="toc-number">15.</span> <span class="toc-text">언어 &gt; 언어변경</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-fontawesome/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/vygt2h.jpg)" alt="hexo 에서 fontawesome 사용하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-fontawesome/" class="title">hexo 에서 fontawesome 사용하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T06:17:16.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/rklrz3.jpg)" alt="정적 웹사이트 생성기 hexo 로 블로그 만들기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo/" class="title">정적 웹사이트 생성기 hexo 로 블로그 만들기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:25:04.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo-include/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/y01pdv.jpg)" alt="Hexo 에 글 포함하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo-include/" class="title">Hexo 에 글 포함하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:24:56.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-intro/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/a339t1.jpg)" alt="소개" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-intro/" class="title">소개</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:23:23.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/setup/setup_github_ssh/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/pb9w1z.jpg)" alt="Github ssh 연결" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Setup/">Setup</a></p>
+                            <p class="item-title"><a href="/setup/setup_github_ssh/" class="title">Github ssh 연결</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T03:57:45.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/">Coding</a><span class="category-list-count">17</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/JHipster/">JHipster</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/mariadb/">mariadb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/springboot/">springboot</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/vue/">vue</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setup/">Setup</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><span class="category-list-count">44</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%B1/">앱</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">6월 2025</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">3월 2023</a><span class="archive-list-count">67</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JHipster/" rel="tag">JHipster</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MAC/" rel="tag">MAC</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MARIADB/" rel="tag">MARIADB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/" rel="tag">SPRINGBOOT</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/" rel="tag">VUE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/" rel="tag">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fontawesome/" rel="tag">fontawesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2db/" rel="tag">h2db</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openjdk/" rel="tag">openjdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window2022/" rel="tag">window2022</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows2022/" rel="tag">windows2022</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%BC%EC%83%81/" rel="tag">일상</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JHipster/" style="font-size: 12.5px;">JHipster</a> <a href="/tags/MAC/" style="font-size: 15px;">MAC</a> <a href="/tags/MARIADB/" style="font-size: 10px;">MARIADB</a> <a href="/tags/PHP/" style="font-size: 18.75px;">PHP</a> <a href="/tags/SPRINGBOOT/" style="font-size: 17.5px;">SPRINGBOOT</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/fontawesome/" style="font-size: 10px;">fontawesome</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 13.75px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/h2db/" style="font-size: 10px;">h2db</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/openjdk/" style="font-size: 10px;">openjdk</a> <a href="/tags/springboot/" style="font-size: 16.25px;">springboot</a> <a href="/tags/vue/" style="font-size: 11.25px;">vue</a> <a href="/tags/window2022/" style="font-size: 12.5px;">window2022</a> <a href="/tags/windows2022/" style="font-size: 10px;">windows2022</a> <a href="/tags/%EC%9D%BC%EC%83%81/" style="font-size: 11.25px;">일상</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+                <div class="widget-wrap widget-float">
+
+    <h3 class="widget-title">후원자</h3>
+    <div class="widget">
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+    </div>
+
+</div>
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                
+                <p>&copy; 2025 good</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1863930318161504"
+     crossorigin="anonymous"></script>
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/javascript" src="/drawio/viewer-static.min.js"></script>
+<style>
+.mxgraph-container { width: 100%; }
+.mxgraph {
+  width: 100% !important;
+  border:1px solid transparent;
+}
+.geDiagramContainer { width: 100% !important; }
+</style>
+</body>
+
+</html>

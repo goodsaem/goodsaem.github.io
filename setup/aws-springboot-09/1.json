@@ -1,0 +1,1 @@
+{"server":{"port":9090,"servlet":{"context-path":"/spring","session":{"timeout":60,"tomcat":{"uri-encoding":"UTF-8"}}}}}

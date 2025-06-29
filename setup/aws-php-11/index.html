@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/callout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/earlyaccess/iropkebatang.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'IropkeBatang', serif;
+        }
+    </style>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5VG62JT9');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+    
+
+    
+    <title>11/13 무료로 aws + php 서버 구축 | good</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="PHP,AWS" />
+    
+    <meta name="description" content="11. 무료 도메인 발급nginx 에 https 서비스를 구성하기 위해서는 도메인이 필요합니다. 도메인이 준비되면 certbot을 통해서 무료 ssl 인증서 적용 및 http&#x2F;2 적용이가능한데요 무료 도메인 가입부터 nginx 에 셋팅하는 부분까지 진행해 보겠습니다. 도메인 등록https:&#x2F;&#x2F;www.freenom.com&#x2F;en&#x2F;index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11&#x2F;13 무료로 aws + php 서버 구축">
+<meta property="og:url" content="http://goodsaem.github.io/setup/aws-php-11/index.html">
+<meta property="og:site_name" content="good">
+<meta property="og:description" content="11. 무료 도메인 발급nginx 에 https 서비스를 구성하기 위해서는 도메인이 필요합니다. 도메인이 준비되면 certbot을 통해서 무료 ssl 인증서 적용 및 http&#x2F;2 적용이가능한데요 무료 도메인 가입부터 nginx 에 셋팅하는 부분까지 진행해 보겠습니다. 도메인 등록https:&#x2F;&#x2F;www.freenom.com&#x2F;en&#x2F;index.html">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="http://goodsaem.github.io/img/aws_php-011.png">
+<meta property="article:published_time" content="2023-03-25T07:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-29T07:42:00.978Z">
+<meta property="article:author" content="good">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="AWS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://goodsaem.github.io/img/aws_php-011.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/">Coding</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/JHipster/">JHipster</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/mariadb/">mariadb</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/springboot/">springboot</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/vue/">vue</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setup/">Setup</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%B1/">앱</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="찾고자 하는 포스트를 검색하세요." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: '페이지',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-setup/aws-php-11" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        11/13 무료로 aws + php 서버 구축
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/setup/aws-php-11/" class="article-date">
+       <time datetime="2023-03-25T07:00:00.000Z" itemprop="datePublished">2023-03-25</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/setup/aws-php-11/" class="article-date">
+     <time datetime="2025-06-29T07:42:00.978Z" itemprop="dateModified">2025-06-29</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/AWS/" rel="tag">AWS</a>, <a class="tag-link-link" href="/tags/PHP/" rel="tag">PHP</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p><img src="/img/aws_php-011.png" alt="11/13 무료로 aws + php 서버 구축"></p>
+<h1 id="11-무료-도메인-발급"><a href="#11-무료-도메인-발급" class="headerlink" title=" 11. 무료 도메인 발급"></a><i class="fas fa-server"></i> 11. 무료 도메인 발급</h1><p>nginx 에 https 서비스를 구성하기 위해서는 도메인이 필요합니다. 도메인이 준비되면 certbot을 통해서 무료 ssl 인증서 적용 및 http&#x2F;2 적용이<br>가능한데요 무료 도메인 가입부터 nginx 에 셋팅하는 부분까지 진행해 보겠습니다.</p>
+<h3 id="도메인-등록"><a href="#도메인-등록" class="headerlink" title="도메인 등록"></a>도메인 등록</h3><p><a target="_blank" rel="noopener" href="https://www.freenom.com/en/index.html?lang=en">https://www.freenom.com/en/index.html?lang=en</a> freenom 이란<br>사이트에 회원가입을 한후 도메인 등록을 진행합니다.</p>
+<ol>
+<li><p>로그인 후 원하는 도메인을 입력하고 엔터키를 클릭한후 사용하고자 하는 도메인에서 Get it now! 버튼을 클릭하여 선택합니다.<br>그리고 나서 <strong>Checkout</strong> 버튼을 클릭합니다.</p>
+<ul>
+<li><img src="/img/35.jpg" alt="img"></li>
+</ul>
+</li>
+<li><p>Use DNS 버튼을 클릭하고 Use Freenom DNS Service를 선택한후 aws free tier의 퍼블릭 ipv4 주소를 입력하고 Continue 버튼을 클릭합니다.</p>
+<ul>
+<li><img src="/img/36.jpg" alt="img"></li>
+</ul>
+</li>
+<li><p>도메인 주문이 완료되었습니다.</p>
+<ul>
+<li><img src="/img/38.jpg" alt="img"></li>
+</ul>
+</li>
+<li><p>My Domain 에서 주문한 도메인 확인이 가능합니다.<br>::: tip goodsaem.ml<br>무료 도메인을 2개 신청했는데 2번째꺼는 어떤이유인지 mydomain에 추가 되지 않아 goodsaem.ml로 셋팅 진행하겠습니다.<br>:::</p>
+<ul>
+<li><img src="/img/39.jpg" alt="img"></li>
+</ul>
+</li>
+</ol>
+<h3 id="Diffie-Hellman-키생성"><a href="#Diffie-Hellman-키생성" class="headerlink" title="Diffie-Hellman 키생성"></a>Diffie-Hellman 키생성</h3><p>디피와 헬만이 1976년도에 발표한 비밀키 교환 방식의 알고리즘 입니다. 이를 이용하여 4096 bit의 키를 생성하겠습니다.<br>아래 명령어로 키를 생성하는데 대략 10분정도 소요 되었습니다. 이키를 이용해서 https에서 비밀키를 교환하여 안정한<br>https 통신을 할수 있으므로 반드시 진행해야 되는 사항입니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~$ sudo openssl dhparam -out /etc/nginx/conf.d/ssl-dhparams.pem 4096</span><br></pre></td></tr></table></figure>
+
+<h3 id="Let’s-Encrypt-Certbot-으로-인증서-발급"><a href="#Let’s-Encrypt-Certbot-으로-인증서-발급" class="headerlink" title="Let’s Encrypt &amp;&amp; Certbot 으로 인증서 발급"></a>Let’s Encrypt &amp;&amp; Certbot 으로 인증서 발급</h3><p>Let’s Encrypt 는 사용자에게 무료로 SSL&#x2F;TLS 인증서를 발급해 주는 기관 입니다. 한번 발급 받으면 90일간 사용이 가능하며<br>만료 30일전에 메일로 내용을 통보하면 그때 다시 갱신이 가능합니다. 인증서 발급은 certbot certbot-auto 를 이용하여<br>발급 및 갱신합니다.</p>
+<p>certbot 등록을 위해 repository 등록을 진행합니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~$ sudo apt-get update</span><br><span class="line">ubuntu@goodsaem:~$ sudo apt-get install software-properties-common</span><br><span class="line">ubuntu@goodsaem:~$ sudo add-apt-repository universe</span><br><span class="line">ubuntu@goodsaem:~$ sudo add-apt-repository ppa:certbot/certbot</span><br><span class="line">ubuntu@goodsaem:~$ sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>certbot을 설치합니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~$ sudo apt-get install certbot</span><br></pre></td></tr></table></figure>
+
+<p>certbot nginx 플러그인을 설치 합니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~$ sudo apt-get install python-certbot-nginx</span><br></pre></td></tr></table></figure>
+
+<p>nginx에 서버 이름을 변경하기 위해 아래와 같이 입력합니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~$ sudo vi /etc/nginx/conf.d/default.conf</span><br></pre></td></tr></table></figure>
+<p>서버 네임을 freenom에서 발급받은 도메인으로 지정해 줍니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server_name  goodsaem.ml;</span><br></pre></td></tr></table></figure>
+
+<p>이제 아래 certbot 명령어를 통해서 ssl 인증서를 발급받습니다. 인증서 발급시<br>사용할 admin email 주소와 이용약관 동의 옵션을 지정하여 인증서 발급을 받겠습니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~$ sudo certbot --nginx --email goodsaem@protonmail.com --agree-tos</span><br></pre></td></tr></table></figure>
+
+<p>위에 명령어를 입력하면 아래와 같은 형태로 진행되는데요 중요한 부분만 설명하겠습니다.</p>
+<ul>
+<li><em><strong>7</strong></em> 라인에 추가할 https 도메인이 보입니다.</li>
+<li><em><strong>10</strong></em> 라인에서 엔터를 입력합니다.</li>
+<li><em><strong>24</strong></em> 라인에서 e를 입력합니다.(제가 기존에 등록한 도메인이 있어 추가할거라고 물어보는데 추가한다고 하고 진행합니다.)</li>
+<li><em><strong>37,41</strong></em> 라인 보시면 http로 요청이 오면 https로 리다이렉트 할것인지 물어보는데 전 2번을 선택하여 리다이렉트를 진행합니다.<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">Saving debug log to /var/log/letsencrypt/letsencrypt.log</span><br><span class="line">Plugins selected: Authenticator nginx, Installer nginx</span><br><span class="line"></span><br><span class="line">Which names would you like to activate HTTPS for?</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">1: goodsaem.ml</span><br><span class="line">2: goodsaem.ml</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Select the appropriate numbers separated by commas and/or spaces, or leave input</span><br><span class="line">blank to select all options shown (Enter &#x27;c&#x27; to cancel): </span><br><span class="line"></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">You have an existing certificate that contains a portion of the domains you</span><br><span class="line">requested (ref: /etc/letsencrypt/renewal/goodsaem.ml.conf)</span><br><span class="line"></span><br><span class="line">It contains these names: goodsaem.ml</span><br><span class="line"></span><br><span class="line">You requested these names for the new certificate: goodsaem.ml,</span><br><span class="line">goodsaem.ml.</span><br><span class="line"></span><br><span class="line">Do you want to expand and replace this existing certificate with the new</span><br><span class="line">certificate?</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">(E)xpand/(C)ancel:e  </span><br><span class="line">Renewing an existing certificate</span><br><span class="line">Performing the following challenges:</span><br><span class="line">http-01 challenge for goodsaem.ml</span><br><span class="line">Using default address 80 for authentication.</span><br><span class="line">Waiting for verification...</span><br><span class="line">Cleaning up challenges</span><br><span class="line">Deploying Certificate to VirtualHost /etc/nginx/conf.d/default.conf</span><br><span class="line">Deploying Certificate to VirtualHost /etc/nginx/conf.d/default.conf</span><br><span class="line"></span><br><span class="line">Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">1: No redirect - Make no further changes to the webserver configuration.</span><br><span class="line">2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for</span><br><span class="line">new sites, or if you&#x27;re confident your site works on HTTPS. You can undo this</span><br><span class="line">change by editing your web server&#x27;s configuration.</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Select the appropriate number [1-2] then [enter] (press &#x27;c&#x27; to cancel): 2</span><br><span class="line">Redirecting all traffic on port 80 to ssl in /etc/nginx/conf.d/default.conf</span><br><span class="line">No matching insecure server blocks listening on port 80 found.</span><br><span class="line"></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Your existing certificate has been successfully renewed, and the new certificate</span><br><span class="line">has been installed.</span><br><span class="line"></span><br><span class="line">The new certificate covers the following domains: https://goodsaem.ml</span><br><span class="line">and https://goodsaem.ml</span><br><span class="line"></span><br><span class="line">You should test your configuration at:</span><br><span class="line">https://www.ssllabs.com/ssltest/analyze.html?d=goodsaem.ml</span><br><span class="line">https://www.ssllabs.com/ssltest/analyze.html?d=goodsaem.ml</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line"></span><br><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at:</span><br><span class="line">   /etc/letsencrypt/live/goodsaem.ml/fullchain.pem</span><br><span class="line">   Your key file has been saved at:</span><br><span class="line">   /etc/letsencrypt/live/goodsaem.ml/privkey.pem</span><br><span class="line">   Your cert will expire on 2021-06-03. To obtain a new or tweaked</span><br><span class="line">   version of this certificate in the future, simply run certbot again</span><br><span class="line">   with the &quot;certonly&quot; option. To non-interactively renew *all* of</span><br><span class="line">   your certificates, run &quot;certbot renew&quot;</span><br><span class="line"> - If you like Certbot, please consider supporting our work by:</span><br><span class="line"></span><br><span class="line">   Donating to ISRG / Let&#x27;s Encrypt:   https://letsencrypt.org/donate</span><br><span class="line">   Donating to EFF:                    https://eff.org/donate-le</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>제되로 인증서 발급이 되었는지 확인해 보겠습니다.<br>domain에 보시면 goodsaem.ml와 goodsaem.ml 도메인이 등록되어 있습니다. 또한 9,10 라인에<br>fullchain.pem 키와 privkey.pem 파일이 정상 생성되었음을 확인할수 있습니다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~$ sudo certbot certificates</span><br><span class="line">Saving debug log to /var/log/letsencrypt/letsencrypt.log</span><br><span class="line"></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Found the following certs:</span><br><span class="line">  Certificate Name: goodsaem.ml</span><br><span class="line">    Domains: goodsaem.ml goodsaem.ml</span><br><span class="line">    Expiry Date: 2021-06-03 13:54:40+00:00 (VALID: 89 days)</span><br><span class="line">    Certificate Path: /etc/letsencrypt/live/goodsaem.ml/fullchain.pem</span><br><span class="line">    Private Key Path: /etc/letsencrypt/live/goodsaem.ml/privkey.pem</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br></pre></td></tr></table></figure>
+
+<p>nginx에 ssl 관련 설정이 등록되었는지 default.conf 내용을 확인해 보겠습니다.<br>74번라인부터 114번 라인까지 ssl 관련 설정이 추가되었습니다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~$ cat /etc/nginx/conf.d/default.conf</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    server_name  goodsaem.ml;</span><br><span class="line"></span><br><span class="line">    charset utf-8;</span><br><span class="line">    access_log  /var/log/nginx/localhost.access.log  main;</span><br><span class="line">    error_log /var/log/nginx/localhost.error.log;</span><br><span class="line"></span><br><span class="line">    #root /usr/share/nginx/html;</span><br><span class="line">    root /home/ubuntu/phprest/public;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        #root   /usr/share/nginx/html;</span><br><span class="line">        #index  index index.php index.html index.htm;</span><br><span class="line">        try_files $uri $uri/ /index.php?$args;</span><br><span class="line">        #error_page 405 =200 $uri;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page 405 =200 $uri;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">    error_page 500 502 503 504 /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">    # redirect server error pages to the static page /50x.html</span><br><span class="line">    #</span><br><span class="line">    #error_page   500 502 503 504  /50x.html;</span><br><span class="line">    #location = /50x.html &#123;</span><br><span class="line">    #    root   /usr/share/nginx/html;</span><br><span class="line">    #&#125;</span><br><span class="line"></span><br><span class="line">    # proxy the PHP scripts to Apache listening on 127.0.0.1:80</span><br><span class="line">    #</span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        #fastcgi_pass unix:/run/php/php-fpm.sock;</span><br><span class="line">        proxy_pass   http://127.0.0.1;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line"></span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">        fastcgi_intercept_errors on;</span><br><span class="line">        fastcgi_read_timeout 300;</span><br><span class="line">        fastcgi_send_timeout 300;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line">    #</span><br><span class="line">    #location ~ \.php$ &#123;</span><br><span class="line">    #    root           html;</span><br><span class="line">    #    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">    #    fastcgi_index  index.php;</span><br><span class="line">    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span><br><span class="line">    #    include        fastcgi_params;</span><br><span class="line">    #&#125;</span><br><span class="line"></span><br><span class="line">    # deny access to .htaccess files, if Apache&#x27;s document root</span><br><span class="line">    # concurs with nginx&#x27;s one</span><br><span class="line">    #</span><br><span class="line">    location ~ /\.ht &#123;</span><br><span class="line">        deny  all;</span><br><span class="line">    &#125;</span><br><span class="line">    location = /xmlrpc.php &#123;</span><br><span class="line">        deny all;</span><br><span class="line">        error_page 403 = /403.html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    listen 443 ssl; # managed by Certbot</span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/goodsaem.ml/fullchain.pem; # managed by Certbot</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/goodsaem.ml/privkey.pem; # managed by Certbot</span><br><span class="line">    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot</span><br><span class="line">    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    if ($host = goodsaem.ml) &#123;</span><br><span class="line">        return 301 https://$host$request_uri;</span><br><span class="line">    &#125; # managed by Certbot</span><br><span class="line">    server_name  goodsaem.ml;</span><br><span class="line">    return 404; # managed by Certbot</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    listen 443 ssl; # managed by Certbot</span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/goodsaem.ml/fullchain.pem; # managed by Certbot</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/goodsaem.ml/privkey.pem; # managed by Certbot</span><br><span class="line">    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot</span><br><span class="line">    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    if ($host = goodsaem.ml) &#123;</span><br><span class="line">        return 301 https://$host$request_uri;</span><br><span class="line">    &#125; # managed by Certbot</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  goodsaem.ml;</span><br><span class="line">    return 404; # managed by Certbot</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>letsencrypt 에 있는 Diffie-Hellman Key 를 아래와 같은 이름으로 백업합니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~$ cd /etc/letsencrypt/</span><br><span class="line">ubuntu@goodsaem:~$  sudo mv ssl-dhparams.pem  ssl-dhparams.pem.backup</span><br></pre></td></tr></table></figure>
+<p>생성한 키 파일을 &#x2F;etc&#x2F;letsencrypt 로 복사합니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~$  sudo cp -rp /etc/nginx/conf.d/ssl-dhparams.pem /etc/letsencrypt/</span><br></pre></td></tr></table></figure>
+<p>nginx 를 재시작 합니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@goodsaem:~$ sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://goodsaem.github.io/setup/aws-php-11/" data-id="cmchdg1yb000uf0vq7ax28c9f" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "good"
+        },
+        "headline": "11/13 무료로 aws + php 서버 구축",
+        "image": "http://goodsaem.github.io/img/aws_php-011.png",
+        "keywords": "PHP AWS",
+        "genre": "설치 PHP",
+        "datePublished": "2023-03-25",
+        "dateCreated": "2023-03-25",
+        "dateModified": "2025-06-29",
+        "url": "http://goodsaem.github.io/setup/aws-php-11/",
+        "description": "
+ 11. 무료 도메인 발급nginx 에 https 서비스를 구성하기 위해서는 도메인이 필요합니다. 도메인이 준비되면 certbot을 통해서 무료 ssl 인증서 적용 및 http&#x2F;2 적용이가능한데요 무료 도메인 가입부터 nginx 에 셋팅하는 부분까지 진행해 보겠습니다.
+도메인 등록https://www.freenom.com/en/index.html",
+        "wordCount": 2329
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+     
+    
+        
+<nav id="article-nav">
+    
+        <a href="/setup/aws-php-12/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">신규</strong>
+        <p class="article-nav-title">
+        
+            12/13 무료로 aws + php 서버 구축
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/setup/aws-php-10/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">이전</strong>
+        <p class="article-nav-title">10/13 무료로 aws + php 서버 구축</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%EB%AC%B4%EB%A3%8C-%EB%8F%84%EB%A9%94%EC%9D%B8-%EB%B0%9C%EA%B8%89"><span class="toc-number">1.</span> <span class="toc-text"> 11. 무료 도메인 발급</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EB%8F%84%EB%A9%94%EC%9D%B8-%EB%93%B1%EB%A1%9D"><span class="toc-number">1.0.1.</span> <span class="toc-text">도메인 등록</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Diffie-Hellman-%ED%82%A4%EC%83%9D%EC%84%B1"><span class="toc-number">1.0.2.</span> <span class="toc-text">Diffie-Hellman 키생성</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Let%E2%80%99s-Encrypt-Certbot-%EC%9C%BC%EB%A1%9C-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%B0%9C%EA%B8%89"><span class="toc-number">1.0.3.</span> <span class="toc-text">Let’s Encrypt &amp;&amp; Certbot 으로 인증서 발급</span></a></li></ol></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-fontawesome/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/vygt2h.jpg)" alt="hexo 에서 fontawesome 사용하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-fontawesome/" class="title">hexo 에서 fontawesome 사용하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T06:17:16.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/rklrz3.jpg)" alt="정적 웹사이트 생성기 hexo 로 블로그 만들기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo/" class="title">정적 웹사이트 생성기 hexo 로 블로그 만들기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:25:04.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo-include/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/y01pdv.jpg)" alt="Hexo 에 글 포함하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo-include/" class="title">Hexo 에 글 포함하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:24:56.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-intro/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/a339t1.jpg)" alt="소개" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-intro/" class="title">소개</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:23:23.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/setup/setup_github_ssh/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/pb9w1z.jpg)" alt="Github ssh 연결" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Setup/">Setup</a></p>
+                            <p class="item-title"><a href="/setup/setup_github_ssh/" class="title">Github ssh 연결</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T03:57:45.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/">Coding</a><span class="category-list-count">17</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/JHipster/">JHipster</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/mariadb/">mariadb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/springboot/">springboot</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/vue/">vue</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setup/">Setup</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><span class="category-list-count">44</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%B1/">앱</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">6월 2025</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">3월 2023</a><span class="archive-list-count">67</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JHipster/" rel="tag">JHipster</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MAC/" rel="tag">MAC</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MARIADB/" rel="tag">MARIADB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/" rel="tag">SPRINGBOOT</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/" rel="tag">VUE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/" rel="tag">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fontawesome/" rel="tag">fontawesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2db/" rel="tag">h2db</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openjdk/" rel="tag">openjdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window2022/" rel="tag">window2022</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows2022/" rel="tag">windows2022</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%BC%EC%83%81/" rel="tag">일상</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JHipster/" style="font-size: 12.5px;">JHipster</a> <a href="/tags/MAC/" style="font-size: 15px;">MAC</a> <a href="/tags/MARIADB/" style="font-size: 10px;">MARIADB</a> <a href="/tags/PHP/" style="font-size: 18.75px;">PHP</a> <a href="/tags/SPRINGBOOT/" style="font-size: 17.5px;">SPRINGBOOT</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/fontawesome/" style="font-size: 10px;">fontawesome</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 13.75px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/h2db/" style="font-size: 10px;">h2db</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/openjdk/" style="font-size: 10px;">openjdk</a> <a href="/tags/springboot/" style="font-size: 16.25px;">springboot</a> <a href="/tags/vue/" style="font-size: 11.25px;">vue</a> <a href="/tags/window2022/" style="font-size: 12.5px;">window2022</a> <a href="/tags/windows2022/" style="font-size: 10px;">windows2022</a> <a href="/tags/%EC%9D%BC%EC%83%81/" style="font-size: 11.25px;">일상</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+                <div class="widget-wrap widget-float">
+
+    <h3 class="widget-title">후원자</h3>
+    <div class="widget">
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+    </div>
+
+</div>
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                
+                <p>&copy; 2025 good</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1863930318161504"
+     crossorigin="anonymous"></script>
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/javascript" src="/drawio/viewer-static.min.js"></script>
+<style>
+.mxgraph-container { width: 100%; }
+.mxgraph {
+  width: 100% !important;
+  border:1px solid transparent;
+}
+.geDiagramContainer { width: 100% !important; }
+</style>
+</body>
+
+</html>

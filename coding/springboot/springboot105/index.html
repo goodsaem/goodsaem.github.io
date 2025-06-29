@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/callout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/earlyaccess/iropkebatang.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'IropkeBatang', serif;
+        }
+    </style>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5VG62JT9');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+    
+
+    
+    <title>5. SpringBoot Backend 서버 구축 | good</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="springboot" />
+    
+    <meta name="description" content="5. Springboot Mariadb 설정h2 db 경우에는 간단한 application 만들때는 좋지만 규모가 있는 application 만들때는 문제가 있습니다. springboot + h2 db를 탑재한 상태에서dbeaver 를 통해 h2 db 에 접속하면 lock 상태로 접속할수 없다는 오류가 발생했습니다. 방법을 찾을수 있겠지만 과감히 버리">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5. SpringBoot Backend 서버 구축">
+<meta property="og:url" content="http://goodsaem.github.io/coding/springboot/springboot105/index.html">
+<meta property="og:site_name" content="good">
+<meta property="og:description" content="5. Springboot Mariadb 설정h2 db 경우에는 간단한 application 만들때는 좋지만 규모가 있는 application 만들때는 문제가 있습니다. springboot + h2 db를 탑재한 상태에서dbeaver 를 통해 h2 db 에 접속하면 lock 상태로 접속할수 없다는 오류가 발생했습니다. 방법을 찾을수 있겠지만 과감히 버리">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="http://goodsaem.github.io/coding/springboot/springboot105/springboot-005.png">
+<meta property="article:published_time" content="2023-03-25T16:15:03.000Z">
+<meta property="article:modified_time" content="2025-06-29T07:42:00.915Z">
+<meta property="article:author" content="good">
+<meta property="article:tag" content="springboot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://goodsaem.github.io/coding/springboot/springboot105/springboot-005.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/">Coding</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/JHipster/">JHipster</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/mariadb/">mariadb</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/springboot/">springboot</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/vue/">vue</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setup/">Setup</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%B1/">앱</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="찾고자 하는 포스트를 검색하세요." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: '페이지',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Coding/springboot/">springboot</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-coding/springboot/springboot105" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        5. SpringBoot Backend 서버 구축
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/coding/springboot/springboot105/" class="article-date">
+       <time datetime="2023-03-25T16:15:03.000Z" itemprop="datePublished">2023-03-26</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/coding/springboot/springboot105/" class="article-date">
+     <time datetime="2025-06-29T07:42:00.915Z" itemprop="dateModified">2025-06-29</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/springboot/" rel="tag">springboot</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/coding/springboot/springboot105/springboot-005.png" class="">
+
+<h1 id="5-Springboot-Mariadb-설정"><a href="#5-Springboot-Mariadb-설정" class="headerlink" title=" 5. Springboot Mariadb 설정"></a><i class="fa fa-database"></i> 5. Springboot Mariadb 설정</h1><p>h2 db 경우에는 간단한 application 만들때는 좋지만 규모가 있는 application 만들때는 문제가 있습니다. springboot + h2 db를 탑재한 상태에서<br>dbeaver 를 통해 h2 db 에 접속하면 lock 상태로 접속할수 없다는 오류가 발생했습니다. 방법을 찾을수 있겠지만 과감히 버리고 mariadb 로 변경했습니다.<br>우선 mac 에 maria db 설치하는 방법은 <a href="/setup/mariadb/z101-install_mac_mariadb.html">&#x2F;setup&#x2F;mariadb&#x2F;z101-install_mac_mariadb.html</a><br>링크에 정리 했습니다.</p>
+<h2 id="1-directory-구조"><a href="#1-directory-구조" class="headerlink" title="1. directory 구조"></a>1. directory 구조</h2><p>디렉토리 구조는 아래와 같습니다. builde.gradle 은 수정 되고 7개 파일은 추가할 예정 입니다. 디렉토리가 없으면 생성하고<br>내용이 없는 클래스 파일을 우선 작성해 주세요</p>
+<figure class="highlight shell"><figcaption><span>line 1,7,11,15,18,19,21,27</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">build.gradle</span><br><span class="line">src</span><br><span class="line">└── main</span><br><span class="line">    ├── java</span><br><span class="line">    │   └── io.github.goodsaem.api</span><br><span class="line">    │           ├── config</span><br><span class="line">    │           |    └── WebConfig.java        </span><br><span class="line">    │           ├── ApiApplication.java</span><br><span class="line">    │           ├── controller</span><br><span class="line">    │           │    │   └── v1</span><br><span class="line">    │           │    │        ├── HCodeController.java    </span><br><span class="line">    │           │    │        └── MemoController.java    </span><br><span class="line">    │           │    └── MyController.java</span><br><span class="line">    │           ├── entity</span><br><span class="line">    │           │    ├── HCode.java    </span><br><span class="line">    │           │    └── Memo.java</span><br><span class="line">    │           ├── service</span><br><span class="line">    │           │    ├── HCodeService.java    </span><br><span class="line">    │           │    └── IHCodeService.java    </span><br><span class="line">    │           └── repo</span><br><span class="line">    │                ├── HCodeRepo.java</span><br><span class="line">    │                └── MemoJpaRepo.java</span><br><span class="line">    └── resources</span><br><span class="line">        ├── application.yml</span><br><span class="line">        ├── banner.txt</span><br><span class="line">        └── templates            </span><br><span class="line">            ├── hcode.ftlh</span><br><span class="line">            └── goodsaem.ftlh</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-build-gradle"><a href="#2-build-gradle" class="headerlink" title="2. build.gradle"></a>2. build.gradle</h2><ul>
+<li>이글을 쓰는 시점에 spring boot 2.4.3 안정화 버전이 나와서 버전을 올렸습니다.</li>
+<li>이정도 개발했으면 1.1 버전은 된다고 생각하여  버전을 1.1로 올렸습니다.</li>
+<li>spring 설정을 위해 implementation ‘org.springframework.boot:spring-boot-autoconfigure’ 를 추가했습니다.</li>
+<li>mariadb 연결을 위해 드라이버를 추가했습니다. implementation(“org.mariadb.jdbc:mariadb-java-client”)</li>
+<li>그리고 사용하지 않는 라이브러리는 삭제했습니다.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">	ext &#123;</span><br><span class="line">		springBootVersion = &#x27;2.4.3&#x27;</span><br><span class="line">	&#125;</span><br><span class="line">	repositories &#123;</span><br><span class="line">		mavenCentral()</span><br><span class="line">	&#125;</span><br><span class="line">	dependencies &#123;</span><br><span class="line">		classpath(</span><br><span class="line">				&quot;org.springframework.boot:spring-boot-gradle-plugin:$&#123;springBootVersion&#125;&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">apply plugin: &#x27;org.springframework.boot&#x27;</span><br><span class="line">apply plugin: &#x27;war&#x27;</span><br><span class="line">apply plugin: &#x27;io.spring.dependency-management&#x27;</span><br><span class="line">sourceCompatibility = &#x27;1.8&#x27;</span><br><span class="line">targetCompatibility = &#x27;1.8&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">group = &#x27;io.github.goodsaem&#x27;</span><br><span class="line">version = &#x27;1.1&#x27;</span><br><span class="line"></span><br><span class="line">configurations &#123;</span><br><span class="line">	compileOnly &#123;</span><br><span class="line">		extendsFrom annotationProcessor</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">	mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">	implementation &#x27;org.springframework.boot:spring-boot-starter-data-jpa&#x27;</span><br><span class="line">	implementation &#x27;org.springframework.boot:spring-boot-starter-freemarker&#x27;</span><br><span class="line">	implementation &#x27;org.springframework.boot:spring-boot-starter-web&#x27;</span><br><span class="line">	implementation &#x27;org.springframework.boot:spring-boot-autoconfigure&#x27;</span><br><span class="line">	implementation(&quot;org.mariadb.jdbc:mariadb-java-client&quot;)</span><br><span class="line"></span><br><span class="line">	compileOnly &#x27;org.projectlombok:lombok&#x27;</span><br><span class="line">	annotationProcessor &#x27;org.projectlombok:lombok&#x27;</span><br><span class="line">	testImplementation &#x27;org.springframework.boot:spring-boot-starter-test&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test &#123;</span><br><span class="line">	useJUnitPlatform()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-WebConfig-java"><a href="#3-WebConfig-java" class="headerlink" title="3. WebConfig.java"></a>3. WebConfig.java</h2><ul>
+<li>인증된 서버(<a href="https://goodsaem.github.io/">https://goodsaem.github.io</a>) 에서만 데이터 요청이 가능하도록 cors 설정을 아래와 같이 진행합니다.</li>
+<li>허용할 메소드들에 대해서도 정의 합니다.(“GET”, “POST”, “PUT”, “PATCH”, “DELETE”,”OPTIONS”)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.CorsRegistry;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addCorsMappings</span><span class="params">(CorsRegistry registry)</span> &#123;</span><br><span class="line">        registry.addMapping(<span class="string">&quot;/**&quot;</span>)</span><br><span class="line">                .allowedOrigins(<span class="string">&quot;https://goodsaem.github.io&quot;</span>)</span><br><span class="line">                .allowedMethods(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span>, <span class="string">&quot;PUT&quot;</span>, <span class="string">&quot;PATCH&quot;</span>, <span class="string">&quot;DELETE&quot;</span>,<span class="string">&quot;OPTIONS&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="4-HCode-java"><a href="#4-HCode-java" class="headerlink" title="4. HCode.java"></a>4. HCode.java</h2><p>행정코드 Entity를 생성합니다. spring boot + mariadb 행 + mavaen 으로 연동하는 부분에도 같은 내용이 있으니 참고하세요<br><a href="spring/springboot/z102-springboot-with-mariadb.html">spring&#x2F;springboot&#x2F;z102-springboot-with-mariadb.html</a></p>
+<p>@Getter @Setter @ToString @EqualsAndHashCode 이부분은 이름에서 알수 있듯이 lombok을 통해 해당 메소드들을<br>자동으로 생성해 주는 부분 입니다. @Entity @Table(name &#x3D; “hcode”) 어노테이션 정보를 주어 테이블을 생성합니다. 테이블 자동 생성시에는<br>자동으로 생성하는 @Id 속성을 가진 칼럼이 반드시 존재해야 하므로 강조한 라인처럼 id 부분을 정의합니다. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package io.github.goodsaem.api.entity;</span><br><span class="line"></span><br><span class="line">import lombok.EqualsAndHashCode;</span><br><span class="line">import lombok.Getter;</span><br><span class="line">import lombok.Setter;</span><br><span class="line">import lombok.ToString;</span><br><span class="line"></span><br><span class="line">import javax.persistence.*;</span><br><span class="line"></span><br><span class="line">@Getter</span><br><span class="line">@Setter</span><br><span class="line">@ToString</span><br><span class="line">@EqualsAndHashCode</span><br><span class="line">@Entity</span><br><span class="line">@Table(name = &quot;hcode&quot;)</span><br><span class="line">public class HCode &#123;</span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue(strategy = GenerationType.AUTO)</span><br><span class="line">    private Long id;</span><br><span class="line">    private String lcode;</span><br><span class="line">    private String lname;</span><br><span class="line">    private String mcode;</span><br><span class="line">    private String mname;</span><br><span class="line">    private String scode;</span><br><span class="line">    private String sname;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-HCodeRepo-java"><a href="#5-HCodeRepo-java" class="headerlink" title="5. HCodeRepo.java"></a>5. HCodeRepo.java</h2><p>기본적인 curd가 동작하도록 CrudRepository를 상속받은 HCodeRepo 인터페이스를 아래와 같이 작성합니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.repo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.entity.HCode;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.repository.CrudRepository;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">HCodeRepo</span> <span class="keyword">extends</span> <span class="title class_">CrudRepository</span>&lt;HCode,Long&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-IHCodeService-java"><a href="#6-IHCodeService-java" class="headerlink" title="6. IHCodeService.java"></a>6. IHCodeService.java</h2><p>행정코드 데이터를 가져올 인터페이스를 아래와 같이 작성합니다.<br>findall 메소드는 데이터 전체를 가져오는 부분이며 getHCodeMap은 지금은 사용하지<br>않지만 다음시간에 ignite 연동하는 부분에서 사용할 예정입니다. 미리 만들어 두세요..</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.entity.HCode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">IHCodeService</span> &#123;</span><br><span class="line">    List&lt;HCode&gt; <span class="title function_">findAll</span><span class="params">()</span>;</span><br><span class="line">    Map&lt;String, List&lt;HCode&gt;&gt; <span class="title function_">getHCodeMap</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-HCodeService-java"><a href="#7-HCodeService-java" class="headerlink" title="7. HCodeService.java"></a>7. HCodeService.java</h2><p>IHCodeService 를 상속받은 HCodeService를 생성합니다.<br>특별한 내용은 없고 crudRepository를 상속받은 hCodeRepo를 통해 전체데이터를<br>가져오는 부분이 있습니다. getHCodeMap은 전체 가져온 데이터를 맵형태로 리턴하는<br>단순한 코드 입니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.entity.HCode;</span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.repo.HCodeRepo;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HCodeService</span> <span class="keyword">implements</span>  <span class="title class_">IHCodeService</span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> HCodeRepo hCodeRepo;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;HCode&gt; <span class="title function_">findAll</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (List&lt;HCode&gt;) hCodeRepo.findAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Map&lt;String, List&lt;HCode&gt;&gt; <span class="title function_">getHCodeMap</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Map</span> <span class="variable">hash</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line">        hash.put(<span class="string">&quot;hCodeCache&quot;</span>,hCodeRepo.findAll());</span><br><span class="line">        Map&lt;String, List&lt;HCode&gt;&gt;  hCodeMap =hash;</span><br><span class="line">        <span class="keyword">return</span> hCodeMap;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-HCodeController-java"><a href="#8-HCodeController-java" class="headerlink" title="8. HCodeController.java"></a>8. HCodeController.java</h2><p>url &#x2F;hcodes 로 접속하면 전체 데이터를 불러와서 모델의 hcodes 속성에 저장하고<br>hcode.ftlh 파일을 읽어 불러온 데이터를 전달합니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.controller.v1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.entity.HCode;</span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.service.IHCodeService;</span><br><span class="line"><span class="keyword">import</span> lombok.<span class="keyword">var</span>;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HCodeController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> IHCodeService ihCodeService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/hcodes&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">findHcodes</span><span class="params">(Model model)</span> &#123;</span><br><span class="line">        <span class="type">var</span> <span class="variable">hcodes</span> <span class="operator">=</span> (List&lt;HCode&gt;) ihCodeService.findAll();</span><br><span class="line">        model.addAttribute(<span class="string">&quot;hcodes&quot;</span>,hcodes);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hcode&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="9-hcode-ftlh"><a href="#9-hcode-ftlh" class="headerlink" title="9. hcode.ftlh"></a>9. hcode.ftlh</h2><p>controller 에서 주입한 hcodes list 아래와 같이 반복문을 실행하면서 전체 데이터를 출력합니다.<br>테이블은 application.yml 파일의 설정으로 자동으로 만들어 집니다. </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>HCodes<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>행정구역 코드<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>고유번호<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>시도코드<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>시도명칭<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>시군구코드<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>시군구명칭<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>읍면동코드<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>읍면동명칭<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    &lt;#list hcodes as hcode&gt;</span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;hcode.id&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;hcode.lcode&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;hcode.lname&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;hcode.mcode&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;hcode.mname&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;hcode.scode&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;hcode.sname&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">&lt;/#list&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="10-application-yml"><a href="#10-application-yml" class="headerlink" title="10. application.yml"></a>10. application.yml</h2><p>datasource 설정은 아래와 같이 설정합니다. driver 는 mariadb로 잡아주시고<br>url은 localhost:3306 username password 는 각각의 환경에 맞게 설정해주세요<br>그리고 jba 을 아래와 같이 mariadb로 설정하고  properties.hibernate.hbm2ddl.auto 부분이<br>none 이라고 되어있는데 application <strong>테이블 생성이 필요하면 create</strong> 로 하여 테이블을 생성해주시고<br>테이블이 생성되고 나면 다시 이값을 <strong>none</strong> 으로 변경하여 테이블 생성을 하지 않습니다.</p>
+<p>::: tip hibernate hbm2ddl.auto 설정값</p>
+<ol>
+<li>create : SessionFactory 시작시 스키마를 삭제하고 다시 생성합니다.</li>
+<li>create-drop : SessionFactory 종료시 스키마를 삭제합니다.</li>
+<li>update : SessionFactory 시작시 객체 구성와 스키마를 비교하여 컬럼 추가&#x2F;삭제 작업을 진행하고  기존의 스키마를 삭제하지 않고 유지합니다.</li>
+<li>validate : SessionFactory 시작시 객체구성과 스키마가 다르다면 예외 발생시킵니다.</li>
+<li>none : 해당 값으로 설정시 아무 동작도 하지 않습니다.<br>:::<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 9090</span><br><span class="line">  servlet:</span><br><span class="line">    context-path: /spring</span><br><span class="line">    session:</span><br><span class="line">      timeout: 60</span><br><span class="line">      tomcat:</span><br><span class="line">        uri-encoding: UTF-8</span><br><span class="line"></span><br><span class="line">spring:</span><br><span class="line">  datasource:</span><br><span class="line">    driver-class-name: org.mariadb.jdbc.Driver</span><br><span class="line">    url: jdbc:mariadb://localhost:3306/goodsaem?useSSL=false&amp;serverTimezone=KST</span><br><span class="line">    username: goodsaem</span><br><span class="line">    password: xxxxxxxxxxxx</span><br><span class="line">  jpa:</span><br><span class="line">    database-platform: org.hibernate.dialect.MariaDBDialect</span><br><span class="line">    properties.hibernate.hbm2ddl.auto: none</span><br><span class="line">    showSql: true</span><br></pre></td></tr></table></figure>
+테이블 생성이 끝났다면  아래 파일을 다운로드 받아 insert 문장을 실행합니다.<br><a href="/down/HCODE_202103142256.sql.zip">inser sql</a></li>
+</ol>
+<h2 id="11-테스트"><a href="#11-테스트" class="headerlink" title="11. 테스트"></a>11. 테스트</h2><p><a target="_blank" rel="noopener" href="http://localhost:9090/spring/hcodes">http://localhost:9090/spring/hcodes</a> 에 접속하시면 아래와 같은 화면을 확인할수 있습니다.  </p>
+<img src="/coding/springboot/springboot105/1.jpg" class="">
+
+<h2 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h2><p>내용을 정리할려고 하니 잘 모르는 부분을 찾아서 정리를 하고 나서 다음 단계로 넘어가서 생각보다 빨리 진행되지 않네요<br>그래도 매일 글을 작성한다고 생각하고 노력 하겠습니다. 긴글 읽어 주셔서 감사합니다.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://goodsaem.github.io/coding/springboot/springboot105/" data-id="cmchdg1z2006xf0vq8tkp2np0" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "good"
+        },
+        "headline": "5. SpringBoot Backend 서버 구축",
+        "image": "http://goodsaem.github.io/coding/springboot/springboot105/springboot-005.png",
+        "keywords": "springboot",
+        "genre": "Coding springboot",
+        "datePublished": "2023-03-26",
+        "dateCreated": "2023-03-26",
+        "dateModified": "2025-06-29",
+        "url": "http://goodsaem.github.io/coding/springboot/springboot105/",
+        "description": "
+
+ 5. Springboot Mariadb 설정h2 db 경우에는 간단한 application 만들때는 좋지만 규모가 있는 application 만들때는 문제가 있습니다. springboot + h2 db를 탑재한 상태에서dbeaver 를 통해 h2 db 에 접속하면 lock 상태로 접속할수 없다는 오류가 발생했습니다. 방법을 찾을수 있겠지만 과감히 버리",
+        "wordCount": 2298
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+     
+    
+        
+<nav id="article-nav">
+    
+        <a href="/coding/springboot/springboot106/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">신규</strong>
+        <p class="article-nav-title">
+        
+            6. SpringBoot Backend 서버 구축
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/coding/springboot/springboot104/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">이전</strong>
+        <p class="article-nav-title">4. SpringBoot Backend 서버 구축</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Springboot-Mariadb-%EC%84%A4%EC%A0%95"><span class="toc-number">1.</span> <span class="toc-text"> 5. Springboot Mariadb 설정</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-directory-%EA%B5%AC%EC%A1%B0"><span class="toc-number">1.1.</span> <span class="toc-text">1. directory 구조</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-build-gradle"><span class="toc-number">1.2.</span> <span class="toc-text">2. build.gradle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-WebConfig-java"><span class="toc-number">1.3.</span> <span class="toc-text">3. WebConfig.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-HCode-java"><span class="toc-number">1.4.</span> <span class="toc-text">4. HCode.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-HCodeRepo-java"><span class="toc-number">1.5.</span> <span class="toc-text">5. HCodeRepo.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-IHCodeService-java"><span class="toc-number">1.6.</span> <span class="toc-text">6. IHCodeService.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-HCodeService-java"><span class="toc-number">1.7.</span> <span class="toc-text">7. HCodeService.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-HCodeController-java"><span class="toc-number">1.8.</span> <span class="toc-text">8. HCodeController.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-hcode-ftlh"><span class="toc-number">1.9.</span> <span class="toc-text">9. hcode.ftlh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-application-yml"><span class="toc-number">1.10.</span> <span class="toc-text">10. application.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%ED%85%8C%EC%8A%A4%ED%8A%B8"><span class="toc-number">1.11.</span> <span class="toc-text">11. 테스트</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EB%A7%88%EB%AC%B4%EB%A6%AC"><span class="toc-number">1.12.</span> <span class="toc-text">마무리</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-fontawesome/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/vygt2h.jpg)" alt="hexo 에서 fontawesome 사용하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-fontawesome/" class="title">hexo 에서 fontawesome 사용하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T06:17:16.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/rklrz3.jpg)" alt="정적 웹사이트 생성기 hexo 로 블로그 만들기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo/" class="title">정적 웹사이트 생성기 hexo 로 블로그 만들기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:25:04.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo-include/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/y01pdv.jpg)" alt="Hexo 에 글 포함하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo-include/" class="title">Hexo 에 글 포함하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:24:56.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-intro/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/a339t1.jpg)" alt="소개" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-intro/" class="title">소개</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:23:23.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/setup/setup_github_ssh/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/pb9w1z.jpg)" alt="Github ssh 연결" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Setup/">Setup</a></p>
+                            <p class="item-title"><a href="/setup/setup_github_ssh/" class="title">Github ssh 연결</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T03:57:45.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/">Coding</a><span class="category-list-count">17</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/JHipster/">JHipster</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/mariadb/">mariadb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/springboot/">springboot</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/vue/">vue</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setup/">Setup</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><span class="category-list-count">44</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%B1/">앱</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">6월 2025</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">3월 2023</a><span class="archive-list-count">67</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JHipster/" rel="tag">JHipster</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MAC/" rel="tag">MAC</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MARIADB/" rel="tag">MARIADB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/" rel="tag">SPRINGBOOT</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/" rel="tag">VUE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/" rel="tag">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fontawesome/" rel="tag">fontawesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2db/" rel="tag">h2db</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openjdk/" rel="tag">openjdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window2022/" rel="tag">window2022</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows2022/" rel="tag">windows2022</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%BC%EC%83%81/" rel="tag">일상</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JHipster/" style="font-size: 12.5px;">JHipster</a> <a href="/tags/MAC/" style="font-size: 15px;">MAC</a> <a href="/tags/MARIADB/" style="font-size: 10px;">MARIADB</a> <a href="/tags/PHP/" style="font-size: 18.75px;">PHP</a> <a href="/tags/SPRINGBOOT/" style="font-size: 17.5px;">SPRINGBOOT</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/fontawesome/" style="font-size: 10px;">fontawesome</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 13.75px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/h2db/" style="font-size: 10px;">h2db</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/openjdk/" style="font-size: 10px;">openjdk</a> <a href="/tags/springboot/" style="font-size: 16.25px;">springboot</a> <a href="/tags/vue/" style="font-size: 11.25px;">vue</a> <a href="/tags/window2022/" style="font-size: 12.5px;">window2022</a> <a href="/tags/windows2022/" style="font-size: 10px;">windows2022</a> <a href="/tags/%EC%9D%BC%EC%83%81/" style="font-size: 11.25px;">일상</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+                <div class="widget-wrap widget-float">
+
+    <h3 class="widget-title">후원자</h3>
+    <div class="widget">
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+    </div>
+
+</div>
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                
+                <p>&copy; 2025 good</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1863930318161504"
+     crossorigin="anonymous"></script>
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/javascript" src="/drawio/viewer-static.min.js"></script>
+<style>
+.mxgraph-container { width: 100%; }
+.mxgraph {
+  width: 100% !important;
+  border:1px solid transparent;
+}
+.geDiagramContainer { width: 100% !important; }
+</style>
+</body>
+
+</html>

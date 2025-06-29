@@ -1,0 +1,28 @@
+ ██████╗  ██████╗  ██████╗ ██████╗ ███████╗ █████╗ ███████╗███╗   ███╗
+██╔════╝ ██╔═══██╗██╔═══██╗██╔══██╗██╔════╝██╔══██╗██╔════╝████╗ ████║
+██║  ███╗██║   ██║██║   ██║██║  ██║███████╗███████║█████╗  ██╔████╔██║
+██║   ██║██║   ██║██║   ██║██║  ██║╚════██║██╔══██║██╔══╝  ██║╚██╔╝██║
+╚██████╔╝╚██████╔╝╚██████╔╝██████╔╝███████║██║  ██║███████╗██║ ╚═╝ ██║
+ ╚═════╝  ╚═════╝  ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝
+:: Spring Boot ::                         ver : 2.4.4
+2021-03-27 17:10:46.869  INFO 7734 --- [           main] io.github.goodsaem.api.ApiApplication    : Starting ApiApplication using Java 1.8.0_282 on goodsaem with PID 7734 (/home/ubuntu/api-1.1.war started by ubuntu in /home/ubuntu)
+2021-03-27 17:10:46.874  INFO 7734 --- [           main] io.github.goodsaem.api.ApiApplication    : No active profile set, falling back to default profiles: default
+2021-03-27 17:10:48.714  INFO 7734 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-27 17:10:48.852  INFO 7734 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 121 ms. Found 1 JPA repository interfaces.
+2021-03-27 17:10:50.415  INFO 7734 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2021-03-27 17:10:50.442  INFO 7734 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-27 17:10:50.446  INFO 7734 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-03-27 17:10:51.931  INFO 7734 --- [           main] o.a.c.c.C.[.[localhost].[/spring]        : Initializing Spring embedded WebApplicationContext
+2021-03-27 17:10:51.932  INFO 7734 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4908 ms
+2021-03-27 17:10:52.874  INFO 7734 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-27 17:10:52.986  INFO 7734 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-03-27 17:10:53.296  INFO 7734 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-27 17:10:53.661  INFO 7734 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-27 17:10:53.804  INFO 7734 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-27 17:10:53.848  INFO 7734 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+2021-03-27 17:10:54.767  INFO 7734 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-27 17:10:54.779  INFO 7734 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-27 17:10:55.548  WARN 7734 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-27 17:10:55.822  INFO 7734 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-27 17:10:56.395  INFO 7734 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path '/spring'
+2021-03-27 17:10:56.413  INFO 7734 --- [           main] io.github.goodsaem.api.ApiApplication    : Started ApiApplication in 10.795 seconds (JVM running for 11.987)

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/callout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/earlyaccess/iropkebatang.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'IropkeBatang', serif;
+        }
+    </style>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5VG62JT9');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+    
+
+    
+    <title>8. SpringBoot Backend 서버 구축 | good</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="springboot" />
+    
+    <meta name="description" content="8. RESTful API  디자인 원칙제가 생각하고 만들려고 하는 서비스는 frontend와 backend 서버가 별도로 구분되어 운영됩니다. backend 부분은 springboot 에서 restapi 형태로 데이터를제공합니다. 데이터를 어떻게 리턴할지 정리해 보겠습니다. 대부분 아래와 유사하게 작성할것 같은데요 만들어 보면서 정리해보겠습니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8. SpringBoot Backend 서버 구축">
+<meta property="og:url" content="http://goodsaem.github.io/coding/springboot/springboot108/index.html">
+<meta property="og:site_name" content="good">
+<meta property="og:description" content="8. RESTful API  디자인 원칙제가 생각하고 만들려고 하는 서비스는 frontend와 backend 서버가 별도로 구분되어 운영됩니다. backend 부분은 springboot 에서 restapi 형태로 데이터를제공합니다. 데이터를 어떻게 리턴할지 정리해 보겠습니다. 대부분 아래와 유사하게 작성할것 같은데요 만들어 보면서 정리해보겠습니다.">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="http://goodsaem.github.io/coding/springboot/springboot108/springboot-008.png">
+<meta property="article:published_time" content="2023-03-25T16:18:03.000Z">
+<meta property="article:modified_time" content="2025-06-29T07:42:00.930Z">
+<meta property="article:author" content="good">
+<meta property="article:tag" content="springboot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://goodsaem.github.io/coding/springboot/springboot108/springboot-008.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/">Coding</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/JHipster/">JHipster</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/mariadb/">mariadb</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/springboot/">springboot</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/vue/">vue</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setup/">Setup</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%B1/">앱</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="찾고자 하는 포스트를 검색하세요." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: '페이지',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Coding/springboot/">springboot</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-coding/springboot/springboot108" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        8. SpringBoot Backend 서버 구축
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/coding/springboot/springboot108/" class="article-date">
+       <time datetime="2023-03-25T16:18:03.000Z" itemprop="datePublished">2023-03-26</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/coding/springboot/springboot108/" class="article-date">
+     <time datetime="2025-06-29T07:42:00.930Z" itemprop="dateModified">2025-06-29</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/springboot/" rel="tag">springboot</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/coding/springboot/springboot108/springboot-008.png" class="">
+
+<h1 id="8-RESTful-API-디자인-원칙"><a href="#8-RESTful-API-디자인-원칙" class="headerlink" title=" 8. RESTful API  디자인 원칙"></a><i class="fa fa-database"></i> 8. RESTful API  디자인 원칙</h1><p>제가 생각하고 만들려고 하는 서비스는 frontend와 backend 서버가 별도로 구분되어 운영됩니다. backend 부분은 springboot 에서 restapi 형태로 데이터를<br>제공합니다. 데이터를 어떻게 리턴할지 정리해 보겠습니다. 대부분 아래와 유사하게 작성할것 같은데요 만들어 보면서 정리해보겠습니다. </p>
+<h2 id="1-메소드분리"><a href="#1-메소드분리" class="headerlink" title="1. 메소드분리"></a>1. 메소드분리</h2><p>사용목적에 맞게 메소드를 분리합니다.</p>
+<p>http 프로토콜은 아래와 같은 http method을 제공합니다. 보통 get 과 post는 많이 사용햤는데 아래 put 과 delete도 사용할수 있으니<br>용도에 맞게 사용하시기 바랍니다.</p>
+<table>
+<thead>
+<tr>
+<th align="center">메소드</th>
+<th align="center">구분</th>
+<th align="center">설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">GET</td>
+<td align="center">read</td>
+<td align="center">데이터를 읽어서 표시할때 사용합니다.</td>
+</tr>
+<tr>
+<td align="center">POST</td>
+<td align="center">create</td>
+<td align="center">데이터를 저장할때 사용합니다.</td>
+</tr>
+<tr>
+<td align="center">PUT</td>
+<td align="center">update</td>
+<td align="center">데이터를 수정할때 사용합니다.</td>
+</tr>
+<tr>
+<td align="center">DELETE</td>
+<td align="center">delete</td>
+<td align="center">데이터를 삭제 할때 사용합니다.</td>
+</tr>
+</tbody></table>
+<h2 id="2-api-규칙"><a href="#2-api-규칙" class="headerlink" title="2. api 규칙"></a>2. api 규칙</h2><p>위에 규칙으로 지금까지 만든 memo app 의 rest api 구성을 해보겠습니다.</p>
+<table>
+<thead>
+<tr>
+<th align="center">메소드</th>
+<th align="center">url</th>
+<th align="center">설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">GET</td>
+<td align="center">&#x2F;v1&#x2F;memo&#x2F;{idx}</td>
+<td align="center">memo id 에 맞는 데이터를 조회합나다.</td>
+</tr>
+<tr>
+<td align="center">GET</td>
+<td align="center">&#x2F;v1&#x2F;memos</td>
+<td align="center">모든 메모를 조회합니다.</td>
+</tr>
+<tr>
+<td align="center">POST</td>
+<td align="center">&#x2F;v1&#x2F;memo</td>
+<td align="center">신규 메모를 등록합니다.</td>
+</tr>
+<tr>
+<td align="center">PUT</td>
+<td align="center">&#x2F;v1&#x2F;memo</td>
+<td align="center">기존 메모를 수정합니다.</td>
+</tr>
+<tr>
+<td align="center">DELETE</td>
+<td align="center">&#x2F;v1&#x2F;memo&#x2F;{id}</td>
+<td align="center">memo id 에 맞는 메모를 삭제합니다.</td>
+</tr>
+<tr>
+<td align="center">DELETE</td>
+<td align="center">&#x2F;v1&#x2F;memos</td>
+<td align="center">모든 메모를 삭제 합니다.</td>
+</tr>
+</tbody></table>
+<h2 id="3-서비스-재시작-방법"><a href="#3-서비스-재시작-방법" class="headerlink" title="3. 서비스 재시작 방법"></a>3. 서비스 재시작 방법</h2><p>위에 url로 데이터를 요청할때 return 되는 구조를 정형화 하겠습니다. api 결과 에러발생시 에러코드 정보를 리턴하고<br>데이터 리턴 하는 구조도 정형화 하겠습니다. 추가할 파일은 22, 27 라인이고 나머지는 위 구조에 맞게 수정 하겠습니다.</p>
+<p><em>line 14,18,22,27</em></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">build.gradle</span><br><span class="line">src</span><br><span class="line">└── main</span><br><span class="line">    ├── java</span><br><span class="line">    │   └── io.github.goodsaem.api</span><br><span class="line">    │           ├── config</span><br><span class="line">    │           |    ├── IgniteConfig.java</span><br><span class="line">    │           |    └── SwaggerUiWebMvcConfigurer.java</span><br><span class="line">    │           |    └── WebConfig.java</span><br><span class="line">    │           ├── ApiApplication.java</span><br><span class="line">    │           ├── controller</span><br><span class="line">    │           │    │   └── v1</span><br><span class="line">    │           │    │        ├── HCodeController.java</span><br><span class="line">    │           │    │        └── MemoController.java</span><br><span class="line">    │           │    └── MyController.java</span><br><span class="line">    │           ├── entity</span><br><span class="line">    │           │    ├── HCode.java</span><br><span class="line">    │           │    └── Memo.java</span><br><span class="line">    │           ├── service</span><br><span class="line">    │           │    ├── HCodeService.java</span><br><span class="line">    │           │    ├── IHCodeService.java</span><br><span class="line">    │           │    └── ResponseService.java</span><br><span class="line">    │           ├── repo</span><br><span class="line">    │           |     ├── HCodeRepo.java</span><br><span class="line">    │           |     └── MemoJpaRepo.java</span><br><span class="line">    │           ├── response</span><br><span class="line">    │           |     └── Response.java</span><br><span class="line">    │           |</span><br><span class="line">    │           └── store</span><br><span class="line">    │                 └── DataStore.java</span><br><span class="line">    └── resources</span><br><span class="line">        ├── application.yml</span><br><span class="line">        ├── banner.txt</span><br><span class="line">        └── templates</span><br><span class="line">            ├── hcode.ftlh</span><br><span class="line">            └── goodsaem.ftlh</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Response-java"><a href="#4-Response-java" class="headerlink" title="4. Response.java"></a>4. Response.java</h2><p>restapi 실행결과를 리턴하는 공통 모델 입니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.response;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiModelProperty;</span><br><span class="line"><span class="keyword">import</span> lombok.Getter;</span><br><span class="line"><span class="keyword">import</span> lombok.Setter;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Response</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;요청 처리 결과 : true or false&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> result;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiModelProperty(value =&quot;요청 처리 코드 0 성공 , -1 오류&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> resultCode;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiModelProperty(value =&quot;결과 메시지&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String message;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiModelProperty(value =&quot;리턴 데이터&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> T data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-ResponseService-java"><a href="#5-ResponseService-java" class="headerlink" title="5. ResponseService.java"></a>5. ResponseService.java</h2><p>api 요청 결과에 따라 sucess 와 fail 을 리턴할 enum type 의 ReturnResponse를 선언하고 api 처리결과 성공 실패를 리턴하는<br>메소드를 하기와 같이 생성 합니다. 32번라인 key 값이 없다면 즉 결과가 한건이면 obj 값을 리턴하도록 하고 그외 경우는 key 값에 해당<br>하는 리턴하는 형태로 구현했습니다. 자세한건 실행결과를 보면서 다시 설명하겠습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.response.Response;</span><br><span class="line"><span class="keyword">import</span> lombok.Getter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ResponseService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Getter</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">ReturnResponse</span> &#123;</span><br><span class="line">        SUCCESS(<span class="number">0</span>, <span class="string">&quot;Success.&quot;</span>),</span><br><span class="line">        FAIL(-<span class="number">1</span>, <span class="string">&quot;Fail.&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> returnCode;</span><br><span class="line">        String returnMessage;</span><br><span class="line"></span><br><span class="line">        ReturnResponse(<span class="type">int</span> returnCode, String returnMessage) &#123;</span><br><span class="line">            <span class="built_in">this</span>.returnCode = returnCode;</span><br><span class="line">            <span class="built_in">this</span>.returnMessage = returnMessage;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; Response&lt;T&gt; <span class="title function_">getResult</span><span class="params">(String key, Object obj)</span> &#123;</span><br><span class="line">        Response&lt;T&gt; result = <span class="keyword">new</span> <span class="title class_">Response</span>&lt;&gt;();</span><br><span class="line">        Map&lt;String,Object&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        map.put(key,obj);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="string">&quot;&quot;</span>.equals(key)) &#123;</span><br><span class="line">            result.setData((T) obj);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result.setData((T) map);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        result.setResult(<span class="literal">true</span>);</span><br><span class="line">        result.setResultCode(ReturnResponse.SUCCESS.getReturnCode());</span><br><span class="line">        result.setMessage(ReturnResponse.SUCCESS.getReturnMessage());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">getSuccessResult</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Response</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Response</span>();</span><br><span class="line">        result.setResult(<span class="literal">true</span>);</span><br><span class="line">        result.setResultCode(ReturnResponse.SUCCESS.getReturnCode());</span><br><span class="line">        result.setMessage(ReturnResponse.SUCCESS.getReturnMessage());</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">getFailResult</span><span class="params">(String message)</span> &#123;</span><br><span class="line">        <span class="type">Response</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Response</span>();</span><br><span class="line">        result.setResult(<span class="literal">false</span>);</span><br><span class="line">        result.setResultCode(ReturnResponse.FAIL.getReturnCode());</span><br><span class="line">        result.setMessage(ReturnResponse.FAIL.getReturnMessage() + <span class="string">&quot; : &quot;</span> + message);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-Memo-java"><a href="#6-Memo-java" class="headerlink" title="6. Memo.java"></a>6. Memo.java</h2><p>Memo 모델을 아래와 같이 수정합니다. 특별히 달라진점은 없고 @ApiModelProperty 로 칼럼에 대해서 상세하게 기술했습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiModelProperty;</span><br><span class="line"><span class="keyword">import</span> lombok.*;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@Table(name=&quot;memo&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Memo</span> &#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue(strategy = GenerationType.AUTO)</span></span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;메모번호&quot; , notes = &quot;메모 고유 번호&quot;, example = &quot;1&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(nullable = false, length = 30)</span></span><br><span class="line">    <span class="meta">@ApiModelProperty(required = true, value = &quot;제목&quot;, notes = &quot;메모 제목&quot; , example = &quot;중요한 메모&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(nullable = false, length = 4000)</span></span><br><span class="line">    <span class="meta">@ApiModelProperty(required = true, value=&quot;내용&quot;, notes = &quot;메모 내용&quot; , example = &quot;내용을 등록해 봅니다.&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String contents;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-MemoController-java"><a href="#7-MemoController-java" class="headerlink" title="7. MemoController.java"></a>7. MemoController.java</h2><p>메모 컨트롤러에 단건 조회, 삭제 , 여러건 삭제 등을 추가하고 swagger 문서에 표시할 내용을 아래와 같이 추가했습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.goodsaem.api.controller.v1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.entity.Memo;</span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.repo.MemoJpaRepo;</span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.response.Response;</span><br><span class="line"><span class="keyword">import</span> io.github.goodsaem.api.service.ResponseService;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.Api;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiOperation;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiParam;</span><br><span class="line"><span class="keyword">import</span> lombok.RequiredArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Api(tags = &#123;&quot;1. Memo&quot;&#125;)</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/v1&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MemoController</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> MemoJpaRepo memoJpaRepo;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ResponseService responseService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;메모 전체 조회&quot;, notes = &quot;모든 메모를 조회합니다.&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping(value = &quot;/memos&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Response&lt;Memo&gt; <span class="title function_">readMemos</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> responseService.getResult(<span class="string">&quot;list&quot;</span>,memoJpaRepo.findAll());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;메모 한건 조회&quot;, notes = &quot;memo id 로 메모를 조회합니다.&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping(value = &quot;/memo/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Response&lt;Memo&gt; <span class="title function_">readMemo</span><span class="params">(<span class="meta">@ApiParam(value = &quot;memo id&quot;, required = true)</span> <span class="meta">@PathVariable</span> <span class="type">long</span> id)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> responseService.getResult(<span class="string">&quot;&quot;</span>,memoJpaRepo.findById(id).orElse(<span class="literal">null</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;메모 등록&quot;, notes = &quot;메모를 등록합니다.&quot;)</span></span><br><span class="line">    <span class="meta">@PostMapping(value = &quot;/memo&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Response&lt;Memo&gt; <span class="title function_">createMemo</span><span class="params">(<span class="meta">@ApiParam(value = &quot;제목&quot;, required = true)</span> <span class="meta">@RequestParam</span> String title,</span></span><br><span class="line"><span class="params">                                     <span class="meta">@ApiParam(value = &quot;내용&quot;, required = true)</span> <span class="meta">@RequestParam</span> String contents</span></span><br><span class="line"><span class="params">    )</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(title.length() &gt; <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> (Response&lt;Memo&gt;) responseService.getFailResult(<span class="string">&quot;제목 길이가 200보다 큽니다.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(contents.length() &gt; <span class="number">4000</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> (Response&lt;Memo&gt;) responseService.getFailResult(<span class="string">&quot;제목 길이가 4000보다 큽니다.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">Memo</span> <span class="variable">memo</span> <span class="operator">=</span> Memo.builder()</span><br><span class="line">                .title(title)</span><br><span class="line">                .contents(contents)</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> responseService.getResult(<span class="string">&quot;&quot;</span>,memoJpaRepo.save(memo));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;메모 수정&quot;, notes = &quot;메모를 수정합니다.&quot;)</span></span><br><span class="line">    <span class="meta">@PutMapping(value = &quot;/memo&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Response&lt;Memo&gt; <span class="title function_">updateMemo</span><span class="params">(<span class="meta">@ApiParam(value = &quot;메모번호&quot;, required = true)</span> <span class="meta">@RequestParam</span> <span class="type">long</span> id,</span></span><br><span class="line"><span class="params">                                     <span class="meta">@ApiParam(value = &quot;제목&quot;, required = true)</span> <span class="meta">@RequestParam</span> String title,</span></span><br><span class="line"><span class="params">                                     <span class="meta">@ApiParam(value = &quot;내용&quot;, required = true)</span> <span class="meta">@RequestParam</span> String contents</span></span><br><span class="line"><span class="params">                                      )</span> &#123;</span><br><span class="line">        <span class="type">Memo</span> <span class="variable">memo</span> <span class="operator">=</span> Memo.builder()</span><br><span class="line">                .id(id)</span><br><span class="line">                .title(title)</span><br><span class="line">                .contents(contents)</span><br><span class="line">                .build();</span><br><span class="line">        <span class="keyword">return</span> responseService.getResult(<span class="string">&quot;&quot;</span>,memoJpaRepo.save(memo));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;메모 삭제&quot;, notes = &quot;메모 번호로 메모를 삭제합니다.&quot;)</span></span><br><span class="line">    <span class="meta">@DeleteMapping(value = &quot;/memo&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">deleteMemo</span><span class="params">(<span class="meta">@ApiParam(value = &quot;메모번호&quot;, required = true)</span> <span class="meta">@RequestParam</span> <span class="type">long</span> id</span></span><br><span class="line"><span class="params">    )</span> &#123;</span><br><span class="line">        memoJpaRepo.deleteById(id);</span><br><span class="line">        <span class="keyword">return</span> responseService.getSuccessResult();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;메모 젠체 삭제&quot;, notes = &quot;메모 전체를 삭제합니다.&quot;)</span></span><br><span class="line">    <span class="meta">@DeleteMapping(value = &quot;/memos&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">deleteMemos</span><span class="params">()</span> &#123;</span><br><span class="line">        memoJpaRepo.deleteAll();</span><br><span class="line">        <span class="keyword">return</span> responseService.getSuccessResult();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="8-swagger-test"><a href="#8-swagger-test" class="headerlink" title="8. swagger test"></a>8. swagger test</h2><p>만든 api 가 정상 동작하는지 swagger 를 통해서 확인 하겠습니다. <a target="_blank" rel="noopener" href="http://localhost:9090/spring/swagger-ui/">http://localhost:9090/spring/swagger-ui/</a><br>에 접속합니다.</p>
+<h3 id="1-create"><a href="#1-create" class="headerlink" title="1. create"></a>1. create</h3><ol>
+<li>Memo를 클릭한후 post 를 클릭한후 Try it out 버튼을 눌러 제목과 내용을 입력하고 Excute 버튼을 클릭합니다. 여러개 생성합니다.<br>아래와 같이 데이터가 등록되었고 return 값도 정상으로 받았습니다. Response.java 에 정의한 형태로 리턴 되었습니다.</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;result&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;resultCode&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Success.&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;제목2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;contents&quot;</span><span class="punctuation">:</span> <span class="string">&quot;내용2&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><img src="/coding/springboot/springboot108/1.jpg" class=""></li>
+</ul>
+<h3 id="2-create-fail"><a href="#2-create-fail" class="headerlink" title="2. create fail"></a>2. create fail</h3><ol>
+<li>제목을 200자 이상 입력했을경우 fail message 가 리턴되는지 확인해 보겠습니다. 결과가 fail로 예상한되로 동작합니다.</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;result&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;resultCode&quot;</span><span class="punctuation">:</span> <span class="number">-1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Fail. : 제목 길이가 200보다 큽니다.&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/coding/springboot/springboot108/2.jpg" class="">
+
+<h3 id="3-update"><a href="#3-update" class="headerlink" title="3. update"></a>3. update</h3><p>PUT 메소드를 실행하여 메모를 수정합니다.</p>
+<img src="/coding/springboot/springboot108/3.jpg" class="">
+
+<h3 id="4-all-list"><a href="#4-all-list" class="headerlink" title="4. all list"></a>4. all list</h3><p>GET 메소드중 &#x2F;spring&#x2F;v1&#x2F;memos 메모 전체 조회 를 클릭하여 Try it out &gt; Execute 버튼을 클릭하여 실행하면 아래와 같은<br>결과를 확인 할수 있습니다.</p>
+<p>memos 컨트롤러 부분을 확인하면 아래와 같이 key 값 list 와 findAll 메소드를 실행하여 전체 결과를 리턴합니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiOperation(value = &quot;메모 전체 조회&quot;, notes = &quot;모든 메모를 조회합니다.&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(value = &quot;/memos&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Response&lt;Memo&gt; <span class="title function_">readMemos</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> responseService.getResult(<span class="string">&quot;list&quot;</span>,memoJpaRepo.findAll());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>그럼 아래와 같이 결과가 출력됩니다. list 대신 memos 라고 하면 memos 라고 표시됩니다.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;result&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;resultCode&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Success.&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;제목 수정&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;contents&quot;</span><span class="punctuation">:</span> <span class="string">&quot;내용 수정&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;제목2&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;contents&quot;</span><span class="punctuation">:</span> <span class="string">&quot;내용2&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/coding/springboot/springboot108/4.jpg" class="">
+
+<h3 id="5-단건-조회-점검"><a href="#5-단건-조회-점검" class="headerlink" title="5. 단건 조회 점검"></a>5. 단건 조회 점검</h3><p>GET 메소드중 &#x2F;spring&#x2F;v1&#x2F;memo&#x2F;{id} 를 실행하면 한건 데이터만 조회 됩니다.  전체 url은 아래와 같으며<br><a target="_blank" rel="noopener" href="http://localhost:9090/spring/v1/**memo**/**1">http://localhost:9090/spring/v1/**memo**/**1</a>** 위에서 설계한 되로 url 이 표시 됩니다.</p>
+<img src="/coding/springboot/springboot108/5.jpg" class="">
+
+<h3 id="6-삭제기능-점검"><a href="#6-삭제기능-점검" class="headerlink" title="6 삭제기능 점검"></a>6 삭제기능 점검</h3><p>같은 요령으로 삭제 및 전체 삭제를 수행하면 예상한되로 정상 동작합니다.</p>
+<h2 id="마무리"><a href="#마무리" class="headerlink" title="마무리"></a>마무리</h2><p>유사한 형태로 작성하는 연습을 하시면 자연스럽게 익숡해 질거라 믿습니다. 글 읽어 주셔서 감사합니다. 좀더 좋은 글로 보답하겠습니다.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://goodsaem.github.io/coding/springboot/springboot108/" data-id="cmchdg1z30070f0vqhu3ygz91" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "good"
+        },
+        "headline": "8. SpringBoot Backend 서버 구축",
+        "image": "http://goodsaem.github.io/coding/springboot/springboot108/springboot-008.png",
+        "keywords": "springboot",
+        "genre": "Coding springboot",
+        "datePublished": "2023-03-26",
+        "dateCreated": "2023-03-26",
+        "dateModified": "2025-06-29",
+        "url": "http://goodsaem.github.io/coding/springboot/springboot108/",
+        "description": "
+
+ 8. RESTful API  디자인 원칙제가 생각하고 만들려고 하는 서비스는 frontend와 backend 서버가 별도로 구분되어 운영됩니다. backend 부분은 springboot 에서 restapi 형태로 데이터를제공합니다. 데이터를 어떻게 리턴할지 정리해 보겠습니다. 대부분 아래와 유사하게 작성할것 같은데요 만들어 보면서 정리해보겠습니다. 
+",
+        "wordCount": 3378
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+     
+    
+        
+<nav id="article-nav">
+    
+        <a href="/coding/springboot/springboot109/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">신규</strong>
+        <p class="article-nav-title">
+        
+            9. SpringBoot Backend 서버 구축
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/coding/springboot/springboot107/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">이전</strong>
+        <p class="article-nav-title">7. SpringBoot Backend 서버 구축</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#8-RESTful-API-%EB%94%94%EC%9E%90%EC%9D%B8-%EC%9B%90%EC%B9%99"><span class="toc-number">1.</span> <span class="toc-text"> 8. RESTful API  디자인 원칙</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%EB%A9%94%EC%86%8C%EB%93%9C%EB%B6%84%EB%A6%AC"><span class="toc-number">1.1.</span> <span class="toc-text">1. 메소드분리</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-api-%EA%B7%9C%EC%B9%99"><span class="toc-number">1.2.</span> <span class="toc-text">2. api 규칙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%9E%AC%EC%8B%9C%EC%9E%91-%EB%B0%A9%EB%B2%95"><span class="toc-number">1.3.</span> <span class="toc-text">3. 서비스 재시작 방법</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Response-java"><span class="toc-number">1.4.</span> <span class="toc-text">4. Response.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-ResponseService-java"><span class="toc-number">1.5.</span> <span class="toc-text">5. ResponseService.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Memo-java"><span class="toc-number">1.6.</span> <span class="toc-text">6. Memo.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-MemoController-java"><span class="toc-number">1.7.</span> <span class="toc-text">7. MemoController.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-swagger-test"><span class="toc-number">1.8.</span> <span class="toc-text">8. swagger test</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-create"><span class="toc-number">1.8.1.</span> <span class="toc-text">1. create</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-create-fail"><span class="toc-number">1.8.2.</span> <span class="toc-text">2. create fail</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-update"><span class="toc-number">1.8.3.</span> <span class="toc-text">3. update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-all-list"><span class="toc-number">1.8.4.</span> <span class="toc-text">4. all list</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%EB%8B%A8%EA%B1%B4-%EC%A1%B0%ED%9A%8C-%EC%A0%90%EA%B2%80"><span class="toc-number">1.8.5.</span> <span class="toc-text">5. 단건 조회 점검</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%EC%82%AD%EC%A0%9C%EA%B8%B0%EB%8A%A5-%EC%A0%90%EA%B2%80"><span class="toc-number">1.8.6.</span> <span class="toc-text">6 삭제기능 점검</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EB%A7%88%EB%AC%B4%EB%A6%AC"><span class="toc-number">1.9.</span> <span class="toc-text">마무리</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-fontawesome/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/vygt2h.jpg)" alt="hexo 에서 fontawesome 사용하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-fontawesome/" class="title">hexo 에서 fontawesome 사용하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T06:17:16.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/rklrz3.jpg)" alt="정적 웹사이트 생성기 hexo 로 블로그 만들기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo/" class="title">정적 웹사이트 생성기 hexo 로 블로그 만들기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:25:04.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo-include/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/y01pdv.jpg)" alt="Hexo 에 글 포함하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo-include/" class="title">Hexo 에 글 포함하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:24:56.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-intro/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/a339t1.jpg)" alt="소개" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-intro/" class="title">소개</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:23:23.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/setup/setup_github_ssh/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/pb9w1z.jpg)" alt="Github ssh 연결" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Setup/">Setup</a></p>
+                            <p class="item-title"><a href="/setup/setup_github_ssh/" class="title">Github ssh 연결</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T03:57:45.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/">Coding</a><span class="category-list-count">17</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/JHipster/">JHipster</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/mariadb/">mariadb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/springboot/">springboot</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/vue/">vue</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setup/">Setup</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><span class="category-list-count">44</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%B1/">앱</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">6월 2025</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">3월 2023</a><span class="archive-list-count">67</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JHipster/" rel="tag">JHipster</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MAC/" rel="tag">MAC</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MARIADB/" rel="tag">MARIADB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/" rel="tag">SPRINGBOOT</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/" rel="tag">VUE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/" rel="tag">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fontawesome/" rel="tag">fontawesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2db/" rel="tag">h2db</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openjdk/" rel="tag">openjdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window2022/" rel="tag">window2022</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows2022/" rel="tag">windows2022</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%BC%EC%83%81/" rel="tag">일상</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JHipster/" style="font-size: 12.5px;">JHipster</a> <a href="/tags/MAC/" style="font-size: 15px;">MAC</a> <a href="/tags/MARIADB/" style="font-size: 10px;">MARIADB</a> <a href="/tags/PHP/" style="font-size: 18.75px;">PHP</a> <a href="/tags/SPRINGBOOT/" style="font-size: 17.5px;">SPRINGBOOT</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/fontawesome/" style="font-size: 10px;">fontawesome</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 13.75px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/h2db/" style="font-size: 10px;">h2db</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/openjdk/" style="font-size: 10px;">openjdk</a> <a href="/tags/springboot/" style="font-size: 16.25px;">springboot</a> <a href="/tags/vue/" style="font-size: 11.25px;">vue</a> <a href="/tags/window2022/" style="font-size: 12.5px;">window2022</a> <a href="/tags/windows2022/" style="font-size: 10px;">windows2022</a> <a href="/tags/%EC%9D%BC%EC%83%81/" style="font-size: 11.25px;">일상</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+                <div class="widget-wrap widget-float">
+
+    <h3 class="widget-title">후원자</h3>
+    <div class="widget">
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+    </div>
+
+</div>
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                
+                <p>&copy; 2025 good</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1863930318161504"
+     crossorigin="anonymous"></script>
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/javascript" src="/drawio/viewer-static.min.js"></script>
+<style>
+.mxgraph-container { width: 100%; }
+.mxgraph {
+  width: 100% !important;
+  border:1px solid transparent;
+}
+.geDiagramContainer { width: 100% !important; }
+</style>
+</body>
+
+</html>

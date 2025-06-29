@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/callout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/earlyaccess/iropkebatang.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'IropkeBatang', serif;
+        }
+    </style>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5VG62JT9');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+    
+
+    
+    <title>1. JHipster 설치 | good</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="JHipster" />
+    
+    <meta name="description" content="개요springboot 로 restapi 를 만들일이 생겼다. 처음부터 끝까지 다만들려고 하니 시간이 너무 많이 걸릴것 같고잘 만들어진 오픈소스가 있을것 같아 구글링하다가 jhipster (제이 힙스터) 라는 개발 플랫폼을 알게되었고,정리가 잘되어 있는 사이트가 없어 정리한다. JHipster 란?“Hipster”는 미국에서 시작된 문화 용어로, 모">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1. JHipster 설치">
+<meta property="og:url" content="http://goodsaem.github.io/coding/jhipster/jhipster1/index.html">
+<meta property="og:site_name" content="good">
+<meta property="og:description" content="개요springboot 로 restapi 를 만들일이 생겼다. 처음부터 끝까지 다만들려고 하니 시간이 너무 많이 걸릴것 같고잘 만들어진 오픈소스가 있을것 같아 구글링하다가 jhipster (제이 힙스터) 라는 개발 플랫폼을 알게되었고,정리가 잘되어 있는 사이트가 없어 정리한다. JHipster 란?“Hipster”는 미국에서 시작된 문화 용어로, 모">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="http://goodsaem.github.io/coding/jhipster/jhipster1/jhipster-001.png">
+<meta property="article:published_time" content="2023-03-27T13:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-29T07:42:00.805Z">
+<meta property="article:author" content="good">
+<meta property="article:tag" content="JHipster">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://goodsaem.github.io/coding/jhipster/jhipster1/jhipster-001.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/">Coding</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/JHipster/">JHipster</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/mariadb/">mariadb</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/springboot/">springboot</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/vue/">vue</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setup/">Setup</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%B1/">앱</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="찾고자 하는 포스트를 검색하세요." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: '페이지',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Coding/JHipster/">JHipster</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-coding/jhipster/jhipster1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        1. JHipster 설치
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/coding/jhipster/jhipster1/" class="article-date">
+       <time datetime="2023-03-27T13:00:00.000Z" itemprop="datePublished">2023-03-27</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/coding/jhipster/jhipster1/" class="article-date">
+     <time datetime="2025-06-29T07:42:00.805Z" itemprop="dateModified">2025-06-29</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/JHipster/" rel="tag">JHipster</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <img src="/coding/jhipster/jhipster1/jhipster-001.png" class="">
+
+
+<h3 id="개요"><a href="#개요" class="headerlink" title=" 개요"></a><i class="fa-solid fa-cloud"></i> 개요</h3><p>springboot 로 restapi 를 만들일이 생겼다. 처음부터 끝까지 다만들려고 하니 시간이 너무 많이 걸릴것 같고<br>잘 만들어진 오픈소스가 있을것 같아 구글링하다가 jhipster (제이 힙스터) 라는 개발 플랫폼을 알게되었고,<br>정리가 잘되어 있는 사이트가 없어 정리한다.</p>
+<h3 id="JHipster-란"><a href="#JHipster-란" class="headerlink" title="JHipster 란?"></a>JHipster 란?</h3><p>“Hipster”는 미국에서 시작된 문화 용어로, 모던하고 일렉트로닉한 음악, 예술,<br>패션 등을 즐기는 청년층을 지칭하는 말이다. </p>
+<p>또한 이들이 추구하는 것들을 “Hip”하다고 표현한다. 일반적으로 힙하다는건은 쿨하고<br>멋진것으로 생각되고,현대적이고 트렌디한 것을 의미하기도 한다.<br>JHipster는 이러한 Hipster 문화에서 영감을 받아 “Java Hipster”라는 이름으로<br>만들어졌다. Java 개발자들이 모던한 기술과 개발 방법론을 적극적으로 적용하여 개발을<br>할 수 있도록 지원하는 도구를 만드는걸 지향하는듯 한다.<br>“힙”한 자바 개발자가 되고 싶다면 한번 도전해 보시길…</p>
+<p><em>아래와 같은 느낌이다.(픽사베이 무료이미지)</em></p>
+<img src="/coding/jhipster/jhipster1/traveler-gf77d137f1_1920.jpg" class="">
+
+<h3 id="바로-설치"><a href="#바로-설치" class="headerlink" title="바로 설치"></a>바로 설치</h3><p>우선 어떤 녀석인지 설치를 해보자. 필자는 mac 환경에서 설치를 진행했다.</p>
+<h4 id="사전-준비물"><a href="#사전-준비물" class="headerlink" title="사전 준비물"></a>사전 준비물</h4><ul>
+<li>java</li>
+<li>git</li>
+<li>node.js</li>
+<li>mariadb</li>
+</ul>
+<p>설치 방법은 본 블로그에 정리해 두었다. </p>
+<p><em>git 설치 방법</em></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">brew install git</span><br><span class="line">==&gt; Downloading https://formulae.brew.sh/api/formula.jws.json</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">####################################################################### 100.0%</span></span></span><br><span class="line">==&gt; Downloading https://formulae.brew.sh/api/cask.jws.json</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">####################################################################### 100.0%</span></span></span><br><span class="line">Warning: git 2.40.0 is already installed and up-to-date.</span><br></pre></td></tr></table></figure>
+
+<h5 id="java-버전확인"><a href="#java-버전확인" class="headerlink" title="java  버전확인"></a>java  버전확인</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java --version</span><br><span class="line">openjdk 18.0.2 2022-07-19</span><br><span class="line">OpenJDK Runtime Environment (build 18.0.2+9-61)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 18.0.2+9-61, mixed mode, sharing)</span><br></pre></td></tr></table></figure>
+<h5 id="git-버전확인"><a href="#git-버전확인" class="headerlink" title="git  버전확인"></a>git  버전확인</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br><span class="line">git version 2.40.0</span><br></pre></td></tr></table></figure>
+<h5 id="node-버전확인"><a href="#node-버전확인" class="headerlink" title="node  버전확인"></a>node  버전확인</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br><span class="line">v16.14.0</span><br></pre></td></tr></table></figure>
+<h5 id="mariadb-버전확인"><a href="#mariadb-버전확인" class="headerlink" title="mariadb  버전확인"></a>mariadb  버전확인</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mariadb --version</span><br><span class="line">mariadb  Ver 15.1 Distrib 10.11.2-MariaDB, for osx10.18 (x86_64) using  EditLine wrapper</span><br></pre></td></tr></table></figure>
+
+<h3 id="JHipster-설치"><a href="#JHipster-설치" class="headerlink" title="JHipster 설치"></a>JHipster 설치</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g generator-jhipster</span><br></pre></td></tr></table></figure>
+
+<h4 id="JHipster-버전확인"><a href="#JHipster-버전확인" class="headerlink" title="JHipster 버전확인"></a>JHipster 버전확인</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jhipster --version</span><br><span class="line">INFO! Using bundled JHipster</span><br><span class="line">7.9.3</span><br></pre></td></tr></table></figure>
+
+<h3 id="JHipster-어플리케이션-생성"><a href="#JHipster-어플리케이션-생성" class="headerlink" title="JHipster 어플리케이션 생성"></a>JHipster 어플리케이션 생성</h3><p>디렉토리를 생성하고 3번째줄과 같이 jhipster라고 입력하면 된다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir jhipster</span><br><span class="line">cd jhipster</span><br><span class="line">jhipster</span><br></pre></td></tr></table></figure>
+<p>아래와 같은 내용이 나오는데 Monolithic application 을 선택하자. (23번라인)<br>모놀리식이란 전통적인 소프트웨어 구조로 어플리케이션 안에 모든 기능이 다 들어가는걸 말한다. </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">INFO! Using bundled JHipster</span><br><span class="line">(node:13189) [DEP0148] DeprecationWarning: Use of deprecated folder mapping &quot;./lib/util/&quot; in the &quot;exports&quot; field module resolution of the package at /usr/local/lib/node_modules/generator-jhipster/node_modules/yeoman-environment/package.json.</span><br><span class="line">Update this package.json to use a subpath pattern like &quot;./lib/util/*&quot;.</span><br><span class="line">(Use `node --trace-deprecation ...` to show where the warning was created)</span><br><span class="line"></span><br><span class="line">        ██╗ ██╗   ██╗ ████████╗ ███████╗   ██████╗ ████████╗ ████████╗ ███████╗</span><br><span class="line">        ██║ ██║   ██║ ╚══██╔══╝ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═════╝ ██╔═══██╗</span><br><span class="line">        ██║ ████████║    ██║    ███████╔╝ ╚█████╗     ██║    ██████╗   ███████╔╝</span><br><span class="line">  ██╗   ██║ ██╔═══██║    ██║    ██╔════╝   ╚═══██╗    ██║    ██╔═══╝   ██╔══██║</span><br><span class="line">  ╚██████╔╝ ██║   ██║ ████████╗ ██║       ██████╔╝    ██║    ████████╗ ██║  ╚██╗</span><br><span class="line">   ╚═════╝  ╚═╝   ╚═╝ ╚═══════╝ ╚═╝       ╚═════╝     ╚═╝    ╚═══════╝ ╚═╝   ╚═╝</span><br><span class="line">                            https://www.jhipster.tech</span><br><span class="line">Welcome to JHipster v7.9.3</span><br><span class="line"></span><br><span class="line">Application files will be generated in folder: /Users/gosu/jhipster</span><br><span class="line"> _______________________________________________________________________________________________________________</span><br><span class="line"></span><br><span class="line">  Documentation for creating an application is at https://www.jhipster.tech/creating-an-app/</span><br><span class="line">  If you find JHipster useful, consider sponsoring the project at https://opencollective.com/generator-jhipster</span><br><span class="line"> _______________________________________________________________________________________________________________</span><br><span class="line"></span><br><span class="line">? Which *type* of application would you like to create? (Use arrow keys)</span><br><span class="line">❯ Monolithic application (recommended for simple projects) </span><br><span class="line">  Gateway application </span><br><span class="line">  Microservice application</span><br></pre></td></tr></table></figure>
+<p>어플리케이션 이름은 jhipster 라고 입력한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? What is the base name of your application? (jhipster)</span><br></pre></td></tr></table></figure>
+<p>WebFlux는 리액트에서 사용하는 녀석 같은데 vue를 사용할 예정이므로 N으로 설정한다. (엔터를 입력하면 default 가 N 이므로 선택하지 않는다.)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? Do you want to make it reactive with Spring WebFlux? (y/N)</span><br></pre></td></tr></table></figure>
+<p>자바패키지명은 각자 환경에 맞게 지정해주자 io.github.goodsaem.api</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? What is your default Java package name? (com.mycompany.myapp)</span><br></pre></td></tr></table></figure>
+<p>인증방식은 JWT 인증방식으로 지정</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">? Which *type* of authentication would you like to use? (Use arrow keys)</span><br><span class="line">❯ JWT authentication (stateless, with a token) </span><br><span class="line">  OAuth 2.0 / OIDC Authentication (stateful, works with Keycloak and Okta) </span><br><span class="line">  HTTP Session Authentication (stateful, default Spring Security mechanism) </span><br></pre></td></tr></table></figure>
+<p>데이터베이스는 마리아 디비로 선택한다. (SQL을 선택하고 두번째 MariaDB를 선택하면 된다.)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">? Which *type* of database would you like to use? (Use arrow keys)</span><br><span class="line">❯ SQL (H2, PostgreSQL, MySQL, MariaDB, Oracle, MSSQL) </span><br><span class="line">  MongoDB </span><br><span class="line">  Cassandra </span><br><span class="line">  [BETA] Couchbase </span><br><span class="line">  [BETA] Neo4j </span><br><span class="line">  No database </span><br></pre></td></tr></table></figure>
+<p>개발 데이터베이스는 어떤걸 사용할건지 물어보는데 마리아 디비로 하자.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">? Which *development* database would you like to use? </span><br><span class="line">  H2 with disk-based persistence </span><br><span class="line">  H2 with in-memory persistence </span><br><span class="line">❯ MariaDB</span><br></pre></td></tr></table></figure>
+<p>캐쉬를 물어보는데 Ehcache를 선택한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">? Which cache do you want to use? (Spring cache abstraction) (Use arrow keys)</span><br><span class="line">❯ Ehcache (local cache, for a single node) </span><br><span class="line">  Caffeine (local cache, for a single node) </span><br><span class="line">  Hazelcast (distributed cache, for multiple nodes, supports rate-limiting for gateway applications) </span><br><span class="line">  Infinispan (hybrid cache, for multiple nodes) </span><br><span class="line">  Memcached (distributed cache) - Warning, when using an SQL database, this will disable the Hibernate 2nd level cache! </span><br><span class="line">  Redis (distributed cache) </span><br><span class="line">  No cache - Warning, when using an SQL database, this will disable the Hibernate 2nd level cache! </span><br></pre></td></tr></table></figure>
+<p>하이버네이트 쿼리성능향상을 위해 2차캐시를 쓸건지 물어보는데 Y라고 선택한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? Do you want to use Hibernate 2nd level cache? (Y/n)</span><br></pre></td></tr></table></figure>
+<p>의존성 관리 도구는 maven을 선택한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">? Would you like to use Maven or Gradle for building the backend? (Use arrow keys)</span><br><span class="line">❯ Maven </span><br><span class="line">  Gradle</span><br></pre></td></tr></table></figure>
+<p>jHipster Registry 설정여부를 물어보는데 우선 No로 선택한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">? Do you want to use the JHipster Registry to configure, monitor and scale your application? (Use arrow keys)</span><br><span class="line">❯ No </span><br><span class="line">  Yes </span><br></pre></td></tr></table></figure>
+<p>기타 기술을 물어보는데 아무것도 선택하지 않는다.(엔터입력)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">? Which other technologies would you like to use? (Press &lt;space&gt; to select, &lt;a&gt; to toggle all, &lt;i&gt; to invert selection, and &lt;enter&gt; to proceed)</span><br><span class="line">❯◯ Elasticsearch as search engine</span><br><span class="line">◯ WebSockets using Spring Websocket</span><br><span class="line">◯ Apache Kafka as asynchronous messages broker</span><br><span class="line">◯ API first development using OpenAPI-generator</span><br></pre></td></tr></table></figure>
+<p>클라이언트 프레임워크는 vue를 선택하자.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">? Which *Framework* would you like to use for the client? </span><br><span class="line">  Angular </span><br><span class="line">  React </span><br><span class="line">❯ Vue </span><br><span class="line">  No client </span><br></pre></td></tr></table></figure>
+<p>관리자 ui는 생성한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? Do you want to generate the admin UI? (Y/n) </span><br></pre></td></tr></table></figure>
+<p>관리자 theme은 Default JHipster를 선택한다. </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">? Would you like to use a Bootswatch theme (https://bootswatch.com/)? (Use arrow keys)</span><br><span class="line">❯ Default JHipster </span><br><span class="line">  Cerulean </span><br><span class="line">  Cosmo </span><br><span class="line">  Cyborg </span><br><span class="line">  Darkly </span><br><span class="line">  Flatly </span><br><span class="line">  Journal </span><br></pre></td></tr></table></figure>
+<p>다국어 지원을 물어보는 Y 를 선택한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? Would you like to enable internationalization support? (Y/n) </span><br></pre></td></tr></table></figure>
+<p>대표언어는 Korean을 선택한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">? Please choose the native language of the application (Use arrow keys)</span><br><span class="line">❯ Korean </span><br><span class="line">  Marathi </span><br><span class="line">  Myanmar </span><br><span class="line">  Polish </span><br><span class="line">  Portuguese (Brazilian) </span><br><span class="line">  Portuguese </span><br><span class="line">  Punjabi </span><br></pre></td></tr></table></figure>
+<p>추가언어는 English를 선택한다. (키보드 위 버튼을 눌러서 English가 나오면 스페이스 입력)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">? Please choose additional languages to install (Press &lt;space&gt; to select, &lt;a&gt; to toggle all, &lt;i&gt; to invert selection, and &lt;enter&gt; to proceed)</span><br><span class="line"> ◯ Danish</span><br><span class="line"> ◯ Dutch</span><br><span class="line">❯◉ English</span><br><span class="line"> ◯ Estonian</span><br><span class="line"> ◯ Farsi</span><br><span class="line"> ◯ Finnish</span><br><span class="line"> ◯ French</span><br></pre></td></tr></table></figure>
+<p>테스트 프레임워크를 물어보는데 선택하지 않는다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">? Besides JUnit and Jest, which testing frameworks would you like to use? </span><br><span class="line">❯◯ Cypress</span><br><span class="line"> ◯ [DEPRECATED] Protractor</span><br><span class="line"> ◯ Gatling</span><br><span class="line"> ◯ Cucumber</span><br></pre></td></tr></table></figure>
+<p>마켓플레이스에서 추가 설치할것을 물어보는데 N을 선택한다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? Would you like to install other generators from the JHipster Marketplace? (y/N)</span><br></pre></td></tr></table></figure>
+
+<p>여기까지 선택된 내용전체는 아래와 같다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">? Which *type* of application would you like to create? Monolithic application (recommended for simple projects)</span><br><span class="line">? What is the base name of your application? jhipster</span><br><span class="line">? Do you want to make it reactive with Spring WebFlux? No</span><br><span class="line">? What is your default Java package name? io.github.goodsaem.api</span><br><span class="line">? Which *type* of authentication would you like to use? JWT authentication (stateless, with a token)</span><br><span class="line">? Which *type* of database would you like to use? SQL (H2, PostgreSQL, MySQL, MariaDB, Oracle, MSSQL)</span><br><span class="line">? Which *production* database would you like to use? MariaDB</span><br><span class="line">? Which *development* database would you like to use? MariaDB</span><br><span class="line">? Which cache do you want to use? (Spring cache abstraction) Ehcache (local cache, for a single node)</span><br><span class="line">? Do you want to use Hibernate 2nd level cache? Yes</span><br><span class="line">? Would you like to use Maven or Gradle for building the backend? Maven</span><br><span class="line">? Do you want to use the JHipster Registry to configure, monitor and scale your application? No</span><br><span class="line">? Which other technologies would you like to use? </span><br><span class="line">? Which *Framework* would you like to use for the client? Vue</span><br><span class="line">? Do you want to generate the admin UI? Yes</span><br><span class="line">? Would you like to use a Bootswatch theme (https://bootswatch.com/)? Default JHipster</span><br><span class="line">? Would you like to enable internationalization support? Yes</span><br><span class="line">? Please choose the native language of the application Korean</span><br><span class="line">? Please choose additional languages to install English</span><br><span class="line">? Besides JUnit and Jest, which testing frameworks would you like to use? </span><br><span class="line">? Would you like to install other generators from the JHipster Marketplace? No</span><br></pre></td></tr></table></figure>
+<p>설치가 진행되고 아래와 같은 로그를 확인할수 있다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br></pre></td><td class="code"><pre><span class="line">Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 99,999 days</span><br><span class="line">	for: CN=Java Hipster, OU=Development, O=io.github.goodsaem.api, L=, ST=, C=</span><br><span class="line"></span><br><span class="line">KeyStore &#x27;/Users/gosu/jhipster/src/main/resources/config/tls//keystore.p12&#x27; generated successfully.</span><br><span class="line"></span><br><span class="line">   create .prettierrc</span><br><span class="line">   create .prettierignore</span><br><span class="line">   create package.json</span><br><span class="line">    force .yo-rc-global.json</span><br><span class="line">    force .yo-rc.json</span><br><span class="line">   create .gitignore</span><br><span class="line">   create .gitattributes</span><br><span class="line">   create .editorconfig</span><br><span class="line">   create sonar-project.properties</span><br><span class="line">   create .lintstagedrc.js</span><br><span class="line">   create .husky/pre-commit</span><br><span class="line">   create mvnw</span><br><span class="line">   create mvnw.cmd</span><br><span class="line">   create .mvn/jvm.config</span><br><span class="line">   create .mvn/wrapper/maven-wrapper.jar</span><br><span class="line">   create .mvn/wrapper/maven-wrapper.properties</span><br><span class="line">   create npmw</span><br><span class="line">   create npmw.cmd</span><br><span class="line">   create src/main/resources/banner.txt</span><br><span class="line">   create src/main/resources/config/liquibase/changelog/00000000000000_initial_schema.xml</span><br><span class="line">   create src/main/resources/config/liquibase/master.xml</span><br><span class="line">   create src/main/docker/jib/entrypoint.sh</span><br><span class="line">   create checkstyle.xml</span><br><span class="line">   create .devcontainer/Dockerfile</span><br><span class="line">   create pom.xml</span><br><span class="line">   create src/main/docker/app.yml</span><br><span class="line">   create src/main/resources/logback-spring.xml</span><br><span class="line">   create src/main/docker/zipkin.yml</span><br><span class="line">   create src/main/docker/prometheus/prometheus.yml</span><br><span class="line">   create src/main/resources/templates/error.html</span><br><span class="line">   create src/main/docker/jhipster-control-center.yml</span><br><span class="line">   create .devcontainer/devcontainer.json</span><br><span class="line">   create src/main/docker/sonar.yml</span><br><span class="line">   create src/main/resources/i18n/messages.properties</span><br><span class="line">   create src/main/docker/monitoring.yml</span><br><span class="line">   create src/main/docker/central-server-config/README.md</span><br><span class="line">   create src/main/resources/config/application.yml</span><br><span class="line">   create src/main/resources/config/application-dev.yml</span><br><span class="line">   create src/main/docker/grafana/provisioning/dashboards/dashboard.yml</span><br><span class="line">   create src/main/resources/config/application-tls.yml</span><br><span class="line">   create src/main/docker/grafana/provisioning/dashboards/JVM.json</span><br><span class="line">   create src/main/resources/config/application-prod.yml</span><br><span class="line">   create src/main/docker/grafana/provisioning/datasources/datasource.yml</span><br><span class="line">   create src/main/resources/config/bootstrap.yml</span><br><span class="line">   create src/main/resources/config/bootstrap-prod.yml</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/security/SpringSecurityAuditorAware.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/security/jwt/JWTConfigurer.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/GeneratedByJHipster.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/JacksonConfiguration.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/domain/package-info.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/security/SecurityUtils.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/SecurityConfiguration.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/aop/logging/LoggingAspect.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/domain/AbstractAuditingEntity.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/LoggingAspectConfiguration.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/security/DomainUserDetailsService.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/ApplicationWebXml.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/package-info.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/WebConfigurer.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/repository/package-info.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/security/UserNotActivatedException.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/AsyncConfiguration.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/security/AuthoritiesConstants.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/security/package-info.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/vm/LoginVM.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/CRLFLogConverter.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/StaticResourcesWebConfiguration.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/service/EmailAlreadyUsedException.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/UserJWTController.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/service/InvalidPasswordException.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/security/jwt/TokenProvider.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/Constants.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/service/UsernameAlreadyUsedException.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/DateTimeFormatConfiguration.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/security/jwt/JWTFilter.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/vm/package-info.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/LocaleConfiguration.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/service/package-info.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/package-info.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/LoggingConfiguration.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/management/SecurityMetersService.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/ApplicationProperties.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/CacheConfiguration.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/ClientForwardController.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/DatabaseConfiguration.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/errors/package-info.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/JhipsterApp.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/errors/BadRequestAlertException.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/errors/ErrorConstants.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/errors/ExceptionTranslator.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/errors/FieldErrorVM.java</span><br><span class="line">   create src/test/resources/logback.xml</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/errors/EmailAlreadyUsedException.java</span><br><span class="line">   create src/test/resources/junit-platform.properties</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/security/SecurityUtilsUnitTest.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/errors/InvalidPasswordException.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/config/AsyncSyncConfiguration.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/errors/LoginAlreadyUsedException.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/config/WebConfigurerTest.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/IntegrationTest.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/config/WebConfigurerTestController.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/config/StaticResourcesWebConfigurerTest.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/config/SpringBootTestClassOrderer.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/security/DomainUserDetailsServiceIT.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/domain/User.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/domain/Authority.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/repository/AuthorityRepository.java</span><br><span class="line">   create src/main/resources/config/liquibase/data/user.csv</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/TechnicalStructureTest.java</span><br><span class="line">   create src/main/resources/config/liquibase/data/authority.csv</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/web/rest/TestUtil.java</span><br><span class="line">   create src/main/resources/config/liquibase/data/user_authority.csv</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/web/rest/errors/ExceptionTranslatorTestController.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/web/rest/errors/ExceptionTranslatorIT.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/web/rest/ClientForwardControllerTest.java</span><br><span class="line">   create src/test/resources/config/application.yml</span><br><span class="line">   create src/test/resources/config/bootstrap.yml</span><br><span class="line">   create src/main/resources/templates/mail/activationEmail.html</span><br><span class="line">   create src/main/resources/templates/mail/creationEmail.html</span><br><span class="line">   create src/main/resources/templates/mail/passwordResetEmail.html</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/repository/UserRepository.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/service/UserService.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/service/MailService.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/vm/ManagedUserVM.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/AccountResource.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/UserResource.java</span><br><span class="line">   create src/test/resources/templates/mail/activationEmail.html</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/PublicUserResource.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/web/rest/vm/KeyAndPasswordVM.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/service/dto/package-info.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/service/dto/AdminUserDTO.java</span><br><span class="line">   create src/test/resources/testcontainers.properties</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/service/dto/UserDTO.java</span><br><span class="line">   create src/test/resources/META-INF/spring.factories</span><br><span class="line">   create src/test/resources/templates/mail/creationEmail.html</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/service/dto/PasswordChangeDTO.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/config/TestContainersSpringContextCustomizerFactory.java</span><br><span class="line">   create src/test/resources/templates/mail/passwordResetEmail.html</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/service/mapper/package-info.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/service/mapper/UserMapper.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/web/rest/UserJWTControllerIT.java</span><br><span class="line">   create src/test/resources/templates/mail/testEmail.html</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/management/SecurityMetersServiceTests.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/security/jwt/TokenProviderTest.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/web/rest/PublicUserResourceIT.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/web/rest/UserResourceIT.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/security/jwt/TokenProviderSecurityMetersTests.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/web/rest/AccountResourceIT.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/security/jwt/JWTFilterTest.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/web/rest/WithUnauthenticatedMockUser.java</span><br><span class="line">   create src/test/resources/testcontainers/mariadb/my.cnf</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/service/MailServiceIT.java</span><br><span class="line">   create src/main/docker/config/mariadb/my.cnf</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/service/UserServiceIT.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/service/mapper/UserMapperTest.java</span><br><span class="line">   create src/main/java/io/github/goodsaem/api/config/LiquibaseConfiguration.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/config/timezone/HibernateTimeZoneIT.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/config/EmbeddedSQL.java</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/config/SqlTestContainer.java</span><br><span class="line">   create src/test/resources/config/application-testdev.yml</span><br><span class="line">   create src/test/resources/config/application-testprod.yml</span><br><span class="line">   create src/main/docker/mariadb.yml</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/config/MariadbTestContainer.java</span><br><span class="line">   create tsconfig.json</span><br><span class="line">   create tsconfig.spec.json</span><br><span class="line">   create .postcssrc.js</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/repository/timezone/DateTimeWrapper.java</span><br><span class="line">   create .eslintrc.js</span><br><span class="line">   create src/test/java/io/github/goodsaem/api/repository/timezone/DateTimeWrapperRepository.java</span><br><span class="line">   create webpack/config.js</span><br><span class="line">   create webpack/webpack.common.js</span><br><span class="line">   create webpack/webpack.prod.js</span><br><span class="line">   create webpack/vue.utils.js</span><br><span class="line">   create webpack/webpack.dev.js</span><br><span class="line">   create src/main/webapp/app/entities/entities.component.ts</span><br><span class="line">   create src/main/webapp/app/shims-vue.d.ts</span><br><span class="line">   create src/main/webapp/app/router/entities.ts</span><br><span class="line">   create src/main/webapp/app/entities/entities.vue</span><br><span class="line">   create src/main/webapp/app/constants.ts</span><br><span class="line">   create src/main/webapp/content/scss/_bootstrap-variables.scss</span><br><span class="line">   create src/main/webapp/app/entities/entities-menu.component.ts</span><br><span class="line">   create src/main/webapp/app/declarations.d.ts</span><br><span class="line">   create src/main/webapp/app/router/admin.ts</span><br><span class="line">   create src/main/webapp/content/scss/global.scss</span><br><span class="line">   create src/main/webapp/app/main.ts</span><br><span class="line">   create src/main/webapp/app/router/pages.ts</span><br><span class="line">   create src/main/webapp/content/scss/vendor.scss</span><br><span class="line">   create src/main/webapp/app/entities/entities-menu.vue</span><br><span class="line">   create src/main/webapp/app/app.vue</span><br><span class="line">   create src/main/webapp/app/app.component.ts</span><br><span class="line">   create src/main/webapp/app/router/index.ts</span><br><span class="line">   create src/main/webapp/app/shared/alert/alert.service.ts</span><br><span class="line">   create src/main/webapp/app/locale/translation.service.ts</span><br><span class="line">   create src/main/webapp/app/shared/config/axios-interceptor.ts</span><br><span class="line">   create src/main/webapp/app/shared/config/formatter.ts</span><br><span class="line">   create src/main/webapp/app/shared/config/store/translation-store.ts</span><br><span class="line">   create src/main/webapp/app/shared/config/config.ts</span><br><span class="line">   create src/main/webapp/app/shared/config/config-bootstrap-vue.ts</span><br><span class="line">   create src/main/webapp/app/shared/config/dayjs.ts</span><br><span class="line">   create src/main/webapp/app/shared/config/store/account-store.ts</span><br><span class="line">   create src/main/webapp/app/shared/security/authority.ts</span><br><span class="line">   create src/main/webapp/app/core/home/home.vue</span><br><span class="line">   create src/main/webapp/app/core/jhi-navbar/jhi-navbar.vue</span><br><span class="line">   create src/main/webapp/app/core/jhi-navbar/jhi-navbar.component.ts</span><br><span class="line">   create src/main/webapp/app/core/home/home.component.ts</span><br><span class="line">   create src/main/webapp/app/core/ribbon/ribbon.vue</span><br><span class="line">   create src/main/webapp/app/core/ribbon/ribbon.component.ts</span><br><span class="line">   create src/main/webapp/app/shared/jhi-item-count.component.ts</span><br><span class="line">   create src/main/webapp/app/shared/date/filters.ts</span><br><span class="line">   create src/main/webapp/app/shared/jhi-item-count.vue</span><br><span class="line">   create src/main/webapp/app/core/error/error.vue</span><br><span class="line">   create src/main/webapp/app/core/error/error.component.ts</span><br><span class="line">   create src/main/webapp/app/shared/sort/jhi-sort-indicator.component.ts</span><br><span class="line">   create src/main/webapp/app/shared/sort/jhi-sort-indicator.vue</span><br><span class="line">   create src/main/webapp/app/core/jhi-footer/jhi-footer.vue</span><br><span class="line">   create src/main/webapp/app/core/jhi-footer/jhi-footer.component.ts</span><br><span class="line">   create src/main/webapp/app/router/account.ts</span><br><span class="line">   create src/main/webapp/app/shared/sort/sorts.ts</span><br><span class="line">   create src/main/webapp/app/shared/data/data-utils.service.ts</span><br><span class="line">   create src/main/webapp/app/shared/model/user.model.ts</span><br><span class="line">   create src/main/webapp/app/account/account.service.ts</span><br><span class="line">   create src/main/webapp/app/account/login-form/login-form.vue</span><br><span class="line">   create src/main/webapp/app/account/login-form/login-form.component.ts</span><br><span class="line">   create src/main/webapp/app/account/login.service.ts</span><br><span class="line">   create src/main/webapp/app/account/change-password/change-password.vue</span><br><span class="line">   create src/main/webapp/app/account/change-password/change-password.component.ts</span><br><span class="line">   create src/main/webapp/app/account/register/register.vue</span><br><span class="line">   create src/main/webapp/app/account/register/register.component.ts</span><br><span class="line">   create src/main/webapp/app/account/register/register.service.ts</span><br><span class="line">   create src/main/webapp/app/account/settings/settings.vue</span><br><span class="line">   create src/main/webapp/app/account/settings/settings.component.ts</span><br><span class="line">   create src/main/webapp/app/account/activate/activate.component.ts</span><br><span class="line">   create src/main/webapp/app/account/activate/activate.service.ts</span><br><span class="line">   create src/main/webapp/app/account/activate/activate.vue</span><br><span class="line">   create src/main/webapp/app/account/reset-password/init/reset-password-init.vue</span><br><span class="line">   create src/main/webapp/app/account/reset-password/init/reset-password-init.component.ts</span><br><span class="line">   create src/main/webapp/app/account/reset-password/finish/reset-password-finish.vue</span><br><span class="line">   create src/main/webapp/app/account/reset-password/finish/reset-password-finish.component.ts</span><br><span class="line">   create src/main/webapp/app/admin/docs/docs.vue</span><br><span class="line">   create src/main/webapp/app/admin/health/health-modal.vue</span><br><span class="line">   create src/main/webapp/app/admin/docs/docs.component.ts</span><br><span class="line">   create src/main/webapp/app/admin/health/health-modal.component.ts</span><br><span class="line">   create src/main/webapp/app/admin/health/health.service.ts</span><br><span class="line">   create src/main/webapp/app/admin/logs/logs.vue</span><br><span class="line">   create src/main/webapp/app/admin/logs/logs.component.ts</span><br><span class="line">   create src/main/webapp/app/admin/logs/logs.service.ts</span><br><span class="line">   create src/main/webapp/app/admin/configuration/configuration.vue</span><br><span class="line">   create src/main/webapp/app/admin/metrics/metrics.vue</span><br><span class="line">   create src/main/webapp/app/admin/configuration/configuration.component.ts</span><br><span class="line">   create src/main/webapp/app/admin/metrics/metrics.component.ts</span><br><span class="line">   create src/main/webapp/app/admin/configuration/configuration.service.ts</span><br><span class="line">   create src/main/webapp/app/admin/health/health.vue</span><br><span class="line">   create src/main/webapp/app/admin/metrics/metrics.service.ts</span><br><span class="line">   create src/main/webapp/app/admin/health/health.component.ts</span><br><span class="line">   create src/main/webapp/app/admin/metrics/metrics-modal.vue</span><br><span class="line">   create src/main/webapp/app/admin/metrics/metrics-modal.component.ts</span><br><span class="line">   create src/main/webapp/app/admin/user-management/user-management.vue</span><br><span class="line">   create src/main/webapp/app/admin/user-management/user-management.component.ts</span><br><span class="line">   create src/main/webapp/app/admin/user-management/user-management-view.vue</span><br><span class="line">   create src/main/webapp/app/admin/user-management/user-management-view.component.ts</span><br><span class="line">   create src/main/webapp/app/admin/user-management/user-management-edit.vue</span><br><span class="line">   create src/main/webapp/app/admin/user-management/user-management-edit.component.ts</span><br><span class="line">   create src/main/webapp/app/admin/user-management/user-management.service.ts</span><br><span class="line">   create src/main/webapp/app/entities/user/user.service.ts</span><br><span class="line">   create src/test/javascript/jest.conf.js</span><br><span class="line">   create src/test/javascript/spec/app/account/account.service.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/admin/health/health-modal.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/account/settings/settings.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/core/home/home.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/admin/health/health.service.spec.ts</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_0.svg</span><br><span class="line">   create src/test/javascript/spec/app/core/error/error.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/admin/logs/logs.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/core/jhi-navbar/jhi-navbar.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/admin/metrics/metrics.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/account/activate/activate.component.spec.ts</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_0_head-192.png</span><br><span class="line">   create src/test/javascript/spec/app/core/ribbon/ribbon.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/admin/metrics/metrics-modal.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/admin/user-management/user-management.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/shared/alert/alert.service.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/shared/config/formatter.spec.ts</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_0_head-256.png</span><br><span class="line">   create src/test/javascript/spec/app/shared/config/axios-interceptor.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/account/login-form/login-form.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/shared/data/data-utils.service.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/account/change-password/change-password.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/admin/user-management/user-management-view.component.spec.ts</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_0_head-384.png</span><br><span class="line">   create src/test/javascript/spec/app/shared/sort/sorts.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/account/register/register.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/admin/configuration/configuration.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/account/reset-password/init/reset-password-init.component.spec.ts</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_0_head-512.png</span><br><span class="line">   create src/test/javascript/spec/app/admin/health/health.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/admin/user-management/user-management-edit.component.spec.ts</span><br><span class="line">   create src/test/javascript/spec/app/account/reset-password/finish/reset-password-finish.component.spec.ts</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_1.svg</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_1_head-192.png</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_1_head-256.png</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_1_head-384.png</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_1_head-512.png</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_2.svg</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_2_head-192.png</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_2_head-256.png</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_2_head-384.png</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_2_head-512.png</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_3.svg</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_3_head-192.png</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_3_head-256.png</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_3_head-384.png</span><br><span class="line">   create src/main/webapp/content/images/jhipster_family_member_3_head-512.png</span><br><span class="line">   create src/main/webapp/content/images/logo-jhipster.png</span><br><span class="line">   create src/main/webapp/favicon.ico</span><br><span class="line">   create src/main/webapp/swagger-ui/dist/images/throbber.gif</span><br><span class="line">   create .eslintignore</span><br><span class="line">   create src/main/webapp/manifest.webapp</span><br><span class="line">   create src/main/webapp/WEB-INF/web.xml</span><br><span class="line">   create src/main/webapp/robots.txt</span><br><span class="line">   create src/main/webapp/content/css/loading.css</span><br><span class="line">   create src/main/webapp/404.html</span><br><span class="line">   create src/main/webapp/index.html</span><br><span class="line">   create src/main/webapp/swagger-ui/index.html</span><br><span class="line">   create src/main/webapp/i18n/ko/error.json</span><br><span class="line">   create src/main/webapp/i18n/ko/activate.json</span><br><span class="line">   create src/main/webapp/i18n/ko/login.json</span><br><span class="line">   create src/main/webapp/i18n/ko/home.json</span><br><span class="line">   create src/main/webapp/i18n/ko/global.json</span><br><span class="line">   create src/main/webapp/i18n/ko/password.json</span><br><span class="line">   create src/main/webapp/i18n/ko/register.json</span><br><span class="line">   create src/main/webapp/i18n/ko/sessions.json</span><br><span class="line">   create src/main/webapp/i18n/ko/settings.json</span><br><span class="line">   create src/main/webapp/i18n/ko/reset.json</span><br><span class="line">   create src/main/webapp/i18n/ko/user-management.json</span><br><span class="line">   create src/main/webapp/i18n/ko/configuration.json</span><br><span class="line">   create src/main/webapp/i18n/ko/health.json</span><br><span class="line">   create src/main/webapp/i18n/en/error.json</span><br><span class="line">   create src/main/webapp/i18n/en/logs.json</span><br><span class="line">   create src/main/webapp/i18n/ko/logs.json</span><br><span class="line">   create src/main/webapp/i18n/en/metrics.json</span><br><span class="line">   create src/main/webapp/i18n/ko/metrics.json</span><br><span class="line">   create src/main/webapp/i18n/en/activate.json</span><br><span class="line">   create src/main/webapp/i18n/en/login.json</span><br><span class="line">   create src/main/webapp/i18n/en/global.json</span><br><span class="line">   create src/main/webapp/i18n/en/home.json</span><br><span class="line">   create src/main/webapp/i18n/en/reset.json</span><br><span class="line">   create src/main/webapp/i18n/en/password.json</span><br><span class="line">   create src/main/webapp/i18n/en/health.json</span><br><span class="line">   create src/main/resources/i18n/messages_ko.properties</span><br><span class="line">   create src/main/webapp/i18n/en/register.json</span><br><span class="line">   create src/test/resources/i18n/messages_ko.properties</span><br><span class="line">   create src/main/webapp/i18n/en/sessions.json</span><br><span class="line">   create src/main/resources/i18n/messages_en.properties</span><br><span class="line">   create src/main/webapp/i18n/en/settings.json</span><br><span class="line">   create src/test/resources/i18n/messages_en.properties</span><br><span class="line">   create src/main/webapp/i18n/en/user-management.json</span><br><span class="line">   create src/main/webapp/i18n/en/configuration.json</span><br><span class="line">   create README.md</span><br><span class="line">    force .yo-rc.json</span><br><span class="line">Git repository initialized.</span><br><span class="line"></span><br><span class="line">Changes to package.json were detected.</span><br><span class="line">[INFO] Scanning for projects...</span><br><span class="line">[WARNING] </span><br><span class="line">[WARNING] Some problems were encountered while building the effective model for io.github.goodsaem.api:jhipster:jar:0.0.1-SNAPSHOT</span><br><span class="line">[WARNING] &#x27;build.plugins.plugin.version&#x27; for org.apache.maven.plugins:maven-failsafe-plugin is missing. @ line 323, column 21</span><br><span class="line">[WARNING] </span><br><span class="line">[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.</span><br><span class="line">[WARNING] </span><br><span class="line">[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.</span><br><span class="line">[WARNING] </span><br><span class="line">[INFO] </span><br><span class="line">[INFO] ------------------&lt; io.github.goodsaem.api:jhipster &gt;-------------------</span><br><span class="line">[INFO] Building JHipster 0.0.1-SNAPSHOT</span><br><span class="line">[INFO] --------------------------------[ jar ]---------------------------------</span><br><span class="line">[INFO] </span><br><span class="line">[INFO] --- frontend-maven-plugin:1.12.1:install-node-and-npm (install-node-and-npm) @ jhipster ---</span><br><span class="line">[INFO] Installing node version v16.17.0</span><br><span class="line">[INFO] Unpacking /Users/gosu/.m2/repository/com/github/eirslett/node/16.17.0/node-16.17.0-darwin-x64.tar.gz into /Users/gosu/jhipster/target/node/tmp</span><br><span class="line">[INFO] Copying node binary from /Users/gosu/jhipster/target/node/tmp/node-v16.17.0-darwin-x64/bin/node to /Users/gosu/jhipster/target/node/node</span><br><span class="line">[INFO] Installed node locally.</span><br><span class="line">[INFO] Installing npm version 8.19.1</span><br><span class="line">[INFO] Unpacking /Users/gosu/.m2/repository/com/github/eirslett/npm/8.19.1/npm-8.19.1.tar.gz into /Users/gosu/jhipster/target/node/node_modules</span><br><span class="line">[INFO] Installed npm locally.</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] BUILD SUCCESS</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[INFO] Total time:  2.645 s</span><br><span class="line">[INFO] Finished at: 2023-03-27T21:53:26+09:00</span><br><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">Using node installed locally v16.17.0</span><br><span class="line">Using npm installed locally 8.19.1</span><br><span class="line">npm WARN deprecated readdir-scoped-modules@1.1.0: This functionality has been moved to @npmcli/fs</span><br><span class="line">npm WARN deprecated @npmcli/move-file@1.1.2: This functionality has been moved to @npmcli/fs</span><br><span class="line">npm WARN deprecated source-map-url@0.4.1: See https://github.com/lydell/source-map-url#deprecated</span><br><span class="line">npm WARN deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility</span><br><span class="line">npm WARN deprecated @npmcli/move-file@2.0.1: This functionality has been moved to @npmcli/fs</span><br><span class="line">npm WARN deprecated rollup-plugin-terser@7.0.2: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser</span><br><span class="line">npm WARN deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated</span><br><span class="line">npm WARN deprecated har-validator@5.1.5: this library is no longer supported</span><br><span class="line">npm WARN deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated</span><br><span class="line">npm WARN deprecated source-map-resolve@0.5.3: See https://github.com/lydell/source-map-resolve#deprecated</span><br><span class="line">npm WARN deprecated w3c-hr-time@1.0.2: Use your platform&#x27;s native performance.now() and performance.timeOrigin.</span><br><span class="line">npm WARN deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead</span><br><span class="line">npm WARN deprecated querystring@0.2.0: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.</span><br><span class="line">npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.</span><br><span class="line">npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142</span><br><span class="line">npm WARN deprecated popper.js@1.16.1: You can find the new Popper v2 at @popperjs/core, this package is dedicated to the legacy v1</span><br><span class="line">npm WARN deprecated core-js@2.6.12: core-js@&lt;3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">jhipster@0.0.0 prepare</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">husky install</span></span><br><span class="line"></span><br><span class="line">husky - Git hooks installed</span><br><span class="line"></span><br><span class="line">added 2016 packages, and audited 2017 packages in 2m</span><br><span class="line"></span><br><span class="line">214 packages are looking for funding</span><br><span class="line">  run `npm fund` for details</span><br><span class="line"></span><br><span class="line">10 vulnerabilities (2 moderate, 7 high, 1 critical)</span><br><span class="line"></span><br><span class="line">To address issues that do not require attention, run:</span><br><span class="line">  npm audit fix</span><br><span class="line"></span><br><span class="line">To address all issues (including breaking changes), run:</span><br><span class="line">  npm audit fix --force</span><br><span class="line"></span><br><span class="line">Run `npm audit` for details.</span><br><span class="line">Application successfully committed to Git from /Users/gosu/jhipster.</span><br><span class="line"></span><br><span class="line">If you find JHipster useful consider sponsoring the project https://www.jhipster.tech/sponsors/</span><br><span class="line"></span><br><span class="line">Server application generated successfully.</span><br><span class="line"></span><br><span class="line">Run your Spring Boot application:</span><br><span class="line">./mvnw</span><br><span class="line"></span><br><span class="line">Client application generated successfully.</span><br><span class="line"></span><br><span class="line">Start your Webpack development server with:</span><br><span class="line"> npm start</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">jhipster@0.0.0 clean-www</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">rimraf target/classes/static/app/&#123;src,target/&#125;</span></span><br><span class="line"></span><br><span class="line">Congratulations, JHipster execution is complete!</span><br></pre></td></tr></table></figure>
+<p>가장 마지막줄 보면 성공적으로 설치가 되었다</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://goodsaem.github.io/coding/jhipster/jhipster1/" data-id="cmchdg1z6007tf0vqeht82yhk" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "good"
+        },
+        "headline": "1. JHipster 설치",
+        "image": "http://goodsaem.github.io/coding/jhipster/jhipster1/jhipster-001.png",
+        "keywords": "JHipster",
+        "genre": "Coding JHipster",
+        "datePublished": "2023-03-27",
+        "dateCreated": "2023-03-27",
+        "dateModified": "2025-06-29",
+        "url": "http://goodsaem.github.io/coding/jhipster/jhipster1/",
+        "description": "
+
+
+ 개요springboot 로 restapi 를 만들일이 생겼다. 처음부터 끝까지 다만들려고 하니 시간이 너무 많이 걸릴것 같고잘 만들어진 오픈소스가 있을것 같아 구글링하다가 jhipster (제이 힙스터) 라는 개발 플랫폼을 알게되었고,정리가 잘되어 있는 사이트가 없어 정리한다.
+JHipster 란?“Hipster”는 미국에서 시작된 문화 용어로, 모",
+        "wordCount": 4695
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+     
+    
+        
+<nav id="article-nav">
+    
+        <a href="/coding/jhipster/jhipster2/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">신규</strong>
+        <p class="article-nav-title">
+        
+            2. JHipster 실행
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/setup/nodejs/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">이전</strong>
+        <p class="article-nav-title">mac 환경에서 node.js 설치하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B0%9C%EC%9A%94"><span class="toc-number">1.</span> <span class="toc-text"> 개요</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JHipster-%EB%9E%80"><span class="toc-number">2.</span> <span class="toc-text">JHipster 란?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EB%B0%94%EB%A1%9C-%EC%84%A4%EC%B9%98"><span class="toc-number">3.</span> <span class="toc-text">바로 설치</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EC%82%AC%EC%A0%84-%EC%A4%80%EB%B9%84%EB%AC%BC"><span class="toc-number">3.1.</span> <span class="toc-text">사전 준비물</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#java-%EB%B2%84%EC%A0%84%ED%99%95%EC%9D%B8"><span class="toc-number">3.1.1.</span> <span class="toc-text">java  버전확인</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#git-%EB%B2%84%EC%A0%84%ED%99%95%EC%9D%B8"><span class="toc-number">3.1.2.</span> <span class="toc-text">git  버전확인</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#node-%EB%B2%84%EC%A0%84%ED%99%95%EC%9D%B8"><span class="toc-number">3.1.3.</span> <span class="toc-text">node  버전확인</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mariadb-%EB%B2%84%EC%A0%84%ED%99%95%EC%9D%B8"><span class="toc-number">3.1.4.</span> <span class="toc-text">mariadb  버전확인</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JHipster-%EC%84%A4%EC%B9%98"><span class="toc-number">4.</span> <span class="toc-text">JHipster 설치</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JHipster-%EB%B2%84%EC%A0%84%ED%99%95%EC%9D%B8"><span class="toc-number">4.1.</span> <span class="toc-text">JHipster 버전확인</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JHipster-%EC%96%B4%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EC%83%9D%EC%84%B1"><span class="toc-number">5.</span> <span class="toc-text">JHipster 어플리케이션 생성</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-fontawesome/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/vygt2h.jpg)" alt="hexo 에서 fontawesome 사용하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-fontawesome/" class="title">hexo 에서 fontawesome 사용하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T06:17:16.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/rklrz3.jpg)" alt="정적 웹사이트 생성기 hexo 로 블로그 만들기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo/" class="title">정적 웹사이트 생성기 hexo 로 블로그 만들기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:25:04.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-hexo-include/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/y01pdv.jpg)" alt="Hexo 에 글 포함하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-hexo-include/" class="title">Hexo 에 글 포함하기</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:24:56.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/blog-intro/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/a339t1.jpg)" alt="소개" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/blog/blog-intro/" class="title">소개</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T05:23:23.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/setup/setup_github_ssh/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/pb9w1z.jpg)" alt="Github ssh 연결" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Setup/">Setup</a></p>
+                            <p class="item-title"><a href="/setup/setup_github_ssh/" class="title">Github ssh 연결</a></p>
+                            <p class="item-date"><time datetime="2025-06-25T03:57:45.000Z" itemprop="datePublished">2025-06-25</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/">Coding</a><span class="category-list-count">17</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/JHipster/">JHipster</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/mariadb/">mariadb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/springboot/">springboot</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/vue/">vue</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setup/">Setup</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/">블로그</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/hexo/">hexo</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><span class="category-list-count">44</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%B1/">앱</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">6월 2025</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">3월 2023</a><span class="archive-list-count">67</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JHipster/" rel="tag">JHipster</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MAC/" rel="tag">MAC</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MARIADB/" rel="tag">MARIADB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/" rel="tag">SPRINGBOOT</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/" rel="tag">VUE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/" rel="tag">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fontawesome/" rel="tag">fontawesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2db/" rel="tag">h2db</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openjdk/" rel="tag">openjdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window2022/" rel="tag">window2022</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows2022/" rel="tag">windows2022</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%BC%EC%83%81/" rel="tag">일상</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/JHipster/" style="font-size: 12.5px;">JHipster</a> <a href="/tags/MAC/" style="font-size: 15px;">MAC</a> <a href="/tags/MARIADB/" style="font-size: 10px;">MARIADB</a> <a href="/tags/PHP/" style="font-size: 18.75px;">PHP</a> <a href="/tags/SPRINGBOOT/" style="font-size: 17.5px;">SPRINGBOOT</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/fontawesome/" style="font-size: 10px;">fontawesome</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 13.75px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/h2db/" style="font-size: 10px;">h2db</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/openjdk/" style="font-size: 10px;">openjdk</a> <a href="/tags/springboot/" style="font-size: 16.25px;">springboot</a> <a href="/tags/vue/" style="font-size: 11.25px;">vue</a> <a href="/tags/window2022/" style="font-size: 12.5px;">window2022</a> <a href="/tags/windows2022/" style="font-size: 10px;">windows2022</a> <a href="/tags/%EC%9D%BC%EC%83%81/" style="font-size: 11.25px;">일상</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+                <div class="widget-wrap widget-float">
+
+    <h3 class="widget-title">후원자</h3>
+    <div class="widget">
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+    </div>
+
+</div>
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                
+                <p>&copy; 2025 good</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1863930318161504"
+     crossorigin="anonymous"></script>
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/javascript" src="/drawio/viewer-static.min.js"></script>
+<style>
+.mxgraph-container { width: 100%; }
+.mxgraph {
+  width: 100% !important;
+  border:1px solid transparent;
+}
+.geDiagramContainer { width: 100% !important; }
+</style>
+</body>
+
+</html>
