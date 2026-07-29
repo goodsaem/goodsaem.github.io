@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/callout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/earlyaccess/iropkebatang.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'IropkeBatang', serif;
+        }
+    </style>
+
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5VG62JT9');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+    
+
+    
+    <title>LangChain &amp; LangGraph 공부 시작하기: 버전 확인부터 Streamlit 챗봇 UI 뼈대 만들기 | good</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Python,LangChain,LangGraph,Streamlit,AIAgent" />
+    
+    <meta name="description" content="LangChain &amp; LangGraph 怨듬? ?쒖옉?섍린: 踰꾩쟾 ?뺤씤遺??Streamlit 梨쀫큸 UI 堉덈? 留뚮뱾湲?理쒓렐 LLM(????몄뼱 紐⑤뜽)??湲곕컲?쇰줈 ?ㅼ뒪濡??먮떒?섍퀬 ?숈옉?섎뒗 AI ?먯씠?꾪듃(AI Agent) 媛쒕컻?????愿?ъ씠 ?④쾪?듬땲?? 洹몄쨷?먯꽌??LangChain ?앺깭怨꾩쓽 LangGrap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LangChain &amp; LangGraph 공부 시작하기: 버전 확인부터 Streamlit 챗봇 UI 뼈대 만들기">
+<meta property="og:url" content="http://goodsaem.github.io/start-langchain-langgraph-with-streamlit/index.html">
+<meta property="og:site_name" content="good">
+<meta property="og:description" content="LangChain &amp; LangGraph 怨듬? ?쒖옉?섍린: 踰꾩쟾 ?뺤씤遺??Streamlit 梨쀫큸 UI 堉덈? 留뚮뱾湲?理쒓렐 LLM(????몄뼱 紐⑤뜽)??湲곕컲?쇰줈 ?ㅼ뒪濡??먮떒?섍퀬 ?숈옉?섎뒗 AI ?먯씠?꾪듃(AI Agent) 媛쒕컻?????愿?ъ씠 ?④쾪?듬땲?? 洹몄쨷?먯꽌??LangChain ?앺깭怨꾩쓽 LangGrap">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2026-06-28T12:26:00.000Z">
+<meta property="article:modified_time" content="2026-07-29T15:41:22.420Z">
+<meta property="article:author" content="good">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="LangChain">
+<meta property="article:tag" content="LangGraph">
+<meta property="article:tag" content="Streamlit">
+<meta property="article:tag" content="AIAgent">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VG62JT9"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/">Coding</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/JHipster/">JHipster</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/Python/">Python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/mariadb/">mariadb</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/springboot/">springboot</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/vue/">vue</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Gemini/">Gemini</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setup/">Setup</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Tool/">Tool</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%B1/">앱</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="찾고자 하는 포스트를 검색하세요." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: '페이지',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Coding/Python/">Python</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-start-langchain-langgraph-with-streamlit" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        LangChain &amp; LangGraph 공부 시작하기: 버전 확인부터 Streamlit 챗봇 UI 뼈대 만들기
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/start-langchain-langgraph-with-streamlit/" class="article-date">
+       <time datetime="2026-06-28T12:26:00.000Z" itemprop="datePublished">2026-06-28</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/start-langchain-langgraph-with-streamlit/" class="article-date">
+     <time datetime="2026-07-29T15:41:22.420Z" itemprop="dateModified">2026-07-30</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/AIAgent/" rel="tag">AIAgent</a>, <a class="tag-link-link" href="/tags/LangChain/" rel="tag">LangChain</a>, <a class="tag-link-link" href="/tags/LangGraph/" rel="tag">LangGraph</a>, <a class="tag-link-link" href="/tags/Python/" rel="tag">Python</a>, <a class="tag-link-link" href="/tags/Streamlit/" rel="tag">Streamlit</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="LangChain-LangGraph-怨듬-쒖옉-섍린-踰꾩쟾-뺤씤遺-Streamlit-梨쀫큸-UI-堉덈-留뚮뱾湲"><a href="#LangChain-LangGraph-怨듬-쒖옉-섍린-踰꾩쟾-뺤씤遺-Streamlit-梨쀫큸-UI-堉덈-留뚮뱾湲" class="headerlink" title="LangChain &amp; LangGraph 怨듬? ?쒖옉?섍린: 踰꾩쟾 ?뺤씤遺??Streamlit 梨쀫큸 UI 堉덈? 留뚮뱾湲?"></a>LangChain &amp; LangGraph 怨듬? ?쒖옉?섍린: 踰꾩쟾 ?뺤씤遺??Streamlit 梨쀫큸 UI 堉덈? 留뚮뱾湲?</h1><p>理쒓렐 LLM(????몄뼱 紐⑤뜽)??湲곕컲?쇰줈 ?ㅼ뒪濡??먮떒?섍퀬 ?숈옉?섎뒗 <strong>AI ?먯씠?꾪듃(AI Agent)</strong> 媛쒕컻?????愿?ъ씠 ?④쾪?듬땲?? 洹몄쨷?먯꽌??LangChain ?앺깭怨꾩쓽 <strong>LangGraph</strong>???쒗솚(Cyclic) 洹몃옒??援ъ“瑜?吏?먰븯??媛뺣젰?섍퀬 ?뺢탳???먯씠?꾪듃 ?쒖뒪?쒖쓣 援ъ텞?????덇쾶 ?꾩?以띾땲??</p>
+<p>?대쾲 ?ъ뒪?낆뿉?쒕뒗 LangChain怨?LangGraph 媛쒕컻 諛??ㅼ뒿??蹂멸꺽?곸쑝濡??쒖옉?섍린???욎꽌, ?꾩닔 媛쒕컻 ?섍꼍 寃利앸???湲곗큹 ?꾨＼?꾪듃 ?뚯뒪?? 洹몃━怨???뷀삎 ?꾨줈?좏??낆쓣 留뚮뱾湲??꾪븳 <strong>Streamlit 湲곕컲 Chat UI 堉덈? 援ъ텞</strong>源뚯? ?섎굹???댄렣蹂닿쿋?듬땲??</p>
+<hr>
+<h2 id="1-1-④퀎-⑦궎吏-ㅼ튂-뺤씤-check-version-py"><a href="#1-1-④퀎-⑦궎吏-ㅼ튂-뺤씤-check-version-py" class="headerlink" title="1. 1?④퀎: ?⑦궎吏 ?ㅼ튂 ?뺤씤 (check_version.py)"></a>1. 1?④퀎: ?⑦궎吏 ?ㅼ튂 ?뺤씤 (<code>check_version.py</code>)</h2><p>LangChain怨?LangGraph???낅뜲?댄듃 二쇨린媛 留ㅼ슦 鍮좊Ⅸ ?쇱씠釉뚮윭由ъ엯?덈떎. ?꾨줈?앺듃瑜??쒖옉?섍린 ?꾩뿉 踰꾩쟾??紐낇솗???뚯븙?섍퀬 ?ㅽ뻾 ?섍꼍??寃利앺븯??寃껋씠 醫뗭뒿?덈떎. ?뚯씠???댁옣 <code>importlib.metadata</code> 紐⑤뱢???댁슜?섎㈃ ?⑦궎吏瑜?吏곸젒 import?섏? ?딄퀬??踰꾩쟾???먯돺寃?異쒕젰?????덉뒿?덈떎.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> importlib.metadata <span class="keyword">import</span> version</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;LangChain version: <span class="subst">&#123;version(<span class="string">&#x27;langchain&#x27;</span>)&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;LangGraph version: <span class="subst">&#123;version(<span class="string">&#x27;langgraph&#x27;</span>)&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>**?듭떖 ?ъ씤??*: <code>version()</code> ?⑥닔???꾩옱 ?섍꼍???ㅼ튂???대떦 ?⑦궎吏???뺥솗??踰꾩쟾 ?ㅽ듃留곸쓣 諛섑솚?⑸땲?? ?섏〈??異⑸룎?대굹 ?뱀젙 踰꾩쟾?먯꽌留??쒓났?섎뒗 湲곕뒫???붾쾭源낇븷 ???좎슜?섍쾶 ?곗엯?덈떎.</li>
+</ul>
+<hr>
+<h2 id="2-2-④퀎-꾨＼-꾪듃-쒗뵆由-湲곗큹-뚯뒪-graph-101-py"><a href="#2-2-④퀎-꾨＼-꾪듃-쒗뵆由-湲곗큹-뚯뒪-graph-101-py" class="headerlink" title="2. 2?④퀎: ?꾨＼?꾪듃 ?쒗뵆由?湲곗큹 ?뚯뒪??(graph_101.py)"></a>2. 2?④퀎: ?꾨＼?꾪듃 ?쒗뵆由?湲곗큹 ?뚯뒪??(<code>graph_101.py</code>)</h2><p>LLM???곕━???섎룄?濡??숈옉?섍린 ?꾪빐?쒕뒗 ?섎Ⅴ?뚮굹(??븷)? ?낅젰 援ъ“瑜??뺥삎?뷀븯??**?꾨＼?꾪듃 ?쒗뵆由?* ?ㅺ퀎媛 以묒슂?⑸땲?? LangChain?먯꽌 ?쒓났?섎뒗 <code>ChatPromptTemplate</code>???쒖슜???쒖뒪??硫붿떆吏? ?ъ슜???낅젰??援ъ꽦?섎뒗 諛⑸쾿??留쏅낫寃좎뒿?덈떎.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langchain_core.prompts <span class="keyword">import</span> ChatPromptTemplate</span><br><span class="line"></span><br><span class="line"><span class="comment"># System 硫붿떆吏? User 硫붿떆吏???섏뼱 援ъ“ ?쒗뵆由??뺤쓽</span></span><br><span class="line">prompt = ChatPromptTemplate.from_messages([</span><br><span class="line">    (<span class="string">&quot;system&quot;</span>, <span class="string">&quot;?뱀떊? 諛섎룄泥?defect 遺꾩꽍 ?꾨Ц媛 ?대떎.&quot;</span>),</span><br><span class="line">    (<span class="string">&quot;user&quot;</span>, <span class="string">&quot;&#123;input&#125;&quot;</span>)</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># ?낅젰???쒗뵆由우뿉 二쇱엯?섏뿬 ?ㅽ뻾 媛앹껜 ?앹꽦</span></span><br><span class="line">messages = prompt.invoke(&#123;<span class="string">&quot;input&quot;</span> : <span class="string">&quot;?덈뀞?섏꽭??&quot;</span>&#125;)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;?앹꽦???꾨＼?꾪듃&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ?뚯떛 寃곌낵 ?뺤씤</span></span><br><span class="line"><span class="keyword">for</span> msg <span class="keyword">in</span> messages.to_messages():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot; [<span class="subst">&#123;msg.<span class="built_in">type</span>&#125;</span>] <span class="subst">&#123;msg.text&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong><code>ChatPromptTemplate.from_messages</code></strong>: ?쒗뵆 ?뺤떇 <code>(role, message)</code>??由ъ뒪?몃? ?꾨떖諛쏆븘 ??붿슜 ?꾨＼?꾪듃瑜?援ъ꽦?⑸땲??</li>
+<li><strong><code>prompt.invoke(...)</code></strong>: ?쒗뵆由?蹂?섏씤 <code>&#123;input&#125;</code>???ㅼ젣 ?좎????낅젰媛믪쓣 ??낇븯???꾩꽦???꾨＼?꾪듃 ?곗씠?곕? 鍮뚮뱶?⑸땲??</li>
+<li><strong><code>msg.type</code> &amp; <code>msg.text</code></strong>: ?앹꽦??硫붿떆吏媛 <code>system</code> ?좏삎?몄? <code>user</code> ?좏삎?몄?, ?대뼡 ?띿뒪?몃? ?닿퀬 ?덈뒗吏 媛?쒗솕?섏뿬 LLM?쇰줈 ?섍린湲?吏곸쟾???곹깭瑜??뺤씤?⑸땲??</li>
+</ul>
+<hr>
+<h2 id="3-3-④퀎-Streamlit-쇰줈-梨쀫큸-UI-堉덈-↔린-graph-102-py"><a href="#3-3-④퀎-Streamlit-쇰줈-梨쀫큸-UI-堉덈-↔린-graph-102-py" class="headerlink" title="3. 3?④퀎: Streamlit?쇰줈 梨쀫큸 UI 堉덈? ?↔린 (graph_102.py)"></a>3. 3?④퀎: Streamlit?쇰줈 梨쀫큸 UI 堉덈? ?↔린 (<code>graph_102.py</code>)</h2><p>濡쒖쭅???곕??먯뿉?쒕쭔 ?뚮㈃ ?ㅼ젣 ?ъ슜?먭? ?ъ슜?대낫湲??대졄?듬땲?? ?뚯씠???섍꼍?먯꽌 媛??鍮좊Ⅴ怨?吏곴??곸쑝濡???GUI ?꾨줈?좏??낆쓣 ?쒖옉?????덈뒗 <strong>Streamlit</strong> ?쇱씠釉뚮윭由щ? ?댁슜?섏뿬 ??붿갹 UI 堉덈?瑜??ㅺ퀎?대낫寃좎뒿?덈떎.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> streamlit <span class="keyword">as</span> st</span><br><span class="line"></span><br><span class="line"><span class="comment"># ?섏씠吏 援ъ꽦 ?ㅼ젙</span></span><br><span class="line">st.set_page_config(</span><br><span class="line">    page_title=<span class="string">&quot;ai agent&quot;</span>,</span><br><span class="line">    page_icon=<span class="string">&quot;?삂&quot;</span>,</span><br><span class="line">    layout=<span class="string">&quot;centered&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">st.header(<span class="string">&quot;?삂 AI Agent&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ?몄뀡 ?곹깭(Session State)??????대젰 諛곗뿴 珥덇린??諛?蹂닿?</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">&quot;messages&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> st.session_state:</span><br><span class="line">    st.session_state.messages = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 湲곗〈 ????대젰???덈떎硫??쒖감?곸쑝濡??붾㈃???뚮뜑留?</span></span><br><span class="line"><span class="keyword">for</span> message <span class="keyword">in</span> st.session_state.messages:</span><br><span class="line">    <span class="keyword">with</span> st.chat_message(message[<span class="string">&quot;role&quot;</span>]):</span><br><span class="line">        st.markdown(message[<span class="string">&quot;content&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># ?ъ슜?먮줈遺???ㅼ떆媛?梨꾪똿 ?낅젰 諛쏄린</span></span><br><span class="line"><span class="keyword">if</span> prompt := st.chat_input(<span class="string">&quot;硫붿떆吏瑜??낅젰?섏꽭??&quot;</span>):</span><br><span class="line">    <span class="comment"># 1. ?좎? 硫붿떆吏 ???諛??붾㈃ 異쒕젰</span></span><br><span class="line">    st.session_state.messages.append(&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: prompt&#125;)</span><br><span class="line">    <span class="keyword">with</span> st.chat_message(<span class="string">&quot;user&quot;</span>):</span><br><span class="line">        st.markdown(prompt)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. ?댁떆?ㅽ꽩??遊? ?묐떟 泥섎━ (?ш린?쒕뒗 ?⑥닚 ?먯퐫 ?묐떟)</span></span><br><span class="line">    response = <span class="string">f&quot;?낅젰?섏떊 硫붿떆吏: <span class="subst">&#123;prompt&#125;</span>&quot;</span></span><br><span class="line">    st.session_state.messages.append(&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>, <span class="string">&quot;content&quot;</span>: response&#125;)</span><br><span class="line">    <span class="keyword">with</span> st.chat_message(<span class="string">&quot;assistant&quot;</span>):</span><br><span class="line">        st.markdown(response)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong><code>st.session_state</code></strong>: ??釉뚮씪?곗????뱀꽦???섏씠吏媛 由ы봽?덉떆?섍굅???덈줈???낅젰??媛?댁?硫??뚯씠??蹂?섍? 珥덇린?붾릺?붾뜲, ??臾몄젣瑜??닿껐?섍퀬 ????댁뿭(<code>messages</code>)??吏?랁빐???좎??섍린 ?꾪빐 ?ъ슜?⑸땲??</li>
+<li><strong><code>st.chat_input</code></strong>: ?몃젴??怨좎젙??梨꾪똿 ?낅젰李??꾩젽???앹꽦?섍퀬 ?ъ슜?먯쓽 ?띿뒪???낅젰??媛먯??⑸땲??</li>
+<li><strong><code>st.chat_message</code></strong>: <code>user</code>? <code>assistant</code> ??븷??湲곕컲?쇰줈 ??梨꾪똿 留먰뭾???덉씠?꾩썐???쒓났?섏뿬 蹂꾨룄??CSS ?ㅽ??쇰쭅 ?놁씠???꾩꽦???믪? 梨쀫큸 UI瑜??곗텧?⑸땲??</li>
+</ul>
+<hr>
+<h2 id="4-留덉튂硫"><a href="#4-留덉튂硫" class="headerlink" title="4. 留덉튂硫?"></a>4. 留덉튂硫?</h2><p>?대쾲 ?ъ뒪?낆뿉?쒕뒗 LangChain&#x2F;LangGraph ?먯씠?꾪듃? 寃고빀??<strong>??GUI 堉덈?</strong>? **?꾨＼?꾪듃 湲곕낯 ?뚯뒪??*瑜??꾨즺?덉뒿?덈떎. ?꾩옱 ?④퀎???ъ슜?먭? ?낅젰???댁슜???⑥닚???먯퐫(Echo) 諛⑹떇?쇰줈 蹂댁뿬二쇰뒗 ?꾨줈?좏??낆뿉 媛源앹뒿?덈떎.</p>
+<p>?ㅼ쓬 ?ъ뒪?낆뿉?쒕뒗 ??Streamlit UI 肄붾뱶 ?꾩뿉 ?ㅼ젣 LangGraph濡?援ъ텞??<strong>異붾줎 猷⑦봽(Reasoning Loop)</strong>? ?먯씠?꾪듃 濡쒖쭅???댁떇?섏뿬, ?ㅼ뒪濡??꾧뎄瑜??ъ슜?섍퀬 源딆씠 ?덇쾶 遺꾩꽍?섎뒗 吏꾩쭨 AI ?먯씠?꾪듃瑜??꾩꽦?대낫寃좎뒿?덈떎.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://goodsaem.github.io/start-langchain-langgraph-with-streamlit/" data-id="cms6963nx0000sst2cszncudf" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "good"
+        },
+        "headline": "LangChain &amp; LangGraph 공부 시작하기: 버전 확인부터 Streamlit 챗봇 UI 뼈대 만들기",
+        "image": "http://goodsaem.github.io",
+        "keywords": "Python LangChain LangGraph Streamlit AIAgent",
+        "genre": "Coding Python",
+        "datePublished": "2026-06-28",
+        "dateCreated": "2026-06-28",
+        "dateModified": "2026-07-30",
+        "url": "http://goodsaem.github.io/start-langchain-langgraph-with-streamlit/",
+        "description": "LangChain &amp; LangGraph 怨듬? ?쒖옉?섍린: 踰꾩쟾 ?뺤씤遺??Streamlit 梨쀫큸 UI 堉덈? 留뚮뱾湲?理쒓렐 LLM(????몄뼱 紐⑤뜽)??湲곕컲?쇰줈 ?ㅼ뒪濡??먮떒?섍퀬 ?숈옉?섎뒗 AI ?먯씠?꾪듃(AI Agent) 媛쒕컻?????愿?ъ씠 ?④쾪?듬땲?? 洹몄쨷?먯꽌??LangChain ?앺깭怨꾩쓽 LangGrap",
+        "wordCount": 609
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+     
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/modern-tkinter-dark-theme-capture-app/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">이전</strong>
+        <p class="article-nav-title">파이썬 Tkinter로 구현하는 세련된 다크 테마 화면 캡처 프로그램 제작기 (Modern GUI)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LangChain-LangGraph-%E6%80%A8%EB%93%AC-%EC%92%96%EC%98%89-%EC%84%8D%EB%A6%B0-%E8%B8%B0%EA%BE%A9%EC%9F%BE-%EB%BA%A4%EC%94%A4%E9%81%BA%C2%80-Streamlit-%EF%A7%A2%EC%80%AB%ED%81%B8-UI-%E5%A0%89%EB%8D%88-%EF%A7%8D%EB%9A%AE%EB%B1%BE%E6%B9%B2"><span class="toc-number">1.</span> <span class="toc-text">LangChain &amp; LangGraph 怨듬? ?쒖옉?섍린: 踰꾩쟾 ?뺤씤遺??Streamlit 梨쀫큸 UI 堉덈? 留뚮뱾湲?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E2%91%A3%ED%80%8E-%E2%91%A6%EA%B6%8E%EF%A7%9E%C2%80-%E3%85%BC%ED%8A%82-%EB%BA%A4%EC%94%A4-check-version-py"><span class="toc-number">1.1.</span> <span class="toc-text">1. 1?④퀎: ?⑦궎吏 ?ㅼ튂 ?뺤씤 (check_version.py)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E2%91%A3%ED%80%8E-%EA%BE%A8%EF%BC%BC-%EA%BE%AA%EB%93%83-%EC%92%97%EB%B5%86%E7%94%B1-%E6%B9%B2%EA%B3%97%ED%81%B9-%EB%9A%AF%EB%92%AA-graph-101-py"><span class="toc-number">1.2.</span> <span class="toc-text">2. 2?④퀎: ?꾨＼?꾪듃 ?쒗뵆由?湲곗큹 ?뚯뒪??(graph_101.py)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E2%91%A3%ED%80%8E-Streamlit-%EC%87%B0%EC%A4%88-%EF%A7%A2%EC%80%AB%ED%81%B8-UI-%E5%A0%89%EB%8D%88-%E2%86%94%EB%A6%B0-graph-102-py"><span class="toc-number">1.3.</span> <span class="toc-text">3. 3?④퀎: Streamlit?쇰줈 梨쀫큸 UI 堉덈? ?↔린 (graph_102.py)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%EF%A7%8D%EB%8D%89%ED%8A%82%EF%A7%8E"><span class="toc-number">1.4.</span> <span class="toc-text">4. 留덉튂硫?</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/start-langchain-langgraph-with-streamlit/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Coding/Python/">Python</a></p>
+                            <p class="item-title"><a href="/start-langchain-langgraph-with-streamlit/" class="title">LangChain &amp; LangGraph 공부 시작하기: 버전 확인부터 Streamlit 챗봇 UI 뼈대 만들기</a></p>
+                            <p class="item-date"><time datetime="2026-06-28T12:26:00.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/modern-tkinter-dark-theme-capture-app/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Coding/Python/">Python</a></p>
+                            <p class="item-title"><a href="/modern-tkinter-dark-theme-capture-app/" class="title">파이썬 Tkinter로 구현하는 세련된 다크 테마 화면 캡처 프로그램 제작기 (Modern GUI)</a></p>
+                            <p class="item-date"><time datetime="2026-06-28T12:25:00.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/multi-monitor-capture-program-python/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/capture_app_banner.jpg)" alt="파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Coding/Python/">Python</a></p>
+                            <p class="item-title"><a href="/multi-monitor-capture-program-python/" class="title">파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램</a></p>
+                            <p class="item-date"><time datetime="2026-06-28T06:37:06.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lg102p/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../images/langgraph_part1.jpg)" alt="LangGraph 공부 로드맵: Part 1. LangGraph의 이해와 시작 (기초 편)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/lg102p/" class="title">LangGraph 공부 로드맵: Part 1. LangGraph의 이해와 시작 (기초 편)</a></p>
+                            <p class="item-date"><time datetime="2026-06-27T16:23:50.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lg101p/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../images/langgraph_banner.jpg)" alt="LangGraph 공부 로드맵: 기초부터 실무까지" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/lg101p/" class="title">LangGraph 공부 로드맵: 기초부터 실무까지</a></p>
+                            <p class="item-date"><time datetime="2026-06-27T16:18:35.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/">Coding</a><span class="category-list-count">20</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/JHipster/">JHipster</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/Python/">Python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/mariadb/">mariadb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/springboot/">springboot</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/vue/">vue</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gemini/">Gemini</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setup/">Setup</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><span class="category-list-count">44</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%B1/">앱</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">6월 2026</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">9월 2025</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">8월 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">7월 2025</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">6월 2025</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">3월 2023</a><span class="archive-list-count">64</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIAgent/" rel="tag">AIAgent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud/" rel="tag">Cloud</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CustomWidget/" rel="tag">CustomWidget</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Free-tier/" rel="tag">Free tier</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/" rel="tag">GUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gemini/" rel="tag">Gemini</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intellij/" rel="tag">Intellij</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JHipster/" rel="tag">JHipster</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LangChain/" rel="tag">LangChain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LangGraph/" rel="tag">LangGraph</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MAC/" rel="tag">MAC</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MARIADB/" rel="tag">MARIADB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MobaXterm/" rel="tag">MobaXterm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ModernUI/" rel="tag">ModernUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiMonitor/" rel="tag">MultiMonitor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/" rel="tag">SPRINGBOOT</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ScreenCapture/" rel="tag">ScreenCapture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Streamlit/" rel="tag">Streamlit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tkinter/" rel="tag">Tkinter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/" rel="tag">VUE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Win32API/" rel="tag">Win32API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/" rel="tag">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fontawesome/" rel="tag">fontawesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2db/" rel="tag">h2db</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openjdk/" rel="tag">openjdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/" rel="tag">oracle</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window2022/" rel="tag">window2022</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows2022/" rel="tag">windows2022</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%BC%EC%83%81/" rel="tag">일상</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AIAgent/" style="font-size: 10px;">AIAgent</a> <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/Blog/" style="font-size: 16.67px;">Blog</a> <a href="/tags/Cloud/" style="font-size: 12.22px;">Cloud</a> <a href="/tags/CustomWidget/" style="font-size: 10px;">CustomWidget</a> <a href="/tags/Free-tier/" style="font-size: 12.22px;">Free tier</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/Gemini/" style="font-size: 13.33px;">Gemini</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/Intellij/" style="font-size: 10px;">Intellij</a> <a href="/tags/JHipster/" style="font-size: 12.22px;">JHipster</a> <a href="/tags/LangChain/" style="font-size: 10px;">LangChain</a> <a href="/tags/LangGraph/" style="font-size: 10px;">LangGraph</a> <a href="/tags/MAC/" style="font-size: 14.44px;">MAC</a> <a href="/tags/MARIADB/" style="font-size: 10px;">MARIADB</a> <a href="/tags/MobaXterm/" style="font-size: 10px;">MobaXterm</a> <a href="/tags/ModernUI/" style="font-size: 10px;">ModernUI</a> <a href="/tags/MultiMonitor/" style="font-size: 10px;">MultiMonitor</a> <a href="/tags/Oracle/" style="font-size: 12.22px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/Python/" style="font-size: 12.22px;">Python</a> <a href="/tags/SPRINGBOOT/" style="font-size: 17.78px;">SPRINGBOOT</a> <a href="/tags/ScreenCapture/" style="font-size: 10px;">ScreenCapture</a> <a href="/tags/Streamlit/" style="font-size: 10px;">Streamlit</a> <a href="/tags/Tkinter/" style="font-size: 10px;">Tkinter</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a> <a href="/tags/Win32API/" style="font-size: 10px;">Win32API</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/fontawesome/" style="font-size: 10px;">fontawesome</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 11.11px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/h2db/" style="font-size: 10px;">h2db</a> <a href="/tags/hexo/" style="font-size: 12.22px;">hexo</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/openjdk/" style="font-size: 10px;">openjdk</a> <a href="/tags/oracle/" style="font-size: 11.11px;">oracle</a> <a href="/tags/springboot/" style="font-size: 15.56px;">springboot</a> <a href="/tags/vue/" style="font-size: 11.11px;">vue</a> <a href="/tags/window2022/" style="font-size: 12.22px;">window2022</a> <a href="/tags/windows2022/" style="font-size: 10px;">windows2022</a> <a href="/tags/%EC%9D%BC%EC%83%81/" style="font-size: 11.11px;">일상</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+                <div class="widget-wrap widget-float">
+
+    <h3 class="widget-title">후원자</h3>
+    <div class="widget">
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+    </div>
+
+</div>
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                
+                <p>&copy; 2026 good</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1863930318161504"
+     crossorigin="anonymous"></script>
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var mermaidBlocks = Array.prototype.slice.call(
+      document.querySelectorAll(
+        'pre.mermaid, pre > code.language-mermaid, pre > code.lang-mermaid, figure.highlight.plaintext'
+      )
+    ).filter(function (node) {
+      if (node.matches && node.matches('figure.highlight.plaintext')) {
+        return node.textContent.indexOf('graph ') !== -1 ||
+          node.textContent.indexOf('flowchart ') !== -1 ||
+          node.textContent.indexOf('sequenceDiagram') !== -1 ||
+          node.textContent.indexOf('classDiagram') !== -1 ||
+          node.textContent.indexOf('stateDiagram') !== -1 ||
+          node.textContent.indexOf('erDiagram') !== -1;
+      }
+      return true;
+    });
+    if (!mermaidBlocks.length) return;
+
+    mermaid.initialize({ startOnLoad: false });
+
+    mermaidBlocks.forEach(function (codeBlock, index) {
+      var target = codeBlock.matches && (codeBlock.matches('figure.highlight.plaintext') || codeBlock.matches('pre.mermaid'))
+        ? codeBlock
+        : codeBlock.parentElement;
+      var container = document.createElement('div');
+      container.className = 'mermaid';
+      container.id = 'mermaid-' + index;
+      container.textContent = codeBlock.textContent.trim();
+      target.replaceWith(container);
+    });
+
+    mermaid.run({ querySelector: '.mermaid' });
+  });
+</script>
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/javascript" src="/drawio/viewer-static.min.js"></script>
+<style>
+.mxgraph-container { width: 100%; }
+.mxgraph {
+  width: 100% !important;
+  border:1px solid transparent;
+}
+.geDiagramContainer { width: 100% !important; }
+</style>
+</body>
+
+</html>

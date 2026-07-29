@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/callout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/earlyaccess/iropkebatang.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'IropkeBatang', serif;
+        }
+    </style>
+
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5VG62JT9');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+    
+
+    
+    <title>Postgre 디비 및 사용자 생성 | good</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Blog" />
+    
+    <meta name="description" content="Postgre SQL 디비 생성 및 사용자 생성 방법   12345CREATE USER wp WITH PASSWORD &amp;#x27;wp&amp;#x27;;CREATE DATABASE wpdb OWNER wp;GRANT ALL PRIVILEGES ON DATABASE wpdb TO wp;   DBeaver 설정방법">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Postgre 디비 및 사용자 생성">
+<meta property="og:url" content="http://goodsaem.github.io/dnqr1j/index.html">
+<meta property="og:site_name" content="good">
+<meta property="og:description" content="Postgre SQL 디비 생성 및 사용자 생성 방법   12345CREATE USER wp WITH PASSWORD &amp;#x27;wp&amp;#x27;;CREATE DATABASE wpdb OWNER wp;GRANT ALL PRIVILEGES ON DATABASE wpdb TO wp;   DBeaver 설정방법">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="http://goodsaem.github.io/images/gfpe1m.jpg">
+<meta property="article:published_time" content="2025-08-31T01:42:13.000Z">
+<meta property="article:modified_time" content="2026-06-27T15:43:31.648Z">
+<meta property="article:author" content="good">
+<meta property="article:tag" content="Blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://goodsaem.github.io/images/gfpe1m.jpg">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VG62JT9"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/">Coding</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/JHipster/">JHipster</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/Python/">Python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/mariadb/">mariadb</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/springboot/">springboot</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/vue/">vue</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Gemini/">Gemini</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setup/">Setup</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Tool/">Tool</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%B1/">앱</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="찾고자 하는 포스트를 검색하세요." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: '페이지',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Blog/">Blog</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-dnqr1j" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Postgre 디비 및 사용자 생성
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/dnqr1j/" class="article-date">
+       <time datetime="2025-08-31T01:42:13.000Z" itemprop="datePublished">2025-08-31</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/dnqr1j/" class="article-date">
+     <time datetime="2026-06-27T15:43:31.648Z" itemprop="dateModified">2026-06-28</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Blog/" rel="tag">Blog</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <ul>
+<li>Postgre SQL 디비 생성 및 사용자 생성 방법</li>
+</ul>
+<p><img src="/../../images/gfpe1m.jpg"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> wp <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;wp&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> DATABASE wpdb OWNER wp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> DATABASE wpdb <span class="keyword">TO</span> wp;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>DBeaver 설정방법</li>
+</ul>
+<p><img src="/../../images/kemydf.jpg"></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://goodsaem.github.io/dnqr1j/" data-id="cmqx8inrb0009g4a45ps85oo4" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "good"
+        },
+        "headline": "Postgre 디비 및 사용자 생성",
+        "image": "http://goodsaem.github.io/../../images/gfpe1m.jpg",
+        "keywords": "Blog",
+        "genre": "Blog",
+        "datePublished": "2025-08-31",
+        "dateCreated": "2025-08-31",
+        "dateModified": "2026-06-28",
+        "url": "http://goodsaem.github.io/dnqr1j/",
+        "description": "
+Postgre SQL 디비 생성 및 사용자 생성 방법
+
+
+12345CREATE USER wp WITH PASSWORD &#x27;wp&#x27;;CREATE DATABASE wpdb OWNER wp;GRANT ALL PRIVILEGES ON DATABASE wpdb TO wp;
+
+
+DBeaver 설정방법
+
+
+",
+        "wordCount": 50
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+     
+    
+        
+<nav id="article-nav">
+    
+        <a href="/ma9g1l/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">신규</strong>
+        <p class="article-nav-title">
+        
+            Gemini API - 1. 개발환경구축
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/hnykj4/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">이전</strong>
+        <p class="article-nav-title">인텔리제이 버그 해결방법  Could not autowire. No beans of &#39;JobRepository&#39; type found.</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/start-langchain-langgraph-with-streamlit/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Coding/Python/">Python</a></p>
+                            <p class="item-title"><a href="/start-langchain-langgraph-with-streamlit/" class="title">LangChain &amp; LangGraph 공부 시작하기: 버전 확인부터 Streamlit 챗봇 UI 뼈대 만들기</a></p>
+                            <p class="item-date"><time datetime="2026-06-28T12:26:00.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/modern-tkinter-dark-theme-capture-app/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Coding/Python/">Python</a></p>
+                            <p class="item-title"><a href="/modern-tkinter-dark-theme-capture-app/" class="title">파이썬 Tkinter로 구현하는 세련된 다크 테마 화면 캡처 프로그램 제작기 (Modern GUI)</a></p>
+                            <p class="item-date"><time datetime="2026-06-28T12:25:00.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/multi-monitor-capture-program-python/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/capture_app_banner.jpg)" alt="파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Coding/Python/">Python</a></p>
+                            <p class="item-title"><a href="/multi-monitor-capture-program-python/" class="title">파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램</a></p>
+                            <p class="item-date"><time datetime="2026-06-28T06:37:06.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lg102p/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../images/langgraph_part1.jpg)" alt="LangGraph 공부 로드맵: Part 1. LangGraph의 이해와 시작 (기초 편)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/lg102p/" class="title">LangGraph 공부 로드맵: Part 1. LangGraph의 이해와 시작 (기초 편)</a></p>
+                            <p class="item-date"><time datetime="2026-06-27T16:23:50.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lg101p/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../images/langgraph_banner.jpg)" alt="LangGraph 공부 로드맵: 기초부터 실무까지" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/lg101p/" class="title">LangGraph 공부 로드맵: 기초부터 실무까지</a></p>
+                            <p class="item-date"><time datetime="2026-06-27T16:18:35.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/">Coding</a><span class="category-list-count">20</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/JHipster/">JHipster</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/Python/">Python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/mariadb/">mariadb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/springboot/">springboot</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/vue/">vue</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gemini/">Gemini</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setup/">Setup</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><span class="category-list-count">44</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%B1/">앱</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">6월 2026</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">9월 2025</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">8월 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">7월 2025</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">6월 2025</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">3월 2023</a><span class="archive-list-count">64</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIAgent/" rel="tag">AIAgent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud/" rel="tag">Cloud</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CustomWidget/" rel="tag">CustomWidget</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Free-tier/" rel="tag">Free tier</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/" rel="tag">GUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gemini/" rel="tag">Gemini</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intellij/" rel="tag">Intellij</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JHipster/" rel="tag">JHipster</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LangChain/" rel="tag">LangChain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LangGraph/" rel="tag">LangGraph</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MAC/" rel="tag">MAC</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MARIADB/" rel="tag">MARIADB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MobaXterm/" rel="tag">MobaXterm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ModernUI/" rel="tag">ModernUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiMonitor/" rel="tag">MultiMonitor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/" rel="tag">SPRINGBOOT</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ScreenCapture/" rel="tag">ScreenCapture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Streamlit/" rel="tag">Streamlit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tkinter/" rel="tag">Tkinter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/" rel="tag">VUE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Win32API/" rel="tag">Win32API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/" rel="tag">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fontawesome/" rel="tag">fontawesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2db/" rel="tag">h2db</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openjdk/" rel="tag">openjdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/" rel="tag">oracle</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window2022/" rel="tag">window2022</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows2022/" rel="tag">windows2022</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%BC%EC%83%81/" rel="tag">일상</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AIAgent/" style="font-size: 10px;">AIAgent</a> <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/Blog/" style="font-size: 16.67px;">Blog</a> <a href="/tags/Cloud/" style="font-size: 12.22px;">Cloud</a> <a href="/tags/CustomWidget/" style="font-size: 10px;">CustomWidget</a> <a href="/tags/Free-tier/" style="font-size: 12.22px;">Free tier</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/Gemini/" style="font-size: 13.33px;">Gemini</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/Intellij/" style="font-size: 10px;">Intellij</a> <a href="/tags/JHipster/" style="font-size: 12.22px;">JHipster</a> <a href="/tags/LangChain/" style="font-size: 10px;">LangChain</a> <a href="/tags/LangGraph/" style="font-size: 10px;">LangGraph</a> <a href="/tags/MAC/" style="font-size: 14.44px;">MAC</a> <a href="/tags/MARIADB/" style="font-size: 10px;">MARIADB</a> <a href="/tags/MobaXterm/" style="font-size: 10px;">MobaXterm</a> <a href="/tags/ModernUI/" style="font-size: 10px;">ModernUI</a> <a href="/tags/MultiMonitor/" style="font-size: 10px;">MultiMonitor</a> <a href="/tags/Oracle/" style="font-size: 12.22px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/Python/" style="font-size: 12.22px;">Python</a> <a href="/tags/SPRINGBOOT/" style="font-size: 17.78px;">SPRINGBOOT</a> <a href="/tags/ScreenCapture/" style="font-size: 10px;">ScreenCapture</a> <a href="/tags/Streamlit/" style="font-size: 10px;">Streamlit</a> <a href="/tags/Tkinter/" style="font-size: 10px;">Tkinter</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a> <a href="/tags/Win32API/" style="font-size: 10px;">Win32API</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/fontawesome/" style="font-size: 10px;">fontawesome</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 11.11px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/h2db/" style="font-size: 10px;">h2db</a> <a href="/tags/hexo/" style="font-size: 12.22px;">hexo</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/openjdk/" style="font-size: 10px;">openjdk</a> <a href="/tags/oracle/" style="font-size: 11.11px;">oracle</a> <a href="/tags/springboot/" style="font-size: 15.56px;">springboot</a> <a href="/tags/vue/" style="font-size: 11.11px;">vue</a> <a href="/tags/window2022/" style="font-size: 12.22px;">window2022</a> <a href="/tags/windows2022/" style="font-size: 10px;">windows2022</a> <a href="/tags/%EC%9D%BC%EC%83%81/" style="font-size: 11.11px;">일상</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+                <div class="widget-wrap widget-float">
+
+    <h3 class="widget-title">후원자</h3>
+    <div class="widget">
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+    </div>
+
+</div>
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                
+                <p>&copy; 2026 good</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1863930318161504"
+     crossorigin="anonymous"></script>
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var mermaidBlocks = Array.prototype.slice.call(
+      document.querySelectorAll(
+        'pre.mermaid, pre > code.language-mermaid, pre > code.lang-mermaid, figure.highlight.plaintext'
+      )
+    ).filter(function (node) {
+      if (node.matches && node.matches('figure.highlight.plaintext')) {
+        return node.textContent.indexOf('graph ') !== -1 ||
+          node.textContent.indexOf('flowchart ') !== -1 ||
+          node.textContent.indexOf('sequenceDiagram') !== -1 ||
+          node.textContent.indexOf('classDiagram') !== -1 ||
+          node.textContent.indexOf('stateDiagram') !== -1 ||
+          node.textContent.indexOf('erDiagram') !== -1;
+      }
+      return true;
+    });
+    if (!mermaidBlocks.length) return;
+
+    mermaid.initialize({ startOnLoad: false });
+
+    mermaidBlocks.forEach(function (codeBlock, index) {
+      var target = codeBlock.matches && (codeBlock.matches('figure.highlight.plaintext') || codeBlock.matches('pre.mermaid'))
+        ? codeBlock
+        : codeBlock.parentElement;
+      var container = document.createElement('div');
+      container.className = 'mermaid';
+      container.id = 'mermaid-' + index;
+      container.textContent = codeBlock.textContent.trim();
+      target.replaceWith(container);
+    });
+
+    mermaid.run({ querySelector: '.mermaid' });
+  });
+</script>
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/javascript" src="/drawio/viewer-static.min.js"></script>
+<style>
+.mxgraph-container { width: 100%; }
+.mxgraph {
+  width: 100% !important;
+  border:1px solid transparent;
+}
+.geDiagramContainer { width: 100% !important; }
+</style>
+</body>
+
+</html>

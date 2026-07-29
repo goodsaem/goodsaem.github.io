@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/callout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/earlyaccess/iropkebatang.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'IropkeBatang', serif;
+        }
+    </style>
+
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5VG62JT9');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+    
+
+    
+    <title>LangGraph 공부 로드맵: Part 1. LangGraph의 이해와 시작 (기초 편) | good</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Blog,Gemini" />
+    
+    <meta name="description" content="AI 에이전트를 개발할 때, 단순한 일자형 파이프라인(Chain)을 넘어 사용자의 피드백을 받거나 에러 발생 시 이전 단계로 되돌아가는 등의 순환(Loop) 구조가 필수적인 순간이 옵니다.  이번 글에서는 LangChain 생태계의 대표적인 순환 그래프 설계 도구인 LangGraph의 도입 배경부터 핵심 개념, 그리고 간단한 첫 번째 에이전트를 직접 코딩">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LangGraph 공부 로드맵: Part 1. LangGraph의 이해와 시작 (기초 편)">
+<meta property="og:url" content="http://goodsaem.github.io/lg102p/index.html">
+<meta property="og:site_name" content="good">
+<meta property="og:description" content="AI 에이전트를 개발할 때, 단순한 일자형 파이프라인(Chain)을 넘어 사용자의 피드백을 받거나 에러 발생 시 이전 단계로 되돌아가는 등의 순환(Loop) 구조가 필수적인 순간이 옵니다.  이번 글에서는 LangChain 생태계의 대표적인 순환 그래프 설계 도구인 LangGraph의 도입 배경부터 핵심 개념, 그리고 간단한 첫 번째 에이전트를 직접 코딩">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="http://goodsaem.github.io/images/langgraph_part1.jpg">
+<meta property="article:published_time" content="2026-06-27T16:23:50.000Z">
+<meta property="article:modified_time" content="2026-07-28T10:45:44.076Z">
+<meta property="article:author" content="good">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="Gemini">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://goodsaem.github.io/images/langgraph_part1.jpg">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VG62JT9"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/">Coding</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/JHipster/">JHipster</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/Python/">Python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/mariadb/">mariadb</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/springboot/">springboot</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/vue/">vue</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Gemini/">Gemini</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setup/">Setup</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Tool/">Tool</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%B1/">앱</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="찾고자 하는 포스트를 검색하세요." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: '페이지',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Blog/">Blog</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-lg102p" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        LangGraph 공부 로드맵: Part 1. LangGraph의 이해와 시작 (기초 편)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/lg102p/" class="article-date">
+       <time datetime="2026-06-27T16:23:50.000Z" itemprop="datePublished">2026-06-28</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/lg102p/" class="article-date">
+     <time datetime="2026-07-28T10:45:44.076Z" itemprop="dateModified">2026-07-28</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Blog/" rel="tag">Blog</a>, <a class="tag-link-link" href="/tags/Gemini/" rel="tag">Gemini</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p><img src="/../images/langgraph_part1.jpg" alt="Part 1 배너"></p>
+<p>AI 에이전트를 개발할 때, 단순한 일자형 파이프라인(Chain)을 넘어 사용자의 피드백을 받거나 에러 발생 시 이전 단계로 되돌아가는 등의 <strong>순환(Loop) 구조</strong>가 필수적인 순간이 옵니다. </p>
+<p>이번 글에서는 LangChain 생태계의 대표적인 순환 그래프 설계 도구인 <strong>LangGraph</strong>의 도입 배경부터 핵심 개념, 그리고 간단한 첫 번째 에이전트를 직접 코딩해보는 실습까지 알아보겠습니다.</p>
+<hr>
+<h2 id="1-에이전트-아키텍처의-진화"><a href="#1-에이전트-아키텍처의-진화" class="headerlink" title="1. 에이전트 아키텍처의 진화"></a>1. 에이전트 아키텍처의 진화</h2><h3 id="1-1-Linear-Chain-LangChain-Express-의-한계"><a href="#1-1-Linear-Chain-LangChain-Express-의-한계" class="headerlink" title="1.1 Linear Chain(LangChain Express)의 한계"></a>1.1 Linear Chain(LangChain Express)의 한계</h3><p>초기의 LLM 애플리케이션은 <strong>사용자 입력 -&gt; 프롬프트 템플릿 -&gt; LLM 호출 -&gt; 파싱 -&gt; 출력</strong>의 단방향 흐름(Linear Chain)으로 구성되었습니다.<br>하지만 실제 비즈니스 로직이나 정교한 에이전트를 구축할 때는 다음과 같은 한계에 부딪힙니다.</p>
+<ul>
+<li><strong>의사 결정에 따른 분기 불가능</strong>: LLM의 응답에 따라 다른 도구를 실행하거나 이전 단계로 분기하기 어렵습니다.</li>
+<li><strong>예외 처리 부재</strong>: API 호출이 실패하거나 올바르지 않은 형식이 반환되었을 때, 다시 LLM에게 수정 요청을 보내는 루프를 돌릴 수 없습니다.</li>
+</ul>
+<h3 id="1-2-왜-순환-Loops-Cycles-구조가-필요한가"><a href="#1-2-왜-순환-Loops-Cycles-구조가-필요한가" class="headerlink" title="1.2 왜 순환(Loops&#x2F;Cycles) 구조가 필요한가?"></a>1.2 왜 순환(Loops&#x2F;Cycles) 구조가 필요한가?</h3><p>진정한 에이전트는 바둑을 두거나 코드를 수정하듯이 **”행동(Action) -&gt; 관찰(Observation) -&gt; 재판단(Reasoning)”**의 과정을 반복할 수 있어야 합니다.<br>비순환 그래프(DAG, Directed Acyclic Graph) 프레임워크로는 이러한 반복 루프(Cycle)를 구현하기 매우 까다롭습니다. LangGraph는 바로 이 <strong>순환 루프를 일급 시민(First-class citizen)으로 지원</strong>하기 위해 탄생했습니다.</p>
+<hr>
+<h2 id="2-LangGraph-핵심-3대-개념"><a href="#2-LangGraph-핵심-3대-개념" class="headerlink" title="2. LangGraph 핵심 3대 개념"></a>2. LangGraph 핵심 3대 개념</h2><p>LangGraph의 아키텍처는 크게 <strong>State, Nodes, Edges</strong> 세 가지로 이루어집니다.</p>
+<pre class="mermaid">flowchart TD
+    START((START)) --> NodeA["Node A: State 읽기 및 쓰기"]
+    NodeA --> Edge{"Conditional Edge"}
+    Edge -->|조건 만족| NodeB["Node B"]
+    Edge -->|재시도 필요| NodeA
+    NodeB --> END((END))</pre>
+
+<h3 id="2-1-State-상태"><a href="#2-1-State-상태" class="headerlink" title="2.1 State (상태)"></a>2.1 State (상태)</h3><p>그래프의 노드들이 서로 공유하는 <strong>전역 데이터베이스</strong>입니다. </p>
+<ul>
+<li>Python의 <code>TypedDict</code>나 <code>Pydantic</code> 클래스로 스키마를 정의합니다.</li>
+<li>각 노드는 실행을 마치고 이 State에 새로운 값을 쓰거나 업데이트(Reducer를 통해 기존 메시지에 병합)할 수 있습니다.</li>
+</ul>
+<h3 id="2-2-Nodes-노드"><a href="#2-2-Nodes-노드" class="headerlink" title="2.2 Nodes (노드)"></a>2.2 Nodes (노드)</h3><p>실제 작업을 담당하는 <strong>독립적인 함수</strong>입니다.</p>
+<ul>
+<li>함수는 인자로 현재 <code>State</code>를 전달받고, 수행 결과를 <code>dict</code> 형태로 리턴하여 <code>State</code>를 갱신합니다.</li>
+<li>예: LLM에게 질문하는 노드, 검색 API를 호출하는 노드 등.</li>
+</ul>
+<h3 id="2-3-Edges-엣지"><a href="#2-3-Edges-엣지" class="headerlink" title="2.3 Edges (엣지)"></a>2.3 Edges (엣지)</h3><p>노드와 노드 사이의 <strong>실행 흐름 경로</strong>를 정의합니다.</p>
+<ul>
+<li><strong>Normal Edge (일반 엣지)</strong>: A 노드가 끝나면 무조건 B 노드로 이동합니다. (<code>graph.add_edge(&quot;A&quot;, &quot;B&quot;)</code>)</li>
+<li><strong>Conditional Edge (조건부 엣지)</strong>: LLM의 판단이나 특정 조건 함수(Router)의 반환 결과에 따라 다음 노드를 결정합니다.</li>
+</ul>
+<hr>
+<h2 id="3-Hello-LangGraph-첫-에이전트-구현"><a href="#3-Hello-LangGraph-첫-에이전트-구현" class="headerlink" title="3. Hello LangGraph! 첫 에이전트 구현"></a>3. Hello LangGraph! 첫 에이전트 구현</h2><p>가장 단순하면서도 상태 관리가 동작하는 챗봇 그래프를 직접 작성해 보겠습니다. 본 실습에서는 빠른 패키지 관리를 위해 <strong>uv</strong>를 사용하고, LLM 모델로는 Google의 <strong>Gemini</strong>를 연동합니다.</p>
+<h3 id="3-1-필수-라이브러리-설치-및-환경-설정"><a href="#3-1-필수-라이브러리-설치-및-환경-설정" class="headerlink" title="3.1 필수 라이브러리 설치 및 환경 설정"></a>3.1 필수 라이브러리 설치 및 환경 설정</h3><p>먼저 프로젝트 가상환경에 필요한 패키지들을 설치하고 API 키를 설정합니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># uv를 통해 필요한 패키지들을 가상환경에 추가합니다.</span></span><br><span class="line">uv add langgraph langchain-google-genai python-dotenv ipython</span><br></pre></td></tr></table></figure>
+
+<p>프로젝트 루트 또는 실행 디렉토리에 <code>.env</code> 파일을 생성하고 발급받은 Gemini API 키를 설정합니다.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .env</span></span><br><span class="line"><span class="attr">GEMINI_API_KEY</span>=your_gemini_api_key_here</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-에이전트-소스-코드-작성-simple-agent-py"><a href="#3-2-에이전트-소스-코드-작성-simple-agent-py" class="headerlink" title="3.2 에이전트 소스 코드 작성 (simple_agent.py)"></a>3.2 에이전트 소스 코드 작성 (<code>simple_agent.py</code>)</h3><p>그래프 빌딩과 스트리밍 대화 실행, 그리고 그래프 시각화(PNG 파일 저장)까지 포함된 최종 실습 코드입니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> Annotated</span><br><span class="line"><span class="keyword">from</span> typing_extensions <span class="keyword">import</span> TypedDict</span><br><span class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> load_dotenv</span><br><span class="line"><span class="keyword">from</span> langgraph.graph <span class="keyword">import</span> StateGraph, START, END</span><br><span class="line"><span class="keyword">from</span> langgraph.graph.message <span class="keyword">import</span> add_messages</span><br><span class="line"><span class="keyword">from</span> langchain_google_genai <span class="keyword">import</span> ChatGoogleGenerativeAI</span><br><span class="line"></span><br><span class="line"><span class="comment"># .env 파일 로드 (OpenAI 및 Google API 키 등 설정)</span></span><br><span class="line">load_dotenv()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. State(상태) 정의</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">State</span>(<span class="title class_ inherited__">TypedDict</span>):</span><br><span class="line">    <span class="comment"># add_messages는 새로운 메시지 객체를 기존 메시지 리스트에 누적(append)해주는 리듀서입니다.</span></span><br><span class="line">    messages: Annotated[<span class="built_in">list</span>, add_messages]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Graph 빌더 생성</span></span><br><span class="line">graph_builder = StateGraph(State)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. LLM 선언 및 챗봇 노드(Node) 함수 정의</span></span><br><span class="line">llm = ChatGoogleGenerativeAI(model=<span class="string">&quot;gemini-2.5-flash&quot;</span>, temperature=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">chatbot</span>(<span class="params">state: State</span>):</span><br><span class="line">    <span class="comment"># 현재 상태에 축적된 메시지들을 전달해 LLM을 호출하고, 결과를 반환합니다.</span></span><br><span class="line">    response = llm.invoke(state[<span class="string">&quot;messages&quot;</span>])</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;messages&quot;</span>: [response]&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 그래프 빌더에 노드 등록</span></span><br><span class="line">graph_builder.add_node(<span class="string">&quot;chatbot&quot;</span>, chatbot)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 흐름(Edge) 정의</span></span><br><span class="line"><span class="comment"># START에서 출발하여 chatbot 노드로 향하고, chatbot 노드가 끝나면 END(종료)로 향합니다.</span></span><br><span class="line">graph_builder.add_edge(START, <span class="string">&quot;chatbot&quot;</span>)</span><br><span class="line">graph_builder.add_edge(<span class="string">&quot;chatbot&quot;</span>, END)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 그래프 컴파일</span></span><br><span class="line">graph = graph_builder.<span class="built_in">compile</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[OK] 그래프 컴파일 완료!&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 스트리밍 실행 예제</span></span><br><span class="line">initial_input = &#123;<span class="string">&quot;messages&quot;</span>: [(<span class="string">&quot;user&quot;</span>, <span class="string">&quot;안녕하세요! LangGraph의 핵심 특징 3가지만 알려주세요.&quot;</span>)]&#125;</span><br><span class="line"></span><br><span class="line">events = graph.stream(initial_input)</span><br><span class="line"><span class="keyword">for</span> event <span class="keyword">in</span> events:</span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> event.values():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;\n[Assistant]&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(value[<span class="string">&quot;messages&quot;</span>][-<span class="number">1</span>].content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 6. 그래프 시각화하기 (Graph Visualization)</span></span><br><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> Image, display</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># Mermaid.js API를 통해 그래프 구조를 PNG 이미지로 생성 및 출력합니다.</span></span><br><span class="line">    png_data = graph.get_graph().draw_mermaid_png()</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;graph_structure.png&quot;</span>, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(png_data)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;[OK] 그래프 구조를 &#x27;graph_structure.png&#x27;로 저장했습니다.&quot;</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;시각화 도구 실행 실패:&quot;</span>, e)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-에이전트-실행-결과"><a href="#3-3-에이전트-실행-결과" class="headerlink" title="3.3 에이전트 실행 결과"></a>3.3 에이전트 실행 결과</h3><p>터미널에서 <code>uv run</code> 명령어로 스크립트를 실행한 결과 출력 로그는 다음과 같습니다. 정상적으로 에이전트의 응답이 스트리밍되고, 폴더 내에 시각화 이미지 파일(<code>graph_structure.png</code>)이 정상 저장됩니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">PS D:\coffeeman1\python&gt; uv run .\simple_agent.py</span><br><span class="line">[OK] 그래프 컴파일 완료!</span><br><span class="line"></span><br><span class="line">[Assistant]</span><br><span class="line">안녕하세요! LangGraph의 핵심 특징 3가지는 다음과 같습니다.</span><br><span class="line"></span><br><span class="line">1.  **그래프 기반 워크플로우 (Graph-based Workflow):**</span><br><span class="line">    *   LLM 애플리케이션의 복잡한 로직을 **노드(단계)**와 **엣지(전환)**로 구성된 그래프 형태로 정의할 수 있습니다. 이를 통해 시각적으로 명확하고 관리하기 쉬운 구조를 만들며, 복잡한 에이전트의 흐름을 직관적으로 설계할 수 있습니다.</span><br><span class="line"></span><br><span class="line">2.  **상태 관리 및 반복 (State Management &amp; Iteration/Loops):**</span><br><span class="line">    *   각 단계에서 애플리케이션의 현재 **상태(State)**를 유지하고 업데이트할 수 있습니다. 이는 LLM이 이전 대화나 작업 결과를 기억하고, 필요에 따라 특정 단계로 다시 돌아가 반복 작업을 수행하거나 자체 수정(self-correction)하는 데 필수적입니다.</span><br><span class="line"></span><br><span class="line">3.  **조건부 라우팅 (Conditional Routing):**</span><br><span class="line">    *   특정 조건(예: LLM의 응답, 도구 사용 결과 등)에 따라 다음으로 진행할 노드를 동적으로 결정할 수 있습니다. 이를 통해 복잡한 의사결정 흐름이나 도구 선택 로직을 유연하게 구현하여, 상황에 따라 다르게 동작하는 지능적인 에이전트를 만들 수 있습니다.</span><br><span class="line"></span><br><span class="line">이러한 특징들을 통해 LangGraph는 복잡하고 지능적인 LLM 기반 에이전트 및 워크플로우를 구축하는 데 강력한 프레임워크를 제공합니다.</span><br><span class="line">[OK] 그래프 구조를 <span class="string">&#x27;graph_structure.png&#x27;</span>로 저장했습니다.</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="맺음말"><a href="#맺음말" class="headerlink" title="맺음말"></a>맺음말</h2><p>이번 파트에서는 에이전트 개발에서 순환 구조의 필요성과 LangGraph의 기초 빌딩 블록(State, Node, Edge)에 대해 알아보고, 간단한 에이전트를 성공적으로 구동했습니다.</p>
+<p>다음 <strong>Part 2</strong>에서는 외부 API 검색 도구(Tool)를 연동하고, 에이전트가 상황에 따라 도구를 호출하거나 대화를 마칠지 스스로 결정하는 <strong>조건부 엣지(Conditional Edges)</strong> 적용법을 자세히 알아보겠습니다!</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://goodsaem.github.io/lg102p/" data-id="cmqx8inre000pg4a45d677xqc" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "good"
+        },
+        "headline": "LangGraph 공부 로드맵: Part 1. LangGraph의 이해와 시작 (기초 편)",
+        "image": "http://goodsaem.github.io/../images/langgraph_part1.jpg",
+        "keywords": "Blog Gemini",
+        "genre": "Blog",
+        "datePublished": "2026-06-28",
+        "dateCreated": "2026-06-28",
+        "dateModified": "2026-07-28",
+        "url": "http://goodsaem.github.io/lg102p/",
+        "description": "
+AI 에이전트를 개발할 때, 단순한 일자형 파이프라인(Chain)을 넘어 사용자의 피드백을 받거나 에러 발생 시 이전 단계로 되돌아가는 등의 순환(Loop) 구조가 필수적인 순간이 옵니다. 
+이번 글에서는 LangChain 생태계의 대표적인 순환 그래프 설계 도구인 LangGraph의 도입 배경부터 핵심 개념, 그리고 간단한 첫 번째 에이전트를 직접 코딩",
+        "wordCount": 1184
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+     
+    
+        
+<nav id="article-nav">
+    
+        <a href="/multi-monitor-capture-program-python/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">신규</strong>
+        <p class="article-nav-title">
+        
+            파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/lg101p/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">이전</strong>
+        <p class="article-nav-title">LangGraph 공부 로드맵: 기초부터 실무까지</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%EC%9D%98-%EC%A7%84%ED%99%94"><span class="toc-number">1.</span> <span class="toc-text">1. 에이전트 아키텍처의 진화</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Linear-Chain-LangChain-Express-%EC%9D%98-%ED%95%9C%EA%B3%84"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 Linear Chain(LangChain Express)의 한계</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%EC%99%9C-%EC%88%9C%ED%99%98-Loops-Cycles-%EA%B5%AC%EC%A1%B0%EA%B0%80-%ED%95%84%EC%9A%94%ED%95%9C%EA%B0%80"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 왜 순환(Loops&#x2F;Cycles) 구조가 필요한가?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-LangGraph-%ED%95%B5%EC%8B%AC-3%EB%8C%80-%EA%B0%9C%EB%85%90"><span class="toc-number">2.</span> <span class="toc-text">2. LangGraph 핵심 3대 개념</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-State-%EC%83%81%ED%83%9C"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 State (상태)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Nodes-%EB%85%B8%EB%93%9C"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 Nodes (노드)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Edges-%EC%97%A3%EC%A7%80"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 Edges (엣지)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Hello-LangGraph-%EC%B2%AB-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-%EA%B5%AC%ED%98%84"><span class="toc-number">3.</span> <span class="toc-text">3. Hello LangGraph! 첫 에이전트 구현</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%ED%95%84%EC%88%98-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%84%A4%EC%B9%98-%EB%B0%8F-%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 필수 라이브러리 설치 및 환경 설정</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-%EC%86%8C%EC%8A%A4-%EC%BD%94%EB%93%9C-%EC%9E%91%EC%84%B1-simple-agent-py"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 에이전트 소스 코드 작성 (simple_agent.py)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-%EC%8B%A4%ED%96%89-%EA%B2%B0%EA%B3%BC"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 에이전트 실행 결과</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EB%A7%BA%EC%9D%8C%EB%A7%90"><span class="toc-number">4.</span> <span class="toc-text">맺음말</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/start-langchain-langgraph-with-streamlit/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Coding/Python/">Python</a></p>
+                            <p class="item-title"><a href="/start-langchain-langgraph-with-streamlit/" class="title">LangChain &amp; LangGraph 공부 시작하기: 버전 확인부터 Streamlit 챗봇 UI 뼈대 만들기</a></p>
+                            <p class="item-date"><time datetime="2026-06-28T12:26:00.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/modern-tkinter-dark-theme-capture-app/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Coding/Python/">Python</a></p>
+                            <p class="item-title"><a href="/modern-tkinter-dark-theme-capture-app/" class="title">파이썬 Tkinter로 구현하는 세련된 다크 테마 화면 캡처 프로그램 제작기 (Modern GUI)</a></p>
+                            <p class="item-date"><time datetime="2026-06-28T12:25:00.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/multi-monitor-capture-program-python/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/capture_app_banner.jpg)" alt="파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Coding/Python/">Python</a></p>
+                            <p class="item-title"><a href="/multi-monitor-capture-program-python/" class="title">파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램</a></p>
+                            <p class="item-date"><time datetime="2026-06-28T06:37:06.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lg102p/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../images/langgraph_part1.jpg)" alt="LangGraph 공부 로드맵: Part 1. LangGraph의 이해와 시작 (기초 편)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/lg102p/" class="title">LangGraph 공부 로드맵: Part 1. LangGraph의 이해와 시작 (기초 편)</a></p>
+                            <p class="item-date"><time datetime="2026-06-27T16:23:50.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lg101p/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../images/langgraph_banner.jpg)" alt="LangGraph 공부 로드맵: 기초부터 실무까지" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/lg101p/" class="title">LangGraph 공부 로드맵: 기초부터 실무까지</a></p>
+                            <p class="item-date"><time datetime="2026-06-27T16:18:35.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/">Coding</a><span class="category-list-count">20</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/JHipster/">JHipster</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/Python/">Python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/mariadb/">mariadb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/springboot/">springboot</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/vue/">vue</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gemini/">Gemini</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setup/">Setup</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><span class="category-list-count">44</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%B1/">앱</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">6월 2026</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">9월 2025</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">8월 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">7월 2025</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">6월 2025</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">3월 2023</a><span class="archive-list-count">64</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIAgent/" rel="tag">AIAgent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud/" rel="tag">Cloud</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CustomWidget/" rel="tag">CustomWidget</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Free-tier/" rel="tag">Free tier</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/" rel="tag">GUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gemini/" rel="tag">Gemini</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intellij/" rel="tag">Intellij</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JHipster/" rel="tag">JHipster</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LangChain/" rel="tag">LangChain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LangGraph/" rel="tag">LangGraph</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MAC/" rel="tag">MAC</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MARIADB/" rel="tag">MARIADB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MobaXterm/" rel="tag">MobaXterm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ModernUI/" rel="tag">ModernUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiMonitor/" rel="tag">MultiMonitor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/" rel="tag">SPRINGBOOT</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ScreenCapture/" rel="tag">ScreenCapture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Streamlit/" rel="tag">Streamlit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tkinter/" rel="tag">Tkinter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/" rel="tag">VUE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Win32API/" rel="tag">Win32API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/" rel="tag">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fontawesome/" rel="tag">fontawesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2db/" rel="tag">h2db</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openjdk/" rel="tag">openjdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/" rel="tag">oracle</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window2022/" rel="tag">window2022</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows2022/" rel="tag">windows2022</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%BC%EC%83%81/" rel="tag">일상</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AIAgent/" style="font-size: 10px;">AIAgent</a> <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/Blog/" style="font-size: 16.67px;">Blog</a> <a href="/tags/Cloud/" style="font-size: 12.22px;">Cloud</a> <a href="/tags/CustomWidget/" style="font-size: 10px;">CustomWidget</a> <a href="/tags/Free-tier/" style="font-size: 12.22px;">Free tier</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/Gemini/" style="font-size: 13.33px;">Gemini</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/Intellij/" style="font-size: 10px;">Intellij</a> <a href="/tags/JHipster/" style="font-size: 12.22px;">JHipster</a> <a href="/tags/LangChain/" style="font-size: 10px;">LangChain</a> <a href="/tags/LangGraph/" style="font-size: 10px;">LangGraph</a> <a href="/tags/MAC/" style="font-size: 14.44px;">MAC</a> <a href="/tags/MARIADB/" style="font-size: 10px;">MARIADB</a> <a href="/tags/MobaXterm/" style="font-size: 10px;">MobaXterm</a> <a href="/tags/ModernUI/" style="font-size: 10px;">ModernUI</a> <a href="/tags/MultiMonitor/" style="font-size: 10px;">MultiMonitor</a> <a href="/tags/Oracle/" style="font-size: 12.22px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/Python/" style="font-size: 12.22px;">Python</a> <a href="/tags/SPRINGBOOT/" style="font-size: 17.78px;">SPRINGBOOT</a> <a href="/tags/ScreenCapture/" style="font-size: 10px;">ScreenCapture</a> <a href="/tags/Streamlit/" style="font-size: 10px;">Streamlit</a> <a href="/tags/Tkinter/" style="font-size: 10px;">Tkinter</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a> <a href="/tags/Win32API/" style="font-size: 10px;">Win32API</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/fontawesome/" style="font-size: 10px;">fontawesome</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 11.11px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/h2db/" style="font-size: 10px;">h2db</a> <a href="/tags/hexo/" style="font-size: 12.22px;">hexo</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/openjdk/" style="font-size: 10px;">openjdk</a> <a href="/tags/oracle/" style="font-size: 11.11px;">oracle</a> <a href="/tags/springboot/" style="font-size: 15.56px;">springboot</a> <a href="/tags/vue/" style="font-size: 11.11px;">vue</a> <a href="/tags/window2022/" style="font-size: 12.22px;">window2022</a> <a href="/tags/windows2022/" style="font-size: 10px;">windows2022</a> <a href="/tags/%EC%9D%BC%EC%83%81/" style="font-size: 11.11px;">일상</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+                <div class="widget-wrap widget-float">
+
+    <h3 class="widget-title">후원자</h3>
+    <div class="widget">
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+    </div>
+
+</div>
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                
+                <p>&copy; 2026 good</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1863930318161504"
+     crossorigin="anonymous"></script>
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var mermaidBlocks = Array.prototype.slice.call(
+      document.querySelectorAll(
+        'pre.mermaid, pre > code.language-mermaid, pre > code.lang-mermaid, figure.highlight.plaintext'
+      )
+    ).filter(function (node) {
+      if (node.matches && node.matches('figure.highlight.plaintext')) {
+        return node.textContent.indexOf('graph ') !== -1 ||
+          node.textContent.indexOf('flowchart ') !== -1 ||
+          node.textContent.indexOf('sequenceDiagram') !== -1 ||
+          node.textContent.indexOf('classDiagram') !== -1 ||
+          node.textContent.indexOf('stateDiagram') !== -1 ||
+          node.textContent.indexOf('erDiagram') !== -1;
+      }
+      return true;
+    });
+    if (!mermaidBlocks.length) return;
+
+    mermaid.initialize({ startOnLoad: false });
+
+    mermaidBlocks.forEach(function (codeBlock, index) {
+      var target = codeBlock.matches && (codeBlock.matches('figure.highlight.plaintext') || codeBlock.matches('pre.mermaid'))
+        ? codeBlock
+        : codeBlock.parentElement;
+      var container = document.createElement('div');
+      container.className = 'mermaid';
+      container.id = 'mermaid-' + index;
+      container.textContent = codeBlock.textContent.trim();
+      target.replaceWith(container);
+    });
+
+    mermaid.run({ querySelector: '.mermaid' });
+  });
+</script>
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/javascript" src="/drawio/viewer-static.min.js"></script>
+<style>
+.mxgraph-container { width: 100%; }
+.mxgraph {
+  width: 100% !important;
+  border:1px solid transparent;
+}
+.geDiagramContainer { width: 100% !important; }
+</style>
+</body>
+
+</html>

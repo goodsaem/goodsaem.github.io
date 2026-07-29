@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/callout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/earlyaccess/iropkebatang.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'IropkeBatang', serif;
+        }
+    </style>
+
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5VG62JT9');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+    
+
+    
+    <title>파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램 | good</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Python,ScreenCapture,MultiMonitor,Win32API" />
+    
+    <meta name="description" content="파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램일반적으로 파이썬에서 화면을 캡처할 때 Pillow나 pyautogui 같은 편리한 라이브러리를 많이 사용합니다. 하지만 이 도구들은 멀티모니터 환경이나 고해상도(4K 등) 디스플레이의 DPI 배율 설정에 따라 화면의 일부가 잘리거나, 캡처 속도가 현저히 느려지는 단점이 있습니다. 이번 포스팅에서는 외부">
+<meta property="og:type" content="article">
+<meta property="og:title" content="파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램">
+<meta property="og:url" content="http://goodsaem.github.io/multi-monitor-capture-program-python/index.html">
+<meta property="og:site_name" content="good">
+<meta property="og:description" content="파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램일반적으로 파이썬에서 화면을 캡처할 때 Pillow나 pyautogui 같은 편리한 라이브러리를 많이 사용합니다. 하지만 이 도구들은 멀티모니터 환경이나 고해상도(4K 등) 디스플레이의 DPI 배율 설정에 따라 화면의 일부가 잘리거나, 캡처 속도가 현저히 느려지는 단점이 있습니다. 이번 포스팅에서는 외부">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="http://goodsaem.github.io/images/capture_app_banner.jpg">
+<meta property="article:published_time" content="2026-06-28T06:37:06.000Z">
+<meta property="article:modified_time" content="2026-07-28T10:45:44.080Z">
+<meta property="article:author" content="good">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="ScreenCapture">
+<meta property="article:tag" content="MultiMonitor">
+<meta property="article:tag" content="Win32API">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://goodsaem.github.io/images/capture_app_banner.jpg">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VG62JT9"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/">Coding</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/JHipster/">JHipster</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/Python/">Python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/mariadb/">mariadb</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/springboot/">springboot</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Coding/vue/">vue</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Gemini/">Gemini</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setup/">Setup</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Tool/">Tool</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%B1/">앱</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="찾고자 하는 포스트를 검색하세요." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: '페이지',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Coding/Python/">Python</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-multi-monitor-capture-program-python" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/multi-monitor-capture-program-python/" class="article-date">
+       <time datetime="2026-06-28T06:37:06.000Z" itemprop="datePublished">2026-06-28</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/multi-monitor-capture-program-python/" class="article-date">
+     <time datetime="2026-07-28T10:45:44.080Z" itemprop="dateModified">2026-07-28</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/MultiMonitor/" rel="tag">MultiMonitor</a>, <a class="tag-link-link" href="/tags/Python/" rel="tag">Python</a>, <a class="tag-link-link" href="/tags/ScreenCapture/" rel="tag">ScreenCapture</a>, <a class="tag-link-link" href="/tags/Win32API/" rel="tag">Win32API</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="파이썬으로-구현하는-고속-멀티모니터-화면-캡처-프로그램"><a href="#파이썬으로-구현하는-고속-멀티모니터-화면-캡처-프로그램" class="headerlink" title="파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램"></a>파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램</h1><p>일반적으로 파이썬에서 화면을 캡처할 때 <code>Pillow</code>나 <code>pyautogui</code> 같은 편리한 라이브러리를 많이 사용합니다. 하지만 이 도구들은 멀티모니터 환경이나 고해상도(4K 등) 디스플레이의 DPI 배율 설정에 따라 화면의 일부가 잘리거나, 캡처 속도가 현저히 느려지는 단점이 있습니다.</p>
+<p>이번 포스팅에서는 외부 라이브러리 종속성 없이 <strong>순수 파이썬 내장 모듈(<code>ctypes</code>, <code>zlib</code>, <code>struct</code>)과 Windows API</strong>를 직접 호출하여, <strong>멀티모니터 대응</strong> 및 <strong>초고속 캡처</strong>를 지원하는 GUI 화면 캡처 프로그램을 구현해보겠습니다.</p>
+<p><img src="/../../images/capture_app_banner.jpg"></p>
+<hr>
+<h2 id="1-핵심-기술-메커니즘"><a href="#1-핵심-기술-메커니즘" class="headerlink" title="1. 핵심 기술 메커니즘"></a>1. 핵심 기술 메커니즘</h2><h3 id="1-DPI-배율-불일치-해결-DPI-Awareness"><a href="#1-DPI-배율-불일치-해결-DPI-Awareness" class="headerlink" title="1) DPI 배율 불일치 해결 (DPI Awareness)"></a>1) DPI 배율 불일치 해결 (DPI Awareness)</h3><p>윈도우 환경에서는 모니터마다 DPI 배율(예: 100%, 125%, 150%)이 다를 수 있습니다. 이를 파이썬이 제대로 인지하지 못하면 캡처 영역이 확대&#x2F;축소되어 잘리게 됩니다. 이를 방지하기 위해 다음 윈도우 API를 먼저 호출하여 프로그램이 모니터별 DPI를 정상적으로 인식하도록 선언합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    ctypes.windll.shcore.SetProcessDpiAwareness(<span class="number">2</span>)  <span class="comment"># PROCESS_PER_MONITOR_DPI_AWARE</span></span><br><span class="line"><span class="keyword">except</span> Exception:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        ctypes.windll.user32.SetProcessDPIAware()</span><br><span class="line">    <span class="keyword">except</span> Exception:</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-EnumDisplayMonitors를-이용한-물리-모니터-좌표-추출"><a href="#2-EnumDisplayMonitors를-이용한-물리-모니터-좌표-추출" class="headerlink" title="2) EnumDisplayMonitors를 이용한 물리 모니터 좌표 추출"></a>2) EnumDisplayMonitors를 이용한 물리 모니터 좌표 추출</h3><p><code>EnumDisplayMonitors</code> API를 통해 현재 PC에 연결된 모든 모니터의 좌표 정보(left, top, right, bottom)를 배열로 추출합니다. 이 좌표 정보를 이용하여 어떤 모니터든 왜곡 없이 캡처가 가능합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_monitors</span>() -&gt; <span class="built_in">list</span>[<span class="built_in">dict</span>]:</span><br><span class="line">    monitors = []</span><br><span class="line"></span><br><span class="line"><span class="meta">    @ctypes.WINFUNCTYPE(<span class="params">ctypes.c_bool, ctypes.c_void_p, ctypes.c_void_p, ctypes.POINTER(<span class="params">RECT</span>), ctypes.c_void_p</span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enum_proc</span>(<span class="params">hmonitor, hdc_monitor, rect_ptr, lparam</span>):</span><br><span class="line">        r = rect_ptr.contents</span><br><span class="line">        is_primary = (r.left == <span class="number">0</span> <span class="keyword">and</span> r.top == <span class="number">0</span> <span class="keyword">and</span> (r.right - r.left) &gt; <span class="number">0</span>)</span><br><span class="line">        monitors.append(&#123;</span><br><span class="line">            <span class="string">&quot;hmonitor&quot;</span>: hmonitor,</span><br><span class="line">            <span class="string">&quot;left&quot;</span>: r.left,</span><br><span class="line">            <span class="string">&quot;top&quot;</span>: r.top,</span><br><span class="line">            <span class="string">&quot;right&quot;</span>: r.right,</span><br><span class="line">            <span class="string">&quot;bottom&quot;</span>: r.bottom,</span><br><span class="line">            <span class="string">&quot;width&quot;</span>: r.right - r.left,</span><br><span class="line">            <span class="string">&quot;height&quot;</span>: r.bottom - r.top,</span><br><span class="line">            <span class="string">&quot;is_primary&quot;</span>: is_primary</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    ctypes.windll.user32.EnumDisplayMonitors(<span class="literal">None</span>, <span class="literal">None</span>, enum_proc, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> monitors</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Win32-GDI-기반-고속-캡처-및-자체-PNG-인코딩"><a href="#3-Win32-GDI-기반-고속-캡처-및-자체-PNG-인코딩" class="headerlink" title="3) Win32 GDI 기반 고속 캡처 및 자체 PNG 인코딩"></a>3) Win32 GDI 기반 고속 캡처 및 자체 PNG 인코딩</h3><p><code>GetDIBits</code>로 메모리 상에 가져온 BGRA 원시(Raw) 바이트 데이터를 파이썬 내장 <code>zlib</code>와 <code>struct</code>를 사용해 직접 PNG 바이트 스트림으로 변경합니다. 외부 Pillow 라이브러리로 변환하는 것보다 오버헤드가 적어 고속 프레임 연속 처리에 매우 유리합니다.</p>
+<hr>
+<h2 id="2-캡처-프로그램-주요-기능"><a href="#2-캡처-프로그램-주요-기능" class="headerlink" title="2. 캡처 프로그램 주요 기능"></a>2. 캡처 프로그램 주요 기능</h2><p>새롭게 개선된 프로그램은 다음과 같은 특징을 제공합니다:</p>
+<ol>
+<li><strong>세련된 Modern Dark UI</strong><ul>
+<li>어두운 테마 기반의 커스텀 위젯 디자인(플랫 스타일 버튼, 호버 효과 등)을 직접 구현하여 시각적 완성도를 극대화했습니다.</li>
+</ul>
+</li>
+<li><strong>간편한 모니터 선택</strong><ul>
+<li>연결된 모든 모니터 정보를 자동 감지하고, 해상도 및 주 모니터 여부를 드롭다운 메뉴를 통해 손쉽게 확인 및 선택할 수 있습니다.</li>
+</ul>
+</li>
+<li><strong>직관적인 상태 피드백</strong><ul>
+<li>결과물이 저장된 파일명과 캡처 작업의 성공&#x2F;실패 여부를 GUI 내부의 상태 피드백 카드로 실시간 시각화합니다.</li>
+</ul>
+</li>
+<li><strong>원클릭 캡처 폴더 탐색</strong><ul>
+<li>하단에 배치된 ‘캡처 폴더 열기’ 버튼을 통해 저장 디렉토리를 윈도우 탐색기로 즉시 열 수 있어 활용성이 뛰어납니다.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="3-전체-소스-코드-capture-py"><a href="#3-전체-소스-코드-capture-py" class="headerlink" title="3. 전체 소스 코드 (capture.py)"></a>3. 전체 소스 코드 (<code>capture.py</code>)</h2><p>아래 코드를 복사하여 <code>capture.py</code>로 저장한 뒤 <code>python capture.py</code>를 실행하면 세련된 다크 테마 GUI 프로그램이 시작됩니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"><span class="keyword">import</span> zlib</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> messagebox</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"></span><br><span class="line"><span class="comment"># DPI 인식 설정 (고해상도/배율 적용 모니터에서 캡처 범위 어긋남 방지)</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    ctypes.windll.shcore.SetProcessDpiAwareness(<span class="number">2</span>)  <span class="comment"># PROCESS_PER_MONITOR_DPI_AWARE</span></span><br><span class="line"><span class="keyword">except</span> Exception:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        ctypes.windll.user32.SetProcessDPIAware()</span><br><span class="line">    <span class="keyword">except</span> Exception:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">user32 = ctypes.windll.user32</span><br><span class="line">gdi32 = ctypes.windll.gdi32</span><br><span class="line"></span><br><span class="line"><span class="comment"># Win32 상수 및 구조체 정의</span></span><br><span class="line">SRCCOPY = <span class="number">0x00CC0020</span></span><br><span class="line">CAPTUREBLT = <span class="number">0x40000000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RECT</span>(ctypes.Structure):</span><br><span class="line">    _fields_ = [</span><br><span class="line">        (<span class="string">&quot;left&quot;</span>, ctypes.c_long),</span><br><span class="line">        (<span class="string">&quot;top&quot;</span>, ctypes.c_long),</span><br><span class="line">        (<span class="string">&quot;right&quot;</span>, ctypes.c_long),</span><br><span class="line">        (<span class="string">&quot;bottom&quot;</span>, ctypes.c_long),</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_monitors</span>() -&gt; <span class="built_in">list</span>[<span class="built_in">dict</span>]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;연결된 모든 모니터의 정보(해상도 및 가상 화면 좌표)를 가져옵니다.&quot;&quot;&quot;</span></span><br><span class="line">    monitors = []</span><br><span class="line"></span><br><span class="line"><span class="meta">    @ctypes.WINFUNCTYPE(<span class="params">ctypes.c_bool, ctypes.c_void_p, ctypes.c_void_p, ctypes.POINTER(<span class="params">RECT</span>), ctypes.c_void_p</span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enum_proc</span>(<span class="params">hmonitor, hdc_monitor, rect_ptr, lparam</span>):</span><br><span class="line">        r = rect_ptr.contents</span><br><span class="line">        <span class="comment"># 주 모니터 판별 기준 (left=0, top=0)</span></span><br><span class="line">        is_primary = (r.left == <span class="number">0</span> <span class="keyword">and</span> r.top == <span class="number">0</span> <span class="keyword">and</span> (r.right - r.left) &gt; <span class="number">0</span>)</span><br><span class="line">        monitors.append(&#123;</span><br><span class="line">            <span class="string">&quot;hmonitor&quot;</span>: hmonitor,</span><br><span class="line">            <span class="string">&quot;left&quot;</span>: r.left,</span><br><span class="line">            <span class="string">&quot;top&quot;</span>: r.top,</span><br><span class="line">            <span class="string">&quot;right&quot;</span>: r.right,</span><br><span class="line">            <span class="string">&quot;bottom&quot;</span>: r.bottom,</span><br><span class="line">            <span class="string">&quot;width&quot;</span>: r.right - r.left,</span><br><span class="line">            <span class="string">&quot;height&quot;</span>: r.bottom - r.top,</span><br><span class="line">            <span class="string">&quot;is_primary&quot;</span>: is_primary</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    user32.EnumDisplayMonitors(<span class="literal">None</span>, <span class="literal">None</span>, enum_proc, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> monitors</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">capture_screen_raw</span>(<span class="params">left: <span class="built_in">int</span>, top: <span class="built_in">int</span>, width: <span class="built_in">int</span>, height: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bytes</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;지정한 좌표와 크기의 화면 영역을 BGRA 바이트 데이터로 캡처합니다.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> width &lt;= <span class="number">0</span> <span class="keyword">or</span> height &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">raise</span> RuntimeError(<span class="string">&quot;캡처 크기가 잘못되었습니다.&quot;</span>)</span><br><span class="line"></span><br><span class="line">    hwnd = user32.GetDesktopWindow()</span><br><span class="line">    hdesktop = user32.GetWindowDC(hwnd)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> hdesktop:</span><br><span class="line">        <span class="keyword">raise</span> RuntimeError(<span class="string">&quot;데스크톱 디바이스 컨텍스트(DC)를 가져오지 못했습니다.&quot;</span>)</span><br><span class="line">    hmemdc = gdi32.CreateCompatibleDC(hdesktop)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> hmemdc:</span><br><span class="line">        user32.ReleaseDC(hwnd, hdesktop)</span><br><span class="line">        <span class="keyword">raise</span> RuntimeError(<span class="string">&quot;호환 메모리 DC를 생성하지 못했습니다.&quot;</span>)</span><br><span class="line"></span><br><span class="line">    bmp = gdi32.CreateCompatibleBitmap(hdesktop, width, height)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> bmp:</span><br><span class="line">        gdi32.DeleteDC(hmemdc)</span><br><span class="line">        user32.ReleaseDC(hwnd, hdesktop)</span><br><span class="line">        <span class="keyword">raise</span> RuntimeError(<span class="string">&quot;호환 비트맵을 생성하지 못했습니다.&quot;</span>)</span><br><span class="line"></span><br><span class="line">    old_obj = gdi32.SelectObject(hmemdc, bmp)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> gdi32.BitBlt(hmemdc, <span class="number">0</span>, <span class="number">0</span>, width, height, hdesktop, left, top, SRCCOPY | CAPTUREBLT) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">raise</span> RuntimeError(<span class="string">&quot;BitBlt 캡처에 실패했습니다.&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title class_">BITMAPINFOHEADER</span>(ctypes.Structure):</span><br><span class="line">            _fields_ = [</span><br><span class="line">                (<span class="string">&quot;biSize&quot;</span>, ctypes.c_uint),</span><br><span class="line">                (<span class="string">&quot;biWidth&quot;</span>, ctypes.c_long),</span><br><span class="line">                (<span class="string">&quot;biHeight&quot;</span>, ctypes.c_long),</span><br><span class="line">                (<span class="string">&quot;biPlanes&quot;</span>, ctypes.c_ushort),</span><br><span class="line">                (<span class="string">&quot;biBitCount&quot;</span>, ctypes.c_ushort),</span><br><span class="line">                (<span class="string">&quot;biCompression&quot;</span>, ctypes.c_uint),</span><br><span class="line">                (<span class="string">&quot;biSizeImage&quot;</span>, ctypes.c_uint),</span><br><span class="line">                (<span class="string">&quot;biXPelsPerMeter&quot;</span>, ctypes.c_long),</span><br><span class="line">                (<span class="string">&quot;biYPelsPerMeter&quot;</span>, ctypes.c_long),</span><br><span class="line">                (<span class="string">&quot;biClrUsed&quot;</span>, ctypes.c_uint),</span><br><span class="line">                (<span class="string">&quot;biClrImportant&quot;</span>, ctypes.c_uint),</span><br><span class="line">            ]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">class</span> <span class="title class_">BITMAPINFO</span>(ctypes.Structure):</span><br><span class="line">            _fields_ = [</span><br><span class="line">                (<span class="string">&quot;bmiHeader&quot;</span>, BITMAPINFOHEADER),</span><br><span class="line">                (<span class="string">&quot;bmiColors&quot;</span>, ctypes.c_uint * <span class="number">3</span>),</span><br><span class="line">            ]</span><br><span class="line"></span><br><span class="line">        bmi = BITMAPINFO()</span><br><span class="line">        bmi.bmiHeader.biSize = ctypes.sizeof(BITMAPINFOHEADER)</span><br><span class="line">        bmi.bmiHeader.biWidth = width</span><br><span class="line">        bmi.bmiHeader.biHeight = -height</span><br><span class="line">        bmi.bmiHeader.biPlanes = <span class="number">1</span></span><br><span class="line">        bmi.bmiHeader.biBitCount = <span class="number">32</span></span><br><span class="line">        bmi.bmiHeader.biCompression = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        buffer_size = width * height * <span class="number">4</span></span><br><span class="line">        buffer = (ctypes.c_ubyte * buffer_size)()</span><br><span class="line">        <span class="keyword">if</span> gdi32.GetDIBits(hmemdc, bmp, <span class="number">0</span>, height, buffer, ctypes.byref(bmi), <span class="number">0</span>) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">raise</span> RuntimeError(<span class="string">&quot;GetDIBits 디바이스 독립 비트맵 복사에 실패했습니다.&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">bytes</span>(buffer)</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        gdi32.SelectObject(hmemdc, old_obj)</span><br><span class="line">        gdi32.DeleteObject(bmp)</span><br><span class="line">        gdi32.DeleteDC(hmemdc)</span><br><span class="line">        user32.ReleaseDC(hwnd, hdesktop)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_write_png_data</span>(<span class="params">bgra: <span class="built_in">bytes</span>, width: <span class="built_in">int</span>, height: <span class="built_in">int</span>, compression_level: <span class="built_in">int</span> = <span class="number">6</span></span>) -&gt; <span class="built_in">bytes</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;BGRA 바이트 데이터를 인메모리 PNG 파일 포맷 바이트로 변환합니다.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">chunk</span>(<span class="params">tag: <span class="built_in">bytes</span>, data: <span class="built_in">bytes</span></span>) -&gt; <span class="built_in">bytes</span>:</span><br><span class="line">        <span class="keyword">return</span> struct.pack(<span class="string">&quot;&gt;I&quot;</span>, <span class="built_in">len</span>(data)) + tag + data + struct.pack(<span class="string">&quot;&gt;I&quot;</span>, zlib.crc32(tag + data) &amp; <span class="number">0xFFFFFFFF</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1. BGRA -&gt; RGBA 채널 전환</span></span><br><span class="line">    rgba_pixels = <span class="built_in">bytearray</span>(bgra)</span><br><span class="line">    rgba_pixels[<span class="number">0</span>::<span class="number">4</span>], rgba_pixels[<span class="number">2</span>::<span class="number">4</span>] = rgba_pixels[<span class="number">2</span>::<span class="number">4</span>], rgba_pixels[<span class="number">0</span>::<span class="number">4</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 2. 각 행 앞에 PNG 필터 타입 (0: None) 추가</span></span><br><span class="line">    row_len = width * <span class="number">4</span></span><br><span class="line">    filtered = <span class="built_in">bytearray</span>()</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">        filtered.append(<span class="number">0</span>)</span><br><span class="line">        filtered.extend(rgba_pixels[y * row_len : (y + <span class="number">1</span>) * row_len])</span><br><span class="line"></span><br><span class="line">    raw = zlib.compress(<span class="built_in">bytes</span>(filtered), level=compression_level)</span><br><span class="line">    ihdr = struct.pack(<span class="string">&quot;&gt;IIBBBBB&quot;</span>, width, height, <span class="number">8</span>, <span class="number">6</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">b&quot;\x89PNG\r\n\x1a\n&quot;</span> + chunk(<span class="string">b&quot;IHDR&quot;</span>, ihdr) + chunk(<span class="string">b&quot;IDAT&quot;</span>, raw) + chunk(<span class="string">b&quot;IEND&quot;</span>, <span class="string">b&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_write_png</span>(<span class="params">path: Path, bgra: <span class="built_in">bytes</span>, width: <span class="built_in">int</span>, height: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;BGRA 바이트 데이터를 PNG 파일로 디스크에 저장합니다.&quot;&quot;&quot;</span></span><br><span class="line">    data = _write_png_data(bgra, width, height, compression_level=<span class="number">6</span>)</span><br><span class="line">    path.write_bytes(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_next_index</span>(<span class="params">output_dir: Path, prefix: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;중복되지 않는 다음 파일 번호를 가져옵니다.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> output_dir.exists():</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">import</span> re</span><br><span class="line">    numbers = []</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> output_dir.glob(<span class="string">&quot;*.png&quot;</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> f.is_file():</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> f.name.startswith(<span class="string">f&quot;<span class="subst">&#123;prefix&#125;</span>_&quot;</span>):</span><br><span class="line">            <span class="keyword">match</span> = re.search(<span class="string">r&#x27;(\d+)(?:\D*)$&#x27;</span>, f.stem)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">match</span>:</span><br><span class="line">                numbers.append(<span class="built_in">int</span>(<span class="keyword">match</span>.group(<span class="number">1</span>)))</span><br><span class="line">                </span><br><span class="line">    <span class="keyword">if</span> numbers:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(numbers) + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ModernButton</span>(tk.Button):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;세련된 마우스 호버 효과가 적용된 플랫 스타일 커스텀 버튼입니다.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, master, bg_color, active_bg, fg_color, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__(</span><br><span class="line">            master,</span><br><span class="line">            relief=<span class="string">&quot;flat&quot;</span>,</span><br><span class="line">            bd=<span class="number">0</span>,</span><br><span class="line">            bg=bg_color,</span><br><span class="line">            fg=fg_color,</span><br><span class="line">            activebackground=active_bg,</span><br><span class="line">            activeforeground=fg_color,</span><br><span class="line">            font=(<span class="string">&quot;Segoe UI&quot;</span>, <span class="number">10</span>, <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">            cursor=<span class="string">&quot;hand2&quot;</span>,</span><br><span class="line">            padx=<span class="number">10</span>,</span><br><span class="line">            pady=<span class="number">8</span>,</span><br><span class="line">            *args,</span><br><span class="line">            **kwargs</span><br><span class="line">        )</span><br><span class="line">        <span class="variable language_">self</span>.bg_color = bg_color</span><br><span class="line">        <span class="variable language_">self</span>.active_bg = active_bg</span><br><span class="line">        <span class="variable language_">self</span>.bind(<span class="string">&quot;&lt;Enter&gt;&quot;</span>, <span class="keyword">lambda</span> e: <span class="variable language_">self</span>.config(bg=active_bg))</span><br><span class="line">        <span class="variable language_">self</span>.bind(<span class="string">&quot;&lt;Leave&gt;&quot;</span>, <span class="keyword">lambda</span> e: <span class="variable language_">self</span>.config(bg=bg_color))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CaptureApp</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;메인 화면 캡처 GUI 프로그램 애플리케이션입니다.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, root, output_dir=<span class="string">&quot;captures&quot;</span>, prefix=<span class="string">&quot;capture&quot;</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.root = root</span><br><span class="line">        <span class="variable language_">self</span>.root.title(<span class="string">&quot;화면 캡처&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.root.configure(bg=<span class="string">&quot;#1e1e2e&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.root.resizable(<span class="literal">False</span>, <span class="literal">False</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 캡처 유틸리티 특성상 다른 창들 위에 고정</span></span><br><span class="line">        <span class="variable language_">self</span>.root.attributes(<span class="string">&quot;-topmost&quot;</span>, <span class="literal">True</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 저장 경로 및 파일명 패턴 설정</span></span><br><span class="line">        <span class="variable language_">self</span>.output_dir = Path(output_dir)</span><br><span class="line">        <span class="variable language_">self</span>.prefix = prefix</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 연결된 모니터 정보 가져오기</span></span><br><span class="line">        <span class="variable language_">self</span>.monitors = get_monitors()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 메인 패딩 프레임</span></span><br><span class="line">        <span class="variable language_">self</span>.main_frame = tk.Frame(root, bg=<span class="string">&quot;#1e1e2e&quot;</span>, padx=<span class="number">20</span>, pady=<span class="number">20</span>)</span><br><span class="line">        <span class="variable language_">self</span>.main_frame.pack(fill=<span class="string">&quot;both&quot;</span>, expand=<span class="literal">True</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 타이틀 헤더</span></span><br><span class="line">        title_label = tk.Label(</span><br><span class="line">            <span class="variable language_">self</span>.main_frame,</span><br><span class="line">            text=<span class="string">&quot;MONITOR CAPTURE&quot;</span>,</span><br><span class="line">            font=(<span class="string">&quot;Segoe UI&quot;</span>, <span class="number">14</span>, <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">            bg=<span class="string">&quot;#1e1e2e&quot;</span>,</span><br><span class="line">            fg=<span class="string">&quot;#89b4fa&quot;</span></span><br><span class="line">        )</span><br><span class="line">        title_label.pack(pady=(<span class="number">0</span>, <span class="number">15</span>))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 모니터 선택 라벨 및 드롭다운 메뉴</span></span><br><span class="line">        tk.Label(</span><br><span class="line">            <span class="variable language_">self</span>.main_frame,</span><br><span class="line">            text=<span class="string">&quot;캡처할 모니터 선택:&quot;</span>,</span><br><span class="line">            font=(<span class="string">&quot;Segoe UI&quot;</span>, <span class="number">9</span>, <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">            bg=<span class="string">&quot;#1e1e2e&quot;</span>,</span><br><span class="line">            fg=<span class="string">&quot;#a6adc8&quot;</span></span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 모니터 리스트 옵션 문자열 구성</span></span><br><span class="line">        monitor_options = []</span><br><span class="line">        default_idx = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> idx, m <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="variable language_">self</span>.monitors):</span><br><span class="line">            primary_text = <span class="string">&quot; (주 모니터)&quot;</span> <span class="keyword">if</span> m[<span class="string">&quot;is_primary&quot;</span>] <span class="keyword">else</span> <span class="string">&quot;&quot;</span></span><br><span class="line">            monitor_options.append(<span class="string">f&quot;모니터 <span class="subst">&#123;idx + <span class="number">1</span>&#125;</span>: <span class="subst">&#123;m[<span class="string">&#x27;width&#x27;</span>]&#125;</span>x<span class="subst">&#123;m[<span class="string">&#x27;height&#x27;</span>]&#125;</span><span class="subst">&#123;primary_text&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">if</span> m[<span class="string">&quot;is_primary&quot;</span>]:</span><br><span class="line">                default_idx = idx</span><br><span class="line">                </span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> monitor_options:</span><br><span class="line">            monitor_options = [<span class="string">&quot;모니터 정보를 찾을 수 없습니다.&quot;</span>]</span><br><span class="line">            </span><br><span class="line">        <span class="variable language_">self</span>.selected_monitor_str = tk.StringVar(value=monitor_options[default_idx])</span><br><span class="line">        </span><br><span class="line">        <span class="variable language_">self</span>.monitor_menu = tk.OptionMenu(<span class="variable language_">self</span>.main_frame, <span class="variable language_">self</span>.selected_monitor_str, *monitor_options)</span><br><span class="line">        <span class="variable language_">self</span>.monitor_menu.config(</span><br><span class="line">            bg=<span class="string">&quot;#313244&quot;</span>, fg=<span class="string">&quot;#cdd6f4&quot;</span>, activebackground=<span class="string">&quot;#45475a&quot;</span>, activeforeground=<span class="string">&quot;#cdd6f4&quot;</span>,</span><br><span class="line">            relief=<span class="string">&quot;flat&quot;</span>, highlightthickness=<span class="number">0</span>, font=(<span class="string">&quot;Segoe UI&quot;</span>, <span class="number">10</span>), cursor=<span class="string">&quot;hand2&quot;</span>,</span><br><span class="line">            padx=<span class="number">10</span>, pady=<span class="number">5</span></span><br><span class="line">        )</span><br><span class="line">        <span class="variable language_">self</span>.monitor_menu[<span class="string">&quot;menu&quot;</span>].config(</span><br><span class="line">            bg=<span class="string">&quot;#313244&quot;</span>, fg=<span class="string">&quot;#cdd6f4&quot;</span>, activebackground=<span class="string">&quot;#45475a&quot;</span>, activeforeground=<span class="string">&quot;#cdd6f4&quot;</span>,</span><br><span class="line">            font=(<span class="string">&quot;Segoe UI&quot;</span>, <span class="number">10</span>), relief=<span class="string">&quot;flat&quot;</span></span><br><span class="line">        )</span><br><span class="line">        <span class="variable language_">self</span>.monitor_menu.pack(fill=<span class="string">&quot;x&quot;</span>, pady=(<span class="number">0</span>, <span class="number">15</span>))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 상태 표시 카드 레이아웃</span></span><br><span class="line">        <span class="variable language_">self</span>.status_card = tk.Frame(</span><br><span class="line">            <span class="variable language_">self</span>.main_frame,</span><br><span class="line">            bg=<span class="string">&quot;#252538&quot;</span>,</span><br><span class="line">            padx=<span class="number">15</span>,</span><br><span class="line">            pady=<span class="number">15</span>,</span><br><span class="line">            highlightbackground=<span class="string">&quot;#313244&quot;</span>,</span><br><span class="line">            highlightthickness=<span class="number">1</span></span><br><span class="line">        )</span><br><span class="line">        <span class="variable language_">self</span>.status_card.pack(fill=<span class="string">&quot;x&quot;</span>, pady=(<span class="number">0</span>, <span class="number">20</span>))</span><br><span class="line">        </span><br><span class="line">        <span class="variable language_">self</span>.status_title = tk.Label(</span><br><span class="line">            <span class="variable language_">self</span>.status_card,</span><br><span class="line">            text=<span class="string">&quot;상태&quot;</span>,</span><br><span class="line">            font=(<span class="string">&quot;Segoe UI&quot;</span>, <span class="number">9</span>, <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">            bg=<span class="string">&quot;#252538&quot;</span>,</span><br><span class="line">            fg=<span class="string">&quot;#a6adc8&quot;</span></span><br><span class="line">        )</span><br><span class="line">        <span class="variable language_">self</span>.status_title.pack(anchor=<span class="string">&quot;w&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="variable language_">self</span>.status_var = tk.StringVar(value=<span class="string">&quot;대기 중 (모니터 선택 후 캡처 버튼 클릭)&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.status_label = tk.Label(</span><br><span class="line">            <span class="variable language_">self</span>.status_card,</span><br><span class="line">            textvariable=<span class="variable language_">self</span>.status_var,</span><br><span class="line">            font=(<span class="string">&quot;Segoe UI&quot;</span>, <span class="number">10</span>),</span><br><span class="line">            bg=<span class="string">&quot;#252538&quot;</span>,</span><br><span class="line">            fg=<span class="string">&quot;#cdd6f4&quot;</span>,</span><br><span class="line">            wraplength=<span class="number">260</span>,</span><br><span class="line">            justify=<span class="string">&quot;left&quot;</span></span><br><span class="line">        )</span><br><span class="line">        <span class="variable language_">self</span>.status_label.pack(anchor=<span class="string">&quot;w&quot;</span>, pady=(<span class="number">5</span>, <span class="number">0</span>))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 모니터 자동 캡처 버튼</span></span><br><span class="line">        <span class="variable language_">self</span>.capture_btn = ModernButton(</span><br><span class="line">            <span class="variable language_">self</span>.main_frame,</span><br><span class="line">            bg_color=<span class="string">&quot;#a6e3a1&quot;</span>,</span><br><span class="line">            active_bg=<span class="string">&quot;#94e2d5&quot;</span>,</span><br><span class="line">            fg_color=<span class="string">&quot;#11111b&quot;</span>,</span><br><span class="line">            text=<span class="string">&quot;선택한 모니터 캡처&quot;</span>,</span><br><span class="line">            command=<span class="variable language_">self</span>.start_capture</span><br><span class="line">        )</span><br><span class="line">        <span class="variable language_">self</span>.capture_btn.pack(fill=<span class="string">&quot;x&quot;</span>, pady=(<span class="number">0</span>, <span class="number">10</span>))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 추가 조작을 위한 하단 가로 프레임</span></span><br><span class="line">        <span class="variable language_">self</span>.btn_frame = tk.Frame(<span class="variable language_">self</span>.main_frame, bg=<span class="string">&quot;#1e1e2e&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.btn_frame.pack(fill=<span class="string">&quot;x&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="variable language_">self</span>.folder_btn = ModernButton(</span><br><span class="line">            <span class="variable language_">self</span>.btn_frame,</span><br><span class="line">            bg_color=<span class="string">&quot;#313244&quot;</span>,</span><br><span class="line">            active_bg=<span class="string">&quot;#45475a&quot;</span>,</span><br><span class="line">            fg_color=<span class="string">&quot;#cdd6f4&quot;</span>,</span><br><span class="line">            text=<span class="string">&quot;캡처 폴더 열기&quot;</span>,</span><br><span class="line">            command=<span class="variable language_">self</span>.open_folder</span><br><span class="line">        )</span><br><span class="line">        <span class="variable language_">self</span>.folder_btn.pack(side=<span class="string">&quot;left&quot;</span>, fill=<span class="string">&quot;x&quot;</span>, expand=<span class="literal">True</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">open_folder</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;저장용 캡처 폴더를 파일 탐색기에서 엽니다.&quot;&quot;&quot;</span></span><br><span class="line">        <span class="variable language_">self</span>.output_dir.mkdir(parents=<span class="literal">True</span>, exist_ok=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            os.startfile(<span class="variable language_">self</span>.output_dir)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            messagebox.showerror(<span class="string">&quot;오류&quot;</span>, <span class="string">f&quot;폴더를 열지 못했습니다: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start_capture</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;캡처를 시작하기 위해 메인 GUI 창을 일시적으로 숨깁니다.&quot;&quot;&quot;</span></span><br><span class="line">        <span class="variable language_">self</span>.root.withdraw()</span><br><span class="line">        <span class="comment"># 창이 화면에서 숨겨지는 시간을 주기 위해 200ms 딜레이를 줍니다.</span></span><br><span class="line">        <span class="variable language_">self</span>.root.after(<span class="number">200</span>, <span class="variable language_">self</span>.do_capture)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">do_capture</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;선택한 모니터를 캡처한 뒤 저장하고 GUI 창을 복원합니다.&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            sel_str = <span class="variable language_">self</span>.selected_monitor_str.get()</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 파싱: &quot;모니터 X: ... &quot;에서 인덱스 추출</span></span><br><span class="line">            <span class="keyword">if</span> sel_str.startswith(<span class="string">&quot;모니터 &quot;</span>):</span><br><span class="line">                m_idx = <span class="built_in">int</span>(sel_str.split(<span class="string">&quot;:&quot;</span>)[<span class="number">0</span>].split(<span class="string">&quot; &quot;</span>)[<span class="number">1</span>]) - <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                m_idx = <span class="number">0</span></span><br><span class="line">                </span><br><span class="line">            <span class="keyword">if</span> m_idx &gt;= <span class="built_in">len</span>(<span class="variable language_">self</span>.monitors):</span><br><span class="line">                <span class="keyword">raise</span> ValueError(<span class="string">&quot;선택한 모니터를 찾을 수 없습니다.&quot;</span>)</span><br><span class="line">                </span><br><span class="line">            monitor = <span class="variable language_">self</span>.monitors[m_idx]</span><br><span class="line">            left = monitor[<span class="string">&quot;left&quot;</span>]</span><br><span class="line">            top = monitor[<span class="string">&quot;top&quot;</span>]</span><br><span class="line">            width = monitor[<span class="string">&quot;width&quot;</span>]</span><br><span class="line">            height = monitor[<span class="string">&quot;height&quot;</span>]</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 해당 모니터 화면 데이터 캡처</span></span><br><span class="line">            bgra_data = capture_screen_raw(left, top, width, height)</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 파일 경로 생성 및 저장</span></span><br><span class="line">            <span class="variable language_">self</span>.output_dir.mkdir(parents=<span class="literal">True</span>, exist_ok=<span class="literal">True</span>)</span><br><span class="line">            file_idx = get_next_index(<span class="variable language_">self</span>.output_dir, <span class="variable language_">self</span>.prefix)</span><br><span class="line">            filename = <span class="string">f&quot;<span class="subst">&#123;self.prefix&#125;</span>_<span class="subst">&#123;file_idx:04d&#125;</span>.png&quot;</span></span><br><span class="line">            filepath = <span class="variable language_">self</span>.output_dir / filename</span><br><span class="line">            </span><br><span class="line">            _write_png(filepath, bgra_data, width, height)</span><br><span class="line">            </span><br><span class="line">            <span class="variable language_">self</span>.status_var.<span class="built_in">set</span>(<span class="string">f&quot;캡처 완료 및 저장:\n<span class="subst">&#123;filename&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="variable language_">self</span>.status_label.config(fg=<span class="string">&quot;#a6e3a1&quot;</span>)  <span class="comment"># 성공 시 연두색 텍스트</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            messagebox.showerror(<span class="string">&quot;오류&quot;</span>, <span class="string">f&quot;캡처 작업 중 오류가 발생했습니다:\n<span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="variable language_">self</span>.status_var.<span class="built_in">set</span>(<span class="string">&quot;캡처 실패&quot;</span>)</span><br><span class="line">            <span class="variable language_">self</span>.status_label.config(fg=<span class="string">&quot;#f38ba8&quot;</span>)  <span class="comment"># 실패 시 붉은색 텍스트</span></span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            <span class="comment"># 캡처 완료 후 메인 GUI 창 복원</span></span><br><span class="line">            <span class="variable language_">self</span>.root.deiconify()</span><br><span class="line">            <span class="variable language_">self</span>.root.attributes(<span class="string">&quot;-topmost&quot;</span>, <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>() -&gt; <span class="built_in">int</span>:</span><br><span class="line">    parser = argparse.ArgumentParser(description=<span class="string">&quot;모니터 화면 자동 캡처 프로그램&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&quot;--out&quot;</span>, default=<span class="string">&quot;captures&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;저장할 디렉토리 경로 (기본값: captures)&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&quot;--prefix&quot;</span>, default=<span class="string">&quot;capture&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;파일명 접두사 (기본값: capture)&quot;</span>)</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    </span><br><span class="line">    root = tk.Tk()</span><br><span class="line">    app = CaptureApp(root, output_dir=args.out, prefix=args.prefix)</span><br><span class="line">    root.mainloop()</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    sys.exit(main())</span><br></pre></td></tr></table></figure>
+
+<p>이 고성능 파이썬 화면 캡처 프로그램을 사용하면, 복잡한 설치 없이도 멀티모니터가 설치된 실무 환경에서 쉽고 강력하게 화면을 수집할 수 있습니다. 캡처 작업을 코딩으로 자동화하려 할 때 훌륭한 레퍼런스가 될 것입니다.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://goodsaem.github.io/multi-monitor-capture-program-python/" data-id="cmqxf3zhh00004ga46nvb3s67" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "good"
+        },
+        "headline": "파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램",
+        "image": "http://goodsaem.github.io/../../images/capture_app_banner.jpg",
+        "keywords": "Python ScreenCapture MultiMonitor Win32API",
+        "genre": "Coding Python",
+        "datePublished": "2026-06-28",
+        "dateCreated": "2026-06-28",
+        "dateModified": "2026-07-28",
+        "url": "http://goodsaem.github.io/multi-monitor-capture-program-python/",
+        "description": "파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램일반적으로 파이썬에서 화면을 캡처할 때 Pillow나 pyautogui 같은 편리한 라이브러리를 많이 사용합니다. 하지만 이 도구들은 멀티모니터 환경이나 고해상도(4K 등) 디스플레이의 DPI 배율 설정에 따라 화면의 일부가 잘리거나, 캡처 속도가 현저히 느려지는 단점이 있습니다.
+이번 포스팅에서는 외부",
+        "wordCount": 5929
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+     
+    
+        
+<nav id="article-nav">
+    
+        <a href="/modern-tkinter-dark-theme-capture-app/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">신규</strong>
+        <p class="article-nav-title">
+        
+            파이썬 Tkinter로 구현하는 세련된 다크 테마 화면 캡처 프로그램 제작기 (Modern GUI)
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/lg102p/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">이전</strong>
+        <p class="article-nav-title">LangGraph 공부 로드맵: Part 1. LangGraph의 이해와 시작 (기초 편)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C-%EA%B5%AC%ED%98%84%ED%95%98%EB%8A%94-%EA%B3%A0%EC%86%8D-%EB%A9%80%ED%8B%B0%EB%AA%A8%EB%8B%88%ED%84%B0-%ED%99%94%EB%A9%B4-%EC%BA%A1%EC%B2%98-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8"><span class="toc-number">1.</span> <span class="toc-text">파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%ED%95%B5%EC%8B%AC-%EA%B8%B0%EC%88%A0-%EB%A9%94%EC%BB%A4%EB%8B%88%EC%A6%98"><span class="toc-number">1.1.</span> <span class="toc-text">1. 핵심 기술 메커니즘</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-DPI-%EB%B0%B0%EC%9C%A8-%EB%B6%88%EC%9D%BC%EC%B9%98-%ED%95%B4%EA%B2%B0-DPI-Awareness"><span class="toc-number">1.1.1.</span> <span class="toc-text">1) DPI 배율 불일치 해결 (DPI Awareness)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-EnumDisplayMonitors%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%AC%BC%EB%A6%AC-%EB%AA%A8%EB%8B%88%ED%84%B0-%EC%A2%8C%ED%91%9C-%EC%B6%94%EC%B6%9C"><span class="toc-number">1.1.2.</span> <span class="toc-text">2) EnumDisplayMonitors를 이용한 물리 모니터 좌표 추출</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Win32-GDI-%EA%B8%B0%EB%B0%98-%EA%B3%A0%EC%86%8D-%EC%BA%A1%EC%B2%98-%EB%B0%8F-%EC%9E%90%EC%B2%B4-PNG-%EC%9D%B8%EC%BD%94%EB%94%A9"><span class="toc-number">1.1.3.</span> <span class="toc-text">3) Win32 GDI 기반 고속 캡처 및 자체 PNG 인코딩</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%EC%BA%A1%EC%B2%98-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5"><span class="toc-number">1.2.</span> <span class="toc-text">2. 캡처 프로그램 주요 기능</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%EC%A0%84%EC%B2%B4-%EC%86%8C%EC%8A%A4-%EC%BD%94%EB%93%9C-capture-py"><span class="toc-number">1.3.</span> <span class="toc-text">3. 전체 소스 코드 (capture.py)</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/start-langchain-langgraph-with-streamlit/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Coding/Python/">Python</a></p>
+                            <p class="item-title"><a href="/start-langchain-langgraph-with-streamlit/" class="title">LangChain &amp; LangGraph 공부 시작하기: 버전 확인부터 Streamlit 챗봇 UI 뼈대 만들기</a></p>
+                            <p class="item-date"><time datetime="2026-06-28T12:26:00.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/modern-tkinter-dark-theme-capture-app/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Coding/Python/">Python</a></p>
+                            <p class="item-title"><a href="/modern-tkinter-dark-theme-capture-app/" class="title">파이썬 Tkinter로 구현하는 세련된 다크 테마 화면 캡처 프로그램 제작기 (Modern GUI)</a></p>
+                            <p class="item-date"><time datetime="2026-06-28T12:25:00.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/multi-monitor-capture-program-python/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../../images/capture_app_banner.jpg)" alt="파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Coding/">Coding</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Coding/Python/">Python</a></p>
+                            <p class="item-title"><a href="/multi-monitor-capture-program-python/" class="title">파이썬으로 구현하는 고속 멀티모니터 화면 캡처 프로그램</a></p>
+                            <p class="item-date"><time datetime="2026-06-28T06:37:06.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lg102p/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../images/langgraph_part1.jpg)" alt="LangGraph 공부 로드맵: Part 1. LangGraph의 이해와 시작 (기초 편)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/lg102p/" class="title">LangGraph 공부 로드맵: Part 1. LangGraph의 이해와 시작 (기초 편)</a></p>
+                            <p class="item-date"><time datetime="2026-06-27T16:23:50.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lg101p/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/../images/langgraph_banner.jpg)" alt="LangGraph 공부 로드맵: 기초부터 실무까지" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Blog/">Blog</a></p>
+                            <p class="item-title"><a href="/lg101p/" class="title">LangGraph 공부 로드맵: 기초부터 실무까지</a></p>
+                            <p class="item-date"><time datetime="2026-06-27T16:18:35.000Z" itemprop="datePublished">2026-06-28</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/">Coding</a><span class="category-list-count">20</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/JHipster/">JHipster</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/Python/">Python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/mariadb/">mariadb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/springboot/">springboot</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/vue/">vue</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Gemini/">Gemini</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setup/">Setup</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/">개발툴</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B0%9C%EB%B0%9C%ED%88%B4/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/">설치</a><span class="category-list-count">44</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/GitLab/">GitLab</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/H2DB/">H2DB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/MARIADB/">MARIADB</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/PHP/">PHP</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/SPRINGBOOT/">SPRINGBOOT</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/VUE/">VUE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/node-js/">node.js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%84%A4%EC%B9%98/window2022/">window2022</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%B1/">앱</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">6월 2026</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">9월 2025</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">8월 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">7월 2025</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">6월 2025</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">3월 2023</a><span class="archive-list-count">64</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AIAgent/" rel="tag">AIAgent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud/" rel="tag">Cloud</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CustomWidget/" rel="tag">CustomWidget</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Free-tier/" rel="tag">Free tier</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/" rel="tag">GUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gemini/" rel="tag">Gemini</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intellij/" rel="tag">Intellij</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JHipster/" rel="tag">JHipster</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LangChain/" rel="tag">LangChain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LangGraph/" rel="tag">LangGraph</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MAC/" rel="tag">MAC</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MARIADB/" rel="tag">MARIADB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MobaXterm/" rel="tag">MobaXterm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ModernUI/" rel="tag">ModernUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiMonitor/" rel="tag">MultiMonitor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPRINGBOOT/" rel="tag">SPRINGBOOT</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ScreenCapture/" rel="tag">ScreenCapture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Streamlit/" rel="tag">Streamlit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tkinter/" rel="tag">Tkinter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VUE/" rel="tag">VUE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Win32API/" rel="tag">Win32API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/" rel="tag">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fontawesome/" rel="tag">fontawesome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2db/" rel="tag">h2db</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mariadb/" rel="tag">mariadb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openjdk/" rel="tag">openjdk</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/" rel="tag">oracle</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window2022/" rel="tag">window2022</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows2022/" rel="tag">windows2022</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%BC%EC%83%81/" rel="tag">일상</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AIAgent/" style="font-size: 10px;">AIAgent</a> <a href="/tags/AWS/" style="font-size: 20px;">AWS</a> <a href="/tags/Blog/" style="font-size: 16.67px;">Blog</a> <a href="/tags/Cloud/" style="font-size: 12.22px;">Cloud</a> <a href="/tags/CustomWidget/" style="font-size: 10px;">CustomWidget</a> <a href="/tags/Free-tier/" style="font-size: 12.22px;">Free tier</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/Gemini/" style="font-size: 13.33px;">Gemini</a> <a href="/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/Intellij/" style="font-size: 10px;">Intellij</a> <a href="/tags/JHipster/" style="font-size: 12.22px;">JHipster</a> <a href="/tags/LangChain/" style="font-size: 10px;">LangChain</a> <a href="/tags/LangGraph/" style="font-size: 10px;">LangGraph</a> <a href="/tags/MAC/" style="font-size: 14.44px;">MAC</a> <a href="/tags/MARIADB/" style="font-size: 10px;">MARIADB</a> <a href="/tags/MobaXterm/" style="font-size: 10px;">MobaXterm</a> <a href="/tags/ModernUI/" style="font-size: 10px;">ModernUI</a> <a href="/tags/MultiMonitor/" style="font-size: 10px;">MultiMonitor</a> <a href="/tags/Oracle/" style="font-size: 12.22px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/Python/" style="font-size: 12.22px;">Python</a> <a href="/tags/SPRINGBOOT/" style="font-size: 17.78px;">SPRINGBOOT</a> <a href="/tags/ScreenCapture/" style="font-size: 10px;">ScreenCapture</a> <a href="/tags/Streamlit/" style="font-size: 10px;">Streamlit</a> <a href="/tags/Tkinter/" style="font-size: 10px;">Tkinter</a> <a href="/tags/VUE/" style="font-size: 10px;">VUE</a> <a href="/tags/Win32API/" style="font-size: 10px;">Win32API</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/fontawesome/" style="font-size: 10px;">fontawesome</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 11.11px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/h2db/" style="font-size: 10px;">h2db</a> <a href="/tags/hexo/" style="font-size: 12.22px;">hexo</a> <a href="/tags/mariadb/" style="font-size: 10px;">mariadb</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/openjdk/" style="font-size: 10px;">openjdk</a> <a href="/tags/oracle/" style="font-size: 11.11px;">oracle</a> <a href="/tags/springboot/" style="font-size: 15.56px;">springboot</a> <a href="/tags/vue/" style="font-size: 11.11px;">vue</a> <a href="/tags/window2022/" style="font-size: 12.22px;">window2022</a> <a href="/tags/windows2022/" style="font-size: 10px;">windows2022</a> <a href="/tags/%EC%9D%BC%EC%83%81/" style="font-size: 11.11px;">일상</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+                <div class="widget-wrap widget-float">
+
+    <h3 class="widget-title">후원자</h3>
+    <div class="widget">
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+    </div>
+
+</div>
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                
+                <p>&copy; 2026 good</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1863930318161504"
+     crossorigin="anonymous"></script>
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var mermaidBlocks = Array.prototype.slice.call(
+      document.querySelectorAll(
+        'pre.mermaid, pre > code.language-mermaid, pre > code.lang-mermaid, figure.highlight.plaintext'
+      )
+    ).filter(function (node) {
+      if (node.matches && node.matches('figure.highlight.plaintext')) {
+        return node.textContent.indexOf('graph ') !== -1 ||
+          node.textContent.indexOf('flowchart ') !== -1 ||
+          node.textContent.indexOf('sequenceDiagram') !== -1 ||
+          node.textContent.indexOf('classDiagram') !== -1 ||
+          node.textContent.indexOf('stateDiagram') !== -1 ||
+          node.textContent.indexOf('erDiagram') !== -1;
+      }
+      return true;
+    });
+    if (!mermaidBlocks.length) return;
+
+    mermaid.initialize({ startOnLoad: false });
+
+    mermaidBlocks.forEach(function (codeBlock, index) {
+      var target = codeBlock.matches && (codeBlock.matches('figure.highlight.plaintext') || codeBlock.matches('pre.mermaid'))
+        ? codeBlock
+        : codeBlock.parentElement;
+      var container = document.createElement('div');
+      container.className = 'mermaid';
+      container.id = 'mermaid-' + index;
+      container.textContent = codeBlock.textContent.trim();
+      target.replaceWith(container);
+    });
+
+    mermaid.run({ querySelector: '.mermaid' });
+  });
+</script>
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/javascript" src="/drawio/viewer-static.min.js"></script>
+<style>
+.mxgraph-container { width: 100%; }
+.mxgraph {
+  width: 100% !important;
+  border:1px solid transparent;
+}
+.geDiagramContainer { width: 100% !important; }
+</style>
+</body>
+
+</html>
